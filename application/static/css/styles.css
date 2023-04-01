@@ -24,7 +24,10 @@ margin: 40px 0 0 40px;
     border-radius: 100%;
   }
   .navtext{
-    font-size: 25px;
+    font-size: 30px;
+    margin: 0px 5px 0 15px;
+    padding: 5px;;
+    align-items: center;
   }
   
 
@@ -33,13 +36,29 @@ margin: 40px 0 0 40px;
 
   /* login_container */
 .login_container{
-    margin: 50px 0;
-    padding:50px 50px;
+    margin: 50px 50px 15px  50px;
+    padding:50px 50px 0  50px;
+    width:50%;
+    
+    
+    
 }
-.login{
-    border-style: ridge;
-    height:500px;
-    width:50px;
+.imaging{
+  
+}
+.img{
+  box-shadow: 2px 3px 5px #29292a;
+  
+}
+.loging{
+  /* width has been set inline */
+    border-width: 0.5px;
+    border-style: solid;
+    height:400px;
+    border-radius: 15%;
+    background-color: #7F84FD;
+    box-shadow: 2px 2px 2px #6563d8;
+    
 
 }
 .button1 {
@@ -51,7 +70,29 @@ margin: 40px 0 0 40px;
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
-    margin: 4px 2px;
     border-radius: 100%;
+    margin-left: 40%;
+    
+
   }
-  
+  .addpadding{
+    padding: 15px;
+  }
+  .inputcontrol{
+    box-shadow: 2px 2px 2px #3330d1;
+
+  }
+  .headstyling{
+    font-size: 35px;
+    font-weight: bolder;
+    color:#423FB9;
+    text-align: center;
+    padding-top: 20%;
+    text-shadow: 2px 2px 2px #423FB9;
+
+  }
+  .smallcontext{
+    text-align: center;
+    font-size: 10px;
+    color:#1A28A6;
+  }

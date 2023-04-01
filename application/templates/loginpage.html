@@ -6,31 +6,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{title}}</title>
     <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/styles.css')}}" />
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 </head>
 <body>
     <!-- navbar content begins..  -->
     <!-- <img src="/docs/5.0/assets/brand/bootstrap-logo.svg" alt="" width="30" height="24" class="d-inline-block align-text-top"> -->
-    <nav class="navbar navbar-expand-lg  ">
+   
+        
+
+      <nav class="navbar bg-body-tertiary rounded-pill">
         <div class="container-fluid">
-          <a class="navbar-brand" href="#">        <button class="button nav-logo" type="submit" ></span></button>
-            </a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
-            </button>
-            <nav class="nav navtext">
-              <a class="nav-link active" aria-current="page" href="#">PEP</a>
-              </nav>
-          
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse  justify-content-end  " id="navbarNavDropdown">
+          <a class="navbar-brand navtext" href="#"><p class="navtext">
+            <img src="{{ url_for('static',filename='images/dot.png')}}" alt="Logo" width="50" height="40" class="d-inline-block align-text-top">
+           
+           PEP</p>
+          </a>
+          <div class="  justify-content-end  " id="navbarNavDropdown">
             <ul class="navbar-nav   ">
-              <li class="nav-item" style=" font-size: 15px;">
-                <a class="nav-link  active" aria-current="page" href="#">sign up</a>
+              <li class="nav-item" style=" font-size: 18px;">
+                <a class="nav-link  active" style=" padding-right: 20px;" aria-current="page" href="#">sign up</a>
               </li>
              
              
@@ -38,6 +33,7 @@
 
         </div>
 
+        </div>
       </nav>
 
       <!-- navbar content ends..  -->
@@ -48,21 +44,27 @@
       <div class="container login_container ">
         <div class="row">
           <div class="col-md-6">
-            <div class="img">
-            <img src="{{ url_for('static',filename='images/female.png')}}" class="rounded float-start" alt="...">
+            <div class="imger">
+            <img src="{{ url_for('static',filename='images/female.png')}}" class="rounded float-start img" alt="...">
+           </div>
         </div>
-        </div>
+        
           <div class="col-md-6">
-            <div class="container login">
-                <p>Log in </p>
+            <div class="container loging" style ="width: 350px;;">
+                <p class ="addpadding headstyling">Log in </p>
 
                   <form action="">
-                    <div>                    <input class="form-control" type="text" placeholder="Username" aria-label="default input example">
+                    <div class=" addpadding">                   
+                       <input class="form-control  rounded-pill addpadding inputcontrol" type="text" placeholder="Username" aria-label="default input example">
                     </div>
-                    <div>                    <input class="form-control" type="text" placeholder="Username" aria-label="default input example">
+                    <div class=" addpadding">                   
+                       <input class="form-control  rounded-pill inputcontrol " type="text" placeholder="password" aria-label="default input example">
                     </div>
-                    <p>forgot password</p>
-                    <button class="button button1" type="submit" ><span class="glyphicon glyphicon-play"></span></button>
+                    <p class=" smallcontext">forgot password</p>
+                    <button class="button  addpadding button1" type="submit" ><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-right-fill" viewBox="0 0 16 16">
+                      <path d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"/>
+                    </svg>
+              </button>
                     
                    
                   </form>
@@ -74,14 +76,12 @@
         </div>
       </div>
 
+     <div class="container-fluid imaging" style ="padding-left: 0px;">
+      <img src="{{ url_for('static',filename='images/lower.png')}}" class="img-fluid float-start w-50" alt="...">
+     </div>
+
+
       
-
-
-
-
-
-
-
 
 
 

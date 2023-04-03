@@ -1,0 +1,52 @@
+
+{% extends "index.html" %}
+
+{% block content %}
+      <!-- login content with the image picture..  -->
+      <div class="container search_container" style =" padding-left:0px; margin-left:0px; ">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="imger">
+            <img src="{{ url_for('static',filename='images/search.png')}}" class="rounded float-start img" style ="padding-left: 0px;"alt="...">
+           </div>
+        </div>
+        
+          <div class="col-md-6">
+            <div class="container search" style ="width: 350px;;">
+
+                  <form action="">
+                    <div class=" addpadding">                   
+                       <input class="form-control  rounded-pill addpadding inputcontrol" type="text" placeholder="College Name" aria-label="default input example">
+                    </div>
+                    <div class=" addpadding">                   
+                       <input class="form-control  rounded-pill inputcontrol " type="text" placeholder="Student Name" aria-label="default input example">
+                    </div>
+                    <div class=" addpadding">                   
+                        <input class="form-control  rounded-pill inputcontrol " type="text" placeholder="Enrollement Number" aria-label="default input example">
+                     </div>
+                     <div class=" addpadding">                   
+                        <input class="form-control  rounded-pill inputcontrol " type="text" placeholder="Accademic Year" aria-label="default input example">
+                     </div>
+              
+                     <div class="text-center addpadding">
+                        <button type="button" class="btn btn-primary btn-lg rounded-pill"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                            <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                          </svg> <span>  </span>
+                search</button>
+                      </div>
+                   
+                  </form>
+                
+                  <div class="container-fluid imaging" >
+                    <img src="{{ url_for('static',filename='images/corner.png')}}" class="img-fluid  w-50  "style ="" alt="...">
+                   </div>
+              </div>
+          </div>
+          
+          
+        </div>
+        
+      </div>
+     
+
+       {% endblock content %}

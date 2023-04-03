@@ -40,15 +40,28 @@ margin: 40px 0 0 40px;
     padding:50px 50px 0  50px;
     width:50%;
     
-    
+
     
 }
-.imaging{
+.search_container{
+  margin: 20px 50px 5px  0px;
+  padding:30px 50px 0  0px;
+  width:30%;
+  
+
   
 }
+
 .img{
   box-shadow: 2px 3px 5px #29292a;
   
+}
+.imaging{
+  position: absolute;
+bottom: 20px;;
+  z-index: -1;
+  top:25%;
+
 }
 .loging{
   /* width has been set inline */
@@ -61,6 +74,7 @@ margin: 40px 0 0 40px;
     
 
 }
+
 .button1 {
     background-color: #423FB9;
     border: none;
@@ -78,6 +92,10 @@ margin: 40px 0 0 40px;
   .addpadding{
     padding: 15px;
   }
+ .search{
+margin-top: 10%;
+ }
+
   .inputcontrol{
     box-shadow: 2px 2px 2px #3330d1;
 

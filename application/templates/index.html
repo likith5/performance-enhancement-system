@@ -40,52 +40,16 @@
 
 
 
-      <!-- login content with the image picture..  -->
-      <div class="container login_container ">
-        <div class="row">
-          <div class="col-md-6">
-            <div class="imger">
-            <img src="{{ url_for('static',filename='images/female.png')}}" class="rounded float-start img" alt="...">
-           </div>
-        </div>
-        
-          <div class="col-md-6">
-            <div class="container loging" style ="width: 350px;;">
-                <p class ="addpadding headstyling">Log in </p>
+      
 
-                  <form action="">
-                    <div class=" addpadding">                   
-                       <input class="form-control  rounded-pill addpadding inputcontrol" type="text" placeholder="Username" aria-label="default input example">
-                    </div>
-                    <div class=" addpadding">                   
-                       <input class="form-control  rounded-pill inputcontrol " type="text" placeholder="password" aria-label="default input example">
-                    </div>
-                    <p class=" smallcontext">forgot password</p>
-                    <button class="button  addpadding button1" type="submit" ><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-right-fill" viewBox="0 0 16 16">
-                      <path d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"/>
-                    </svg>
-              </button>
-                    
-                   
-                  </form>
-                
-                
-              </div>
-          </div>
-         
-        </div>
-      </div>
+      {% block content %}
+      <h1>this is home page guys</h1>
+      {% endblock content %}
 
-     <div class="container-fluid imaging" style ="padding-left: 0px;">
-      <img src="{{ url_for('static',filename='images/lower.png')}}" class="img-fluid float-start w-50" alt="...">
-     </div>
 
 
       
-
-
-
-
+  
 
 
 

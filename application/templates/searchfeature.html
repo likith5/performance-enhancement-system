@@ -1,0 +1,31 @@
+
+{% extends "index.html" %}
+
+{% block content %}
+      <!-- login content with the image picture..  -->
+      <div class="text-center addpadding smallcontext ">
+        <h1>Search Skills</h1>
+        </div>
+      <div class="container search_container" style =" padding-left:0px; margin-left:0px; ">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="imger">
+            <img src="{{ url_for('static',filename='images/feature.png')}}" class="rounded float-start img" style ="padding-left: 0px;"alt="...">
+           </div>
+        </div>
+        
+        <div class="col-md-6 ">
+            <div class="container-fluid border-3">
+                
+              </div>
+          </div>
+          
+        </div>
+        
+      </div>
+      <div class="container-fluid " style ="padding-left: 0px;">
+        <img src="{{ url_for('static',filename='images/lower.png')}}" class="img-fluid float-start w-50" alt="...">
+       </div>
+
+
+       {% endblock content %}

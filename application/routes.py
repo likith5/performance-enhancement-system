@@ -25,5 +25,5 @@ def search():
 @app.route("/searchfeature")
 def searchfeature():
 
-    title="search"
+    title="search feature"
     return render_template("searchfeature.html",title=title)

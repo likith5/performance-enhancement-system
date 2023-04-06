@@ -74,7 +74,13 @@ bottom: 20px;;
     
 
 }
-
+.container-fluid p{
+  background-color: rgb(10, 95, 170);
+}
+.sf{
+  color:blueviolet;
+  background-color: brown;
+}
 .loging{
   /* width has been set inline */
     border-width: 0.5px;

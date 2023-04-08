@@ -27,3 +27,9 @@ def searchfeature():
 
     title="search feature"
     return render_template("searchfeature.html",title=title)
+
+@app.route("/extractedfeature")
+def extractedfeature():
+
+    title="extracted feature"
+    return render_template("extractedfeature.html",title=title)

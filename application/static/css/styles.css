@@ -30,7 +30,7 @@ margin: 40px 0 0 40px;
     align-items: center;
   }
   
-
+/* .................  */
 
 
 
@@ -169,3 +169,87 @@ margin-top: 10%;
     font-size: 10px;
     color:#1A28A6;
   }
+
+
+
+
+/* profilepage....  */
+.profilebody{
+  border-width: 0.5px;
+    border-style: solid;
+    height: 300px;
+    margin:5% 0 0 0 ;
+}
+.spacing{
+  border-width: 0.5px;
+    border-style: solid;
+    height: 150px;
+}
+.cloud{
+  width:300px;
+  height: 150px;
+}
+.descriptionlist{
+display: flex;
+list-style: none;
+margin: 0 0 0 10%;
+padding: 15px 0 0 0 ;
+}
+.main-list{
+  font-size: 30px;
+  font-weight: bolder;
+  color:#6563d8;
+  padding: 0 0px 0 15%;
+  
+}
+.sub-list{
+  color:#7F84FD;
+  font-size: 20px;;
+  font-weight: bold;
+  margin-left: 10px;
+}
+.profilesub1{
+  background-color: #4051E8;
+  
+  
+}
+.profile-images{
+  position: absolute;
+  width:200px;
+  height:300px;
+  border-width: 0.5px;
+  border-style: solid;
+  border-radius: 15px;
+  margin: 0px 0 0 10px;
+  background-color: #5478F6;
+  z-index: -2;
+
+}
+.profile-pic{
+  width:180px;
+  height:280px;
+  position: relative;
+
+}
+.profilelist{
+  margin: 20px 0 0 23%;
+}
+.profilename{
+  font-size: 30px;
+  font-weight: bolder;
+}
+.profilecollege{
+  font-size: 15px;
+  font-weight: bolder;
+  padding:0 15px;
+}
+.profileUSN{
+  font-size: 15px;
+  font-weight: bolder;
+  /* margin-left: 10px; */
+  padding:0 35px;
+}
+.profilelist p{
+  margin-bottom: 0px;
+  color:#ffffff;
+}

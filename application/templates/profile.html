@@ -1,0 +1,59 @@
+
+
+{% extends "index.html" %}
+
+{% block content %}
+<div class="container profilebody">
+    <div class="profile-images">
+        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAABLFBMVEX19fX////9t5dsY/8zMzP4+Pj7+/vz8/P39/VqYP/f3fcwMDD9tpXy8vD19/g0NDT42cssLCzr6+v1zrzwrY/n5+d5cP3h4eHV1dWFhYVJSUk6OjpQRUD5tJV5eXlvZv//upTV1PPPz8/GxsZBQUFra2tTU1OWlpZ0dHS0tLT35Nv27urFwvWampqNjY2tra3ipYn7w6rm5fZ6cv6Mhfx/eP3OzPQeHh5fX1+Rb2BFPzzFknvZoIVvWU+zhXD7y7b8v6K3s/qdl/y/vPnurp2cl/qNh/vZ2POCZlpiUkqgeWe/jnedeGcpJiapoZ7a0MvUv7atj4JxZWC2oZfktqHtzMuef9esp/qXeuOGceflqKPQnLGth8m0i8LFlblrYe95aOWMc9Cgf8ZtYeR18S3ZAAAO9UlEQVR4nO3dC1fiSBYA4PAIAQMiERVEpBXfrYi8RkXt9i12987M7sww092209v//z9sVSVBCHlU6t5Cds/ec+bM6Ejk8966VXmQKJFJRGIQqqq+fDGR363I3byt8ooJQKUJh2iKV4xAZb0ROUKb52lzgcpCogvtuuTDOZwycokrtCszNG9UifqeMIVhKjMAifiu0ISCtemhREwkkhBUm65GEjhvDUMIG3t+SIxEwoW0OrF1L0i4ESpEHH3uRvCAhAkl+1CMECHG5MBlBNWquFB++nCMwsIJAplRmCgonKxPgaRRSDhxH8QoInwVoCJaquGFEmd4KcbQwlf0iRHDCl+pQIeMYYnhhK81AkeIIY2hhK9boXaEbKohhNOQQDNCEfmF05FAM8IQuYXTk0EaIYi8wmnKIA1+IqdwqhLIgvs4Dp9w6nw0ONPIJZy+DLLgI3IIp20IvgQXMVg4vUA+YqBwmoFcxCDhdE2D4xFMDBJOOZASYcJp9ynBRH/h1GeQRgDRVygJqC4toW7On+gnlNRG1YXVbQN1g77dxkcoC2hs5zaXHJsuFDTIJv2I3kJpwION3LFDWCgegLLqR/QUygIubW/o+qhQXSpmN2FD04foKZQELKxm9bheHMqYqhY243ppHbhhz27jJZSTQmN361M8rm9UXzZuFA5KuXj8pypw055ED6EMoKoVahSjx2sGO/OvGQuF6vZWTo+jCD3q1EMoA7h0uKlTzMZqYWFpqbC+vntQ3Fxm30IQeibRXSjhygqjWlxmGH159aBYXN083louxS0fhtCL6CpMYANVrVrcylqabCmbpVJ9wKNfATsN+y2udeomxB6EZAAWt4Y545EDzhbm73Eluglxgaqyvr3s7yPCGsY6zpXoIsRdb9PxlwvwkfljF7JqG4TbUBwXotaosV7cCMofFe4UUH6dWxLHhYgpNEh9BuaPArdwUuiaxDEhXgq19YNjHh+ZIbcNrPY9nkSnEA1IJ/gSl48Ia7vVBRzjeJ06hVg1qq6vLsc5gfHsxvLxTm0d5VeP1alDiJRCVTkMnCBGgs7+yztVDeG3O5PoECKlcKn4KYzPUub0GmhX3wxnEhUZwPWdbHggy+RmFUx0HphyClGAm9wjcMy4tQt+C35CnFFY2BH1MWIB/nmGhKcQB7gq7iPxaQe8Qh1N4rAQI4XqQlFsDA6SWALX6WgSh4UYKVQPead5T+LqAvhNqO5ClBQWoEAyEqvwZpNwFWIAteMcEEj2pA4lCTFSqIFrlETpAGHaT7gIEYDG7hYciCNUx4XwFKrG4RbcR4SHYOBwO1XQUqgaB8sIGSR7GqsIO/wShOrCNsIYZFFCITqF0CJVjRpsph+O3I7z/GL49zNIIpZQO8AD0lkfTnQKoUCMaWJImK0Z0FGjjgqhKdzFaTJDROip/kGZKnYKQcL1Y1wgW9nAhIMkKhhFulQsIQMJ8Xg9gSgEFSm99gA7hTSg3cYqUwWeQg17EJqhl4BD0UqiAu8zBfj+hDtxGXas3+o1CMIDOUASwPM1SEK1IGUQ0tBLh7Akvgghc4WxKi2FpJ+CkmgORAWawt3hxcxKT/hIqWvkijBhAi5UF1ZfSPrKh7MHzOUpqVPIjIEiHF6u6acX5Wj+opfjO2nIFbntiLhQGQgBwIXiy9+bAknkuycrpSxSterLkEPgbCAqsBRWXw7MnD4yII3y2cVJD2chp2+LA80yhQmN2gCYPclHh6N+soIi3AQl0RYKb6CwaU8V+nk9Ohr1i/MsgnB5VxxoCwGddDBV6KfdqDPKXYzGmoVcS0QHIkho1AYpvCiPCWkaV0Kd6x5Jnv1vyKwPFarrdp/JPeRdgGw0nooYdb10ahlhu8JMKN5oNLtI9ZUzdyAr1ZWQtarHT3sn3XrPHgBF8TKlzRQiNGpWKyk9eqSQRDrf/dgr8SZS17OE96FOar5r/fnGP7oQhmgKRV++tGm973PPFLLInz2e8ySS1ObKOeGZf67yiVUgy4CzbcAc2tP9qWubGUV2CfI0G/fIJfl2luoeu/WXTZ2tWETA2TYmFG+lh9aeYUAKrQFZ716cEOVpVndEvHS60js/ueiejdZ6/qPJh1x7SpqpIr5zqG3r1igMTKGFzNe7Hx5PHs57vRUrer3zh5NHgqvnxzfSNZOoA47xW0LBV1v7vnrPuZrxVZbz+frZ2VnXjLN6PZ8ve/yF6g+sk5EZ8XWE6pK5ZNNPQgCHIx34Ex9YEvWNdcBAjCjCjcae77M8o1As6ufsT1gSX5qSCREgrLJGo/ekAaPlj2wXDHDaGyhkoyR3IU9Ieg2rEsChYSYUfG1i9xP7A8srUjJhnNMygexewIQ/0SI9916wIYQ5JQKukiJC4enQFOY+ygRGu+zzQxChKi5UD2iVlj5IFZZPdWAOAUKl9sl3vwknznMIQtHX0hxKHobR6GMuC69SwdeScVgi62XONalonJ08nL6e8NPDmct6GTfIav3x9LWqdLcneQxakT8B7T4BemnVWs0Er6CB0f3HKwl/nkwKSaX+8jrC2T3ZY3AQ85lXESpz0svTjndvYULRF8/bQtnS9JG4UFEV8QuP3k0qhyBh4v9Cn5j/XxfO/ld0GpBwb2JCwGxBfOLXOrw9mgwx/X5PHEh84kJtfiLAaBpSpOyIsPCr9yaSxHR0ThwIFGbm3k+COA9IIVCoKD//+kH6HvAvECATQq6m1mrSj2I4b+0WMtgZUgWwieo/ZR+JOoD4bKF4qAs1yUcTt4CXsyfY1SYQ4u6vUoXdA+BHEiJg4dK/pA7EXxeAn0gACxW1KlOY/wXks4WwOjB+kzcnpn+D3gEsgSCUuQBPQ5bcQ0LIdcY0pC1sYEtuFvZV0LCtyNtPhCy5Waj2leywzexJSmL6/Rz0Y+sJHGFG1l4U5ODFqBA6EGUlEbLXZMbLp4Jg23krJYnpo7ezQKCKJSRJlEGEp3Dos2vALckYiaBDiGNCaBJn8Q9KpaPguVAZ+gwpuExn55CB0eg8wg1Ohj/pDN3Y23e4PowaVYY/6QydL7APnpLJHg60aRGUMkWeFNPg1YwyuLuJfdcI+Abn8M4jgo4BD2L0rhHwMiXzPprwCN5HFWUgi2CVKV63wQE67m2CUaZIxDQOUHHenwahTEm3wSDCd3tZjN1FCSWJGFk82oOut80YvxMWShLh7QYLOOQa/BfKzVlnyZ6UuDEdfYdTokNFOnxXQZxNvxU/5ZaGnUgbiYiLECeJCj1xKpZGslSDHjwchOoqREoirdT34Y2IFaoM9RnHHVqxtp8h00Y4Yjp6NIdWoSMpHL3LroJ0/346Go/S/MZ09P08XgI1TfG6yy5eEknszZHhyIVkPrQRSISK552SaRLRssjyyJXBI1QfFXrf7TqiYgoVjdZqkO/9HK6PJMnvnuwRDZWozM7l/a7mT5fzefDpJUcQQcRPqOISZ+cowvVzsOVyOV/Pl+En0BzhTOHY8y1QR6J1/SJDMqcd1tdUii4cEzm+xm02gys0B6r8QGsVKrLQ0WZchLjNxnENqp3C4aGIKxyrUbcn6eBN+zxX2WILx1Lo9jQkxCROXsjxNCTWbLCMExZqY23GXYjYbCYtHK9RjyfLoSVxskKXNuMhxEviRIWaawo9nvCIRZyk0APo9ZROpDqdoFBzr1HPJ62G6qdJz1B5hJ6vDgn0orh/O8ErpO9Em/GM3wOFv3u+thFCSd6uFu5puZxEomtctyopz/gj8EL3P7xfvHjbaXAavYE+T63mICa1tX4zlYp5Rur7TVAS//R+Odly67qhcBg9B6GfMJiYVBqX7ZiPj8Rfn/2F6Zu/fDeQqlx1jECiH9BHGNRtklrnquLvi8Wev/gL33z5O2ALsfZlI4jo2WUChAlfYlLZbwW9ORJf/Qdi+WslaAupyu1MINDz2fG+QtZtvIhJbb8ZlEAa/mWa/vxn8CZIpc74ZdEf6Cv0JfIBY89Pvin89oNnI5Ur70L1mSc4hKzbuBKTnTYXMJb66/MbnxR+59pILHXr2VF9u0yw0IuYnLnje2vk7//Vc8JI33x95txK6tJdqAUCg4TuxGSjH9ggBvH85EFMl594gbHU4porMRgYKHQlcnYZK/7+5kpMl7/8HWIrbkORI4McQhdisnEV4q0R4lN+nJi++RYGGFu81pxELiCH0CSOGPf5a5TFj683b0aN6Tc3T4Fz/WiMTRl8QB6hc9JIGnehUkji+fu3m+gLMp2++fKdewxa4UwiJ5BL6CAmw6bQMn7OvzGj/PnLH2F9pNmMjkReIJ/QXMBZxqQWbhQO4sf3fz99+/Lt6ev3kPVpCZsdESCncJiYnOGc7F3i+fnHj+fA5boX8fKlTLWApVp44RAxeS3qA0aqZZepFgLILbSIGukzt8IphIY16/NXaCihPWskG+JFCgxSpuGBYYRmS9U6Ap0USXhFBqIWuDMBELJKzXQWXy2HzUa4IRheyCo107gV7YZQYaWTCVehAkKaxox23XqVSl28XcuETKCA0CSu9duT5qUqrcuGADC80ByNjf07v+OkEoDN/pqRCe8TEkYSKknjzHXQsVJMX+yqQxKoCgCFhEOlOhGjcIEChOb0b3Qm0VVTqdblvZEJ20LBQmLMZDLG/p1kYyrVvJzRMhlRH0TISjVjdO4WZQqbfeITLVCo0DImO7dtKdNjKrbY6s8kYT6g0GyrJI99eg4R29e+vb7PCDZQPKFlbKxdXvmeSAztS7X6+w0D7kMQWtOj0ehctlM4yFSqcnW9huNDEUbo3JFhyH4TWq305Pbd9T3hic8Po4EjtIo1ozWur9qLoqkkr6s0W/17Q0MYfoPAEkYYkipJuZLmWomFY5KfrjTv+qQ4iQ6PF0EVRqxdZJLJ+/3+VYslM9hJf6ay2G7dsqGXgU4OY4ErjLBPpdBMGguNtev+7V27WalUbEgsxRayqdiATv5nu3XVv9wnOvq3Gf1AD0qgCyPmg02pkmaz09m/viTSVrvdbi7a0WySL1t3t/3L6/3OfcP8WftR4cghQ0iDPr5GY+OSNtnGzP3a2lpnfxCdtbX7+5kGK0s68AZPs8cPWUIWCTObZj4pdRD2t8zMycKxkCq0gkJV80BnxvpHofeDl0yz4j/hO+yKOgBCigAAAABJRU5ErkJggg==" 
+        class="rounded profile-pic" alt="Responsive image">
+    </div>
+    <div class="row spacing">
+
+      <div class="col profilesub1">
+        <div class="profilelist float-start">
+            <p class="profilename">Rakshit Halijol</p>
+            <p class="profilecollege">Dayanada sagar college</p>
+            <p class="profileUSN">(IDS20AI029)</p>
+           
+        </div>
+       <div class="float-end">
+        <div class="">
+            <img src="{{ url_for('static',filename='images/clouds.png')}}" class=" cloud " alt="...">
+    
+          </div>
+       </div>
+          
+      </div>
+      
+    </div>
+    <div class="row spacing">
+      <div class="col profilesub2">
+        <div class="description-profile">
+            <ul class="descriptionlist">
+                <li class="main-list text-center">Branch <br>
+                     <span class="sub-list test-center">AIML</span></li>
+                     <li class="main-list text-center">Sem <br>
+                        <span class="sub-list">6</span></li>
+                        <li class="main-list text-center"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-linkedin float-center" viewBox="0 0 16 16">
+                            <path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248-.822 0-1.359.54-1.359 1.248 0 .694.521 1.248 1.327 1.248h.016zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016a5.54 5.54 0 0 1 .016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225h2.4z"/>
+                          </svg> <br>
+                            <span class="sub-list">linkdin</span></li>
+                            <li class="main-list text-center"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-github" viewBox="0 0 16 16">
+                                <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"/>
+                              </svg><br>
+                                <span class="sub-list">github</span></li>
+              </ul>
+        </div>
+        
+      </div>
+      
+    </div>
+  
+
+</div>
+      
+ 
+
+     {% endblock content %}
+     

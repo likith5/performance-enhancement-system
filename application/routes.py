@@ -33,3 +33,9 @@ def extractedfeature():
 
     title="extracted feature"
     return render_template("extractedfeature.html",title=title)
+@app.route("/profile")
+def profile():
+
+    title="profile"
+    return render_template("profile.html",title=title)
+

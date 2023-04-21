@@ -279,4 +279,36 @@ padding: 15px 0 0 0 ;
 
 color: #ccc;
 }
+/* piegraph page...  */
 
+/* intrest-description ...  */
+
+.intrest-description{
+  height:500px;
+  margin:150px 0 0 0;
+  padding: 0 0 100px 0;
+}
+.list-interest{
+margin: 50px 0 0 0px;
+}
+.movelist{
+  margin: 0 0 0 200px;;
+}
+.intereststyle{
+  color:#1A28A6;
+  font-size: 25px;
+
+}  
+.link-a-tag{
+  text-decoration: none;
+}
+.footer{
+  height:150px;
+  color:#ffffff;
+  background-color: #886BD8;
+  font-size: 15px;
+
+}
+.footer-tag{
+  padding:75px 0 0 0;
+}

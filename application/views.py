@@ -1,24 +1,40 @@
 from application import create_app
 from flask import Blueprint
+from flask_login import login_required, current_user
 
 from flask import render_template,request,redirect
 views = Blueprint('views',__name__)
 
+
+@login_required
 @views.route("/")
-def welcome():
+def index():
     title="index"
     return render_template("index.html",title=title)
 
-# @app.route("/login")
-# def login():
+@login_required
+@views.route("/profile")
+def profile():
 
-#     title="login"
-#     return render_template("login.html",title=title)
-# @app.route("/signup")
-# def signup():
+    title="profile"
+    return render_template("profile.html",title=title)
 
-#     title="signup"
-#     return render_template("signup.html",title=title)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 # @app.route("/search")
 # def search():
@@ -36,9 +52,4 @@ def welcome():
 
 #     title="extracted feature"
 #     return render_template("extractedfeature.html",title=title)
-@views.route("/profile")
-def profile():
-
-    title="profile"
-    return render_template("profile.html",title=title)
 

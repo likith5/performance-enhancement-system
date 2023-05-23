@@ -1,9 +1,10 @@
-from flask import Blueprint
+from flask import Blueprint,session
 from flask import render_template,request,redirect,flash,url_for
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import login_user, login_required, logout_user, current_user
+from flask_session import Session
 
-from application import db
+from application import db,User
 
 auth = Blueprint('auth',__name__)
 
@@ -16,14 +17,17 @@ def login():
         user = db.users.find_one({'email': email})
         if user and check_password_hash(user['password'], password):
             flash('Logged in successfully.', category='success')
-            login_user(User(username), remember=True)
+            # login_user(User(username), remember=True)
+            session["email"] = email
+            login_user(User(user["_id"]), remember=True)
 
-            return redirect(url_for('views.index'))
+
+            return render_template('index.html')
         else:
             flash('Invalid username or password.',category='error')
             return redirect(url_for('auth.login'))
     else:
-        return render_template('login.html')
+        return render_template('login.html', User=current_user)
     
 
 
@@ -55,21 +59,22 @@ def sign_up():
 
 
 
-
+            
 
             db.users.insert_one({'email':email,'username': username, 'password':  hashed_password})
             flash('Account created!',category='success')
-            login_user(User(username), remember=True)
+            # login_user(User(username), remember=True)
 
 
             return redirect(url_for('auth.login'))
        
-    return render_template("signup.html")
+    return render_template("signup.html", User=current_user)
     
 @auth.route('/logout')
 @login_required
 def logout():
     logout_user()
+    session.pop("email", None) 
     return redirect(url_for('auth.login'))   
 
    

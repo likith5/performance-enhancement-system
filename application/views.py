@@ -20,6 +20,13 @@ def profile():
     title="profile"
     return render_template("profile.html",title=title)
 
+@views.route("/dashboard")
+def dashboard():
+
+    title="dashboard"
+    return render_template("dashboard.html",title=title)
+
+
 
 
 

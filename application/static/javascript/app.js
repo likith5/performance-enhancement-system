@@ -60,3 +60,4 @@ new Chart("myBar", {
     }
   }
 });
+

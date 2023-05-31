@@ -28,6 +28,10 @@
     list-style-position:inside;
    
   }
+  .grade-explain{
+    font-size: 20px;
+
+  }
   .gradealign{
     padding: 15px 0 5px 25%;
   } 
@@ -37,7 +41,7 @@
     color: #423FB9;
 }
 .top-grade-title{
-    font-size: 20px;
+    font-size: 25px;
     color: #423FB9;
     padding: 5px 0 0 5px;
     /* font-weight: 500; */

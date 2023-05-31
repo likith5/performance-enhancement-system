@@ -1,6 +1,5 @@
 from application import create_app
 from flask import Blueprint,url_for,session
-from flask_login import login_required, current_user
 from flask_session import Session
 
 from flask import render_template,request,redirect
@@ -8,12 +7,15 @@ views = Blueprint('views',__name__)
 
 
 @views.route("/")
-@login_required
+
 def index():
-    name = session.get("email")
+    if 'email' in session:
+        return redirect(url_for('views.dashboard'))
+    return redirect(url_for('auth.login'))
+    
 
     
-    return render_template('index.html',User=current_user,name=name)
+    return render_template('index.html')
 @views.route("/profile")
 def profile():
 
@@ -22,9 +24,11 @@ def profile():
 
 @views.route("/dashboard")
 def dashboard():
-
-    title="dashboard"
-    return render_template("dashboard.html",title=title)
+    if 'email' in session:
+         name = session.get("email")
+         title="dashboard"
+         return render_template('dashboard.html',title=title,name=name)
+    return redirect(url_for('auth.login'))
 
 
 

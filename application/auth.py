@@ -1,10 +1,9 @@
 from flask import Blueprint,session
 from flask import render_template,request,redirect,flash,url_for
 from werkzeug.security import generate_password_hash, check_password_hash
-from flask_login import login_user, login_required, logout_user, current_user
-from flask_session import Session
-
-from application import db,User
+import bcrypt
+from application import db
+# ,User  this has been excluded from above statement
 
 auth = Blueprint('auth',__name__)
 
@@ -17,17 +16,17 @@ def login():
         user = db.users.find_one({'email': email})
         if user and check_password_hash(user['password'], password):
             flash('Logged in successfully.', category='success')
-            # login_user(User(username), remember=True)
+            
             session["email"] = email
-            login_user(User(user["_id"]), remember=True)
 
 
-            return render_template('index.html')
+            # return render_template('index.html')
+            return redirect(url_for('views.dashboard'))
         else:
             flash('Invalid username or password.',category='error')
             return redirect(url_for('auth.login'))
     else:
-        return render_template('login.html', User=current_user)
+        return render_template('login.html')
     
 
 
@@ -39,7 +38,7 @@ def sign_up():
         username = request.form.get('username')
         password1 = request.form.get('password1')
         password2 = request.form.get('password2')
-        # hashed_password = bcrypt.hashpw(password1.encode('utf-8'), bcrypt.gensalt())
+        hashed_password = bcrypt.hashpw(password1.encode('utf-8'), bcrypt.gensalt())
     
 
         
@@ -56,24 +55,14 @@ def sign_up():
         else:
             hashed_password = generate_password_hash(password1)
 
-
-
-
-            
-
             db.users.insert_one({'email':email,'username': username, 'password':  hashed_password})
             flash('Account created!',category='success')
-            # login_user(User(username), remember=True)
-
-
             return redirect(url_for('auth.login'))
        
-    return render_template("signup.html", User=current_user)
+    return render_template("signup.html")
     
 @auth.route('/logout')
-@login_required
 def logout():
-    logout_user()
     session.pop("email", None) 
     return redirect(url_for('auth.login'))   
 

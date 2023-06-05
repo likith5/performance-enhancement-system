@@ -92,6 +92,8 @@
 
 }
 /* containers ...  */
+
+
 .progress_bar {
     height: 20px;
     width: 300px;
@@ -102,7 +104,13 @@
 
 .progress-bari {
     height: 100%;
-    width: 10%;
+    width: 25%;
+    background-color: #6D6BC6;
+    border-radius: 15px;
+}
+.progress-barii {
+    height: 100%;
+    width: 80%;
     background-color: #6D6BC6;
     border-radius: 15px;
 }
@@ -118,12 +126,12 @@
 
 }
 .group1{
-    margin: 8% 0 0 10%;
+    margin: 8% 0 0 0;
     
 }
 .align_progress{
     padding:30px 20px 20px 20px;
-    margin:0px 0px 0px 15%;
+    margin:0px 0px 0px 20%;
     width:300px;
     border-radius: 10px;
 
@@ -136,6 +144,11 @@
 .bari{
     padding:0 0 40px 0;
 }
+
+
+
+
+/* this is container 3 code ... */
 .contain3{
     border-radius: 15px;
      margin: 0 0 0 15%; 
@@ -147,6 +160,9 @@
     box-shadow: 0 4px 8px 0 rgba(38, 193, 221, 0.568), 0 6px 20px 0 rgba(143, 234, 244, 0.72);
 
 }
+
+
+
 /* container4 group3...  */
 .contain4{
     border-radius: 15px;

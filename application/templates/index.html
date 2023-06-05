@@ -43,7 +43,7 @@
             </li>
              -->
            
-            {% if 'email' in session %}
+            {% if 'teacheremail' in session or 'studentemail' in session %}
 
              <li class="nav-item">
               <a class="nav-link" href="{{ url_for('views.profile')}}">Profile</a>

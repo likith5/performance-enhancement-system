@@ -1,9 +1,13 @@
 
 {% extends "index.html" %}
 
+
+
 {% block content %}
+
+   
 <div class="text-center heading_dash fadeIn first">
-    <h1>Performance Report {{ name }}</h1>
+    <h1>Performance Report of {{ studname }}</h1>
 </div>
 
 <div class="container ">
@@ -17,7 +21,7 @@
             <li class="grade-explain">
                 <span class="grade-score">A+</span>
                 <span >Grade in Technical Skill</span>
-            </li>
+            </li>   
             <li class="grade-explain">
                 <span class="grade-score">A </span>
                 <span>Grade in Communication Skill</span>
@@ -35,7 +39,8 @@
 
         <span class="top-grade-title" style="padding:10px 5px 0 15px">Overall Performance</span>
         <div class="circular-progress">
-           <span class="progress-value">89</span>
+           <span class="progress-value">  {{ communication }} </span>
+           
             
                </div>
             </div>
@@ -47,7 +52,7 @@
 
 <div class="container  wow fadeIn group1" data-wow-duration="0.5s" data-wow-delay="0.5s">
 <div class="row">
-    <div class="col col-md-12 col-lg-6  wow fadeInLeft  bari"  data-wow-duration="0.5s" data-wow-delay="0.5s">
+    <div class="col col-md-6   wow fadeInLeft  bari"  data-wow-duration="0.5s" data-wow-delay="0.5s">
         <div class="align_progress " style="padding:30px 20px 30px 20px;">
         <div class="linear-box">
 
@@ -55,47 +60,23 @@
             <div class="progress-bari" role="progressbar" aria-valuenow="0" aria-valuemin="0"
                 aria-valuemax="100">
             </div>
-            <span>50%</span><br>
-            <span>Communication Skill</span>
+            <span>{{ leardership }}%</span><br>
+            <span>leardership Skill</span>
         </div></div></div>
     </div>
-    <div class=" col col-lg-6 col-md-12  bari  wow fadeInRight" data-wow-duration="1s" data-wow-delay="0.5s">
+    <div class=" col col-md-6  bari  wow fadeInRight" data-wow-duration="1s" data-wow-delay="0.5s">
         <div class="align_progress">
         <div class="linear-box">
         <div class="progress_bar">
-            <div class="progress-bari" role="progressbar" aria-valuenow="0" aria-valuemin="0"
+            <div class="progress-barii" role="progressbar" aria-valuenow="0" aria-valuemin="0"
                 aria-valuemax="100">
             </div>
-            <span>50%</span><br>
-            <span>Communication Skill</span>
+            <span>{{ generalknowledge }}%</span><br>
+            <span>generalknowledge</span>
         </div></div></div>
     </div>
-    <div class=" col col-md-12 col-lg-6 bari  wow fadeInLeft  " data-wow-duration="0.5s" data-wow-delay="0.5s">
-        <div class="align_progress">
-        <div class="linear-box">
-
-        <div class="progress_bar">
-            <div class="progress-bari" role="progressbar" aria-valuenow="0" aria-valuemin="0"
-                aria-valuemax="100">
-            </div>
-            <span>70%</span><br>
-            <span>Communication Skill</span>
-        </div>
-    </div></div>
-    </div>
-    <div class=" col col-md- col-lg-6 bari  wow fadeInRight" data-wow-duration="1s" data-wow-delay="0.5s">
-        <div class="align_progress">
-        <div class="linear-box">
-
-        <div class="progress_bar">
-            <div class="progress-bari" role="progressbar" aria-valuenow="0" aria-valuemin="0"
-                aria-valuemax="100">
-            </div>
-            <span>70%</span><br>
-            <span>Communication Skill</span>
-        </div>
-    </div></div>
-    </div>
+   
+   
 </div>
 </div>
 
@@ -106,7 +87,7 @@
 
             <span class="top-grade-title" style="padding:10px 5px 0 15px">Creativity Skill</span>
             <div class="circular-progress">
-               <span class="progress-value">49</span>
+               <span class="progress-value">{{ creativity }}</span>
                 
                    </div>
                 </div>
@@ -117,7 +98,7 @@
 
             <span class="top-grade-title" style="padding:10px 5px 0 15px">Interpersonal skill</span>
             <div class="circular-progress">
-               <span class="progress-value">9</span>
+               <span class="progress-value">{{ interpersonal }}</span>
                 
                    </div>
                 </div>
@@ -126,9 +107,9 @@
     <div class=" col col-md-12 col-lg-6 bari wow fadeInLeft  bari"  data-wow-duration="0.5s" data-wow-delay="0.5s">
         <div class=" contain3">
 
-            <span class="top-grade-title" style="padding:10px 5px 0 15px">Aptidue Skill</span>
+            <span class="top-grade-title" style="padding:10px 5px 0 15px">Time management </span>
             <div class="circular-progress">
-               <span class="progress-value">20</span>
+               <span class="progress-value">{{ timemanagement }}</span>
                 
                    </div>
                 </div>
@@ -141,7 +122,7 @@
 
             <span class="top-grade-title" style="padding:10px 5px 0 15px">General Knowledge</span>
             <div class="circular-progress">
-               <span class="progress-value">50</span>
+               <span class="progress-value">{{ generalknowledge }}</span>
                 
                    </div>
                 </div>
@@ -159,7 +140,7 @@
                 <div class="barOver">
                     <div class="halfbar"></div>
                 </div>
-                <span class="percentage">50</span>%
+                <span class="percentage">{{ resultoriented }}</span>%
                 <p>Result Oriented</p>
             </div>
 
@@ -173,19 +154,19 @@
                 <div class="barOver">
                     <div class="halfbar"></div>
                 </div>
-                <span class="percentage">90</span>%
-                <p>Social Skill</p>
+                <span class="percentage">{{ leardership }}</span>%
+                <p>Leadership Skill</p>
             </div>
                 </div>
        
     </div>
-    <div class=" col col-md-12 col-lg-6 bari wow fadeInLeft  bari"  data-wow-duration="0.5s" data-wow-delay="0.5s">
+    <div class=" col col-md-12 col-lg-6 bari wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.3s">
         <div class=" contain4">
             <div class="program ">
                 <div class="barOver">
                     <div class="halfbar"></div>
                 </div>
-                <span class="percentage">78</span>%
+                <span class="percentage">{{ projectmm }}</span>%
                 <p>Project Mangement</p>
             </div>
                 </div>
@@ -193,14 +174,14 @@
     </div>
 
 
-    <div class=" col col-md-6 col-lg-6 bari wow fadeInRight" data-wow-duration="1s" data-wow-delay="0.5s">
+    <div class=" col col-md-6 col-lg-6 bari wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.3s">
         <div class=" contain4">
             <div class="program ">
                 <div class="barOver">
                     <div class="halfbar"></div>
                 </div>
-                <span class="percentage">29.25</span>%
-                <p>Technical skills</p>
+                <span class="percentage">{{ presentation }}</span>%
+                <p>Presentation skills</p>
             </div>
             
                 </div>
@@ -238,7 +219,12 @@
 
 
 
-
+<div class="container-fluid footer">
+    <div class="text-center footer-tag">
+      @copyright PME 2023
+    </div>
+     </div>
+         
 
 
 
@@ -248,3 +234,4 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
      {% endblock content %}
+   

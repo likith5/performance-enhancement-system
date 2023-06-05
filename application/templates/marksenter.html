@@ -1,0 +1,553 @@
+
+{% extends "index.html" %}
+
+{% block content %}
+<body>
+    <div class="heading">
+        <h1>Marks Entering System</h1>
+    </div>
+    <div class="student-deatils">
+        <h3><span>Student Name:</span> {{ usernames }}</h3>
+        <h3><span>Student USN:</span> {{ usn }}</h3>
+    </div>
+    <div class="hr-line"></div>
+    <div class="wrapper">
+        <div class="main">
+            <form action="#" method="POST">
+            <div class="row1">
+                
+                <!-- Communication Skill -->
+                <div class="menu">
+                    <label for="#">Communication Skill: </label>
+                    
+                        <select id="name" name="communication">
+                            <option value="null"> </option>
+                            <option >1</option>
+                            <option >2</option>
+                            <option >3</option>
+                            <option >4</option>
+                            <option >5</option>
+                        </select>
+                </div>
+
+
+
+                <div class="content">
+                    <div id="null" class="data1">
+
+                    </div>
+                    <div id="c1" class="data">
+                        <p><b>Poor english, lack of proper body language, unable to frame senetences properly</b></p>
+                    </div>
+                    <div id="c2" class="data">
+                        <p><b>Average english speaking skills, tries but struggles to frame sentences, improper body
+                                language</b></p>
+                    </div>
+                    <div id="c3" class="data">
+                        <p><b>Moderate english speaking skills, frames sentences but jumbled words, use of body language
+                                while
+                                communciting</b></p>
+                    </div>
+                    <div id="c4" class="data">
+                        <p><b>Good in English and articulation. Good body language</b></p>
+                    </div>
+                    <div id="c5" class="data">
+                        <p><b>Excellent English and Articulation. Very good body language and highly confident</b></p>
+                    </div>
+                </div>
+                <!-- end communication skills -->
+
+                <!-- for technical skills -->
+                <div class="menu">
+                    <label for="#">Technical Skill: </label>
+                    <select class="tname" id="name" name="technical">
+                        <option value="null"> </option>
+                        <option >1</option>
+                        <option >2</option>
+                        <option >3</option>
+                        <option >4</option>
+                        <option >5</option>
+                    </select>
+                </div>
+
+                <div class="content">
+                    <div id="null" class="data1">
+
+                    </div>
+                    <div id="t1" class="data tdata">
+                        <p><b>Low technical knowledge, no aptitude & inclination towards tech and related fields, no
+                                tech
+                                skills</b></p>
+                    </div>
+                    <div id="t2" class="data tdata">
+                        <p><b>Interested in technology but low aptitude towards tech. no knowledge about technology and
+                                related
+                                developments</b></p>
+                    </div>
+                    <div id="t3" class="data tdata">
+                        <p><b>Moderate in tech skills, knowledge and aptitute towards technology. Avg inclination
+                                towards
+                                technology</b></p>
+                    </div>
+                    <div id="t4" class="data tdata">
+                        <p><b>Good in tech knowledge,skills, interest. Good inclination towards technology</b></p>
+                    </div>
+                    <div id="t5" class="data tdata">
+                        <p><b>Very good. Has knowledge about latest technology, skills & inclination towards tech
+                                building
+                                things on own</b></p>
+                    </div>
+                </div>
+                <!-- end technical skills -->
+
+                <!-- for Creativity skills -->
+                <div class="menu">
+                    <label for="#">Creativity Skill: </label>
+                    <select class="crname" id="name" name="creativity">
+                        <option value="null"> </option>
+                        <option >1</option>
+                        <option >2</option>
+                        <option >3</option>
+                        <option >4</option>
+                        <option >5</option>
+                    </select>
+                </div>
+
+                <div class="content">
+                    <div id="null" class="data1">
+
+                    </div>
+                    <div id="cr1" class="data crdata">
+                        <p><b>No inputs. Does things as per the given instruction</b></p>
+                    </div>
+                    <div id="cr2" class="data crdata">
+                        <p><b>Gives new inputs but not confident enough to take it up further. Lack of self
+                                confidence</b>
+                        </p>
+                    </div>
+                    <div id="cr3" class="data crdata">
+                        <p><b>Imaginative but resistant to change, needs to think more and be open to change and new
+                                ways</b>
+                        </p>
+                    </div>
+                    <div id="cr4" class="data crdata">
+                        <p><b>Imaginative, Gives good ideas. Needs some push and mentoring</b></p>
+                    </div>
+                    <div id="cr5" class="data crdata">
+                        <p><b>Highly imaginative, always thinks of doing things differently. Open to change and new
+                                styles.
+                            </b>
+                        </p>
+                    </div>
+                </div>
+                <!-- end Creativity skills -->
+
+                <!-- for Project Management skills -->
+                <div class="menu">
+                    <label for="#">Project Management Skill: </label>
+                    <select class="pjmname" id="name" name="projectmmt">
+                        <option value="null"> </option>
+                        <option >1</option>
+                        <option >2</option>
+                        <option >3</option>
+                        <option >4</option>
+                        <option >5</option>
+                    </select>
+                </div>
+
+                <div class="content">
+                    <div id="null" class="data1">
+
+                    </div>
+                    <div id="pjm1" class="data pjmdata">
+                        <p><b>Lack of planning and less involvement in any academic tasks / project. No enthusiasm.
+                                Issues
+                                with
+                                working with others</b></p>
+                    </div>
+                    <div id="pjm2" class="data pjmdata">
+                        <p><b>Less Interest in any task / project. Lack of structured planning. Needs extensive
+                                monitoring</b>
+                        </p>
+                    </div>
+                    <div id="pjm3" class="data pjmdata">
+                        <p><b>Interested in tasks. Needs guidance.lacks clarity of how to go about tasks. Timelines
+                                issue.
+                                Needs
+                                a mentor and tracking</b>
+                        </p>
+                    </div>
+                    <div id="pjm4" class="data pjmdata">
+                        <p><b>Structured plans to carry out tasks / project. Maintaines timelines. Good team player.Risk
+                                averse.Needs to a good mentor</b></p>
+                    </div>
+                    <div id="pjm5" class="data pjmdata">
+                        <p><b>Leader in the project. Organised events.people person. Good with people & money. Takes
+                                calculated
+                                risks </b>
+                        </p>
+                    </div>
+                </div>
+                <!-- end Project Management skills -->
+
+                <!-- for Time Management skills -->
+                <div class="menu">
+                    <label for="#">Time Management Skill: </label>
+                    <select class="timname" id="name" name="timemanagement">
+                        <option value="null"> </option>
+                        <option >1</option>
+                        <option >2</option>
+                        <option >3</option>
+                        <option >4</option>
+                        <option >5</option>
+                    </select>
+                </div>
+
+                <div class="content">
+                    <div id="null" class="data1">
+
+                    </div>
+                    <div id="tim1" class="data timdata">
+                        <p><b>No time sense.No planning . Lethargic. Always missing deadlines</b></p>
+                    </div>
+                    <div id="tim2" class="data timdata">
+                        <p><b>Little time sense. Misses deadlines sometimes. Improper planning</b>
+                        </p>
+                    </div>
+                    <div id="tim3" class="data timdata">
+                        <p><b>Last minute completion for most of tasks. No structured plan ( time, activities, output
+                                etc)</b>
+                        </p>
+                    </div>
+                    <div id="tim4" class="data timdata">
+                        <p><b>Completes all tasks in time. Never late. Always meets deadlines. structured planning</b>
+                        </p>
+                    </div>
+                    <div id="tim5" class="data timdata">
+                        <p><b>Completes tasks well in time and does additional tasks in the original stipulated
+                                time.</b>
+                        </p>
+                    </div>
+                </div>
+                <!-- end Time Management skills -->
+            </div>
+
+            <div class="row2">
+                <!-- for General Knowledge on Business skills -->
+                <div class="menu">
+                    <label for="#">General Knowledge on Business Skill: </label>
+                    <select class="gkname" id="name" name="generalknowledge">
+                        <option value="null"> </option>
+                        <option >1</option>
+                        <option >2</option>
+                        <option >3</option>
+                        <option >4</option>
+                        <option >5</option>
+                    </select>
+                </div>
+
+                <div class="content">
+                    <div id="null" class="data1">
+
+                    </div>
+                    <div id="gk1" class="data gkdata">
+                        <p><b>Has no idea about business world / technology related current affairs</b></p>
+                    </div>
+                    <div id="gk2" class="data gkdata">
+                        <p><b>Interested in technology but low aptitude towards technology and less knowledge about
+                                technology
+                                and related developments</b>
+                        </p>
+                    </div>
+                    <div id="gk3" class="data gkdata">
+                        <p><b>Moderate in technical skills, knowledge & aptitude towards technology, average inclination
+                                towards
+                                techonology</b>
+                        </p>
+                    </div>
+                    <div id="gk4" class="data gkdata">
+                        <p><b>Good in tech knowledge, skills, interest. Good incliation towards technology</b></p>
+                    </div>
+                    <div id="gk5" class="data gkdata">
+                        <p><b>Very good. Has good knowledge about latest technology developments, skills and good
+                                inclination
+                                towards building things on own</b>
+                        </p>
+                    </div>
+                </div>
+                <!-- end General Knowledge on Business skills -->
+
+                <!-- for Interpersonal skills -->
+                <div class="menu">
+                    <label for="#">Interpersonal Skill: </label>
+                    <select class="ipname" id="name" name="interpersonal">
+                        <option value="null"> </option>
+                        <option >1</option>
+                        <option >2</option>
+                        <option >3</option>
+                        <option >4</option>
+                        <option >5</option>
+                    </select>
+                </div>
+
+                <div class="content">
+                    <div id="null" class="data1">
+
+                    </div>
+                    <div id="ip1" class="data ipdata">
+                        <p><b>Highly Introvert. Keeps only to himself/herself. Prefers the same. Does not mingle easily.
+                                Has
+                                understanding issues/no empathy</b></p>
+                    </div>
+                    <div id="ip2" class="data ipdata">
+                        <p><b>Introvert. Waits for others to talk to him. Mingles with only few people.less on
+                                understanding
+                                others. Lacks empathy most of the times</b>
+                        </p>
+                    </div>
+                    <div id="ip3" class="data ipdata">
+                        <p><b>Normal. Confident but hesitates to take part in activities. Moderate understanding
+                                capability.
+                                Needs a push</b>
+                        </p>
+                    </div>
+                    <div id="ip4" class="data ipdata">
+                        <p><b>Extrovert. Takes part extra activities. Good understanding of others. Has people around
+                                all
+                                the
+                                time. Needs a mentor</b></p>
+                    </div>
+                    <div id="ip5" class="data ipdata">
+                        <p><b>Extrovert. Takes part in lot of extra activities.Organises events. Leadership material.
+                                Highly
+                                emphathatic and Understanding of others</b>
+                        </p>
+                    </div>
+                </div>
+                <!-- end Interpersonal skills -->
+
+                <!-- for Result Oriented skills -->
+                <div class="menu">
+                    <label for="#">Result Oriented Skill: </label>
+                    <select class="roname" id="name" name="resultoriented">
+                        <option value="null"> </option>
+                        <option >1</option>
+                        <option >2</option>
+                        <option >3</option>
+                        <option >4</option>
+                        <option >5</option>
+                    </select>
+                </div>
+
+                <div class="content">
+                    <div id="null" class="data1">
+
+                    </div>
+                    <div id="ro1" class="data rodata">
+                        <p><b>Has issues understanding end results, has no idea about output of any task</b></p>
+                    </div>
+                    <div id="ro2" class="data rodata">
+                        <p><b>Understands goals & end result of a task but slow in starting work. Lags in timelines.
+                                Requires
+                                regular monitoring</b>
+                        </p>
+                    </div>
+                    <div id="ro3" class="data rodata">
+                        <p><b>Understands projects, timelines etc has done projects but has not completed any. Requires
+                                monitoring & followups</b>
+                        </p>
+                    </div>
+                    <div id="ro4" class="data rodata">
+                        <p><b>Strives towards achieving goals, completes on time. Requires mentoring</b></p>
+                    </div>
+                    <div id="ro5" class="data rodata">
+                        <p><b>Takes up tasks/projects on his/her and completes with / without dependencies on others</b>
+                        </p>
+                    </div>
+                </div>
+                <!-- end Result Oriented skills -->
+
+                <!-- for Leadership skills -->
+                <div class="menu">
+                    <label for="#">Leadership Skill: </label>
+                    <select class="lname" id="name" name="leardership">
+                        <option value="null"> </option>
+                        <option >1</option>
+                        <option >2</option>
+                        <option >3</option>
+                        <option >4</option>
+                        <option >5</option>
+                    </select>
+                </div>
+
+                <div class="content">
+                    <div id="null" class="data1">
+
+                    </div>
+                    <div id="l1" class="data ldata">
+                        <p><b>Waits for tasks to be given. No creativity. Just follows orders. Doer</b></p>
+                    </div>
+                    <div id="l2" class="data ldata">
+                        <p><b>Follows instruction. Gives some ideas. Doer. Does not question</b>
+                        </p>
+                    </div>
+                    <div id="l3" class="data ldata">
+                        <p><b>Gives new ideas but does not take it up further. Follows instruction</b>
+                        </p>
+                    </div>
+                    <div id="l4" class="data ldata">
+                        <p><b>Good leader, organises events. Gives ideas, follows up and implements the ideas. Can
+                                influence
+                                others</b></p>
+                    </div>
+                    <div id="l5" class="data ldata">
+                        <p><b>Stong leadership skills.very creative. Bonds people and good at delegation </b>
+                        </p>
+                    </div>
+                </div>
+                <!-- end Leadership skills -->
+
+                <!-- for Presentation skills -->
+                <div class="menu">
+                    <label for="#">Presentation Skill: </label>
+                    <select class="pname" id="name" name="presentation">
+                        <option value="null"> </option>
+                        <option >1</option>
+                        <option >2</option>
+                        <option >3</option>
+                        <option >4</option>
+                        <option >5</option>
+                    </select>
+                </div>
+
+                <div class="content">
+                    <div id="null" class="data1">
+
+                    </div>
+                    <div id="p1" class="data pdata">
+                        <p><b>No confidence at all, very nervous, shivers, does not know how to prepare a PPT, does not
+                                know
+                                to
+                                articulate</b></p>
+                    </div>
+                    <div id="p2" class="data pdata">
+                        <p><b>Low in confidence, nervous, average PPT quality, stage fear, lack of body language, does
+                                not
+                                know
+                                articulate effectively</b>
+                        </p>
+                    </div>
+                    <div id="p3" class="data pdata">
+                        <p><b>Moderate quality PPT, slightly confident, some amount of stage fear, average usage of body
+                                language/gestures, does not engage</b>
+                        </p>
+                    </div>
+                    <div id="p4" class="data pdata">
+                        <p><b>Good PPT, confident, little stage fear, good body language & gestures. Average in engaging
+                                the
+                                audience, tries to answer questions </b></p>
+                    </div>
+                    <div id="p5" class="data pdata">
+                        <p><b>Excellent PPT preparation, no stage fear, excellent body language, engages the audience,
+                                answers
+                                questions confidently</b>
+                        </p>
+                    </div>
+                </div>
+                <!-- end Presentation skills -->
+                <div class="buttons">
+                    <input class="btn" type="submit" value="Submit">
+                    <input class="reset" type="reset" value="Clear">
+                </div>
+               
+            </div>
+        </form>
+        </div>
+
+    </div>
+    
+<!--                 
+                  <div class="container-fluid imaging" >
+                    <img src="{{ url_for('static',filename='images/corner.png')}}" class="img-fluid  w-50  "style ="" alt="...">
+                   </div> -->
+              </div>
+          </div>
+          
+          
+        </div>
+        
+      </div>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+      <script>
+          $(document).ready(function () {
+              $("#name").on('change', function () {
+                  $(".data").hide();
+                  $("#" + $(this).val()).fadeIn(700);
+              }).change();
+          });
+  
+          $(document).ready(function () {
+              $(".tname").on('change', function () {
+                  $(".tdata").hide();
+                  $("#" + $(this).val()).fadeIn(700);
+              }).change();
+          });
+  
+          $(document).ready(function () {
+              $(".crname").on('change', function () {
+                  $(".crdata").hide();
+                  $("#" + $(this).val()).fadeIn(700);
+              }).change();
+          });
+  
+          $(document).ready(function () {
+              $(".pjmname").on('change', function () {
+                  $(".pjmdata").hide();
+                  $("#" + $(this).val()).fadeIn(700);
+              }).change();
+          });
+  
+          $(document).ready(function () {
+              $(".timname").on('change', function () {
+                  $(".timdata").hide();
+                  $("#" + $(this).val()).fadeIn(700);
+              }).change();
+          });
+  
+          $(document).ready(function () {
+              $(".gkname").on('change', function () {
+                  $(".gkdata").hide();
+                  $("#" + $(this).val()).fadeIn(700);
+              }).change();
+          });
+  
+          $(document).ready(function () {
+              $(".ipname").on('change', function () {
+                  $(".ipdata").hide();
+                  $("#" + $(this).val()).fadeIn(700);
+              }).change();
+          });
+  
+          $(document).ready(function () {
+              $(".roname").on('change', function () {
+                  $(".rodata").hide();
+                  $("#" + $(this).val()).fadeIn(700);
+              }).change();
+          });
+  
+          $(document).ready(function () {
+              $(".lname").on('change', function () {
+                  $(".ldata").hide();
+                  $("#" + $(this).val()).fadeIn(700);
+              }).change();
+          });
+  
+          $(document).ready(function () {
+              $(".pname").on('change', function () {
+                  $(".pdata").hide();
+                  $("#" + $(this).val()).fadeIn(700);
+              }).change();
+          });
+      </script>
+
+       {% endblock content %}

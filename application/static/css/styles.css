@@ -36,7 +36,7 @@ margin: 40px 0 0 40px;
 
   /* login_container */
 .login_container{
-    margin: 50px 50px 15px  50px;
+    margin: 30px 50px 15px  50px;
     padding:50px 50px 0  50px;
     width:50%;
     
@@ -74,7 +74,6 @@ bottom: 20px;;
   /* width has been set inline */
     border-width: 0.5px;
     border-style: solid;
-    height:400px;
     border-radius: 15%;
     background-color: #7F84FD;
     box-shadow: 2px 2px 2px #6563d8;

@@ -39,9 +39,8 @@
 
         <span class="top-grade-title" style="padding:10px 5px 0 15px">Overall Performance</span>
         <div class="circular-progress">
-           <span class="progress-value">  {{ communication }} </span>
+           <span class="progress-value"> {{ communication }}</span>
            
-            
                </div>
             </div>
          </div>
@@ -57,23 +56,26 @@
         <div class="linear-box">
 
         <div class="progress_bar">
-            <div class="progress-bari" role="progressbar" aria-valuenow="0" aria-valuemin="0"
+            <div class="progress-bari" role="progressbar" aria-valuenow="0" aria-valuemin="5"
                 aria-valuemax="100">
             </div>
-            <span>{{ leardership }}%</span><br>
+            <span class="linear-value">{{ leardership }}</span>/5<br>
             <span>leardership Skill</span>
         </div></div></div>
     </div>
-    <div class=" col col-md-6  bari  wow fadeInRight" data-wow-duration="1s" data-wow-delay="0.5s">
+
+ 
+    <div class="col col-md-6 bari wow fadeInRight" data-wow-duration="1s" data-wow-delay="0.5s">
         <div class="align_progress">
-        <div class="linear-box">
-        <div class="progress_bar">
-            <div class="progress-barii" role="progressbar" aria-valuenow="0" aria-valuemin="0"
-                aria-valuemax="100">
+            <div class="linear-box">
+                <div class="progress_bar">
+                    <div class="progress-bari" role="progressbar" aria-valuenow="{{ generalknowledge }}" aria-valuemin="0" aria-valuemax="5">
+                    </div>
+                    <span class="linear-value">{{ generalknowledge }}</span>/5<br>
+                    <span>generalknowledge</span>
+                </div>
             </div>
-            <span>{{ generalknowledge }}%</span><br>
-            <span>generalknowledge</span>
-        </div></div></div>
+        </div>
     </div>
    
    
@@ -140,7 +142,7 @@
                 <div class="barOver">
                     <div class="halfbar"></div>
                 </div>
-                <span class="percentage">{{ resultoriented }}</span>%
+                <span class="percentage">{{ resultoriented }}</span>/5
                 <p>Result Oriented</p>
             </div>
 
@@ -154,7 +156,7 @@
                 <div class="barOver">
                     <div class="halfbar"></div>
                 </div>
-                <span class="percentage">{{ leardership }}</span>%
+                <span class="percentage">{{ leardership }}</span>/5
                 <p>Leadership Skill</p>
             </div>
                 </div>
@@ -166,7 +168,7 @@
                 <div class="barOver">
                     <div class="halfbar"></div>
                 </div>
-                <span class="percentage">{{ projectmm }}</span>%
+                <span class="percentage">{{ projectmm }}</span>/5
                 <p>Project Mangement</p>
             </div>
                 </div>
@@ -180,7 +182,7 @@
                 <div class="barOver">
                     <div class="halfbar"></div>
                 </div>
-                <span class="percentage">{{ presentation }}</span>%
+                <span class="percentage">{{ presentation }}</span>/5
                 <p>Presentation skills</p>
             </div>
             

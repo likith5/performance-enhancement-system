@@ -108,12 +108,7 @@
     background-color: #6D6BC6;
     border-radius: 15px;
 }
-.progress-barii {
-    height: 100%;
-    width: 80%;
-    background-color: #6D6BC6;
-    border-radius: 15px;
-}
+
 
 .linear-box {
     border: none;
@@ -126,7 +121,8 @@
 
 }
 .group1{
-    margin: 8% 0 0 0;
+    margin: 8% 0 0 5%
+    ;
     
 }
 .align_progress{

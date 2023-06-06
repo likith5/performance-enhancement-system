@@ -2,13 +2,13 @@
 function animateCircularProgress(circularProgress, progressValue) {
     var progressStartValue = 0;
     var progressEndValue = parseInt(progressValue.text(), 10);
-    var speed = 30;
+    var speed = 300;
 
     var progress = setInterval(function() {
         progressStartValue++;
 
-        progressValue.text(progressStartValue + "%");
-        circularProgress.css("background", `conic-gradient(#423FB9 ${progressStartValue * 3.6}deg, #ededed 0deg)`);
+        progressValue.text(progressStartValue + "/5");
+        circularProgress.css("background", `conic-gradient(#423FB9 ${progressStartValue * 72}deg, #ededed 0deg)`);
 
         if (progressStartValue == progressEndValue) {
             clearInterval(progress);
@@ -36,7 +36,7 @@ $(document).ready(function () {
             easing: "swing",
             step: function (p) {
                 $bar.css({
-                    transform: "rotate(" + (45 + (p * 1.8)) + "deg)", // 100%=180° so: ° = % * 1.8
+                    transform: "rotate(" + (45 + (p * 36)) + "deg)", // 100%=180° so: ° = % * 1.8
                     // 45 is to add the needed rotation to have the green borders at the bottom
                 });
                 $val.text(p | 0);
@@ -44,3 +44,28 @@ $(document).ready(function () {
         });
     });
 });   
+function animateLinearProgress(linearProgress, progressValue) {
+    var progressStartValue = 0;
+    var progressEndValue = parseInt(progressValue.text(), 10);
+    var speed = 10;
+
+    var progress = setInterval(function() {
+        progressStartValue++;
+
+        linearProgress.css("width", (progressStartValue*100)/5 + "%");
+        // progressValue.text(progressStartValue + "%");
+
+        if (progressStartValue == progressEndValue) {
+            clearInterval(progress);
+        }
+    }, speed);
+}
+
+$(document).ready(function() {
+    var linearProgressElements = $(".progress-bari");
+    var progressValueElements = $(".linear-value");
+
+    linearProgressElements.each(function(index) {
+        animateLinearProgress($(this), progressValueElements.eq(index));
+    });
+});

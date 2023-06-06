@@ -88,22 +88,22 @@ def marksenter():
 @views.route("/dashboard")
 def dashboard():
     if 'studentemail' in session :
-        def converttorange(grade):
-            if grade == 1:
-                percentage = 20
-            elif grade == 2:
-                percentage = 40
-            elif grade == 3:
-                percentage = 60
-            elif grade == 4:
-                percentage = 80
-            elif grade == 5:
-                percentage = 100
-            else:
-                percentage = 29
+        # def converttorange(grade):
+        #     if grade == 1:
+        #         percentage = 20
+        #     elif grade == 2:
+        #         percentage = 40
+        #     elif grade == 3:
+        #         percentage = 60
+        #     elif grade == 4:
+        #         percentage = 80
+        #     elif grade == 5:
+        #         percentage = 100
+        #     else:
+        #         percentage = 29
             
            
-            return percentage
+        #     return percentage
         
         name = session.get("studentemail")
         print(name)
@@ -119,17 +119,18 @@ def dashboard():
         resultoriented = int(user['marks'].get('resultoriented'))
         leardership = int(user['marks'].get('leardership'))
         presentation = int(user['marks'].get('presentation'))
+        print(communication)
 
-        communication = converttorange(communication)
-        creativity = converttorange(creativity)
-        technical = converttorange(technical)
-        projectmm = converttorange(projectmm)
-        timemanagement = converttorange(timemanagement)
-        generalknowledge = converttorange(generalknowledge)
-        interpersonal = converttorange(interpersonal)
-        resultoriented = converttorange(resultoriented)
-        leardership = converttorange(leardership)
-        presentation = converttorange(presentation)
+        # communication = converttorange(communication)
+        # creativity = converttorange(creativity)
+        # technical = converttorange(technical)
+        # projectmm = converttorange(projectmm)
+        # timemanagement = converttorange(timemanagement)
+        # generalknowledge = converttorange(generalknowledge)
+        # interpersonal = converttorange(interpersonal)
+        # resultoriented = converttorange(resultoriented)
+        # leardership = converttorange(leardership)
+        # presentation = converttorange(presentation)
         
 
 
@@ -141,22 +142,22 @@ def dashboard():
         return render_template('dashboard.html',title=title,studname=studname,creativity=creativity,communication=communication,technical=technical,projectmm=projectmm,timemanagement=timemanagement,generalknowledge=generalknowledge,interpersonal=interpersonal,resultoriented=resultoriented,leardership=leardership,presentation=presentation)
     # return redirect(url_for('auth.login'))
     elif  'teacheremail' in session :
-        def converttorange(grade):
-            if grade == 1:
-                percentage = 20
-            elif grade == 2:
-                percentage = 40
-            elif grade == 3:
-                percentage = 60
-            elif grade == 4:
-                percentage = 80
-            elif grade == 5:
-                percentage = 100
-            else:
-                percentage = None
+        # def converttorange(grade):
+        #     if grade == 1:
+        #         percentage = 20
+        #     elif grade == 2:
+        #         percentage = 40
+        #     elif grade == 3:
+        #         percentage = 60
+        #     elif grade == 4:
+        #         percentage = 80
+        #     elif grade == 5:
+        #         percentage = 100
+        #     else:
+        #         percentage = None
             
            
-            return percentage
+        #     return percentage
         
         studentname = session.get("studentname")
         studname=studentname
@@ -174,16 +175,17 @@ def dashboard():
         leardership = int(user['marks'].get('leardership'))
         presentation = int(user['marks'].get('presentation'))
 
-        communication = converttorange(communication)
-        creativity = converttorange(creativity)
-        technical = converttorange(technical)
-        projectmm = converttorange(projectmm)
-        timemanagement = converttorange(timemanagement)
-        generalknowledge = converttorange(generalknowledge)
-        interpersonal = converttorange(interpersonal)
-        resultoriented = converttorange(resultoriented)
-        leardership = converttorange(leardership)
-        presentation = converttorange(presentation)
+        # communications = converttorange(communication)
+        # creativity = converttorange(creativity)
+        # technical = converttorange(technical)
+        # projectmm = converttorange(projectmm)
+        # timemanagement = converttorange(timemanagement)
+        # generalknowledge = converttorange(generalknowledge)
+        # interpersonal = converttorange(interpersonal)
+        # resultoriented = converttorange(resultoriented)
+        # leardership = converttorange(leardership)
+        # presentation = converttorange(presentation)
+        # print(communications)
         
 
 

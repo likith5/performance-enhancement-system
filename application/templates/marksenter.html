@@ -11,9 +11,23 @@
         <h3><span>Student USN:</span> {{ usn }}</h3>
     </div>
     <div class="hr-line"></div>
+    <form action="#" method="POST">
+       <!-- Example single danger button -->
+       <div class="dropdown">
+        <button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+          Dropdown
+        </button>
+        <ul class="dropdown-menu">
+          <li><button class="dropdown-item" type="button">Dropdown item</button></li>
+          <li><button class="dropdown-item" type="button">Dropdown item</button></li>
+          <li><button class="dropdown-item" type="button">Dropdown item</button></li>
+        </ul>
+      </div>
     <div class="wrapper">
+            
         <div class="main">
-            <form action="#" method="POST">
+                <!-- Example split danger button -->
+
             <div class="row1">
                 
                 <!-- Communication Skill -->
@@ -549,5 +563,16 @@
               }).change();
           });
       </script>
-
+      <div class="btn-group">
+        <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Action
+        </button>
+        <div class="dropdown-menu">
+          <a class="dropdown-item" href="#">Action</a>
+          <a class="dropdown-item" href="#">Another action</a>
+          <a class="dropdown-item" href="#">Something else here</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#">Separated link</a>
+        </div>
+      </div>
        {% endblock content %}

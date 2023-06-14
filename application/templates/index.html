@@ -43,10 +43,23 @@
             </li>
              -->
            
-            {% if 'teacheremail' in session or 'studentemail' in session %}
+            {% if  'studentemail' in session %}
 
              <li class="nav-item">
               <a class="nav-link" href="{{ url_for('views.profile')}}">Profile</a>
+            </li>
+             <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('views.userdata')}}">Account</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link " href="{{ url_for('auth.logout') }}">logout</a>
+            </li>
+            {% elif 'teacheremail' in session  %}
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('views.search')}}">Search</a>
+            </li>
+             <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('views.marksenter')}}">Enter marks</a>
             </li>
             <li class="nav-item">
               <a class="nav-link " href="{{ url_for('auth.logout') }}">logout</a>

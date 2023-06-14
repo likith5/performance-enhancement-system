@@ -4,6 +4,8 @@ from flask_session import Session
 from application import db
 from pymongo.errors import PyMongoError
 from flask import render_template,request,redirect
+from bson.binary import Binary
+
 views = Blueprint('views',__name__)
 
 
@@ -19,14 +21,52 @@ def index():
     return render_template('index.html')
 @views.route("/profile")
 def profile():
+    
 
     title="profile"
-    return render_template("profile.html",title=title)
+    if  'teacheremail' in session:
+        usn = session.get('studentname')
+        user = db.users.find_one({'usn':usn })
+        username = user["personal"].get('username')
+        email = user["personal"].get('email')
+        college = user["personal"].get('college')
+        sem = user["personal"].get('sem')
+        linkdin = user["personal"].get('linkdin')
+        github = user["personal"].get('github')
+        project1 = user["personal"].get('project-1')
+        intership1 = user["personal"].get('internship-1')
+        interst1 = user["personal"].get('interst-1')
+        title="dashboard"
+        return render_template('profile.html',title=title,usn=usn,username=username,email=email,college=college,sem=sem,linkdin=linkdin,github=github,intership1=intership1,project1=project1,interst1=interst1)
+   
+    if 'studentemail' in session :
+        usn = session.get('studentemail')
+        user = db.users.find_one({'usn':usn })
+        username = user["personal"].get('username')
+        email = user["personal"].get('email')
+        college = user["personal"].get('college')
+        sem = user["personal"].get('sem')
+        linkdin = user["personal"].get('linkdin')
+        github = user["personal"].get('github')
+        project1 = user["personal"].get('project-1')
+        intership1 = user["personal"].get('internship-1')
+        interst1 = user["personal"].get('interst-1')
+        title="dashboard"
+        return render_template('profile.html',title=title,usn=usn,username=username,email=email,college=college,sem=sem,linkdin=linkdin,github=github,intership1=intership1,project1=project1,interst1=interst1)
+ 
+
+
+    flash('Please login in to view profile', category='error')
+
+    return redirect(url_for('auth.login'))
 
 @views.route("/marksenter",methods=['GET','POST'])
 def marksenter():
     
-    studentname = session.get('studentname')
+    usn = session.get('studentname')
+    user = db.users.find_one({'usn':usn })
+    username = user["personal"].get('username')
+
     title="marks enter"
     if  'teacheremail' in session:
 
@@ -53,7 +93,7 @@ def marksenter():
                 try:
 
                     db.users.update_one(
-                    {"username": studentname},
+                    {"usn": usn},
                     {
                         "$set": {
                             "marks": {
@@ -81,7 +121,7 @@ def marksenter():
         
         # print(studentname)
         # return render_template("marksenter.html",title=title,studentname=studentname)
-        return render_template("marksenter.html")
+        return render_template("marksenter.html",usn=usn,username=username)
     return redirect(url_for('auth.login'))
 
 
@@ -104,11 +144,9 @@ def dashboard():
             
            
         #     return percentage
-        
-        name = session.get("studentemail")
-        print(name)
-        user = db.users.find_one({'email':name })
-        studname = user['username']
+        usn = session.get("studentemail")
+        user = db.users.find_one({'usn':usn })
+        username = user["personal"].get('username')
         communication = int(user['marks'].get('communication'))
         technical = int(user["marks"].get('technical'))
         creativity = int(user['marks'].get('creativity'))
@@ -139,7 +177,7 @@ def dashboard():
 
 
         title="dashboard"
-        return render_template('dashboard.html',title=title,studname=studname,creativity=creativity,communication=communication,technical=technical,projectmm=projectmm,timemanagement=timemanagement,generalknowledge=generalknowledge,interpersonal=interpersonal,resultoriented=resultoriented,leardership=leardership,presentation=presentation)
+        return render_template('dashboard.html',title=title,username=username,creativity=creativity,communication=communication,technical=technical,projectmm=projectmm,timemanagement=timemanagement,generalknowledge=generalknowledge,interpersonal=interpersonal,resultoriented=resultoriented,leardership=leardership,presentation=presentation)
     # return redirect(url_for('auth.login'))
     elif  'teacheremail' in session :
         # def converttorange(grade):
@@ -159,10 +197,10 @@ def dashboard():
            
         #     return percentage
         
-        studentname = session.get("studentname")
-        studname=studentname
-        print(studentname)
-        user = db.users.find_one({'username':studentname })
+        usn = session.get("studentname")
+        user = db.users.find_one({'usn':usn })
+        username = user["personal"].get('username')
+
         # communicat = user['marks'].get('communication')
         communication = int(user['marks'].get('communication'))
         technical = int(user["marks"].get('technical'))
@@ -194,7 +232,7 @@ def dashboard():
 
 
         title="dashboard"
-        return render_template('dashboard.html',studname=studname,title=title,creativity=creativity,communication=communication,technical=technical,projectmm=projectmm,timemanagement=timemanagement,generalknowledge=generalknowledge,interpersonal=interpersonal,resultoriented=resultoriented,leardership=leardership,presentation=presentation)
+        return render_template('dashboard.html',username=username,title=title,creativity=creativity,communication=communication,technical=technical,projectmm=projectmm,timemanagement=timemanagement,generalknowledge=generalknowledge,interpersonal=interpersonal,resultoriented=resultoriented,leardership=leardership,presentation=presentation)
     return redirect(url_for('auth.login'))
 
 @views.route("/search",methods=['GET','POST'])
@@ -209,13 +247,13 @@ def search():
             usn = request.form.get('usn')
         
             accademicyear = request.form.get('accademicyear')
-            user = db.users.find_one({'username':username })
+            user = db.users.find_one({'usn':usn })
             # user = db.users.find_one({'email':name })
             # studname = user['username']
 
             # print(email)
             if user:
-                session["studentname"] = username
+                session["studentname"] = usn
                 # bro = session.get['studentname']
                 flash('User found Kindly enter the marks ', category='success')
                 return redirect(url_for('views.marksenter'))
@@ -227,9 +265,77 @@ def search():
         return render_template('search.html',usn=usn,username=username)
     return redirect(url_for('auth.login'))
 
+# @views.route('/userdata',methods=['GET','POST'])    
+# def userdata():
     
-       
-        
+#     return render_template('userdata.html')
+
+     
+@views.route('/userdata',methods=['GET','POST'])    
+def userdata():
+    if  "studentemail" in session:
+        if request.method == "POST":
+            usn = session.get("studentemail")
+
+            username= request.form.get('username')
+            email = request.form.get('email')
+            college = request.form.get('college')
+            sem= request.form.get('sem')
+            linkdin= request.form.get('linkdin')
+            github= request.form.get('github')
+            internship1= request.form.get('i-1')
+            project1= request.form.get('p-1')
+            interst1= request.form.get('intrest-1')
+            file = request.files['resume']
+            file_data = file.read()
+            binary_data = Binary(file_data)
+
+            try:
+                db.users.update_one(
+                        {"usn": usn},
+                        {
+                            "$set": {
+                                "personal": {
+                                    "username": username,
+                                    "email": email,
+                                    "college": college,
+                                    " sem":  sem,
+                                    "linkdin": linkdin,
+                                    "github": github,
+                                    "internship-1": internship1,
+                                    "project-1": project1,
+                                    "interst-1": interst1,
+                                    "resume":binary_data,
+                                }
+                            }
+                        }
+                    )
+                flash('details have been entered please login again', category='success')
+                return redirect(url_for('auth.login'))
+            except PyMongoError as e:
+                flash(f'Error: {str(e)}', category='error')
+                    # Handle the error accordingly, such as logging it or displaying an error message to the user
+                return redirect(url_for('views.marksenter'))
+        # usn = session.get('studentemail')
+        # user = db.users.find_one({'usn':usn })
+        # username = user["personal"].get('username')
+        # email = user["personal"].get('email')
+        # college = user["personal"].get('college')
+        # sem = user["personal"].get('sem')
+        # linkdin = user["personal"].get('linkdin')
+        # github = user["personal"].get('github')
+        # project1 = user["personal"].get('project-1')
+        # intership1 = user["personal"].get('internship-1')
+        # interst1 = user["personal"].get('interst-1')
+        # title="Account"
+
+                        
+                    
+
+        return render_template('userdata.html')
+    return redirect(url_for('auth.login'))
+
+     
 
 
 

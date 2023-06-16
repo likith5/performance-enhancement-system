@@ -441,7 +441,7 @@ label{
   font-weight: bold;
 }
 
-.buttons{
+/* .buttons{
   display: flex;
   justify-content: space-evenly;
 }
@@ -480,4 +480,4 @@ label{
   color: #e8eaf6;
   background-color: #3f51b5;
   border: none;
-}
+} */

@@ -72,6 +72,7 @@ def marksenter():
 
         if request.method == 'POST':
 
+                test= request.form.get('test')
                 communication= request.form.get('communication')
                 technical= request.form.get('technical')
                 creativity= request.form.get('creativity')
@@ -82,6 +83,7 @@ def marksenter():
                 resultoriented= request.form.get('resultoriented')
                 leardership= request.form.get('leardership')
                 presentation= request.form.get('presentation')
+                
                 # print(leardership)
                 # print(presentation)
                 # print(studentname)
@@ -90,34 +92,91 @@ def marksenter():
                 # user = db.users.find_one({'username':username })
                 # email = user['email']
                 # db.marks.insert_one({"communication": communication})
-                try:
+                if test == "Test1":
+                    try:
 
-                    db.users.update_one(
-                    {"usn": usn},
-                    {
-                        "$set": {
-                            "marks": {
-                                "communication": communication,
-                                "technical": technical,
-                                "creativity": creativity,
-                                "projectmmt": projectmmt,
-                                "timemanagement": timemanagement,
-                                "generalknowledge": generalknowledge,
-                                "interpersonal": interpersonal,
-                                "resultoriented": resultoriented,
-                                "leardership": leardership,
-                                "presentation": presentation
+                        db.users.update_one(
+                        {"usn": usn},
+                        {
+                            "$set": {
+                                "test1": {
+                                    "communication": communication,
+                                    "technical": technical,
+                                    "creativity": creativity,
+                                    "projectmmt": projectmmt,
+                                    "timemanagement": timemanagement,
+                                    "generalknowledge": generalknowledge,
+                                    "interpersonal": interpersonal,
+                                    "resultoriented": resultoriented,
+                                    "leardership": leardership,
+                                    "presentation": presentation
+                                }
                             }
                         }
-                    }
-                )
-                    flash('Marks entered successfully', category='success')
-                    return redirect(url_for('views.dashboard'))
-                except PyMongoError as e:
-                    flash(f'Error: {str(e)}', category='error')
-                # Handle the error accordingly, such as logging it or displaying an error message to the user
-                    return redirect(url_for('views.marksenter'))
-                
+                    )
+                        flash('Marks entered successfully', category='success')
+                        return redirect(url_for('views.dashboard'))
+                    except PyMongoError as e:
+                        flash(f'Error: {str(e)}', category='error')
+                    # Handle the error accordingly, such as logging it or displaying an error message to the user
+                        return redirect(url_for('views.marksenter'))
+                if test == "Test2":
+                    try:
+
+                        db.users.update_one(
+                        {"usn": usn},
+                        {
+                            "$set": {
+                                "test2": {
+                                    "communication": communication,
+                                    "technical": technical,
+                                    "creativity": creativity,
+                                    "projectmmt": projectmmt,
+                                    "timemanagement": timemanagement,
+                                    "generalknowledge": generalknowledge,
+                                    "interpersonal": interpersonal,
+                                    "resultoriented": resultoriented,
+                                    "leardership": leardership,
+                                    "presentation": presentation
+                                }
+                            }
+                        }
+                    )
+                        flash('Marks entered successfully', category='success')
+                        return redirect(url_for('views.dashboard'))
+                    except PyMongoError as e:
+                        flash(f'Error: {str(e)}', category='error')
+                    # Handle the error accordingly, such as logging it or displaying an error message to the user
+                        return redirect(url_for('views.marksenter'))
+                if test == "Test3":
+                    try:
+
+                        db.users.update_one(
+                        {"usn": usn},
+                        {
+                            "$set": {
+                                "test3": {
+                                    "communication": communication,
+                                    "technical": technical,
+                                    "creativity": creativity,
+                                    "projectmmt": projectmmt,
+                                    "timemanagement": timemanagement,
+                                    "generalknowledge": generalknowledge,
+                                    "interpersonal": interpersonal,
+                                    "resultoriented": resultoriented,
+                                    "leardership": leardership,
+                                    "presentation": presentation
+                                }
+                            }
+                        }
+                    )
+                        flash('Marks entered successfully', category='success')
+                        return redirect(url_for('views.dashboard'))
+                    except PyMongoError as e:
+                        flash(f'Error: {str(e)}', category='error')
+                    # Handle the error accordingly, such as logging it or displaying an error message to the user
+                        return redirect(url_for('views.marksenter'))
+                    
         
         # print(studentname)
         # return render_template("marksenter.html",title=title,studentname=studentname)
@@ -125,50 +184,80 @@ def marksenter():
     return redirect(url_for('auth.login'))
 
 
-@views.route("/dashboard")
+@views.route("/dashboard",methods=['GET','POST'])
 def dashboard():
     if 'studentemail' in session :
-        # def converttorange(grade):
-        #     if grade == 1:
-        #         percentage = 20
-        #     elif grade == 2:
-        #         percentage = 40
-        #     elif grade == 3:
-        #         percentage = 60
-        #     elif grade == 4:
-        #         percentage = 80
-        #     elif grade == 5:
-        #         percentage = 100
-        #     else:
-        #         percentage = 29
-            
-           
-        #     return percentage
+       
         usn = session.get("studentemail")
         user = db.users.find_one({'usn':usn })
         username = user["personal"].get('username')
-        communication = int(user['marks'].get('communication'))
-        technical = int(user["marks"].get('technical'))
-        creativity = int(user['marks'].get('creativity'))
-        projectmm = int(user['marks'].get('projectmmt'))
-        timemanagement = int(user['marks'].get('timemanagement'))
-        generalknowledge = int(user['marks'].get('generalknowledge'))
-        interpersonal = int(user['marks'].get('interpersonal'))
-        resultoriented = int(user['marks'].get('resultoriented'))
-        leardership = int(user['marks'].get('leardership'))
-        presentation = int(user['marks'].get('presentation'))
-        print(communication)
+        title="dashboard"
+        
 
-        # communication = converttorange(communication)
-        # creativity = converttorange(creativity)
-        # technical = converttorange(technical)
-        # projectmm = converttorange(projectmm)
-        # timemanagement = converttorange(timemanagement)
-        # generalknowledge = converttorange(generalknowledge)
-        # interpersonal = converttorange(interpersonal)
-        # resultoriented = converttorange(resultoriented)
-        # leardership = converttorange(leardership)
-        # presentation = converttorange(presentation)
+        
+        if request.method=="POST":
+            man= request.form.get('test')
+            test =man.lower()
+            title="dashboard"
+            usn = session.get("studentemail")
+            user = db.users.find_one({'usn':usn })
+            username = user["personal"].get('username')
+
+            print(test)
+            if test=="test1":
+             
+                communication = int(user['test1'].get('communication'))
+                technical = int(user["test1"].get('technical'))
+                creativity = int(user['test1'].get('creativity'))
+                projectmm = int(user['test1'].get('projectmmt'))
+                timemanagement = int(user['test1'].get('timemanagement'))
+                generalknowledge = int(user['test1'].get('generalknowledge'))
+                interpersonal = int(user['test1'].get('interpersonal'))
+                resultoriented = int(user['test1'].get('resultoriented'))
+                leardership = int(user['test1'].get('leardership'))
+                presentation = int(user['test1'].get('presentation'))
+                return render_template('dashboard.html',username=username,title=title,creativity=creativity,communication=communication,technical=technical,projectmm=projectmm,timemanagement=timemanagement,generalknowledge=generalknowledge,interpersonal=interpersonal,resultoriented=resultoriented,leardership=leardership,presentation=presentation)
+
+                # redirect(url_for('views.dashboard'))
+            if test=="test2":
+               
+                communication = int(user['test2'].get('communication'))
+                technical = int(user["test2"].get('technical'))
+                creativity = int(user['test2'].get('creativity'))
+                projectmm = int(user['test2'].get('projectmmt'))
+                timemanagement = int(user['test2'].get('timemanagement'))
+                generalknowledge = int(user['test2'].get('generalknowledge'))
+                interpersonal = int(user['test2'].get('interpersonal'))
+                resultoriented = int(user['test2'].get('resultoriented'))
+                leardership = int(user['test2'].get('leardership'))
+                presentation = int(user['test2'].get('presentation'))
+                return render_template('dashboard.html',username=username,title=title,creativity=creativity,communication=communication,technical=technical,projectmm=projectmm,timemanagement=timemanagement,generalknowledge=generalknowledge,interpersonal=interpersonal,resultoriented=resultoriented,leardership=leardership,presentation=presentation)
+            if test=="test3":
+               
+                communication = int(user['test3'].get('communication'))
+                technical = int(user["test3"].get('technical'))
+                creativity = int(user['test3'].get('creativity'))
+                projectmm = int(user['test3'].get('projectmmt'))
+                timemanagement = int(user['test3'].get('timemanagement'))
+                generalknowledge = int(user['test3'].get('generalknowledge'))
+                interpersonal = int(user['test3'].get('interpersonal'))
+                resultoriented = int(user['test3'].get('resultoriented'))
+                leardership = int(user['test3'].get('leardership'))
+                presentation = int(user['test3'].get('presentation'))
+                return render_template('dashboard.html',username=username,title=title,creativity=creativity,communication=communication,technical=technical,projectmm=projectmm,timemanagement=timemanagement,generalknowledge=generalknowledge,interpersonal=interpersonal,resultoriented=resultoriented,leardership=leardership,presentation=presentation)
+
+        # communication = int(user['marks'].get('communication'))
+        # technical = int(user["marks"].get('technical'))
+        # creativity = int(user['marks'].get('creativity'))
+        # projectmm = int(user['marks'].get('projectmmt'))
+        # timemanagement = int(user['marks'].get('timemanagement'))
+        # generalknowledge = int(user['marks'].get('generalknowledge'))
+        # interpersonal = int(user['marks'].get('interpersonal'))
+        # resultoriented = int(user['marks'].get('resultoriented'))
+        # leardership = int(user['marks'].get('leardership'))
+        # presentation = int(user['marks'].get('presentation'))
+        # print(communication)
+
         
 
 
@@ -177,31 +266,71 @@ def dashboard():
 
 
         title="dashboard"
-        return render_template('dashboard.html',title=title,username=username,creativity=creativity,communication=communication,technical=technical,projectmm=projectmm,timemanagement=timemanagement,generalknowledge=generalknowledge,interpersonal=interpersonal,resultoriented=resultoriented,leardership=leardership,presentation=presentation)
+        return render_template('dashboard.html')
     # return redirect(url_for('auth.login'))
     elif  'teacheremail' in session :
-        # def converttorange(grade):
-        #     if grade == 1:
-        #         percentage = 20
-        #     elif grade == 2:
-        #         percentage = 40
-        #     elif grade == 3:
-        #         percentage = 60
-        #     elif grade == 4:
-        #         percentage = 80
-        #     elif grade == 5:
-        #         percentage = 100
-        #     else:
-        #         percentage = None
-            
-           
-        #     return percentage
-        
+        title="dashboard"
         usn = session.get("studentname")
         user = db.users.find_one({'usn':usn })
         username = user["personal"].get('username')
 
-        # communicat = user['marks'].get('communication')
+        
+        if request.method=="POST":
+            man= request.form.get('test')
+            test =man.lower()
+            title="dashboard"
+            usn = session.get("studentname")
+            user = db.users.find_one({'usn':usn })
+            username = user["personal"].get('username')
+
+            print(test)
+            if test=="test1":
+             
+                communication = int(user['test1'].get('communication'))
+                technical = int(user["test1"].get('technical'))
+                creativity = int(user['test1'].get('creativity'))
+                projectmm = int(user['test1'].get('projectmmt'))
+                timemanagement = int(user['test1'].get('timemanagement'))
+                generalknowledge = int(user['test1'].get('generalknowledge'))
+                interpersonal = int(user['test1'].get('interpersonal'))
+                resultoriented = int(user['test1'].get('resultoriented'))
+                leardership = int(user['test1'].get('leardership'))
+                presentation = int(user['test1'].get('presentation'))
+                return render_template('dashboard.html',username=username,title=title,creativity=creativity,communication=communication,technical=technical,projectmm=projectmm,timemanagement=timemanagement,generalknowledge=generalknowledge,interpersonal=interpersonal,resultoriented=resultoriented,leardership=leardership,presentation=presentation)
+
+                # redirect(url_for('views.dashboard'))
+            if test=="test2":
+               
+                communication = int(user['test2'].get('communication'))
+                technical = int(user["test2"].get('technical'))
+                creativity = int(user['test2'].get('creativity'))
+                projectmm = int(user['test2'].get('projectmmt'))
+                timemanagement = int(user['test2'].get('timemanagement'))
+                generalknowledge = int(user['test2'].get('generalknowledge'))
+                interpersonal = int(user['test2'].get('interpersonal'))
+                resultoriented = int(user['test2'].get('resultoriented'))
+                leardership = int(user['test2'].get('leardership'))
+                presentation = int(user['test2'].get('presentation'))
+                return render_template('dashboard.html',username=username,title=title,creativity=creativity,communication=communication,technical=technical,projectmm=projectmm,timemanagement=timemanagement,generalknowledge=generalknowledge,interpersonal=interpersonal,resultoriented=resultoriented,leardership=leardership,presentation=presentation)
+            if test=="test3":
+               
+                communication = int(user['test3'].get('communication'))
+                technical = int(user["test3"].get('technical'))
+                creativity = int(user['test3'].get('creativity'))
+                projectmm = int(user['test3'].get('projectmmt'))
+                timemanagement = int(user['test3'].get('timemanagement'))
+                generalknowledge = int(user['test3'].get('generalknowledge'))
+                interpersonal = int(user['test3'].get('interpersonal'))
+                resultoriented = int(user['test3'].get('resultoriented'))
+                leardership = int(user['test3'].get('leardership'))
+                presentation = int(user['test3'].get('presentation'))
+                return render_template('dashboard.html',username=username,title=title,creativity=creativity,communication=communication,technical=technical,projectmm=projectmm,timemanagement=timemanagement,generalknowledge=generalknowledge,interpersonal=interpersonal,resultoriented=resultoriented,leardership=leardership,presentation=presentation)
+
+       
+        
+        
+
+        communicat = user['marks'].get('communication')
         communication = int(user['marks'].get('communication'))
         technical = int(user["marks"].get('technical'))
         creativity = int(user['marks'].get('creativity'))
@@ -213,26 +342,14 @@ def dashboard():
         leardership = int(user['marks'].get('leardership'))
         presentation = int(user['marks'].get('presentation'))
 
-        # communications = converttorange(communication)
-        # creativity = converttorange(creativity)
-        # technical = converttorange(technical)
-        # projectmm = converttorange(projectmm)
-        # timemanagement = converttorange(timemanagement)
-        # generalknowledge = converttorange(generalknowledge)
-        # interpersonal = converttorange(interpersonal)
-        # resultoriented = converttorange(resultoriented)
-        # leardership = converttorange(leardership)
-        # presentation = converttorange(presentation)
-        # print(communications)
-        
-
-
+       
         
       
 
 
-        title="dashboard"
-        return render_template('dashboard.html',username=username,title=title,creativity=creativity,communication=communication,technical=technical,projectmm=projectmm,timemanagement=timemanagement,generalknowledge=generalknowledge,interpersonal=interpersonal,resultoriented=resultoriented,leardership=leardership,presentation=presentation)
+        
+        return render_template('dashboard.html')
+                # return render_template('dashboard.html')
     return redirect(url_for('auth.login'))
 
 @views.route("/search",methods=['GET','POST'])

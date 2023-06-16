@@ -4,8 +4,19 @@
 
 
 {% block content %}
+<form action="" method="POST">
+<div class=" addpadding">                   
+    <select class="form-control  rounded-pill inputcontrol " type="text" name="test" id="test"  placeholder="Click here" aria-label="default input example" required>
+     <option >Select Test</option>
+     <option >Test1</option>
 
-   
+     <option >Test2</option>
+     <option >Test3</option>
+   </select>
+   <button class="btn btn-primary pt-3 mt-3" type="submit">click</button>
+
+ </div>
+</form>
 <div class="text-center heading_dash fadeIn first">
     <h1>Performance Report of {{ username }}</h1>
 </div>

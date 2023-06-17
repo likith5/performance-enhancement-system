@@ -25,25 +25,7 @@ $(document).ready(function() {
     });
 });
 
-$(document).ready(function () {
-    $(".program").each(function () {
-        var $bar = $(this).find(".halfbar");
-        var $val = $(this).find(".percentage");
-        var perc = parseInt($val.text(), 10);
 
-        $({ p: 0 }).animate({ p: perc }, {
-            duration: 2000,
-            easing: "swing",
-            step: function (p) {
-                $bar.css({
-                    transform: "rotate(" + (45 + (p * 36)) + "deg)", // 100%=180° so: ° = % * 1.8
-                    // 45 is to add the needed rotation to have the green borders at the bottom
-                });
-                $val.text(p | 0);
-            }
-        });
-    });
-});   
 function animateLinearProgress(linearProgress, progressValue) {
     var progressStartValue = 0;
     var progressEndValue = parseInt(progressValue.text(), 10);

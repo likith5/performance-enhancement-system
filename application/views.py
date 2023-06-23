@@ -193,12 +193,14 @@ def dashboard():
         usn = session.get("studentemail")
         user = db.users.find_one({'usn':usn })
         username = user["personal"].get('username')
+        test1 ="Test1"
         title="dashboard"
         
 
         
         if request.method=="POST":
             man= request.form.get('test')
+            test1 = man.capitalize()
             test =man.lower()
             title="dashboard"
             usn = session.get("studentemail")
@@ -218,7 +220,7 @@ def dashboard():
                 resultoriented = int(user['test1'].get('resultoriented'))
                 leardership = int(user['test1'].get('leardership'))
                 presentation = int(user['test1'].get('presentation'))
-                return render_template('dashboard.html',username=username,title=title,creativity=creativity,communication=communication,technical=technical,projectmm=projectmm,timemanagement=timemanagement,generalknowledge=generalknowledge,interpersonal=interpersonal,resultoriented=resultoriented,leardership=leardership,presentation=presentation)
+                return render_template('dashboard.html',test1=test1,username=username,title=title,creativity=creativity,communication=communication,technical=technical,projectmm=projectmm,timemanagement=timemanagement,generalknowledge=generalknowledge,interpersonal=interpersonal,resultoriented=resultoriented,leardership=leardership,presentation=presentation)
 
                 # redirect(url_for('views.dashboard'))
             if test=="test2":
@@ -233,7 +235,7 @@ def dashboard():
                 resultoriented = int(user['test2'].get('resultoriented'))
                 leardership = int(user['test2'].get('leardership'))
                 presentation = int(user['test2'].get('presentation'))
-                return render_template('dashboard.html',username=username,title=title,creativity=creativity,communication=communication,technical=technical,projectmm=projectmm,timemanagement=timemanagement,generalknowledge=generalknowledge,interpersonal=interpersonal,resultoriented=resultoriented,leardership=leardership,presentation=presentation)
+                return render_template('dashboard.html',test1=test1,username=username,title=title,creativity=creativity,communication=communication,technical=technical,projectmm=projectmm,timemanagement=timemanagement,generalknowledge=generalknowledge,interpersonal=interpersonal,resultoriented=resultoriented,leardership=leardership,presentation=presentation)
             if test=="test3":
                
                 communication = int(user['test3'].get('communication'))
@@ -246,19 +248,21 @@ def dashboard():
                 resultoriented = int(user['test3'].get('resultoriented'))
                 leardership = int(user['test3'].get('leardership'))
                 presentation = int(user['test3'].get('presentation'))
-                return render_template('dashboard.html',username=username,title=title,creativity=creativity,communication=communication,technical=technical,projectmm=projectmm,timemanagement=timemanagement,generalknowledge=generalknowledge,interpersonal=interpersonal,resultoriented=resultoriented,leardership=leardership,presentation=presentation)
+                return render_template('dashboard.html',test1=test1,username=username,title=title,creativity=creativity,communication=communication,technical=technical,projectmm=projectmm,timemanagement=timemanagement,generalknowledge=generalknowledge,interpersonal=interpersonal,resultoriented=resultoriented,leardership=leardership,presentation=presentation)
 
-        # communication = int(user['marks'].get('communication'))
-        # technical = int(user["marks"].get('technical'))
-        # creativity = int(user['marks'].get('creativity'))
-        # projectmm = int(user['marks'].get('projectmmt'))
-        # timemanagement = int(user['marks'].get('timemanagement'))
-        # generalknowledge = int(user['marks'].get('generalknowledge'))
-        # interpersonal = int(user['marks'].get('interpersonal'))
-        # resultoriented = int(user['marks'].get('resultoriented'))
-        # leardership = int(user['marks'].get('leardership'))
-        # presentation = int(user['marks'].get('presentation'))
-        # print(communication)
+        communication = int(user['test1'].get('communication'))
+        technical = int(user["test1"].get('technical'))
+        creativity = int(user['test1'].get('creativity'))
+        projectmm = int(user['test1'].get('projectmmt'))
+        timemanagement = int(user['test1'].get('timemanagement'))
+        generalknowledge = int(user['test1'].get('generalknowledge'))
+        interpersonal = int(user['test1'].get('interpersonal'))
+        resultoriented = int(user['test1'].get('resultoriented'))
+        leardership = int(user['test1'].get('leardership'))
+        presentation = int(user['test1'].get('presentation'))
+        
+        return render_template('dashboard.html',test1=test1,username=username,title=title,creativity=creativity,communication=communication,technical=technical,projectmm=projectmm,timemanagement=timemanagement,generalknowledge=generalknowledge,interpersonal=interpersonal,resultoriented=resultoriented,leardership=leardership,presentation=presentation)
+
 
         
 
@@ -268,7 +272,8 @@ def dashboard():
 
 
         title="dashboard"
-        return render_template('dashboard.html')
+
+        # return render_template('dashboard.html')
     # return redirect(url_for('auth.login'))
     elif  'teacheremail' in session :
         title="dashboard"
@@ -298,7 +303,7 @@ def dashboard():
                 resultoriented = int(user['test1'].get('resultoriented'))
                 leardership = int(user['test1'].get('leardership'))
                 presentation = int(user['test1'].get('presentation'))
-                return render_template('dashboard.html',username=username,title=title,creativity=creativity,communication=communication,technical=technical,projectmm=projectmm,timemanagement=timemanagement,generalknowledge=generalknowledge,interpersonal=interpersonal,resultoriented=resultoriented,leardership=leardership,presentation=presentation)
+                return render_template('dashboard.html',test1=test1,username=username,title=title,creativity=creativity,communication=communication,technical=technical,projectmm=projectmm,timemanagement=timemanagement,generalknowledge=generalknowledge,interpersonal=interpersonal,resultoriented=resultoriented,leardership=leardership,presentation=presentation)
 
                 # redirect(url_for('views.dashboard'))
             if test=="test2":
@@ -313,7 +318,7 @@ def dashboard():
                 resultoriented = int(user['test2'].get('resultoriented'))
                 leardership = int(user['test2'].get('leardership'))
                 presentation = int(user['test2'].get('presentation'))
-                return render_template('dashboard.html',username=username,title=title,creativity=creativity,communication=communication,technical=technical,projectmm=projectmm,timemanagement=timemanagement,generalknowledge=generalknowledge,interpersonal=interpersonal,resultoriented=resultoriented,leardership=leardership,presentation=presentation)
+                return render_template('dashboard.html',test1=test1,username=username,title=title,creativity=creativity,communication=communication,technical=technical,projectmm=projectmm,timemanagement=timemanagement,generalknowledge=generalknowledge,interpersonal=interpersonal,resultoriented=resultoriented,leardership=leardership,presentation=presentation)
             if test=="test3":
                
                 communication = int(user['test3'].get('communication'))
@@ -326,32 +331,32 @@ def dashboard():
                 resultoriented = int(user['test3'].get('resultoriented'))
                 leardership = int(user['test3'].get('leardership'))
                 presentation = int(user['test3'].get('presentation'))
-                return render_template('dashboard.html',username=username,title=title,creativity=creativity,communication=communication,technical=technical,projectmm=projectmm,timemanagement=timemanagement,generalknowledge=generalknowledge,interpersonal=interpersonal,resultoriented=resultoriented,leardership=leardership,presentation=presentation)
+                return render_template('dashboard.html',test1=test1,username=username,title=title,creativity=creativity,communication=communication,technical=technical,projectmm=projectmm,timemanagement=timemanagement,generalknowledge=generalknowledge,interpersonal=interpersonal,resultoriented=resultoriented,leardership=leardership,presentation=presentation)
 
        
         
         
 
-        communicat = user['marks'].get('communication')
-        communication = int(user['marks'].get('communication'))
-        technical = int(user["marks"].get('technical'))
-        creativity = int(user['marks'].get('creativity'))
-        projectmm = int(user['marks'].get('projectmmt'))
-        timemanagement = int(user['marks'].get('timemanagement'))
-        generalknowledge = int(user['marks'].get('generalknowledge'))
-        interpersonal = int(user['marks'].get('interpersonal'))
-        resultoriented = int(user['marks'].get('resultoriented'))
-        leardership = int(user['marks'].get('leardership'))
-        presentation = int(user['marks'].get('presentation'))
+        communication = int(user['test1'].get('communication'))
+        technical = int(user["test1"].get('technical'))
+        creativity = int(user['test1'].get('creativity'))
+        projectmm = int(user['test1'].get('projectmmt'))
+        timemanagement = int(user['test1'].get('timemanagement'))
+        generalknowledge = int(user['test1'].get('generalknowledge'))
+        interpersonal = int(user['test1'].get('interpersonal'))
+        resultoriented = int(user['test1'].get('resultoriented'))
+        leardership = int(user['test1'].get('leardership'))
+        presentation = int(user['test1'].get('presentation'))
 
-       
+         
+                       
         
       
 
 
-        
-        return render_template('dashboard.html')
-                # return render_template('dashboard.html')
+        return render_template('dashboard.html',test1=test1,username=username,title=title,creativity=creativity,communication=communication,technical=technical,projectmm=projectmm,timemanagement=timemanagement,generalknowledge=generalknowledge,interpersonal=interpersonal,resultoriented=resultoriented,leardership=leardership,presentation=presentation)
+
+        # return render_template('dashboard.html')
     return redirect(url_for('auth.login'))
 
 @views.route("/search",methods=['GET','POST'])
@@ -455,160 +460,6 @@ def userdata():
     return redirect(url_for('auth.login'))
 
      
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-# @app.route("/search")
-# def search():
-
-#     title="search"
-#     return render_template("search.html",title=title)
-# @app.route("/searchfeature")
-# def searchfeature():
-
-#     title="search feature"
-#     return render_template("searchfeature.html",title=title)
-
-# @app.route("/extractedfeature")
-# def extractedfeature():
-
-#     title="extracted feature"
-#     return render_template("extractedfeature.html",title=title)
-
-# @views.route('/download_csv')
-# def download_csv():
-#     # Connect to MongoDB
- 
-
-#     # Fetch data from MongoDB
-#     data = db.users.find()
-
-#     # Create a CSV file
-#     csv_data = [['slno', 'username', 'skill1']]  # Replace with your field names
-    
-#     for item in data:
-#         print(item['password'])
-#         csv_data.append([item['password'], item['usn'], item['role']])  # Replace with your field names
-        
-        
-
-#     # Create a response with CSV data
-#     response = make_response()
-#     response.headers['Content-Disposition'] = 'attachment; filename=data.csv'
-#     # csv_data = StringIO()
-#     writer = csv.writer(csv_data)
-#     writer.writerows(csv_data)
-
-#     return response
-
-@views.route('/download_csv')
-def download_csv():
-    # Connect to MongoDB
- 
-    data = db.users.find()
-
-    # Create CSV headers
-    # Get all unique test skills
-    unique_skills = set()
-    for item in data:
-        test1 = item.get('test1', {})
-        print(test1.values())
-        unique_skills.update(test1.keys())
-
-    # Sort the unique skills alphabetically
-    sorted_skills = sorted(unique_skills - {'communication', 'presentation', 'technical'})
-
-    # Create CSV headers
-    csv_headers = ['Serial Number', 'Username','', 'Communication', 'Presentation', 'Technical'] + sorted_skills
-
-    # Create CSV rows
-    csv_rows = []
-    serial_number = 1
-    for item in data:
-        usn = item['usn']
-        test11 = item.get('test1', {})
-        test1 =test11.values()
-
-        username = item.get('personal', {}).get('username', '')
-        communication = item.get('test1', {}).get(('communication', ''),('technical', ''))
-        presentation = item.get('test1', {}).get('presentation', '')
-        technical = item.get('test1', {}).get('technical', '')
-        test_marks = [item.get('test1', {}).get(skill, '') for skill in sorted_skills]
-        csv_row = ['','', 'test1', test2_marks, test3_marks]
-
-        csv_row = [serial_number, username, communication, presentation, technical] + test_marks
-        csv_rows.append(test1)
-        serial_number += 1
-
-    # Create a response with CSV data
-    response = make_response()
-    response.headers['Content-Disposition'] = 'attachment; filename=data.csv'
-    response.mimetype = 'text/csv'
-
-    csv_data = StringIO()
-    writer = csv.writer(csv_data)
-    writer.writerow(csv_headers)
-    writer.writerows(csv_rows)
-
-    # Set the CSV data as the response content
-    response.data = csv_data.getvalue().encode('utf-8')
-
-    return response
-@views.route('/downloaid_csv')
-def downloaid_csv():
-    # Connect to MongoDB
- 
-    data = db.users.find()
-
-    # Create CSV headers
-    # Get all unique test skills
-    # csv_headers = ['Serial Number', 'usn','Username', 'Test1', 'Test2', 'Test3']
-    csv_headers = ['Serial Number', 'usn', 'Username','', 'Communication', 'Presentation', 'Technical'] + sorted_skills
-
-
-    # Create CSV rows
-    csv_rows = []
-    serial_number = 1
-    for item in data:
-        usn = item['usn']
-
-        username = item.get('personal', {}).get('username', '')
-        test1_marks = item.get('test1', {}).get('communication', '')
-        test2_marks = item.get('test2', {}).get('communication', '')
-        test3_marks = item.get('test3', {}).get('communication', '')
-        csv_row = [serial_number,usn ,username, test1_marks, test2_marks, test3_marks]
-        csv_rows.append(csv_row)
-        serial_number += 1
-
-    # Create a response with CSV data
-    response = make_response()
-    response.headers['Content-Disposition'] = 'attachment; filename=data.csv'
-    response.mimetype = 'text/csv'
-
-    csv_data = StringIO()
-    writer = csv.writer(csv_data)
-    writer.writerow(csv_headers)
-    writer.writerows(csv_rows)
-
-    # Set the CSV data as the response content
-    response.data = csv_data.getvalue().encode('utf-8')
-
-    return response
 @views.route('/downloadi_csv')
 def downloadi_csv():
     # Connect to MongoDB
@@ -684,3 +535,157 @@ def downloadi_csv():
     return response
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# @app.route("/search")
+# def search():
+
+#     title="search"
+#     return render_template("search.html",title=title)
+# @app.route("/searchfeature")
+# def searchfeature():
+
+#     title="search feature"
+#     return render_template("searchfeature.html",title=title)
+
+# @app.route("/extractedfeature")
+# def extractedfeature():
+
+#     title="extracted feature"
+#     return render_template("extractedfeature.html",title=title)
+
+# @views.route('/download_csv')
+# def download_csv():
+#     # Connect to MongoDB
+ 
+
+#     # Fetch data from MongoDB
+#     data = db.users.find()
+
+#     # Create a CSV file
+#     csv_data = [['slno', 'username', 'skill1']]  # Replace with your field names
+    
+#     for item in data:
+#         print(item['password'])
+#         csv_data.append([item['password'], item['usn'], item['role']])  # Replace with your field names
+        
+        
+
+#     # Create a response with CSV data
+#     response = make_response()
+#     response.headers['Content-Disposition'] = 'attachment; filename=data.csv'
+#     # csv_data = StringIO()
+#     writer = csv.writer(csv_data)
+#     writer.writerows(csv_data)
+
+#     return response
+
+# @views.route('/download_csv')
+# def download_csv():
+#     # Connect to MongoDB
+ 
+#     data = db.users.find()
+
+#     # Create CSV headers
+#     # Get all unique test skills
+#     unique_skills = set()
+#     for item in data:
+#         test1 = item.get('test1', {})
+#         print(test1.values())
+#         unique_skills.update(test1.keys())
+
+#     # Sort the unique skills alphabetically
+#     sorted_skills = sorted(unique_skills - {'communication', 'presentation', 'technical'})
+
+#     # Create CSV headers
+#     csv_headers = ['Serial Number', 'Username','', 'Communication', 'Presentation', 'Technical'] + sorted_skills
+
+#     # Create CSV rows
+#     csv_rows = []
+#     serial_number = 1
+#     for item in data:
+#         usn = item['usn']
+#         test11 = item.get('test1', {})
+#         test1 =test11.values()
+
+#         username = item.get('personal', {}).get('username', '')
+#         communication = item.get('test1', {}).get(('communication', ''),('technical', ''))
+#         presentation = item.get('test1', {}).get('presentation', '')
+#         technical = item.get('test1', {}).get('technical', '')
+#         test_marks = [item.get('test1', {}).get(skill, '') for skill in sorted_skills]
+#         csv_row = ['','', 'test1', test2_marks, test3_marks]
+
+#         csv_row = [serial_number, username, communication, presentation, technical] + test_marks
+#         csv_rows.append(test1)
+#         serial_number += 1
+
+#     # Create a response with CSV data
+#     response = make_response()
+#     response.headers['Content-Disposition'] = 'attachment; filename=data.csv'
+#     response.mimetype = 'text/csv'
+
+#     csv_data = StringIO()
+#     writer = csv.writer(csv_data)
+#     writer.writerow(csv_headers)
+#     writer.writerows(csv_rows)
+
+#     # Set the CSV data as the response content
+#     response.data = csv_data.getvalue().encode('utf-8')
+
+#     return response
+# @views.route('/downloaid_csv')
+# def downloaid_csv():
+#     # Connect to MongoDB
+ 
+#     data = db.users.find()
+
+#     # Create CSV headers
+#     # Get all unique test skills
+#     # csv_headers = ['Serial Number', 'usn','Username', 'Test1', 'Test2', 'Test3']
+#     csv_headers = ['Serial Number', 'usn', 'Username','', 'Communication', 'Presentation', 'Technical'] + sorted_skills
+
+
+#     # Create CSV rows
+#     csv_rows = []
+#     serial_number = 1
+#     for item in data:
+#         usn = item['usn']
+
+#         username = item.get('personal', {}).get('username', '')
+#         test1_marks = item.get('test1', {}).get('communication', '')
+#         test2_marks = item.get('test2', {}).get('communication', '')
+#         test3_marks = item.get('test3', {}).get('communication', '')
+#         csv_row = [serial_number,usn ,username, test1_marks, test2_marks, test3_marks]
+#         csv_rows.append(csv_row)
+#         serial_number += 1
+
+#     # Create a response with CSV data
+#     response = make_response()
+#     response.headers['Content-Disposition'] = 'attachment; filename=data.csv'
+#     response.mimetype = 'text/csv'
+
+#     csv_data = StringIO()
+#     writer = csv.writer(csv_data)
+#     writer.writerow(csv_headers)
+#     writer.writerows(csv_rows)
+
+#     # Set the CSV data as the response content
+#     response.data = csv_data.getvalue().encode('utf-8')
+
+#     return response

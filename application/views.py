@@ -3,10 +3,18 @@ from flask import Blueprint,url_for,session,flash,make_response
 from flask_session import Session
 from application import db
 from pymongo.errors import PyMongoError
-from flask import render_template,request,redirect
+from flask import render_template,request,redirect,Response
 from bson.binary import Binary
 import csv
 from io import StringIO
+import pandas as pd
+import openpyxl
+from openpyxl.styles import PatternFill
+
+
+
+# this is for xls writer 
+import xlsxwriter
 
 views = Blueprint('views',__name__)
 
@@ -261,6 +269,8 @@ def dashboard():
         leardership = int(user['test1'].get('leardership'))
         presentation = int(user['test1'].get('presentation'))
         
+        
+
         return render_template('dashboard.html',test1=test1,username=username,title=title,creativity=creativity,communication=communication,technical=technical,projectmm=projectmm,timemanagement=timemanagement,generalknowledge=generalknowledge,interpersonal=interpersonal,resultoriented=resultoriented,leardership=leardership,presentation=presentation)
 
 
@@ -354,7 +364,7 @@ def dashboard():
       
 
 
-        return render_template('dashboard.html',test1=test1,username=username,title=title,creativity=creativity,communication=communication,technical=technical,projectmm=projectmm,timemanagement=timemanagement,generalknowledge=generalknowledge,interpersonal=interpersonal,resultoriented=resultoriented,leardership=leardership,presentation=presentation)
+        return render_template('dashboard.html',username=username,title=title,creativity=creativity,communication=communication,technical=technical,projectmm=projectmm,timemanagement=timemanagement,generalknowledge=generalknowledge,interpersonal=interpersonal,resultoriented=resultoriented,leardership=leardership,presentation=presentation)
 
         # return render_template('dashboard.html')
     return redirect(url_for('auth.login'))
@@ -460,34 +470,180 @@ def userdata():
     return redirect(url_for('auth.login'))
 
      
-@views.route('/downloadi_csv')
-def downloadi_csv():
-    # Connect to MongoDB
+# @views.route('/downloadi_csv')
+# def downloadi_csv():
+#     # Connect to MongoDB
  
-    data = db.users.find()
+#     data = db.users.find()
 
-    # Create CSV headers
-    # Get all unique test skills
-     # Get all unique test skills
-    response = make_response()
-    response.headers['Content-Disposition'] = 'attachment; filename=data.csv'
+#     # Create CSV headers
+#     # Get all unique test skills
+#      # Get all unique test skills
+#     response = make_response()
+#     response.headers['Content-Disposition'] = 'attachment; filename=data.csv'
 
-    # Set the mimetype to indicate it's a CSV file
-    response.mimetype = 'text/csv'
+#     # Set the mimetype to indicate it's a CSV file
+#     response.mimetype = 'text/csv'
 
-    # Open the response stream for writing CSV data
-    csv_writer = csv.writer(response.stream)
+#     # Open the response stream for writing CSV data
+#     csv_writer = csv.writer(response.stream)
 
-    # Write CSV headers
-    csv_writer.writerow(['Serial Number', 'usn','Username','tests', 'Communication', 'Technical','creativity','projectmanagement','timemanagement','genearl knowledge','interpersonal','resultoriented','leadership','Presentation',])
+#     # Write CSV headers
+#     csv_writer.writerow(['Serial Number', 'usn','Username','tests', 'Communication', 'Technical','creativity','projectmanagement','timemanagement','genearl knowledge','interpersonal','resultoriented','leadership','Presentation',])
 
-    # Write CSV data from MongoDB
-    serial_number = 1
-    for item in data:
-        usn = item['usn']
+#     # Write CSV data from MongoDB
+#     serial_number = 1
+#     for item in data:
+#         usn = item['usn']
         
 
 
+#         username = item.get('personal', {}).get('username', '')
+#         test1 = item.get('test1', {})
+#         communication = test1.get('communication', '')
+#         technical = test1.get('technical', '')
+#         creativity = test1.get('creativity', '')
+#         projectmanagement = test1.get('projectmmt', '')
+#         timemangement = test1.get('timemanagement', '')
+#         generalknowledge = test1.get('generalknowledge', '')
+#         interpersonal = test1.get('interpersonal', '')
+#         resultoriented = test1.get('resultoriented', '')
+#         leadership = test1.get('leardership', '')
+#         presentation = test1.get('presentation', '')
+
+
+#         test2 = item.get('test2', {})
+#         communications = test2.get('communication', '')
+#         technicals = test2.get('technical', '')
+#         creativitys = test2.get('creativity', '')
+#         projectmanagements = test2.get('projectmmt', '')
+#         timemangements = test2.get('timemanagement', '')
+#         generalknowledges = test2.get('generalknowledge', '')
+#         interpersonals = test2.get('interpersonal', '')
+#         resultorienteds = test2.get('resultoriented', '')
+#         leaderships = test2.get('leardership', '')
+#         presentations = test2.get('presentation', '')
+
+#         test3 = item.get('test3', {})
+#         communicationss = test3.get('communication', '')
+#         technicalss = test3.get('technical', '')
+#         creativityss = test3.get('creativity', '')
+#         projectmanagementss = test3.get('projectmmt', '')
+#         timemangementss = test3.get('timemanagement', '')
+#         generalknowledgess = test3.get('generalknowledge', '')
+#         interpersonalss = test3.get('interpersonal', '')
+#         resultorientedss = test3.get('resultoriented', '')
+#         leadershipss = test3.get('leardership', '')
+#         presentationss = test3.get('presentation', '')
+#         csv_writer.writerow([serial_number, usn,username,'test1' ,communication, technical, creativity,projectmanagement,timemangement,generalknowledge,interpersonal,resultoriented,leadership,presentation])
+#         csv_writer.writerow(['', '','','test2' ,communications, technicals, creativitys,projectmanagements,timemangements,generalknowledges,interpersonals,resultorienteds,leaderships,presentations])
+#         csv_writer.writerow(['', '','','test3' ,communicationss, technicalss, creativityss,projectmanagementss,timemangementss,generalknowledgess,interpersonalss,resultorientedss,leadershipss,presentationss])
+#         csv_writer.writerow([''])
+        
+#         serial_number += 1
+
+#     return response
+
+# @views.route('/downloadi_csv')
+# def downloadi_csv():
+#     # Connect to MongoDB
+#     data = db.users.find()
+
+#     # Create Excel workbook and worksheet
+#     workbook = xlsxwriter.Workbook('data.xlsx')
+#     worksheet = workbook.add_worksheet()
+
+#     # Define cell formats for different colors
+#     cell_formats = {
+#         1: workbook.add_format({'bg_color': 'red'}),
+#         2: workbook.add_format({'bg_color': 'orange'}),
+#         3: workbook.add_format({'bg_color': 'yellow'}),
+#         4: workbook.add_format({'bg_color': 'green'}),
+#         5: workbook.add_format({'bg_color': 'blue'})
+#     }
+
+#     # Write Excel headers
+#     worksheet.write_row(0, 0, ['Serial Number', 'usn', 'Username', 'tests', 'Communication', 'Technical',
+#                                'creativity', 'projectmanagement', 'timemanagement', 'general knowledge',
+#                                'interpersonal', 'resultoriented', 'leadership', 'Presentation'])
+
+#     # Write Excel data from MongoDB
+#     serial_number = 1
+#     row = 1
+#     for item in data:
+#         usn = item['usn']
+#         username = item.get('personal', {}).get('username', '')
+
+#         # Write test1 marks
+#         write_test_marks(item.get('test1', {}), worksheet, serial_number, row, cell_formats, 'test1')
+#         row += 1
+
+#         # Write test2 marks
+#         write_test_marks(item.get('test2', {}), worksheet, serial_number, row, cell_formats, 'test2')
+#         row += 1
+
+#         # Write test3 marks
+#         write_test_marks(item.get('test3', {}), worksheet, serial_number, row, cell_formats, 'test3')
+#         row += 1
+
+#         serial_number += 1
+
+#     # Close the workbook
+#     workbook.close()
+
+#     # Create a response with the Excel file
+#     response = make_response()
+#     response.data = open('data.xlsx', 'rb').read()
+#     response.headers['Content-Disposition'] = 'attachment; filename=data.xlsx'
+#     response.headers['Content-Type'] = 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
+
+#     return response
+
+
+# def write_test_marks(test, worksheet, serial_number, row, cell_formats, test_name):
+#     data = db.users.find()
+#     # Write marks with color formatting
+#     for column, skill in enumerate(['communication', 'technical', 'creativity', 'projectmmt', 'timemanagement',
+#                                     'generalknowledge', 'interpersonal', 'resultoriented', 'leardership',
+#                                     'presentation'], start=4):
+#         mark = test.get(skill, '')
+#         format = cell_formats.get(mark)
+#         worksheet.write(row, column, mark, format)
+
+#     # Write other test marks without color formatting
+#     worksheet.write(row, 0, serial_number)
+#     worksheet.write(row, 1, item.get('usn', ''))
+#     worksheet.write(row, 2, item.get('username', ''))
+#     worksheet.write(row, 3, test_name)
+
+# this one is third one  .... 
+
+
+
+@views.route('/downloadi_csv')
+def downloadi_csv():
+    # Connect to MongoDB
+
+    data = db.users.find()
+
+    # Create a new workbook
+    workbook = openpyxl.Workbook()
+    sheet = workbook.active
+
+    # Write headers with formatting
+    sheet.append(['Serial Number', 'usn', 'Username', 'tests', 'Communication', 'Technical', 'creativity', 'projectmanagement', 'timemanagement', 'genearl knowledge', 'interpersonal', 'resultoriented', 'leadership', 'Presentation'])
+    header_row = sheet[1]
+    
+    color_mapping = {
+        None: "FF0000",  # Red
+        1: "00FF00",  # Green
+        2: "FFA500",  # Orange
+        3: "FFFF00"  # Yellow
+    }
+    # Write data from MongoDB
+    serial_number = 1
+    for item in data:
+        usn = item['usn']
         username = item.get('personal', {}).get('username', '')
         test1 = item.get('test1', {})
         communication = test1.get('communication', '')
@@ -501,7 +657,6 @@ def downloadi_csv():
         leadership = test1.get('leardership', '')
         presentation = test1.get('presentation', '')
 
-
         test2 = item.get('test2', {})
         communications = test2.get('communication', '')
         technicals = test2.get('technical', '')
@@ -513,6 +668,8 @@ def downloadi_csv():
         resultorienteds = test2.get('resultoriented', '')
         leaderships = test2.get('leardership', '')
         presentations = test2.get('presentation', '')
+        print(creativitys)
+        print(type(creativitys))
 
         test3 = item.get('test3', {})
         communicationss = test3.get('communication', '')
@@ -525,14 +682,74 @@ def downloadi_csv():
         resultorientedss = test3.get('resultoriented', '')
         leadershipss = test3.get('leardership', '')
         presentationss = test3.get('presentation', '')
-        csv_writer.writerow([serial_number, usn,username,'test1' ,communication, technical, creativity,projectmanagement,timemangement,generalknowledge,interpersonal,resultoriented,leadership,presentation])
-        csv_writer.writerow(['', '','','test2' ,communications, technicals, creativitys,projectmanagements,timemangements,generalknowledges,interpersonals,resultorienteds,leaderships,presentations])
-        csv_writer.writerow(['', '','','test3' ,communicationss, technicalss, creativityss,projectmanagementss,timemangementss,generalknowledgess,interpersonalss,resultorientedss,leadershipss,presentationss])
-        csv_writer.writerow([''])
+
+        sheet.append([serial_number, usn, username, 'test1', communication, technical, creativity, projectmanagement, timemangement, generalknowledge, interpersonal, resultoriented, leadership, presentation])
+        sheet.append(['', '', '', 'test2', communications, technicals, creativitys, projectmanagements, timemangements, generalknowledges, interpersonals, resultorienteds, leaderships, presentations])
+        sheet.append(['', '', '', 'test3', communicationss, technicalss, creativityss, projectmanagementss, timemangementss, generalknowledgess, interpersonalss, resultorientedss, leadershipss, presentationss])
+        sheet.append([''])
         
         serial_number += 1
+        # Apply background color to cells with values 1, 2, 3, 4, 5 in columns E to N
+        for row in sheet.iter_rows(min_row=2, min_col=5, max_col=14):
+            for cell in row:
+                if isinstance(cell.value, int) and cell.value in colors:
+                    fill = PatternFill(start_color=colors[cell.value], end_color=colors[cell.value], fill_type="solid")
+                    cell.fill = fill
+                elif cell.value == 'null':
+                    fill = PatternFill(start_color='CCCCCC', end_color='CCCCCC', fill_type="solid")
+                    cell.fill = fill
+                elif cell.value == '1':
+                    fill = PatternFill(start_color='FF0000', end_color='FF0000', fill_type="solid")
+                    cell.fill = fill
+                elif cell.value == '2':
+                    fill = PatternFill(start_color='FFC000', end_color='FFC000', fill_type="solid")
+                    cell.fill = fill
+                elif cell.value == '3':
+                    fill = PatternFill(start_color='FFFF00', end_color='FFFF00', fill_type="solid")
+                    cell.fill = fill
+                elif cell.value == '4':
+                    fill = PatternFill(start_color='00B050', end_color='00B050', fill_type="solid")
+                    cell.fill = fill
+                elif cell.value == '5':
+                    fill = PatternFill(start_color='0070C0', end_color='0070C0', fill_type="solid")
+                    cell.fill = fill
+                else:
+                    fill = PatternFill(start_color='FFFFFF', end_color='FFFFFF', fill_type="solid")
+                    cell.fill = fill
+
+    # Save the workbook
+    response = Response()
+    response.headers['Content-Disposition'] = 'attachment; filename=data.xlsx'
+    response.mimetype = 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
+    workbook.save(response.stream)
 
     return response
+
+
+# @views.route('/downloadi_csv')
+# def downloadi_csv():
+   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -163,8 +163,7 @@
 .contain4{
     border-radius: 15px;
      margin: 0 0 0 15%; 
-     /* height:250px; */
-    /* padding: 25px 0 0 50px;  */
+   
     width:300px;
     position: relative;
 
@@ -172,7 +171,7 @@
     box-shadow: 0 4px 8px 0 rgba(38, 193, 221, 0.568), 0 6px 20px 0 rgba(143, 234, 244, 0.72);
 
 }
-  .program {
+.program {
     position: relative;
     margin: 20px 10px 0 0;
     float: center;
@@ -181,31 +180,91 @@
 }
 .barOver{
     position: relative;
-    /*width: 180px;
-    height: 90px;*/
+ 
     width: 240px;
     height: 100px;
-    /* Half circle (overflow) */
-    /* margin-bottom: -14px; */
-    /* bring the numbers up */
+  
     overflow: hidden;
 }
 .halfbar{
     position: relative;
     
-    /*width: 180px;
-    height: 180px;*/
+   
     width: 240px;
     height: 240px;
-    /* full circle! */
+
     border-radius: 50%;
     box-sizing: border-box;
     border: 30px solid #ededed;
-    /* half gray,  bgcolor:#0bf */
     border-bottom-color: #6D6BC6;
-    /* half azure */
     border-right-color: #6D6BC6;
 }
+
+/* the following code is basically for flipping the container...  */
+
+
+
+/* .contain4 {
+    width: 310px;
+    height: 270px;
+    perspective: 800px;
+  }
+  
+  .contain4:hover > .cardii {
+    cursor: pointer;
+    transform: rotateY(180deg);
+  }
+  
+  .cardiii {
+    height: 100%;
+    width: 100%;
+    position: relative;
+    transition: transform 1500ms;
+    transform-style: preserve-3d;
+  }
+  
+ 
+  .backii {
+    height: 100%;
+    width: 100%;
+    border-radius: 1.5rem;
+    box-shadow: 0 0 5px 2px rgba(50, 50, 50, 0.25);
+    position: absolute;
+    backface-visibility: hidden;
+    background-color: #3a3a3a;
+    transform: rotateY(180deg);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+  }
+  
+
+
+
+
+ */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -236,10 +236,95 @@
 
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
  
+  {% block javascript %}
+
+<script> 
+    let p = JSON.parse({{ p | tojson }});
+    let q = JSON.parse({{ q | tojson }});
+    let r = JSON.parse({{ r | tojson }});
+    let score1 = JSON.parse({{ score1 | tojson }});
+ 
+    const ctx = document.getElementById('myCharti');
+  
+    new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: ['Communication', 'Presentation', 'Technical', 'Result oriented', 'Project Management', 'Interpersonal','Leadership','General knowledge','Time Management','Creativity'],
+        datasets: [{
+          label: 'Test1',
+          data:  p,
+          borderWidth: 1
+        },
+        {
+            label: 'Test2',
+            data:q,
+            borderWidth: 1
+          },
+          {
+            label: 'test3',
+            data:r,
+            borderWidth: 1
+          }]
+      },
+      options: {
+          scales: {
+              x: {
+                grid: {
+                  display: true, // hide x-axis grid lines
+                }
+              },
+              y: {
+                grid: {
+                  display: false, // hide y-axis grid lines
+                }
+              }
+            }
+      }
+    });
+
+
+
+    const myline = document.getElementById('myline');
 
 
 
 
+  new Chart(myline, {
+    type: 'line',
+    data: {
+      labels: ['Test1', 'Test2', 'Test3'],
+      datasets: [{
+        label: 'Test graph',
+        data: score1,
+        borderWidth: 1
+      }]
+    },
+    options: {
+        scales: {
+            x: {
+              grid: {
+                display: false, // hide x-axis grid lines
+              }
+            },
+            y: {
+                min: 0, // Set the minimum value for the y-axis
+                max: 5, // Set the maximum value for the y-axis
+              grid: {
+                display: false, // hide y-axis grid lines
+              },
+              ticks: {
+                 stepSize: 1,
+                // set the maximum value of the y-axis to 5
+                 // set the step size between values
+              }
+            }
+          }
+    }
+  });
+
+    </script>
+
+    {% endblock%}
 
 <div class="container-fluid footer">
     <div class="text-center footer-tag">

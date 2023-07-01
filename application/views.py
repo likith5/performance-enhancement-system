@@ -5,11 +5,11 @@ from application import db
 from pymongo.errors import PyMongoError
 from flask import render_template,request,redirect,Response
 from bson.binary import Binary
-import csv
 from io import StringIO
 import pandas as pd
 import openpyxl
 from openpyxl.styles import PatternFill
+import json
 
 
 
@@ -62,7 +62,63 @@ def profile():
         intership1 = user["personal"].get('internship-1')
         interst1 = user["personal"].get('interst-1')
         title="dashboard"
-        return render_template('profile.html',title=title,usn=usn,username=username,email=email,college=college,sem=sem,linkdin=linkdin,github=github,intership1=intership1,project1=project1,interst1=interst1)
+        communication = int(user['test1'].get('communication'))
+        technical = int(user["test1"].get('technical'))
+        creativity = int(user['test1'].get('creativity'))
+        projectmm = int(user['test1'].get('projectmmt'))
+        timemanagement = int(user['test1'].get('timemanagement'))
+        generalknowledge = int(user['test1'].get('generalknowledge'))
+        interpersonal = int(user['test1'].get('interpersonal'))
+        resultoriented = int(user['test1'].get('resultoriented'))
+        leardership = int(user['test1'].get('leardership'))
+        presentation = int(user['test1'].get('presentation'))
+        
+        strongi = int(((technical+creativity+resultoriented)/15)*5)
+        leaderi = int(((projectmm+leardership+timemanagement+resultoriented+communication)/25)*5)
+        customeri = int(((presentation+generalknowledge+timemanagement+interpersonal+communication)/25)*5)
+        projecti = int(((projectmm+resultoriented+timemanagement+technical+communication)/25)*5)
+        designi = int(((leardership+resultoriented+creativity+technical)/20)*5)
+        marketi = int((( presentation+resultoriented+communication+interpersonal+generalknowledge)/25)*5)
+        def st(strongi):
+            if strongi >= 4:
+                return "Strong in Tech"
+            else:
+                return "None"
+        strong = st(strongi)
+        def lr(leaderi):
+            if leaderi >= 4:
+                return "Leadership Roles"
+            else:
+                return "None"
+        leader = lr(leaderi)
+        def cfr(customei):
+            if customeri >= 3 and customeri <=4:
+                return "Customer Facing Roles"
+            else:
+                return "None"
+        customer = cfr(customeri)
+        def pm(customer):
+            if projecti >= 3 and projecti <= 4 :
+                return "Project Management "
+            else:
+                return "None"
+        project = pm(projecti)
+        def df(designi):
+            if designi <= 3  :
+                return "Design Profile "
+            else:
+                return "None"
+        design = df(designi)
+        def mr(marketi):
+            if marketi <= 3 :
+                return "Marketing Role "
+            else:
+                return "None"
+        market = mr(projecti)
+        
+        
+
+        return render_template('profile.html',title=title,usn=usn,design=design,market=market,strong=strong,leader=leader,customer=customer,project=project,username=username,email=email,college=college,sem=sem,linkdin=linkdin,github=github,intership1=intership1,project1=project1,interst1=interst1)
  
 
 
@@ -269,9 +325,54 @@ def dashboard():
         leardership = int(user['test1'].get('leardership'))
         presentation = int(user['test1'].get('presentation'))
         
+        test1_skills = user["test1"]
+        test2_skills = user["test2"]
+        test3_skills = user["test3"]
+        # for item in test:
+        #     print(item.)
+        def summary(userr):
+            p=[]
+            for key, value in userr.items():
+                p.append(int(value))
+            return p
+        p=summary(test1_skills) 
+        q=summary(test2_skills)            
+        r=summary(test3_skills)
+        def sumskills(user1,user2,user3):
+            p=[]
+            q=[]
+            r=[]
+            t1=[]
+            t2=[]
+            t3=[]            
+            for key, value in user1.items():
+                p.append(int(value))
+
+            t1.append(int((sum(p)/50)*5))
+            print(t1)
+
+            for key, value in user2.items():
+                q.append(int(value))
+            
+            t2.append(int((sum(q)/50)*5))
+
+            for key, value in user3.items():
+                r.append(int(value))
+            t3.append(int((sum(r)/50)*5) )
+            score1=t1+t2+t3           
+            
+
+            
+
+
+            return score1
+       
+        score1=sumskills(test1_skills,test2_skills,test3_skills)
+        print(score1)
+
         
 
-        return render_template('dashboard.html',test1=test1,username=username,title=title,creativity=creativity,communication=communication,technical=technical,projectmm=projectmm,timemanagement=timemanagement,generalknowledge=generalknowledge,interpersonal=interpersonal,resultoriented=resultoriented,leardership=leardership,presentation=presentation)
+        return render_template('dashboard.html',score1=json.dumps(score1),p=json.dumps(p),q=json.dumps(q),r=json.dumps(r),test1=test1,username=username,title=title,creativity=creativity,communication=communication,technical=technical,projectmm=projectmm,timemanagement=timemanagement,generalknowledge=generalknowledge,interpersonal=interpersonal,resultoriented=resultoriented,leardership=leardership,presentation=presentation)
 
 
         
@@ -399,10 +500,6 @@ def search():
         return render_template('search.html',usn=usn,username=username)
     return redirect(url_for('auth.login'))
 
-# @views.route('/userdata',methods=['GET','POST'])    
-# def userdata():
-    
-#     return render_template('userdata.html')
 
      
 @views.route('/userdata',methods=['GET','POST'])    
@@ -470,153 +567,8 @@ def userdata():
     return redirect(url_for('auth.login'))
 
      
-# @views.route('/downloadi_csv')
-# def downloadi_csv():
-#     # Connect to MongoDB
- 
-#     data = db.users.find()
-
-#     # Create CSV headers
-#     # Get all unique test skills
-#      # Get all unique test skills
-#     response = make_response()
-#     response.headers['Content-Disposition'] = 'attachment; filename=data.csv'
-
-#     # Set the mimetype to indicate it's a CSV file
-#     response.mimetype = 'text/csv'
-
-#     # Open the response stream for writing CSV data
-#     csv_writer = csv.writer(response.stream)
-
-#     # Write CSV headers
-#     csv_writer.writerow(['Serial Number', 'usn','Username','tests', 'Communication', 'Technical','creativity','projectmanagement','timemanagement','genearl knowledge','interpersonal','resultoriented','leadership','Presentation',])
-
-#     # Write CSV data from MongoDB
-#     serial_number = 1
-#     for item in data:
-#         usn = item['usn']
-        
 
 
-#         username = item.get('personal', {}).get('username', '')
-#         test1 = item.get('test1', {})
-#         communication = test1.get('communication', '')
-#         technical = test1.get('technical', '')
-#         creativity = test1.get('creativity', '')
-#         projectmanagement = test1.get('projectmmt', '')
-#         timemangement = test1.get('timemanagement', '')
-#         generalknowledge = test1.get('generalknowledge', '')
-#         interpersonal = test1.get('interpersonal', '')
-#         resultoriented = test1.get('resultoriented', '')
-#         leadership = test1.get('leardership', '')
-#         presentation = test1.get('presentation', '')
-
-
-#         test2 = item.get('test2', {})
-#         communications = test2.get('communication', '')
-#         technicals = test2.get('technical', '')
-#         creativitys = test2.get('creativity', '')
-#         projectmanagements = test2.get('projectmmt', '')
-#         timemangements = test2.get('timemanagement', '')
-#         generalknowledges = test2.get('generalknowledge', '')
-#         interpersonals = test2.get('interpersonal', '')
-#         resultorienteds = test2.get('resultoriented', '')
-#         leaderships = test2.get('leardership', '')
-#         presentations = test2.get('presentation', '')
-
-#         test3 = item.get('test3', {})
-#         communicationss = test3.get('communication', '')
-#         technicalss = test3.get('technical', '')
-#         creativityss = test3.get('creativity', '')
-#         projectmanagementss = test3.get('projectmmt', '')
-#         timemangementss = test3.get('timemanagement', '')
-#         generalknowledgess = test3.get('generalknowledge', '')
-#         interpersonalss = test3.get('interpersonal', '')
-#         resultorientedss = test3.get('resultoriented', '')
-#         leadershipss = test3.get('leardership', '')
-#         presentationss = test3.get('presentation', '')
-#         csv_writer.writerow([serial_number, usn,username,'test1' ,communication, technical, creativity,projectmanagement,timemangement,generalknowledge,interpersonal,resultoriented,leadership,presentation])
-#         csv_writer.writerow(['', '','','test2' ,communications, technicals, creativitys,projectmanagements,timemangements,generalknowledges,interpersonals,resultorienteds,leaderships,presentations])
-#         csv_writer.writerow(['', '','','test3' ,communicationss, technicalss, creativityss,projectmanagementss,timemangementss,generalknowledgess,interpersonalss,resultorientedss,leadershipss,presentationss])
-#         csv_writer.writerow([''])
-        
-#         serial_number += 1
-
-#     return response
-
-# @views.route('/downloadi_csv')
-# def downloadi_csv():
-#     # Connect to MongoDB
-#     data = db.users.find()
-
-#     # Create Excel workbook and worksheet
-#     workbook = xlsxwriter.Workbook('data.xlsx')
-#     worksheet = workbook.add_worksheet()
-
-#     # Define cell formats for different colors
-#     cell_formats = {
-#         1: workbook.add_format({'bg_color': 'red'}),
-#         2: workbook.add_format({'bg_color': 'orange'}),
-#         3: workbook.add_format({'bg_color': 'yellow'}),
-#         4: workbook.add_format({'bg_color': 'green'}),
-#         5: workbook.add_format({'bg_color': 'blue'})
-#     }
-
-#     # Write Excel headers
-#     worksheet.write_row(0, 0, ['Serial Number', 'usn', 'Username', 'tests', 'Communication', 'Technical',
-#                                'creativity', 'projectmanagement', 'timemanagement', 'general knowledge',
-#                                'interpersonal', 'resultoriented', 'leadership', 'Presentation'])
-
-#     # Write Excel data from MongoDB
-#     serial_number = 1
-#     row = 1
-#     for item in data:
-#         usn = item['usn']
-#         username = item.get('personal', {}).get('username', '')
-
-#         # Write test1 marks
-#         write_test_marks(item.get('test1', {}), worksheet, serial_number, row, cell_formats, 'test1')
-#         row += 1
-
-#         # Write test2 marks
-#         write_test_marks(item.get('test2', {}), worksheet, serial_number, row, cell_formats, 'test2')
-#         row += 1
-
-#         # Write test3 marks
-#         write_test_marks(item.get('test3', {}), worksheet, serial_number, row, cell_formats, 'test3')
-#         row += 1
-
-#         serial_number += 1
-
-#     # Close the workbook
-#     workbook.close()
-
-#     # Create a response with the Excel file
-#     response = make_response()
-#     response.data = open('data.xlsx', 'rb').read()
-#     response.headers['Content-Disposition'] = 'attachment; filename=data.xlsx'
-#     response.headers['Content-Type'] = 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
-
-#     return response
-
-
-# def write_test_marks(test, worksheet, serial_number, row, cell_formats, test_name):
-#     data = db.users.find()
-#     # Write marks with color formatting
-#     for column, skill in enumerate(['communication', 'technical', 'creativity', 'projectmmt', 'timemanagement',
-#                                     'generalknowledge', 'interpersonal', 'resultoriented', 'leardership',
-#                                     'presentation'], start=4):
-#         mark = test.get(skill, '')
-#         format = cell_formats.get(mark)
-#         worksheet.write(row, column, mark, format)
-
-#     # Write other test marks without color formatting
-#     worksheet.write(row, 0, serial_number)
-#     worksheet.write(row, 1, item.get('usn', ''))
-#     worksheet.write(row, 2, item.get('username', ''))
-#     worksheet.write(row, 3, test_name)
-
-# this one is third one  .... 
 
 
 
@@ -756,153 +708,3 @@ def downloadi_csv():
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-# @app.route("/search")
-# def search():
-
-#     title="search"
-#     return render_template("search.html",title=title)
-# @app.route("/searchfeature")
-# def searchfeature():
-
-#     title="search feature"
-#     return render_template("searchfeature.html",title=title)
-
-# @app.route("/extractedfeature")
-# def extractedfeature():
-
-#     title="extracted feature"
-#     return render_template("extractedfeature.html",title=title)
-
-# @views.route('/download_csv')
-# def download_csv():
-#     # Connect to MongoDB
- 
-
-#     # Fetch data from MongoDB
-#     data = db.users.find()
-
-#     # Create a CSV file
-#     csv_data = [['slno', 'username', 'skill1']]  # Replace with your field names
-    
-#     for item in data:
-#         print(item['password'])
-#         csv_data.append([item['password'], item['usn'], item['role']])  # Replace with your field names
-        
-        
-
-#     # Create a response with CSV data
-#     response = make_response()
-#     response.headers['Content-Disposition'] = 'attachment; filename=data.csv'
-#     # csv_data = StringIO()
-#     writer = csv.writer(csv_data)
-#     writer.writerows(csv_data)
-
-#     return response
-
-# @views.route('/download_csv')
-# def download_csv():
-#     # Connect to MongoDB
- 
-#     data = db.users.find()
-
-#     # Create CSV headers
-#     # Get all unique test skills
-#     unique_skills = set()
-#     for item in data:
-#         test1 = item.get('test1', {})
-#         print(test1.values())
-#         unique_skills.update(test1.keys())
-
-#     # Sort the unique skills alphabetically
-#     sorted_skills = sorted(unique_skills - {'communication', 'presentation', 'technical'})
-
-#     # Create CSV headers
-#     csv_headers = ['Serial Number', 'Username','', 'Communication', 'Presentation', 'Technical'] + sorted_skills
-
-#     # Create CSV rows
-#     csv_rows = []
-#     serial_number = 1
-#     for item in data:
-#         usn = item['usn']
-#         test11 = item.get('test1', {})
-#         test1 =test11.values()
-
-#         username = item.get('personal', {}).get('username', '')
-#         communication = item.get('test1', {}).get(('communication', ''),('technical', ''))
-#         presentation = item.get('test1', {}).get('presentation', '')
-#         technical = item.get('test1', {}).get('technical', '')
-#         test_marks = [item.get('test1', {}).get(skill, '') for skill in sorted_skills]
-#         csv_row = ['','', 'test1', test2_marks, test3_marks]
-
-#         csv_row = [serial_number, username, communication, presentation, technical] + test_marks
-#         csv_rows.append(test1)
-#         serial_number += 1
-
-#     # Create a response with CSV data
-#     response = make_response()
-#     response.headers['Content-Disposition'] = 'attachment; filename=data.csv'
-#     response.mimetype = 'text/csv'
-
-#     csv_data = StringIO()
-#     writer = csv.writer(csv_data)
-#     writer.writerow(csv_headers)
-#     writer.writerows(csv_rows)
-
-#     # Set the CSV data as the response content
-#     response.data = csv_data.getvalue().encode('utf-8')
-
-#     return response
-# @views.route('/downloaid_csv')
-# def downloaid_csv():
-#     # Connect to MongoDB
- 
-#     data = db.users.find()
-
-#     # Create CSV headers
-#     # Get all unique test skills
-#     # csv_headers = ['Serial Number', 'usn','Username', 'Test1', 'Test2', 'Test3']
-#     csv_headers = ['Serial Number', 'usn', 'Username','', 'Communication', 'Presentation', 'Technical'] + sorted_skills
-
-
-#     # Create CSV rows
-#     csv_rows = []
-#     serial_number = 1
-#     for item in data:
-#         usn = item['usn']
-
-#         username = item.get('personal', {}).get('username', '')
-#         test1_marks = item.get('test1', {}).get('communication', '')
-#         test2_marks = item.get('test2', {}).get('communication', '')
-#         test3_marks = item.get('test3', {}).get('communication', '')
-#         csv_row = [serial_number,usn ,username, test1_marks, test2_marks, test3_marks]
-#         csv_rows.append(csv_row)
-#         serial_number += 1
-
-#     # Create a response with CSV data
-#     response = make_response()
-#     response.headers['Content-Disposition'] = 'attachment; filename=data.csv'
-#     response.mimetype = 'text/csv'
-
-#     csv_data = StringIO()
-#     writer = csv.writer(csv_data)
-#     writer.writerow(csv_headers)
-#     writer.writerows(csv_rows)
-
-#     # Set the CSV data as the response content
-#     response.data = csv_data.getvalue().encode('utf-8')
-
-#     return response

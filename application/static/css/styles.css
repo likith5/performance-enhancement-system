@@ -259,7 +259,7 @@ padding: 15px 0 0 0 ;
 /* internship layer...  */
 .internship-head{
   margin:10% 0 0 0;
-  text-shadow: 2px 2px 2px #423FB9;
+  /* text-shadow: 2px 2px 2px #423FB9; */
 }
 .card-img-topi{
   width:50px;
@@ -271,12 +271,12 @@ padding: 15px 0 0 0 ;
   height: 300px;
   border-width: 0.5px;
   border-style: solid;
-  background-color: #5478F6;
-  box-shadow: 2px 2px 2px #6563d8;
+  background-color: #ffffff;
+  box-shadow: 2px 2px 2px 2px #403dc1;
   border-radius: 25px;
   border: 10px;
 
-color: #ccc;
+color: #202ec8;
 }
 /* piegraph page...  */
 

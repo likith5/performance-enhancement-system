@@ -259,8 +259,47 @@ def dashboard():
         username = user["personal"].get('username')
         test1 ="Test1"
         title="dashboard"
+        test1_skills = user["test1"]
+        test2_skills = user["test2"]
+        test3_skills = user["test3"]
+        # for item in test:
+        #     print(item.)
+        def summary(userr):
+            p=[]
+            for key, value in userr.items():
+                p.append(int(value))
+            return p
+        p=summary(test1_skills) 
         
+        q=summary(test2_skills)            
+        r=summary(test3_skills)
+        pp=int((sum(p)/50)*5)
+        
+        def sumskills(user1,user2,user3):
+            p=[]
+            q=[]
+            r=[]
+            t1=[]
+            t2=[]
+            t3=[]            
+            for key, value in user1.items():
+                p.append(int(value))
 
+            t1.append(int((sum(p)/50)*5))
+            # print(t1)
+
+            for key, value in user2.items():
+                q.append(int(value))
+            
+            t2.append(int((sum(q)/50)*5))
+
+            for key, value in user3.items():
+                r.append(int(value))
+            t3.append(int((sum(r)/50)*5) )
+            score1=t1+t2+t3           
+            return score1
+        score1= sumskills(test1_skills,test2_skills,test3_skills)
+     
         
         if request.method=="POST":
             man= request.form.get('test')
@@ -270,8 +309,13 @@ def dashboard():
             usn = session.get("studentemail")
             user = db.users.find_one({'usn':usn })
             username = user["personal"].get('username')
+            show_graph1=False
+            show_graph2=False
+            show_graph3=False
+            
 
-            print(test)
+            # print(test)
+
             if test=="test1":
              
                 communication = int(user['test1'].get('communication'))
@@ -284,7 +328,23 @@ def dashboard():
                 resultoriented = int(user['test1'].get('resultoriented'))
                 leardership = int(user['test1'].get('leardership'))
                 presentation = int(user['test1'].get('presentation'))
-                return render_template('dashboard.html',test1=test1,username=username,title=title,creativity=creativity,communication=communication,technical=technical,projectmm=projectmm,timemanagement=timemanagement,generalknowledge=generalknowledge,interpersonal=interpersonal,resultoriented=resultoriented,leardership=leardership,presentation=presentation)
+                show_graph1=True
+                def summary(userr):
+                    p=[]
+                    for key, value in userr.items():
+                        p.append(int(value))
+                    return p
+                p=summary(test1_skills) 
+                
+                q=summary(test2_skills)            
+                r=summary(test3_skills)
+                pp=int((sum(p)/50)*5)
+                print(p)
+                print(pp)
+
+                
+
+                return render_template('dashboard.html',show_graph1=show_graph1,pp=pp,score1=json.dumps(score1),p=json.dumps(p),q=json.dumps(q),r=json.dumps(r),test1=test1,username=username,title=title,creativity=creativity,communication=communication,technical=technical,projectmm=projectmm,timemanagement=timemanagement,generalknowledge=generalknowledge,interpersonal=interpersonal,resultoriented=resultoriented,leardership=leardership,presentation=presentation)
 
                 # redirect(url_for('views.dashboard'))
             if test=="test2":
@@ -299,7 +359,19 @@ def dashboard():
                 resultoriented = int(user['test2'].get('resultoriented'))
                 leardership = int(user['test2'].get('leardership'))
                 presentation = int(user['test2'].get('presentation'))
-                return render_template('dashboard.html',test1=test1,username=username,title=title,creativity=creativity,communication=communication,technical=technical,projectmm=projectmm,timemanagement=timemanagement,generalknowledge=generalknowledge,interpersonal=interpersonal,resultoriented=resultoriented,leardership=leardership,presentation=presentation)
+                show_graph2=True
+                def summary(userr):
+                    p=[]
+                    for key, value in userr.items():
+                        p.append(int(value))
+                    return p
+                p=summary(test1_skills) 
+                
+                q=summary(test2_skills)            
+                r=summary(test3_skills)
+                qq=int((sum(q)/50)*5)
+                
+                return render_template('dashboard.html',show_graph2=show_graph2,score1=json.dumps(score1),pp=qq,p=json.dumps(p),q=json.dumps(q),r=json.dumps(r),test1=test1,username=username,title=title,creativity=creativity,communication=communication,technical=technical,projectmm=projectmm,timemanagement=timemanagement,generalknowledge=generalknowledge,interpersonal=interpersonal,resultoriented=resultoriented,leardership=leardership,presentation=presentation)
             if test=="test3":
                
                 communication = int(user['test3'].get('communication'))
@@ -312,7 +384,16 @@ def dashboard():
                 resultoriented = int(user['test3'].get('resultoriented'))
                 leardership = int(user['test3'].get('leardership'))
                 presentation = int(user['test3'].get('presentation'))
-                return render_template('dashboard.html',test1=test1,username=username,title=title,creativity=creativity,communication=communication,technical=technical,projectmm=projectmm,timemanagement=timemanagement,generalknowledge=generalknowledge,interpersonal=interpersonal,resultoriented=resultoriented,leardership=leardership,presentation=presentation)
+                show_graph3=True
+                def summary(userr):
+                    p=[]
+                    for key, value in userr.items():
+                        p.append(int(value))
+                    return p
+                
+                r=summary(test3_skills)
+                rr=int((sum(r)/50)*5)
+                return render_template('dashboard.html',show_graph3=show_graph3,score1=json.dumps(score1),p=json.dumps(p),pp=rr,q=json.dumps(q),r=json.dumps(r),test1=test1,username=username,title=title,creativity=creativity,communication=communication,technical=technical,projectmm=projectmm,timemanagement=timemanagement,generalknowledge=generalknowledge,interpersonal=interpersonal,resultoriented=resultoriented,leardership=leardership,presentation=presentation)
 
         communication = int(user['test1'].get('communication'))
         technical = int(user["test1"].get('technical'))
@@ -324,55 +405,13 @@ def dashboard():
         resultoriented = int(user['test1'].get('resultoriented'))
         leardership = int(user['test1'].get('leardership'))
         presentation = int(user['test1'].get('presentation'))
+        print(type(presentation))
         
-        test1_skills = user["test1"]
-        test2_skills = user["test2"]
-        test3_skills = user["test3"]
-        # for item in test:
-        #     print(item.)
-        def summary(userr):
-            p=[]
-            for key, value in userr.items():
-                p.append(int(value))
-            return p
-        p=summary(test1_skills) 
-        q=summary(test2_skills)            
-        r=summary(test3_skills)
-        def sumskills(user1,user2,user3):
-            p=[]
-            q=[]
-            r=[]
-            t1=[]
-            t2=[]
-            t3=[]            
-            for key, value in user1.items():
-                p.append(int(value))
-
-            t1.append(int((sum(p)/50)*5))
-            print(t1)
-
-            for key, value in user2.items():
-                q.append(int(value))
-            
-            t2.append(int((sum(q)/50)*5))
-
-            for key, value in user3.items():
-                r.append(int(value))
-            t3.append(int((sum(r)/50)*5) )
-            score1=t1+t2+t3           
-            
-
-            
-
-
-            return score1
-       
-        score1=sumskills(test1_skills,test2_skills,test3_skills)
-        print(score1)
+        
 
         
 
-        return render_template('dashboard.html',score1=json.dumps(score1),p=json.dumps(p),q=json.dumps(q),r=json.dumps(r),test1=test1,username=username,title=title,creativity=creativity,communication=communication,technical=technical,projectmm=projectmm,timemanagement=timemanagement,generalknowledge=generalknowledge,interpersonal=interpersonal,resultoriented=resultoriented,leardership=leardership,presentation=presentation)
+        return render_template('dashboard.html',score1=json.dumps(score1),pp=pp,p=json.dumps(p),q=json.dumps(q),r=json.dumps(r),test1=test1,username=username,title=title,creativity=creativity,communication=communication,technical=technical,projectmm=projectmm,timemanagement=timemanagement,generalknowledge=generalknowledge,interpersonal=interpersonal,resultoriented=resultoriented,leardership=leardership,presentation=presentation)
 
 
         
@@ -401,7 +440,7 @@ def dashboard():
             user = db.users.find_one({'usn':usn })
             username = user["personal"].get('username')
 
-            print(test)
+            # print(test)
             if test=="test1":
              
                 communication = int(user['test1'].get('communication'))
@@ -620,8 +659,8 @@ def downloadi_csv():
         resultorienteds = test2.get('resultoriented', '')
         leaderships = test2.get('leardership', '')
         presentations = test2.get('presentation', '')
-        print(creativitys)
-        print(type(creativitys))
+        # print(creativitys)
+        # print(type(creativitys))
 
         test3 = item.get('test3', {})
         communicationss = test3.get('communication', '')

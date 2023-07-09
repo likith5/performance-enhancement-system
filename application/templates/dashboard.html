@@ -51,7 +51,7 @@
 
         <span class="top-grade-title" style="padding:10px 5px 0 15px">Overall Performance</span>
         <div class="circular-progress">
-           <span class="progress-value"> {{ pp }} </span>
+           <span class="progress-value"> {{ particular_testsummary }} </span>
            
                </div>
             </div>
@@ -71,7 +71,29 @@
            <span class="progress-value">{{ technical }}</span>
             
                </div>
+              
+
+               <div class="content">
+                {% if technical == 1  %}
+                <span class="message">Start reading tech news</span>
+                {% elif technical == 2 %}
+                <span class="message">take up relevant tech course(s)</span>
+                {% elif technical == 3 %}
+                <span class="message">complete certification courses </span>
+                {% elif technical == 4 %}
+                <span class="message">Develop website /app/ product etc</span>
+                {% elif technical == 5 %}
+                <span class="message">Take part in intercollege tech events</span>
+                {% endif%}
+
+
+
+
+
+
+              </div>
             </div>
+            
           </div>
     
 
@@ -83,8 +105,23 @@
            <span class="progress-value">{{ resultoriented }}</span>
             
                </div>
+               <div class="content">
+                {% if resultoriented == 1  %}
+                <span class="message">Take up on training session on result orientation</span>
+                {% elif resultoriented == 2 %}
+                <span class="message">Set yourself mini goals to achieve like completing a novel, topic, etc</span>
+                {% elif resultoriented == 3 %}
+                <span class="message">Take up mini projects </span>
+                {% elif resultoriented == 4 %}
+                <span class="message">Take up a complete project with a real life problem statement</span>
+                {% elif resultoriented == 5 %}
+                <span class="message">Publish white paper / case study</span>
+                {% endif%}
+
+                </div>
+              </div>
     </div>
-   
+    
    
 </div>
 </div></div>
@@ -99,8 +136,20 @@
                <span class="progress-value">{{ creativity }}</span>
                 
                    </div>
+                   <div class="content">
+                    {% if creativity  == 1  %}
+                    <span class="message">No inputs. Does things as per the given instruction</span>
+                    {% elif creativity  == 2 %}
+                    <span class="message"> Gives new inputs but not confident enough to take it up further. Lack of self confidence</span>
+                    {% elif creativity  == 3 %}
+                    <span class="message">Imaginative but resistant to change, needs to think more and be open to change and new ways </span>
+                    {% elif creativity  == 4 %}
+                    <span class="message"> Imaginative, Gives good ideas. Needs some push and mentoring</span>
+                    {% elif creativity  == 5 %}
+                    <span class="message">Highly imaginative, always thinks of doing things differently. Open to change and new styles.</span>
+                    {% endif%}                  </div>
                 </div>
-       
+                
     </div>
     <div class=" col col-lg-6 col-md-12  bari  wow fadeInRight" data-wow-duration="1s" data-wow-delay="0.5s">
         <div class=" contain3">
@@ -110,8 +159,21 @@
                <span class="progress-value">{{ interpersonal }}</span>
                 
                    </div>
+                   <div class="content">
+                    {% if interpersonal == 1  %}
+                    <span class="message">Take up on training session on result orientation</span>
+                    {% elif interpersonal == 2 %}
+                    <span class="message">Take part in extra curricular activites like sports, culturals etc</span>
+                    {% elif interpersonal == 3 %}
+                    <span class="message">become a mentors for juniors </span>
+                    {% elif interpersonal == 4 %}
+                    <span class="message">join clubs at college / outside</span>
+                    {% elif interpersonal == 5 %}
+                    <span class="message">Take part in intercollege competitions</span>
+                    {% endif %}                  
+                  </div>
                 </div>
-       
+               
     </div>
     <div class=" col col-md-12 col-lg-6 bari wow fadeInLeft  bari"  data-wow-duration="0.5s" data-wow-delay="0.5s">
         <div class=" contain3">
@@ -121,8 +183,20 @@
                <span class="progress-value">{{ timemanagement }}</span>
                 
                    </div>
+                   <div class="content">
+                    {% if timemanagement == 1  %}
+                    <span class="message">Complete online course on Time Management</span>
+                    {% elif timemanagement == 2 %}
+                    <span class="message"> Little time sense. Misses deadlines sometimes. Improper planning</span>
+                    {% elif timemanagement == 3 %}
+                    <span class="message">Last minute completion for most of tasks. No structured plan ( time, activities, output etc) </span>
+                    {% elif timemanagement == 4 %}
+                    <span class="message">Completes all tasks in time. Never late. Always meets deadlines. structured planning</span>
+                    {% elif timemanagement == 5 %}
+                    <span class="message">Completes tasks well in time and does additional tasks in the original stipulated time.</span>
+                    {% endif%}                  </div>
                 </div>
-       
+               
     </div>
 
 
@@ -134,8 +208,20 @@
                <span class="progress-value">{{ communication }}</span>
                 
                    </div>
+                   <div class="content">
+                    {% if communication == 1  %}
+                    <span class="message">Find someone to speak only in English, Enroll for a communication class, read news paper</span>
+                    {% elif communication == 2 %}
+                    <span class="message">Watch english movies, think in English, Read paper and Novels</span>
+                    {% elif communication == 3 %}
+                    <span class="message">Read Novels & Newspaper, watch Tedx videos on communication, Take part in Toast masters </span>
+                    {% elif communication == 4 %}
+                    <span class="message">Read Novels & Newspaper, watch Tedx videos on communication</span>
+                    {% elif communication == 5 %}
+                    <span class="message">Train others. Read Business News </span>
+                    {% endif%}                  </div>
                 </div>
-       
+                
     </div>
 </div>
 </div>
@@ -151,7 +237,18 @@
              <span class="progress-value">{{ generalknowledge }}</span>
               
                  </div>
-
+                 <div class="content">
+                  {% if generalknowledge == 1  %}
+                  <span class="message">Start reading online news </span>
+                  {% elif generalknowledge == 2 %}
+                  <span class="message">Start reading news paper</span>
+                  {% elif generalknowledge == 3 %}
+                  <span class="message">Start discussign with friends / faculty about current affairs </span>
+                  {% elif generalknowledge == 4 %}
+                  <span class="message">Make presentation(once in sem) on business world</span>
+                  {% elif generalknowledge == 5 %}
+                  <span class="message">Organise Quizz at college / class</span>
+                  {% endif%}                </div>
         </div>
        
     </div>
@@ -163,8 +260,20 @@
              <span class="progress-value">{{ leardership }}</span>
               
                  </div>
+                 <div class="content">
+                  {% if leardership == 1  %}
+                  <span class="message">Take up online courses on Leadership, watch movies on leadership like GANDHI, wars movies etc</span>
+                  {% elif leardership == 2 %}
+                  <span class="message">Take part in cultural activities and be part of any of the teams</span>
+                  {% elif leardership == 3 %}
+                  <span class="message">Form a group for a project work and take leadership.become assistant for any faculty </span>
+                  {% elif leardership == 4 %}
+                  <span class="message">Exhibit leadership at any of your college extra curricular events by taking important role, stand for class rep role</span>
+                  {% elif leardership == 5 %}
+                  <span class="message">Organise an event, stand for class rep role</span>
+                  {% endif%}                </div>
                 </div>
-       
+                
     </div>
     <div class=" col col-md-12 col-lg-6 bari wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.3s">
         <div class=" contain3">
@@ -173,8 +282,20 @@
              <span class="progress-value">{{ projectmm }}</span>
               
                  </div>
+                 <div class="content">
+                  {% if projectmm == 1  %}
+                  <span class="message">Take up online courses on Leadership, watch movies on leadership like GANDHI, wars movies etc</span>
+                  {% elif projectmm == 2 %}
+                  <span class="message">Take part in cultural activities and be part of any of the teams</span>
+                  {% elif projectmm == 3 %}
+                  <span class="message">Form a group for a project work and take leadership.become assistant for any faculty </span>
+                  {% elif projectmm == 4 %}
+                  <span class="message">Exhibit leadership at any of your college extra curricular events by taking important role, stand for class rep role</span>
+                  {% elif projectmm == 5 %}
+                  <span class="message">Organise an event, stand for class rep role</span>
+                  {% endif%}                </div>
                 </div>
-       
+               
     </div> 
 
     <div class=" col col-md-6 col-lg-6 bari wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.3s">
@@ -185,9 +306,20 @@
                <span class="progress-value">{{ presentation }}</span>
                 
                    </div>
-            
+                   <div class="content">
+                    {% if presentation  == 1  %}
+                    <span class="message">Find someone to speak only in English, Enroll for a communication class, read news paper</span>
+                    {% elif presentation  == 2 %}
+                    <span class="message">Watch english movies, think in English, Read paper and Novels</span>
+                    {% elif presentation  == 3 %}
+                    <span class="message">Read business articles, watch Tedx videos on presentation skills, Read Newspaper </span>
+                    {% elif presentation  == 4 %}
+                    <span class="message">Read business articles, watch Tedx videos on presentation skills, Read Newspaper. Participate in Intercollege fests</span>
+                    {% elif presentation  == 5 %}
+                    <span class="message">Train others. Read a lot of business articles</span>
+                    {% endif%}                  </div>
                 </div>
-       
+                
     </div>
    
 
@@ -204,6 +336,7 @@
 </div> 
 
 
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 
 {% if  show_graph2 %}
@@ -219,6 +352,51 @@
       
   
     </div>
+    <script>
+      let test1_results = JSON.parse({{ p | tojson }});
+      let test2_results = JSON.parse({{ q | tojson }});
+      
+  
+      
+      const ctxi = document.getElementById('mycharttest2');
+    
+    new Chart(ctxi, {
+      type: 'bar',
+      data: {
+        labels: ['Communication', 'Presentation', 'Technical', 'Result oriented', 'Project Management', 'Interpersonal','Leadership','General knowledge','Time Management','Creativity'],
+        datasets: [{
+          label: 'Test1',
+          data:  test1_results,
+          borderWidth: 1
+        },
+        {
+          label: 'Test2',
+          data:  test2_results,
+          borderWidth: 1
+        }]
+      },
+      options: {
+          scales: {
+              x: {
+                grid: {
+                  display: true, // hide x-axis grid lines
+                }
+              },
+              y: {
+                min: 0, // Set the minimum value for the y-axis
+            max: 5,
+                grid: {
+                  display: false, // hide y-axis grid lines
+                },
+                ticks: {
+                  stepSize: 1,
+                 // set the maximum value of the y-axis to 5
+                  // set the step size between values
+               }
+              }
+            }
+      }
+    });</script>
     {% endif %}
 
 {% if  show_graph3 %}
@@ -238,148 +416,110 @@
       </div></div>
   
     </div>
+   
+ 
+<script>  let test1_results = JSON.parse({{ p | tojson }});
+  let test2_results = JSON.parse({{ q | tojson }});
+  let test3_results = JSON.parse({{ r | tojson }});
+  let score1 = JSON.parse({{ score1 | tojson }});
+
+  
+  const ctxii = document.getElementById('mycharttest3');
+
+new Chart(ctxii, {
+type: 'bar',
+data: {
+  labels: ['Communication', 'Presentation', 'Technical', 'Result oriented', 'Project Management', 'Interpersonal','Leadership','General knowledge','Time Management','Creativity'],
+  datasets: [{
+    label: 'Test1',
+    data:  test1_results,
+    borderWidth: 1
+  },
+  {
+    label: 'Test2',
+    data:  test2_results,
+    borderWidth: 1
+  },
+  {
+    label: 'Test3',
+    data:  test3_results,
+    borderWidth: 1
+  }]
+},
+options: {
+    scales: {
+        x: {
+          grid: {
+            display: true, // hide x-axis grid lines
+          }
+        },
+        y: {
+          grid: {
+            display: false, // hide y-axis grid lines
+          },
+          ticks: {
+            stepSize: 1,
+           // set the maximum value of the y-axis to 5
+            // set the step size between values
+         }
+        }
+      }
+}
+});
+
+
+
+
+
+const myline2 = document.getElementById('mylinetest2');
+
+new Chart(myline2, {
+type: 'line',
+data: {
+  labels: ['Test1', 'Test2', 'Test3'],
+  datasets: [{
+    label: 'Test Summary',
+    data: score1,
+    borderWidth: 1
+  }]
+},
+options: {
+    scales: {
+        x: {
+          grid: {
+            display: false, // hide x-axis grid lines
+          }
+        },
+        y: {
+            min: 0, // Set the minimum value for the y-axis
+            max: 5, // Set the maximum value for the y-axis
+          grid: {
+            display: false, // hide y-axis grid lines
+          },
+          ticks: {
+             
+             
+            stepSize: 1,
+            // set the maximum value of the y-axis to 5
+             // set the step size between values
+          }
+        }
+      }
+}
+});
+
+
+</script>
+
+    
     <!-- <canvas id="mycharttest2" class="aligngraph"></canvas> -->
 
     {% endif %}
 
 
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
-  {% block javascript %}
-
-<script> 
-    let p = JSON.parse({{ p | tojson }});
-    let q = JSON.parse({{ q | tojson }});
-    let r = JSON.parse({{ r | tojson }});
-    let score1 = JSON.parse({{ score1 | tojson }});
-
-    
-    const ctxi = document.getElementById('mycharttest2');
-  
-  new Chart(ctxi, {
-    type: 'bar',
-    data: {
-      labels: ['Communication', 'Presentation', 'Technical', 'Result oriented', 'Project Management', 'Interpersonal','Leadership','General knowledge','Time Management','Creativity'],
-      datasets: [{
-        label: 'Test1',
-        data:  p,
-        borderWidth: 1
-      },
-      {
-        label: 'Test2',
-        data:  q,
-        borderWidth: 1
-      }]
-    },
-    options: {
-        scales: {
-            x: {
-              grid: {
-                display: true, // hide x-axis grid lines
-              }
-            },
-            y: {
-              grid: {
-                display: false, // hide y-axis grid lines
-              },
-              ticks: {
-                stepSize: 1,
-               // set the maximum value of the y-axis to 5
-                // set the step size between values
-             }
-            }
-          }
-    }
-  });
-
-    const ctxii = document.getElementById('mycharttest3');
-  
-  new Chart(ctxii, {
-    type: 'bar',
-    data: {
-      labels: ['Communication', 'Presentation', 'Technical', 'Result oriented', 'Project Management', 'Interpersonal','Leadership','General knowledge','Time Management','Creativity'],
-      datasets: [{
-        label: 'Test1',
-        data:  p,
-        borderWidth: 1
-      },
-      {
-        label: 'Test2',
-        data:  q,
-        borderWidth: 1
-      },
-      {
-        label: 'Test3',
-        data:  r,
-        borderWidth: 1
-      }]
-    },
-    options: {
-        scales: {
-            x: {
-              grid: {
-                display: true, // hide x-axis grid lines
-              }
-            },
-            y: {
-              grid: {
-                display: false, // hide y-axis grid lines
-              },
-              ticks: {
-                stepSize: 1,
-               // set the maximum value of the y-axis to 5
-                // set the step size between values
-             }
-            }
-          }
-    }
-  });
-   
   
   
  
-
-  const myline2 = document.getElementById('mylinetest2');
-
-  new Chart(myline2, {
-    type: 'line',
-    data: {
-      labels: ['Test1', 'Test2', 'Test3'],
-      datasets: [{
-        label: 'Test Summary',
-        data: score1,
-        borderWidth: 1
-      }]
-    },
-    options: {
-        scales: {
-            x: {
-              grid: {
-                display: false, // hide x-axis grid lines
-              }
-            },
-            y: {
-                min: 0, // Set the minimum value for the y-axis
-                max: 5, // Set the maximum value for the y-axis
-              grid: {
-                display: false, // hide y-axis grid lines
-              },
-              ticks: {
-                 
-                 
-                stepSize: 1,
-                // set the maximum value of the y-axis to 5
-                 // set the step size between values
-              }
-            }
-          }
-    }
-  });
- 
-  
- 
-    </script>
-    {% endblock%}
 
 <div class="container-fluid footer">
     <div class="text-center footer-tag">

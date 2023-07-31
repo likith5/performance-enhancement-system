@@ -320,40 +320,39 @@ def dashboard():
                 # redirect(url_for('views.dashboard'))
             
             if test=="test2":
-                test2 =user.get('test2')
+                # test2 =user.get('test2')
 
-                if test2 is None:
-                    return   flash(" second test marks has not been given yet")
+                # if test2 is None:
+                #     return   flash(" second test marks has not been given yet")
 
-                else:
+                # else:
 
                
-                    communication = int(user['test2'].get('communication'))
-                    technical = int(user["test2"].get('technical'))
-                    creativity = int(user['test2'].get('creativity'))
-                    projectmm = int(user['test2'].get('projectmmt'))
-                    timemanagement = int(user['test2'].get('timemanagement'))
-                    generalknowledge = int(user['test2'].get('generalknowledge'))
-                    interpersonal = int(user['test2'].get('interpersonal'))
-                    resultoriented = int(user['test2'].get('resultoriented'))
-                    leardership = int(user['test2'].get('leardership'))
-                    presentation = int(user['test2'].get('presentation'))
-                    show_graph2=True
-                    test1_skills = user["test1"]
-
-                    test2_skills = user["test2"]
-                    def summary(userr):
-                        p=[]
-                        for key, value in userr.items():
+                communication = int(user['test2'].get('communication'))
+                technical = int(user["test2"].get('technical'))
+                creativity = int(user['test2'].get('creativity'))
+                projectmm = int(user['test2'].get('projectmmt'))
+                timemanagement = int(user['test2'].get('timemanagement'))
+                generalknowledge = int(user['test2'].get('generalknowledge'))
+                interpersonal = int(user['test2'].get('interpersonal'))
+                resultoriented = int(user['test2'].get('resultoriented'))
+                leardership = int(user['test2'].get('leardership'))
+                presentation = int(user['test2'].get('presentation'))
+                show_graph2=True
+                test1_skills = user["test1"]
+                test2_skills = user["test2"]
+                def summary(userr):
+                    p=[]
+                    for key, value in userr.items():
                             p.append(int(value))
-                        return p                
-                    list_of_second_test_results=summary(test2_skills)            
-                    list_of_first_test_results=summary(test1_skills)            
-                    particular_test2summary=int((sum(list_of_second_test_results)/50)*5)
-                    particular_test1summary=int((sum(list_of_first_test_results)/50)*5)
-                    
-                    
-                    return render_template('dashboard.html',show_graph2=show_graph2,particular_testsummary=particular_test2summary,p=json.dumps(list_of_first_test_results),q=json.dumps(list_of_second_test_results),test1=test1,username=username,title=title,creativity=creativity,communication=communication,technical=technical,projectmm=projectmm,timemanagement=timemanagement,generalknowledge=generalknowledge,interpersonal=interpersonal,resultoriented=resultoriented,leardership=leardership,presentation=presentation)
+                    return p                
+                list_of_second_test_results=summary(test2_skills)            
+                list_of_first_test_results=summary(test1_skills)            
+                particular_test2summary=int((sum(list_of_second_test_results)/50)*5)
+                particular_test1summary=int((sum(list_of_first_test_results)/50)*5)
+                
+                
+                return render_template('dashboard.html',show_graph2=show_graph2,particular_testsummary=particular_test2summary,p=json.dumps(list_of_first_test_results),q=json.dumps(list_of_second_test_results),test1=test1,username=username,title=title,creativity=creativity,communication=communication,technical=technical,projectmm=projectmm,timemanagement=timemanagement,generalknowledge=generalknowledge,interpersonal=interpersonal,resultoriented=resultoriented,leardership=leardership,presentation=presentation)
             if test=="test3":
                
                 communication = int(user['test3'].get('communication'))
@@ -436,8 +435,7 @@ def dashboard():
 
         title="dashboard"
 
-        # return render_template('dashboard.html')
-    # return redirect(url_for('auth.login'))
+      
     elif  'teacheremail' in session :
         title="dashboard"
         usn = session.get("studentname")
@@ -488,15 +486,10 @@ def dashboard():
                 particular_test1summary=int((sum(p)/50)*5)
                 return render_template('dashboard.html',show_graph1=show_graph1,particular_testsummary=particular_test1summary,test1=test,username=username,title=title,creativity=creativity,communication=communication,technical=technical,projectmm=projectmm,timemanagement=timemanagement,generalknowledge=generalknowledge,interpersonal=interpersonal,resultoriented=resultoriented,leardership=leardership,presentation=presentation)
 
-                # redirect(url_for('views.dashboard'))
             if test=="test2":
                 test2 =user.get('test2')
 
-                # if test2 is None:
-                #     flash("Kindly enter the marks for second test")
-                    
-                #     return render_template('search.html')
-                # else:
+               
                
                 communication = int(user['test2'].get('communication'))
                 technical = int(user["test2"].get('technical'))
@@ -524,15 +517,7 @@ def dashboard():
                 return render_template('dashboard.html',show_graph2=show_graph2,particular_testsummary=particular_test2summary,p=json.dumps(list_of_first_test_results),q=json.dumps(list_of_second_test_results),test1=test,username=username,title=title,creativity=creativity,communication=communication,technical=technical,projectmm=projectmm,timemanagement=timemanagement,generalknowledge=generalknowledge,interpersonal=interpersonal,resultoriented=resultoriented,leardership=leardership,presentation=presentation)
             if test=="test3":
                 test3 =user.get('test3')
-                # errors= session.get("studentname")
-
-                # if test3 is None:
-                #     session["error"] = errors
-
-                #     flash("Kindly enter the marks for third test")
-                #     return url_for('views.search')
-                # else:
-               
+                
                 communication = int(user['test3'].get('communication'))
                 technical = int(user["test3"].get('technical'))
                 creativity = int(user['test3'].get('creativity'))
@@ -631,7 +616,7 @@ def search():
                 # bro = session.get['studentname']
                 flash('User found Kindly enter the marks ', category='success')
                 return redirect(url_for('views.marksenter'))
-                # return render_template('marksenter.html',usn=usn,usernames=username)
+                # return render_template('marksenter.html')
             else:
                 flash('User not found', category='error')
                 return redirect(url_for('views.search'))

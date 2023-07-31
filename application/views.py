@@ -82,22 +82,22 @@ def profile():
             if strongi >= 4:
                 return "Strong in Tech"
             else:
-                return "None"
+                return "Generic"
         strong = st(strongi)
         def lr(leaderi):
             if leaderi >= 4:
                 return "Leadership Roles"
             else:
-                return "None"
+                return "Generic"
         leader = lr(leaderi)
         def cfr(customei):
-            if customeri >= 3 and customeri <=4:
+            if  customeri <=4:
                 return "Customer Facing Roles"
             else:
                 return "None"
         customer = cfr(customeri)
         def pm(customer):
-            if projecti >= 3 and projecti <= 4 :
+            if  projecti <= 4 :
                 return "Project Management "
             else:
                 return "None"
@@ -804,7 +804,9 @@ def downloadi_csv():
 
 # @views.route('/downloadi_csv')
 # def downloadi_csv():
-   
+@views.route('/report')
+def report():
+    return render_template('report.html')
 
 
 

@@ -441,6 +441,14 @@ label{
   font-weight: bold;
 }
 
+/* report page styling...  */
+.report{
+ display: flex;
+  align-items: center;
+}
+.reportspan{
+  margin: 0 0 0 50px;
+}
 /* .buttons{
   display: flex;
   justify-content: space-evenly;

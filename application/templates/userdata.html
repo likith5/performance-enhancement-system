@@ -11,24 +11,10 @@
   
     
         <div class="col-md-7 col-lg-8">
-          <h4 class="mb-3">User Name</h4>
+          
           <form class="needs-validation" method="POST"  enctype="multipart/form-data" novalidate>
             <div class="row g-3">
-              <div class="col-sm-6">
-                <label for="firstName" class="form-label">First name</label>
-                <input type="text" class="form-control" id="firstName" placeholder="" value="" required>
-                <div class="invalid-feedback">
-                  Valid first name is required.
-                </div>
-              </div>
-  
-              <div class="col-sm-6">
-                <label for="lastName" class="form-label">Last name</label>
-                <input type="text" class="form-control" id="lastName" placeholder="" value="" required>
-                <div class="invalid-feedback">
-                  Valid last name is required.
-                </div>
-              </div>
+              
   
               <div class="col-12">
                 <label for="username" class="form-label">Username</label>
@@ -36,7 +22,7 @@
                   <span class="input-group-text">@</span>
                   <input type="text" class="form-control" id="username" name="username" placeholder="Username" required>
                 <div class="invalid-feedback">
-                    Your username is required.{{username}}
+                    Your username is required.
                   </div>
                 </div>
               </div>
@@ -50,16 +36,10 @@
                 
               </div>
               <div class="col-12">
-                <label for="address" class="form-label">Branch</label>
-                <input type="text" class="form-control" id="branch" name="branch" placeholder="" required>
+                <label for="address" class="form-label">Phone</label>
+                <input type="number" class="form-control" id="phone" name="phone" placeholder="Phone number" required>
                 <div class="invalid-feedback">
-                  Please enter your branch.
-                </div>
-              </div><div class="col-12">
-                <label for="address" class="form-label">Sem</label>
-                <input type="text" class="form-control" id="sem" name="sem" placeholder="" required>
-                <div class="invalid-feedback">
-                  Please enter your Sem .
+                  Please enter your contact number
                 </div>
               </div>
               <div class="col-12">
@@ -69,17 +49,96 @@
                   Please enter your college .
                 </div>
               </div>
-  
+              <div class="col-12">
+                <label for="address" class="form-label">Number of Certifications</label>
+                <select class="form-select shadow-none" aria-label="Default select example">
+                  <option selected>Please select from the dropdown</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                </select>       
+                    </div>
+              </div>
+              <div class="col-12">
+                <label for="skills" class="form-label pt-3">Number of Skills</label>
+                <div class="d-flex form-skills"><select class="form-select shadow-none  mb-3" aria-label="Large select example">
+                  <option selected>Technical Skills</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                </select>
+                
+                <select class="form-select shadow-none  mb-3  " aria-label="Small select example">
+                  <option selected>SoftSkills</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                </select>
+              </div>
+                
+                
+              </div>
+              <div class="col-12">
+                <label for="skills" class="form-label pt-2 mb-3 pl-5" aria-label="Small select example">Class 10: Board And Marks Scored</label>
+                <div class="d-flex form-skills"><select class="form-select shadow-none mb-3" aria-label="Large select example">
+                  <option selected>Select Board</option>
+                  <option value="1">State</option>
+                  <option value="2">CBSE</option>
+                  <option value="3">ICSE</option>
+                </select>
+                <div class="pl-5">
+                  <!-- <label for="address" class="form-label">Phone</label> -->
+                  <input type="text" class="form-control" id="text" name="text" placeholder="Enter your marks" required>
+                  <div class="invalid-feedback">
+                    Please enter your valid marks
+                  </div>
+                </div>
+                <!-- <input class="form-control " type="text" placeholder="Marks scored" required> -->
+
+              </div>
+                
+                
+              </div>
+             
+              <div class="col-12">
+                <label for="skills" class="form-label mb-3 pt-2 pl-5" aria-label="Small select example">Class 12: Board And Marks Scored</label>
+                <div class="d-flex form-skills"><select class="form-select shadow-none  mb-3" aria-label="Large select example">
+                  <option selected>Select Board</option>
+                  <option value="1">State</option>
+                  <option value="2">CBSE</option>
+                  <option value="3">ICSE</option>
+                </select>
+
+                <div class="pl-5">
+                  <!-- <label for="address" class="form-label">Phone</label> -->
+                  <input type="text" class="form-control " id="text" name="text" placeholder="Enter your marks" required>
+                  <div class="invalid-feedback">
+                    Please enter your valid marks
+                  </div>
+                </div>
+              </div>
+                
+                
+              </div>
+             
+              <div class="col-12 pt-2">
+                <label for="address" class="form-label">UG Average % from the semesters</label>
+                <input type="text" class="form-control" id="college" name="college" placeholder="marks" required>
+                <div class="invalid-feedback">
+                  Please enter your average marks .
+                </div>
+              </div>
               
   
-              <div class="col-12">
+              <div class="col-12 pt-2">
                 <label for="address2" class="form-label">linkdin <span class="text-muted">(Optional)</span></label>
                 <input type="text" class="form-control" id="linkdin" name="linkdin" placeholder="Linkdin url">
               </div>
-              <div class="col-12">
+              <div class="col-12 pt-2">
                 <label for="address2" class="form-label">Github <span class="text-muted">(Optional)</span></label>
                 <input type="text" class="form-control" id="github" name="github" placeholder="Github url">
               </div>
+              
   
               <!-- <div class="col-md-5">
                 <label for="country" class="form-label">Country</label>
@@ -94,23 +153,58 @@
 
   
              <hr>
+             <!-- <div class="mb-3">
+              <label for="exampleFormControlTextarea1" class="form-label">Please mention the Internship Experience:</label>
+              <textarea class="form-control" id="exampleFormControlTextarea1" rows="5"></textarea>
+            </div>
+            
+            <div class="col-md-3">
+              <label for="cc-expiration" class="form-label">Please Mention the certification below</label>
+              <input type="text" class="form-control mb-2" id="cc-name" name="intrest-1" placeholder="certificate-1" required >
+              <input type="text" class="form-control  mb-2" id="cc-name"name="in-2" placeholder="certificate-2" >
+              <input type="text" class="form-control  mb-2" id="cc-name"name="in-3" placeholder="certificate-3" >
+                                <div class="invalid-feedback">
+                Mention any one
+              </div>
+            </div> 
+            <div class="col-md-6">
+              <label for="cc-name" class="form-label">Please Select the skills below </label>
+              <input type="text" class="form-control" id="college" name="college" placeholder="marks" required>
+
+              <input type="text" class="form-control mb-2" id="cc-name" name = "i-1" placeholder="Skill1" required >
+              <input type="text" class="form-control  mb-2" id="cc-name" name = "i-2" placeholder="Skill2" >
+              <input type="text" class="form-control  mb-2" id="cc-name" name = "i-3" placeholder="Skill3" >
+            
+              <small class="text-muted"></small>
+              <div class="invalid-feedback">
+                  Enter skills details                </div>
+            </div> -->
+            <div class="col-12">
+              <label for="" class="form-label">Please Select the skills below  </label>
+              <input type="text" class="form-control mt-2" id="certification" name="certification" placeholder="Skill-1" required>
+              <input type="text" class="form-control mt-2" id="certification" name="certification" placeholder="Skill-2" required>
+              <input type="text" class="form-control mt-2" id="certification" name="certification" placeholder="Skill-3" required>
+              <div class="invalid-feedback">
+                Please enter a valid email 3ddress for shipping updates.
+              </div>
+              
+            </div>
+            <div class="col-12 pt-3">
+              <label for="" class="form-label">Please Mention the certification below </label>
+              <input type="text" class="form-control mt-2" id="certification" name="certification" placeholder="certification-1" required>
+              <input type="text" class="form-control mt-2" id="certification" name="certification" placeholder="certification-2" required>
+              <input type="text" class="form-control mt-2" id="certification" name="certification" placeholder="certification-3" required>
+              <div class="invalid-feedback">
+                Please enter a valid email 3ddress for shipping updates.
+              </div>
+              
+            </div>
           </div>
-            <h4 class="mb-3">Personal Skills</h4>
+
   
            
-            <div class="row gy-3">
-              <div class="col-md-6">
-                <label for="cc-name" class="form-label">Internships </label>
-                <input type="text" class="form-control mb-2" id="cc-name" name = "i-1" placeholder="Internships" required >
-                <input type="text" class="form-control  mb-2" id="cc-name" name = "i-2" placeholder="(optional)" >
-                <input type="text" class="form-control  mb-2" id="cc-name" name = "i-3" placeholder="(optional)" >
-                
-                <small class="text-muted"></small>
-                <div class="invalid-feedback">
-                    Enter internships details                </div>
-              </div>
-  
-              <div class="col-md-6">
+            <!-- <div class="row gy-3"> -->
+              <!-- <div class="col-md-6">
                 <label for="cc-number" class="form-label">Projects</label>
                 <input type="text" class="form-control mb-2" id="cc-name"  name="p-1" placeholder="Projects" required >
                 <input type="text" class="form-control  mb-2" id="cc-name" name="p-2" placeholder="(optional)" >
@@ -118,22 +212,8 @@
                                 <div class="invalid-feedback">
                  One project is required
                 </div>
-              </div>
-  
-              <div class="col-md-3">
-                <label for="cc-expiration" class="form-label">Interests</label>
-                <input type="text" class="form-control mb-2" id="cc-name" name="intrest-1" placeholder="Interests" required >
-                <input type="text" class="form-control  mb-2" id="cc-name"name="in-2" placeholder="(optional)" >
-                <input type="text" class="form-control  mb-2" id="cc-name"name="in-3" placeholder="(optional)" >
-                                  <div class="invalid-feedback">
-                  Mention any one
-                </div>
-              </div> 
-              <div class="mb-3">
-                <label for="formFile" class="form-label">Upload your Resume</label>
-                <input class="form-control" type="file" name ="resume" id="formFile">
-              </div> 
-            </div>
+              </div> -->
+            <!-- </div> -->
   
             <hr class="my-4">
   

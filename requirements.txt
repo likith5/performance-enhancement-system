@@ -1,0 +1,6 @@
+flask
+flask_pymongo
+openpyxl
+xlsxwriter
+bcrypt
+flask_session

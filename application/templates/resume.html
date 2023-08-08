@@ -1,0 +1,122 @@
+
+{% extends "index.html" %}
+
+{% block content %}
+<button class="btn btn-primary mt-5" href="#" id="downloading" role="button">Download report</button>
+<div id="invoice" class="">
+
+
+
+<div class="border border-dark border-4 pb-2 fs-5" style="margin:25px;padding:0 0 30px 0;  display:relative">
+    <div class="inner">
+    <div class="  p-5 header"><h1 class="text-center">Resume</h1></div>
+    <div class="container ">
+        <div class="row =" style="margin:0 0 10px 0" >
+
+            <div class="col fw-bolder " style="display: flex;">Name:<p class="  fw-bold " style="padding:0 0 0 15px">Likith</p></div>
+            <div class="col fw-bolder " style="display: flex; ">E-mail:<p class="fw-bold" style="padding:0 0 0 15px">lavinelev@gmail.com</p></div>
+        </div>
+        <div class="row" style="margin:0 0 10px 0" >
+            <div class="col fw-bolder" style="display: flex;">UGCollege: <p class=" fw-bold" style="padding:0 0 0 15px">Dayananda Sagar college</p></div>
+
+            <div class="col fw-bolder" style="display: flex;">Phone:<p class=" fw-bold" style="padding:0 0 0 15px">9148248299</p></div>
+        </div>
+        <div class="row" style="margin:0 0 10px 0" >
+            <div class="col fw-bolder" style="display: flex;">Number of technical Skills: <p class=" fw-bold" style="padding:0 0 0 15px">8</p></div>
+            <div class="col fw-bolder" style="display: flex;">City:<p class=" fw-bold" style="padding:0 0 0 15px">9148248299</p></div>
+        </div>
+        <div class="row" style="margin:0 0 10px 0">
+            <div class="col fw-bolder" style="display: flex;">Number of soft Skills: <p class=" fw-bold" style="padding:0 0 0 15px">5</p></div>
+        </div>
+      
+       
+      
+    </div>
+<div class="  " style="margin:20px 0 0 30px; padding: 0 0 30px 0;">
+    <table class="table table-primary ">
+        <thead>
+          <tr>
+            <th scope="col">Class</th>
+            <th scope="col">10th</th>
+            <th scope="col">12TH</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">Board</th>
+            <td>State</td>
+            <td>cbse</td>
+            
+          </tr>
+          <tr >
+            <th scope="row">percentage</th>
+            <td>98%</td>
+            <td>92%</td>
+          </tr>
+         
+        </tbody>
+      </table>
+</div>
+<div class="other" style="margin:20px 0 0 45px">
+<div class="row pt-1  pd-5" style="padding:0 0 10px 0">
+    <div class="col fw-bolder " style="display: flex; ">Degree percentage: <p class="pl-4 fw-bold" style="padding:0 0 0 25px">95%</p></div>
+</div>
+<div class="row ">
+    <div class="col fw-bolder pl-4" style="display: flex;">Internship Experience: </div>
+    <div class="">
+        <p class="pb-4">When using display: grid, you can make use of  This can save on having to add When using display: grid, you can make use of When using display: grid, you can make use of When using display: grid, you can make use of When using display: grid, you can make use of When using display: grid, you can make use Gap utilities are responsive by default,grid, you can make use of gap utilities on the parent grid container. This can save on having to add margin utilit Gap utilities are responsive by default, and are generated via our utilities and are generated via our utilities API, based on the $spacers Sass map</p>
+    </div>
+</div>
+</div>
+</div>
+</div>
+<div class="border border-dark border-4 mt-4 fs-5" style="margin:400px 25px 25px 25px ;">
+    <div class="inner" style="padding:35px">
+<div class="row">
+    <div class="col fw-bolder" style="display: flex;">skills:</div>
+    <div> <ol class="p-4">
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ol></div>
+</div>
+<div class="row">
+    <div class="col fw-bolder" style="display: flex;">Certifications: </div>
+    <div> <ol class="p-4">
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ol></div>
+</div>
+<div class="row pt-2 pb-2">
+    <div class="col fw-bolder" style="display: flex;">Why I Should be hired (in 100 words):</div>
+    <p class="p-5">When using display: grid, you can make use of gap utilities on the parent grid container. This can save on having to add margin utilities to individual grid items (children of a display: grid container). Gap utilities are responsive by default, and are generated via our utilities API, based on the $spacers Sass map</p>
+</div>
+</div>
+</div>
+</div>
+
+
+
+<script>
+    window.onload = function () {
+        document.getElementById("downloading")
+            .addEventListener("click", () => {
+                const invoice = this.document.getElementById("invoice");
+                console.log(invoice);
+                console.log(window);
+                var opt = {
+                    margin: 0,
+                    filename: 'myresume.pdf',
+                    image: { type: 'jpeg', quality: 0.98 },
+                    html2canvas: { scale: 4},
+                    jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
+                };
+                html2pdf().from(invoice).set(opt).save();
+            })
+    }
+    
+  </script>
+     {% endblock content %}

@@ -807,6 +807,9 @@ def downloadi_csv():
 @views.route('/report')
 def report():
     return render_template('report.html')
+@views.route('/resume')
+def resume():
+    return render_template('resume.html')
 
 
 

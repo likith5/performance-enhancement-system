@@ -185,9 +185,12 @@ margin-top: 10%;
     border-style: solid;
     height: 150px;
 }
+.newprof{
+  /* background-color:rgb(168, 161, 161); */
+}
 .cloud{
-  width:300px;
-  height: 150px;
+  position: absolute;
+ 
 }
 .descriptionlist{
 display: flex;
@@ -252,10 +255,20 @@ padding: 15px 0 0 0 ;
   /* margin-left: 10px; */
   padding:0 35px;
 }
-.profilelist p{
-  margin-bottom: 0px;
+.profilelist1 {
   color:#ffffff;
 }
+/* updated version ....  */
+.profilelist2 {
+  color:#030303;
+}
+/* updated version ....  */
+
+
+
+
+
+
 /* internship layer...  */
 .internship-head{
   margin:10% 0 0 0;
@@ -311,7 +324,9 @@ margin: 50px 0 0 0px;
 .footer-tag{
   padding:75px 0 0 0;
 }
-
+.card-text{
+  font-size: 18px;
+}
 
 
 /* extraa.... */

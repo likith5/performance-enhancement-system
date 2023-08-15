@@ -2,11 +2,14 @@
 .back{
 
     box-shadow: 0 4px 8px 0 rgba(38, 193, 221, 0.568), 0 6px 20px 0 rgba(143, 234, 244, 0.72);
-    width:90%;
-    padding: 0 0 25px 0;
+    width:80%;
+    padding:50px;
     border-radius: 15px;
 
 
+}
+.newentry{
+  margin:0 0 0 8%;
 }
 .heading_dash{
 

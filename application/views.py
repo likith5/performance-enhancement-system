@@ -117,7 +117,7 @@ def profile():
         
         
 
-        return render_template('profile.html',title=title,usn=usn,design=design,market=market,strong=strong,leader=leader,customer=customer,project=project,username=username,email=email,college=college,phone=phone,linkdin=linkdin,github=github,userusn=userusn)
+        return render_template('profile.html',title=title,usn=usn,user=user,design=design,market=market,strong=strong,leader=leader,customer=customer,project=project,username=username,email=email,college=college,phone=phone,linkdin=linkdin,github=github,userusn=userusn)
  
 
 
@@ -657,6 +657,7 @@ def userdata():
             certification3= request.form.get('certification3')
             certification4= request.form.get('certification4')
             certification5= request.form.get('certification5')
+            internshipexperience= request.form.get('internshipexperience')
 
             hiredcontent= request.form.get('hiredcontent')
            
@@ -671,12 +672,14 @@ def userdata():
                                     "email": email,
                                     "phone": phone,
                                     "city": city,
-                                    " college":  college,
+                                    "college":college,
                                     "numberofcertifications":numberofcertifications,
                                     "technicalskills":technicalskills,
                                     "softskills":softskills,
                                     "tenthboard":tenthboard,
+                                    "tenthmarks":tenthmarks,
                                     "twelvethboard":twelvethboard,
+                                    "twelvethmarks":twelvethmarks,
                                     "ugaverage":ugaverage,
                                     "linkdin": linkdin,
                                     "github": github,
@@ -690,7 +693,42 @@ def userdata():
                                     "certification3":certification3,
                                     "certification4":certification4,
                                     "certification5":certification5,
+                                    "internshipexperience":internshipexperience,
                                     "hiredcontent":hiredcontent,
+                                }
+                            }
+                        }
+                    )
+                db.users.update_one(
+                        {"usn": usn},
+                        {
+                            "$set": {
+                                "certificate": {
+                                    
+                                    
+                                    "certification1":certification1,
+                                    "certification2":certification2,
+                                    "certification3":certification3,
+                                    "certification4":certification4,
+                                    "certification5":certification5,
+                                    
+                                }
+                            }
+                        }
+                    )
+                db.users.update_one(
+                        {"usn": usn},
+                        {
+                            "$set": {
+                                "skills": {
+                                    
+                                    
+                                     "skill1":skill1,
+                                    "skill2":skill2,
+                                    "skill3":skill3,
+                                    "skill4":skill4,
+                                    "skill5":skill5,
+                                    
                                 }
                             }
                         }
@@ -874,9 +912,17 @@ def resume():
         certification4 = user["personal"].get('certification4')
         certification5 = user["personal"].get('certification5')
         
+        # for key,value in p.items():
+        #     if value=="dsce":
+        #         print("heyy well done ") 
+        #     else:
+        #         print('better luck next time')
+        
+
+        
         title="dashboard"
 
-    return render_template('resume.html',user=user,technicalskills=technicalskills,numberofcertifications=numberofcertifications,title=title,username=username,email=email,college=college,phone=phone,linkdin=linkdin,github=github,)
+    return render_template('resume.html',user=user)
 
 
 

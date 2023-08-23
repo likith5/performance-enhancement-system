@@ -23,7 +23,7 @@
         </div>
         <div class="row" style="margin:0 0 10px 0" >
             <div class="col fw-bolder" style="display: flex;">Number of technical Skills: <p class=" fw-bold" style="padding:0 0 0 15px">{{user.personal.technicalskills}}</p></div>
-            <div class="col fw-bolder" style="display: flex;">City:<p class=" fw-bold" style="padding:0 0 0 15px">{{user.personal.phone}}</p></div>
+            <div class="col fw-bolder" style="display: flex;">City:<p class=" fw-bold" style="padding:0 0 0 15px">{{user.personal.city}}</p></div>
         </div>
         <div class="row" style="margin:0 0 10px 0">
             <div class="col fw-bolder" style="display: flex;">Number of soft Skills: <p class=" fw-bold" style="padding:0 0 0 15px">{{user.personal.softskills}}</p></div>
@@ -44,7 +44,7 @@
         <tbody>
           <tr>
             <th scope="row">Board</th>
-            <td>{{user.personal.tenthboard  }}123</td>
+            <td>{{user.personal.tenthboard  }}</td>
             <td>{{user.personal.twelvethboard}}</td>
             
           </tr>
@@ -59,12 +59,12 @@
 </div>
 <div class="other" style="margin:20px 0 0 45px">
 <div class="row pt-1  pd-5" style="padding:0 0 10px 0">
-    <div class="col fw-bolder " style="display: flex; ">Degree percentage: <p class="pl-4 fw-bold" style="padding:0 0 0 25px">95%</p></div>
+    <div class="col fw-bolder " style="display: flex; ">Degree percentage: <p class="pl-4 fw-bold" style="padding:0 0 0 25px">{{user.personal.ugaverage}}%</p></div>
 </div>
 <div class="row ">
-    <div class="col fw-bolder pl-4" style="display: flex;">Internship Experience: </div>
+    <div class="col fw-bolder pl-4" style="display: flex; ">Internship Experience: </div>
     <div class="">
-        <p class="pb-4">When using display: grid, you can make use of  This can save on having to add When using display: grid, you can make use of When using display: grid, you can make use of When using display: grid, you can make use of When using display: grid, you can make use of When using display: grid, you can make use Gap utilities are responsive by default,grid, you can make use of gap utilities on the parent grid container. This can save on having to add margin utilit Gap utilities are responsive by default, and are generated via our utilities and are generated via our utilities API, based on the $spacers Sass map</p>
+        <p class="pb-4" style=" height:300px;">{{user.personal.internshipexperience}}</p>
     </div>
 </div>
 </div>
@@ -75,29 +75,29 @@
 <div class="row">
     <div class="col fw-bolder" style="display: flex;">skills:</div>
     <div> <ol class="p-4">
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
+        {% for key,value in user.skills.items() %}
+
+        <li>{{value}}</li>
+        {% endfor %}
+       
     </ol></div>
 </div>
 <div class="row">
     <div class="col fw-bolder" style="display: flex;">Certifications: </div>
     <div> <ol class="p-4">
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
+        {% for key,value in user.certificate.items() %}
+
+        <li>{{value}}</li>
+        {% endfor %}
     </ol></div>
 </div>
 <div class="row pt-2 pb-2">
     <div class="col fw-bolder" style="display: flex;">Why I Should be hired (in 100 words):</div>
-    <p class="p-5">When using display: grid, you can make use of gap utilities on the parent grid container. This can save on having to add margin utilities to individual grid items (children of a display: grid container). Gap utilities are responsive by default, and are generated via our utilities API, based on the $spacers Sass map</p>
+    <p class="p-5" style=" height:150px;">{{user.personal.hiredcontent}}</p>
 </div>
 </div>
 </div>
 </div>
-
 
 
 <script>
@@ -111,7 +111,7 @@
                     margin: 0,
                     filename: 'myresume.pdf',
                     image: { type: 'jpeg', quality: 0.98 },
-                    html2canvas: { scale: 4},
+                    html2canvas: { scale: 2},
                     jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
                 };
                 html2pdf().from(invoice).set(opt).save();
@@ -119,4 +119,5 @@
     }
     
   </script>
+
      {% endblock content %}

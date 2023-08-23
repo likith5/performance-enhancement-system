@@ -1,0 +1,123 @@
+
+{% extends "index.html" %}
+
+{% block content %}
+<button class="btn btn-primary mt-5" href="#" id="downloading" role="button">Download report</button>
+<div id="invoice" class="">
+
+
+
+<div class="border border-dark border-4 pb-2 fs-5" style="margin:25px;padding:0 0 30px 0;  display:relative">
+    <div class="inner">
+    <div class="  p-5 header"><h1 class="text-center">Resume</h1></div>
+    <div class="container ">
+        <div class="row =" style="margin:0 0 10px 0" >
+
+            <div class="col fw-bolder " style="display: flex;">Name:<p class="  fw-bold " style="padding:0 0 0 15px">{{user.personal.username}}</p></div>
+            <div class="col fw-bolder " style="display: flex; ">E-mail:<p class="fw-bold" style="padding:0 0 0 15px">{{user.personal.email}}</p></div>
+        </div>
+        <div class="row" style="margin:0 0 10px 0" >
+            <div class="col fw-bolder" style="display: flex;">UGCollege: <p class=" fw-bold" style="padding:0 0 0 15px">{{user.personal.college}}</p></div>
+
+            <div class="col fw-bolder" style="display: flex;">Phone:<p class=" fw-bold" style="padding:0 0 0 15px">{{user.personal.phone}}</p></div>
+        </div>
+        <div class="row" style="margin:0 0 10px 0" >
+            <div class="col fw-bolder" style="display: flex;">Number of technical Skills: <p class=" fw-bold" style="padding:0 0 0 15px">{{user.personal.technicalskills}}</p></div>
+            <div class="col fw-bolder" style="display: flex;">City:<p class=" fw-bold" style="padding:0 0 0 15px">{{user.personal.city}}</p></div>
+        </div>
+        <div class="row" style="margin:0 0 10px 0">
+            <div class="col fw-bolder" style="display: flex;">Number of soft Skills: <p class=" fw-bold" style="padding:0 0 0 15px">{{user.personal.softskills}}</p></div>
+        </div>
+      
+       
+      
+    </div>
+<div class="  " style="margin:20px 0 0 30px; padding: 0 0 30px 0;">
+    <table class="table table-primary ">
+        <thead>
+          <tr>
+            <th scope="col">Class</th>
+            <th scope="col">10th</th>
+            <th scope="col">12TH</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">Board</th>
+            <td>{{user.personal.tenthboard  }}</td>
+            <td>{{user.personal.twelvethboard}}</td>
+            
+          </tr>
+          <tr >
+            <th scope="row">percentage</th>
+            <td>{{user.personal.tenthmarks}}%</td>
+            <td>{{user.personal.twelvethmarks}}%</td>
+          </tr>
+         
+        </tbody>
+      </table>
+</div>
+<div class="other" style="margin:20px 0 0 45px">
+<div class="row pt-1  pd-5" style="padding:0 0 10px 0">
+    <div class="col fw-bolder " style="display: flex; ">Degree percentage: <p class="pl-4 fw-bold" style="padding:0 0 0 25px">{{user.personal.ugaverage}}%</p></div>
+</div>
+<div class="row ">
+    <div class="col fw-bolder pl-4" style="display: flex; ">Internship Experience: </div>
+    <div class="">
+        <p class="pb-4" style=" height:300px;">{{user.personal.internshipexperience}}</p>
+    </div>
+</div>
+</div>
+</div>
+</div>
+<div class="border border-dark border-4 mt-4 fs-5" style="margin:400px 25px 25px 25px ;">
+    <div class="inner" style="padding:35px">
+<div class="row">
+    <div class="col fw-bolder" style="display: flex;">skills:</div>
+    <div> <ol class="p-4">
+        {% for key,value in user.skills.items() %}
+
+        <li>{{value}}</li>
+        {% endfor %}
+       
+    </ol></div>
+</div>
+<div class="row">
+    <div class="col fw-bolder" style="display: flex;">Certifications: </div>
+    <div> <ol class="p-4">
+        {% for key,value in user.certificate.items() %}
+
+        <li>{{value}}</li>
+        {% endfor %}
+    </ol></div>
+</div>
+<div class="row pt-2 pb-2">
+    <div class="col fw-bolder" style="display: flex;">Why I Should be hired (in 100 words):</div>
+    <p class="p-5" style=" height:150px;">{{user.personal.hiredcontent}}</p>
+</div>
+</div>
+</div>
+</div>
+
+
+<script>
+    window.onload = function () {
+        document.getElementById("downloading")
+            .addEventListener("click", () => {
+                const invoice = this.document.getElementById("invoice");
+                console.log(invoice);
+                console.log(window);
+                var opt = {
+                    margin: 0,
+                    filename: 'myresume.pdf',
+                    image: { type: 'jpeg', quality: 0.98 },
+                    html2canvas: { scale: 2},
+                    jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
+                };
+                html2pdf().from(invoice).set(opt).save();
+            })
+    }
+    
+  </script>
+
+     {% endblock content %}

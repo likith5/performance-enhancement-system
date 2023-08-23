@@ -52,15 +52,15 @@ def profile():
         usn = session.get('studentemail')
         user = db.users.find_one({'usn':usn })
         username = user["personal"].get('username')
+        userusn=user["usn"]
         email = user["personal"].get('email')
         college = user["personal"].get('college')
-        sem = user["personal"].get('sem')
+        phone = user["personal"].get('phone')
         linkdin = user["personal"].get('linkdin')
         github = user["personal"].get('github')
-        project1 = user["personal"].get('project-1')
-        intership1 = user["personal"].get('internship-1')
-        interst1 = user["personal"].get('interst-1')
+        
         title="dashboard"
+
         communication = int(user['test1'].get('communication'))
         technical = int(user["test1"].get('technical'))
         creativity = int(user['test1'].get('creativity'))
@@ -117,7 +117,7 @@ def profile():
         
         
 
-        return render_template('profile.html',title=title,usn=usn,design=design,market=market,strong=strong,leader=leader,customer=customer,project=project,username=username,email=email,college=college,sem=sem,linkdin=linkdin,github=github,intership1=intership1,project1=project1,interst1=interst1)
+        return render_template('profile.html',title=title,usn=usn,user=user,design=design,market=market,strong=strong,leader=leader,customer=customer,project=project,username=username,email=email,college=college,phone=phone,linkdin=linkdin,github=github,userusn=userusn)
  
 
 
@@ -634,16 +634,33 @@ def userdata():
 
             username= request.form.get('username')
             email = request.form.get('email')
+            phone = request.form.get('phone')
             college = request.form.get('college')
-            sem= request.form.get('sem')
+            city = request.form.get('city')
+            numberofcertifications= request.form.get('numberofcertifications')       
+            technicalskills= request.form.get('technicalskills')
+            softskills= request.form.get('softskills')
+            tenthboard= request.form.get('tenthboard')
+            tenthmarks= request.form.get('tenthmarks')
+            twelvethboard= request.form.get('twelvethboard')
+            twelvethmarks= request.form.get('twelvethmarks')
+            ugaverage= request.form.get('ugaverage')
             linkdin= request.form.get('linkdin')
             github= request.form.get('github')
-            internship1= request.form.get('i-1')
-            project1= request.form.get('p-1')
-            interst1= request.form.get('intrest-1')
-            file = request.files['resume']
-            file_data = file.read()
-            binary_data = Binary(file_data)
+            skill1= request.form.get('skill1')
+            skill2= request.form.get('skill2')
+            skill3= request.form.get('skill3')
+            skill4= request.form.get('skill4')
+            skill5= request.form.get('skill5')
+            certification1= request.form.get('certification1')
+            certification2= request.form.get('certification2')
+            certification3= request.form.get('certification3')
+            certification4= request.form.get('certification4')
+            certification5= request.form.get('certification5')
+            internshipexperience= request.form.get('internshipexperience')
+
+            hiredcontent= request.form.get('hiredcontent')
+           
 
             try:
                 db.users.update_one(
@@ -653,14 +670,65 @@ def userdata():
                                 "personal": {
                                     "username": username,
                                     "email": email,
-                                    "college": college,
-                                    " sem":  sem,
+                                    "phone": phone,
+                                    "city": city,
+                                    "college":college,
+                                    "numberofcertifications":numberofcertifications,
+                                    "technicalskills":technicalskills,
+                                    "softskills":softskills,
+                                    "tenthboard":tenthboard,
+                                    "tenthmarks":tenthmarks,
+                                    "twelvethboard":twelvethboard,
+                                    "twelvethmarks":twelvethmarks,
+                                    "ugaverage":ugaverage,
                                     "linkdin": linkdin,
                                     "github": github,
-                                    "internship-1": internship1,
-                                    "project-1": project1,
-                                    "interst-1": interst1,
-                                    "resume":binary_data,
+                                    "skill1":skill1,
+                                    "skill2":skill2,
+                                    "skill3":skill3,
+                                    "skill4":skill4,
+                                    "skill5":skill5,
+                                    "certification1":certification1,
+                                    "certification2":certification2,
+                                    "certification3":certification3,
+                                    "certification4":certification4,
+                                    "certification5":certification5,
+                                    "internshipexperience":internshipexperience,
+                                    "hiredcontent":hiredcontent,
+                                }
+                            }
+                        }
+                    )
+                db.users.update_one(
+                        {"usn": usn},
+                        {
+                            "$set": {
+                                "certificate": {
+                                    
+                                    
+                                    "certification1":certification1,
+                                    "certification2":certification2,
+                                    "certification3":certification3,
+                                    "certification4":certification4,
+                                    "certification5":certification5,
+                                    
+                                }
+                            }
+                        }
+                    )
+                db.users.update_one(
+                        {"usn": usn},
+                        {
+                            "$set": {
+                                "skills": {
+                                    
+                                    
+                                     "skill1":skill1,
+                                    "skill2":skill2,
+                                    "skill3":skill3,
+                                    "skill4":skill4,
+                                    "skill5":skill5,
+                                    
                                 }
                             }
                         }
@@ -692,7 +760,14 @@ def userdata():
 
      
 
-
+# @views.route('profileskills')
+# def profileskills():
+#     if request.method == "POST":
+#         num_inputs = int(request.form.get("num_inputs", 0))
+#     else:
+#         num_inputs = 0
+    
+#     return render_template("index.html", num_inputs=num_inputs)
 
 
 
@@ -807,6 +882,48 @@ def downloadi_csv():
 @views.route('/report')
 def report():
     return render_template('report.html')
+@views.route('/resume')
+def resume():
+    if 'studentemail' in session :
+        usn = session.get('studentemail')
+        user = db.users.find_one({'usn':usn })
+        username = user["personal"].get('username')
+        email = user["personal"].get('email')
+        college = user["personal"].get('college')
+        phone = user["personal"].get('phone')
+        numberofcertifications = user["personal"].get('numberofcertifications')
+        technicalskills = user["personal"].get('technicalskills')
+        softskills = user["personal"].get('softskills')
+        tenthboard = user["personal"].get('tenthboard')
+        tenthmarks = user["personal"].get('tenthmarks')
+        twelvethboard = user["personal"].get('twelvethboard')
+        twelvethmarks = user["personal"].get('twelvethmarks')
+        ugaverage = user["personal"].get('ugaverage')
+        linkdin = user["personal"].get('linkdin')
+        github = user["personal"].get('github')
+        skill1 = user["personal"].get('skill1')
+        skill2 = user["personal"].get('skill2')
+        skill3 = user["personal"].get('skill3')
+        skill4 = user["personal"].get('skill4')
+        skill5 = user["personal"].get('skill5')
+        certification1 = user["personal"].get('certification1')
+        certification2 = user["personal"].get('certification2')
+        certification3= user["personal"].get('certification3')
+        certification4 = user["personal"].get('certification4')
+        certification5 = user["personal"].get('certification5')
+        
+        # for key,value in p.items():
+        #     if value=="dsce":
+        #         print("heyy well done ") 
+        #     else:
+        #         print('better luck next time')
+        
+
+        
+        title="dashboard"
+
+    return render_template('resume.html',user=user)
+
 
 
 

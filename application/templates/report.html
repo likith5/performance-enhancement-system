@@ -1,655 +1,729 @@
+{% extends "index.html" %} {% block content %}
 
-{% extends "index.html" %}
-
-{% block content %}
-
-<button class="btn btn-primary mt-5" href="#" id="download" role="button">Download report</button>
+<button class="btn btn-primary mt-5 download-report" href="#" id="download" role="button">
+  Download Report
+</button>
 <div id="invoice" class="">
-<p class="text-center">The Best performance Analyser</p>
-<p class="text-center">‘Based on Principles of Continuous Improvement’
-</p>
-<div>
-    <p class="report">Name  :   <span class="reportspan" >likith</span></p>
-    <p class="report">College  <span class="reportspan">Dayananda Sagar College of engineering</span></p>
-    <p class="report">Course  <span class="reportspan">Artificial intelligence and machine learning</span></p>
-    <p class="report">Batch  <span  class="reportspan">2020-2024></span></p>
-</div>
-<div class="text-center">This is to Certify that Mr / Ms. Ravi has undergone training on the below mentioned Industry skills from 20th July to 20th August 2023
-</div>
+  <div class="main-container report-container">
+    <div class="page1">
+      <div class="smartchaps-logo">
+        <img src="{{ url_for('static',filename='images/logo.jpeg')}}" alt="Smartchaps">
+      </div>
+      <div class="main-title text-center">
+        <p>The Best Performance Analyser</p>
+        <p>and</p>
+        <p>The Enhancement System</p>
+      </div>
 
-<br>
-<br>
-<br>
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+      <div class="quote-title text-center">
+        <p><i>"Based on Principles of Continuous Improvement"</i></p>
+      </div>
 
-<div><p class="text-center"><b>Communication Skills</b></p>
-    <div class="" style="display: flex;
-    justify-content: center;
-    align-items: center;">
-    <canvas id="myChart1cs" style="width:100%;max-width:800px;height: 200px; "></canvas> 
-  </div>
-  <div class="pl-3">
-<p class="text-center pt-5">Scoring Inputs</p>
-<ol>
-    <li>Poor English, lack of proper body language, unable to frame sentences properly</li>
-    <li>     Average English-speaking skills, tries but struggles to frame sentences, improper body language
-    </li>
-    <li>     Moderate English-speaking skills, frames sentences but jumbled words, use of body language while communicating
-    </li>
-    <li>    Good in English and articulation. Good body language
-    </li>
-    <li>     Excellent English and Articulation. Very good body language and highly confident
-    </li>
-   
-</ol>
-  </div>
-  
-  <script>
-    const ctx1cs = document.getElementById('myChart1cs');
-  
-    new Chart(ctx1cs, {
-      type: 'line',
-      data: {
-        labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-        datasets: [{
-          label: '# of Votes',
-          data: [12, 19, 3, 5, 2, 3],
-          borderWidth: 1
-        }]
-      },
-      options: {
-        scales: {
-          y: {
-            beginAtZero: true
-          }
-        }
-      }
-    });
-  </script>
-</div>
-  <!-- end of communication ...  -->
+      <div class="student-details">
+        <div class="name">
+          <p>Name: </p>
+          <span class="label-answers mx-2"> Likith Gowda</span>
+        </div>
+        <div class="college">
+          <p>College: </p>
+          <span class="label-answers mx-2"> Dayananda Sagar College of Engineering</span>
+        </div>
+        <div class="course">
+          <p>Course: </p>
+          <span class="label-answers mx-2"> Artificial Intelligence and Machine Learning</span>
+        </div>
+        <div class="batch">
+          <p>Batch: </p>
+          <span class="label-answers mx-2"> 2020 - 2024</span>
+        </div>
+      </div>
+      </div>
+      <div class="page2">
+        <div class="smartchaps-logo">
+          <img src="{{ url_for('static',filename='images/logo.jpeg')}}" alt="Smartchaps">
+        </div>
+        <div class="certificate-sentence">
+          <div class="text-container">
+            This is to Certify that Mr / Ms. <span class="student-name">Likith Gowda</span> has undergone training on the
+            below
+            mentioned Industry skills from <span class="starting-date">20th July 2023</span> to <span class="end-date">20th
+              August
+              2023</span>.
+          </div>
+        </div>
+      </div>
+      <div class="page3">
+        <div class="smartchaps-logo-for-page3">
+          <p class="skill-title text-center"><b>Communication Skill</b></p>
+          <img src="{{ url_for('static',filename='images/logo.jpeg')}}" alt="Smartchaps">
+        </div>
+        <div>
+          <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+          <div class="" style="display: flex; justify-content: center; align-items: center">
+            <canvas id="myChart1cs"
+              style="border:2px solid #423FB9; border-radius:7px; width: 100%; max-width: 600px; height: 200px"></canvas>
+          </div>
+          <div class="pl-3">
+          <p class="score-input-title text-center pt-3">Scoring Inputs</p>
+          <div class="communication-section">
+            <ol class="communication-scoring-inputs">
+              <li>
+                Poor English, lack of proper body language, unable to frame sentences
+                properly.
+              </li>
+              <li>
+                Average English-speaking skills, tries but struggles to frame
+                sentences, improper body language.
+              </li>
+              <li>
+                Moderate English-speaking skills, frames sentences but jumbled words,
+                use of body language while communicating.
+              </li>
+              <li>Good in English and articulation. Good body language.</li>
+              <li>
+                Excellent English and Articulation. Very good body language and highly
+                confident.
+              </li>
+            </ol>
+            </div>
+        </div>
+        <script>
+                        const ctx1cs = document.getElementById("myChart1cs");
 
-<!-- start of presentation skills..  -->
-<div><p class="text-center"><b>Presentaion Skills</b></p>
-    <div class="" style="display: flex;
-    justify-content: center;
-    align-items: center;">
-    <canvas id="myChart1ps" style="width:100%;max-width:800px;height: 200px; "></canvas> 
-  </div>
-  <div class="pl-3">
-<p class="text-center pt-5">Scoring Inputs</p>
-<ol>
-    <li>     No confidence at all, very nervous, shivers, does not know how to prepare a PPT, does not know to articulate
-    </li>
-    <li>      Low in confidence, nervous, average PPT quality, stage fear, lack of body language, does not know articulate effectively
-
-    </li>
-    <li>      Moderate quality PPT, slightly confident, some amount of stage fear, average usage of body language/gestures, does not engage audience
-
-    </li>
-    <li>    Good PPT, confident, little stage fear, good body language & gestures. Average in engaging the audience, tries to answer questions
-
-    </li>
-    <li>    Excellent PPT preparation, no stage fear, excellent body language, engages the audience, answers questions confidently
-
-    </li>
-   
-
-</ol>
-  </div>
-  
-  <script>
-    const ctx1ps = document.getElementById('myChart1ps');
-  
-    new Chart(ctx1ps, {
-      type: 'line',
-      data: {
-        labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-        datasets: [{
-          label: '# of Votes',
-          data: [12, 19, 3, 5, 2, 3],
-          borderWidth: 1
-        }]
-      },
-      options: {
-        scales: {
-          y: {
-            beginAtZero: true
-          }
-        }
-      }
-    });
-  </script>
-</div>
-<!-- end of presentaion skills ...  -->
-<div><p class="text-center"><b>Technical Skills</b></p>
-    <div class="" style="display: flex;
-    justify-content: center;
-    align-items: center;">
-        <canvas id="myChart1ts" style="width:100%;max-width:800px;height: 200px; "></canvas> 
+                        new Chart(ctx1cs, {
+                        type: "line",
+                        data: {
+                        labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
+                        datasets: [
+                          {
+                            label: "# of Votes",
+                            data: [12, 19, 3, 5, 2, 3],
+                              borderWidth: 1,
+                            },
+                          ],
+                        },
+                        options: {
+                          scales: {
+                            y: {
+                              beginAtZero: true,
+                            },
+                          },
+                        },
+                      });
+                            </script>
+                          </div>
     </div>
-  <div class="pl-3">
-<p class="text-center pt-5">Scoring Inputs</p>
-<ol>
-    <li>         Low technical knowledge, no aptitude & inclination towards tech and related fields, no tech skills
-
-    </li>
-    <li>          Interested in technology but low aptitude towards tech. no knowledge about technology and related developments
-
-
-    </li>
-    <li>         Moderate in tech skills, knowledge and aptitute towards technology. Avg inclination towards technology
-
-    </li>
-    <li>        Good in tech knowledge, skills, interest. Good inclination towards technology
-
-    </li>
-    <li>        Very good. Has knowledge about latest technology, skills & inclination towards tech building things on own
-
-    </li>
-    
-
-</ol>
-  </div>
-  
-  <script>
-    const ctx1ts = document.getElementById('myChart1ts');
-  
-    new Chart(ctx1ts, {
-      type: 'bar',
-      data: {
-        labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-        datasets: [{
-          label: '# of Votes',
-          data: [12, 19, 3, 5, 2, 3],
-          borderWidth: 1
-        }]
-      },
-      options: {
-        scales: {
-          y: {
-            beginAtZero: true
-          }
-        }
-      }
-    });
-  </script>
-</div>
-<!-- end of technical skills...  -->
-<div><p class="text-center"><b>Result Oriented </b></p>
-    <div class="" style="display: flex;
-    justify-content: center;
-    align-items: center;">
-        <canvas id="myChart1rs" style="width:100%;max-width:800px;height: 200px; "></canvas> 
+    <div class="page4">
+      <div class="smartchaps-logo-for-page3">
+        <p class="skill-title text-center"><b>Presentation Skill</b></p>
+        <img src="{{ url_for('static',filename='images/logo.jpeg')}}" alt="Smartchaps">
+      </div>
+      <div>
+        <div class="" style="display: flex; justify-content: center; align-items: center">
+          <canvas id="myChart1ps"
+            style="border:2px solid #423FB9; border-radius:7px; width: 100%; max-width: 600px; height: 200px"></canvas>
+        </div>
+        <div class="pl-3">
+          <p class="score-input-title text-center pt-3">Scoring Inputs</p>
+          <div class="presentation-section">
+            <ol class="presentation-scoring-inputs">
+              <li>
+                No confidence at all, very nervous, shivers, does not know how to
+                prepare a PPT, does not know to articulate.
+              </li>
+              <li>
+                Low in confidence, nervous, average PPT quality, stage fear, lack of
+                body language, does not know articulate effectively.
+              </li>
+              <li>
+                Moderate quality PPT, slightly confident, some amount of stage fear,
+                average usage of body language/gestures, does not engage audience.
+              </li>
+              <li>
+                Good PPT, confident, little stage fear, good body language & gestures.
+                Average in engaging the audience, tries to answer questions.
+              </li>
+              <li>
+                Excellent PPT preparation, no stage fear, excellent body language,
+                engages the audience, answers questions confidently.
+              </li>
+            </ol>
+            </div>
+        </div>
+        <script>
+                        const ctx1ps = document.getElementById("myChart1ps");
+                        new Chart(ctx1ps, {
+                        type: "line",
+                        data: {
+                        labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
+                        datasets: [
+                          {
+                            label: "# of Votes",
+                            data: [12, 19, 3, 5, 2, 3],
+                              borderWidth: 1,
+                            },
+                          ],
+                        },
+                        options: {
+                          scales: {
+                            y: {
+                              beginAtZero: true,
+                            },
+                          },
+                        },
+                      });
+                            </script>
+                          </div>
     </div>
-  <div class="pl-3">
-<p class="text-center pt-5">Scoring Inputs</p>
-<ol>
-    <li>         Low technical knowledge, no aptitude & inclination towards tech and related fields, no tech skills
+    <div class="page5">
+      <div class="smartchaps-logo-for-page3">
+        <p class="skill-title text-center"><b>Technical Skill</b></p>
+        <img src="{{ url_for('static',filename='images/logo.jpeg')}}" alt="Smartchaps">
+      </div>
+      <div>
+        <div class="" style="display: flex; justify-content: center; align-items: center">
+          <canvas id="myChart1ts"
+            style="border:2px solid #423FB9; border-radius:7px; width: 100%; max-width: 600px; height: 200px"></canvas>
+        </div>
+        <div class="pl-3">
+          <p class="score-input-title text-center pt-3">Scoring Inputs</p>
+          <div class="technical-section">
+            <ol class="technical-scoring-inputs">
+              <li>
+                Low technical knowledge, no aptitude & inclination towards tech and
+                related fields, no tech skills.
+              </li>
+              <li>
+                Interested in technology but low aptitude towards tech. no knowledge
+                about technology and related developments.
+              </li>
+              <li>
+                Moderate in tech skills, knowledge and aptitute towards technology.
+                Avg inclination towards technology.
+              </li>
+              <li>
+                Good in tech knowledge, skills, interest. Good inclination towards
+                technology.
+              </li>
+              <li>
+                Very good. Has knowledge about latest technology, skills & inclination
+                towards tech building things on own.
+              </li>
+            </ol>
+            </div>
+        </div>
+        <script>
+                        const ctx1ts = document.getElementById("myChart1ts");
 
-    </li>
-    <li>          Interested in technology but low aptitude towards tech. no knowledge about technology and related developments
-
-
-    </li>
-    <li>         Moderate in tech skills, knowledge and aptitute towards technology. Avg inclination towards technology
-
-    </li>
-    <li>        Good in tech knowledge, skills, interest. Good inclination towards technology
-
-    </li>
-    <li>        Very good. Has knowledge about latest technology, skills & inclination towards tech building things on own
-
-    </li>
-    
-
-</ol>
-  </div>
-  
-  <script>
-    const ctx1rs = document.getElementById('myChart1rs');
-  
-    new Chart(ctx1rs, {
-      type: 'bar',
-      data: {
-        labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-        datasets: [{
-          label: '# of Votes',
-          data: [12, 19, 3, 5, 2, 3],
-          borderWidth: 1
-        }]
-      },
-      options: {
-        scales: {
-          y: {
-            beginAtZero: true
-          }
-        }
-      }
-    });
-  </script>
-</div>
-<!-- end od result oriented...  -->
-<div><p class="text-center"><b>Project Management </b></p>
-    <div class="" style="display: flex;
-    justify-content: center;
-    align-items: center;">
-        <canvas id="myChart1pm" style="width:100%;max-width:800px;height: 200px; "></canvas> 
+                        new Chart(ctx1ts, {
+                        type: "line",
+                        data: {
+                        labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
+                        datasets: [
+                          {
+                            label: "# of Votes",
+                            data: [12, 19, 3, 5, 2, 3],
+                              borderWidth: 1,
+                            },
+                          ],
+                        },
+                        options: {
+                          scales: {
+                            y: {
+                              beginAtZero: true,
+                            },
+                          },
+                        },
+                      });
+                            </script>
+                          </div>
     </div>
-  <div class="pl-3">
-<p class="text-center pt-5">Scoring Inputs</p>
-<ol>
-    <li>            Lack of planning and less involvement in any academic tasks / project. No enthusiasm. Issues with working with others
-
-    </li>
-    <li>               Less Interest in any task / project. Lack of structured planning. Needs extensive monitoring
 
 
-    </li>
-    <li>             Interested in tasks. Needs guidance. Lacks clarity of how to go about tasks. Timelines issue. Needs a mentor and tracking
+    <div class="page6">
+      <div class="smartchaps-logo-for-page3">
+        <p class="skill-title text-center"><b>Result Oriented</b></p>
+        <img src="{{ url_for('static',filename='images/logo.jpeg')}}" alt="Smartchaps">
+      </div>
+      <div>
+        <div class="" style="display: flex; justify-content: center; align-items: center">
+          <canvas id="myChart1rs"
+            style="border:2px solid #423FB9; border-radius:7px; width: 100%; max-width: 600px; height: 200px"></canvas>
+        </div>
+        <div class="pl-3">
+          <p class="score-input-title text-center pt-3">Scoring Inputs</p>
+          <div class="result-oriented-section">
+            <ol class="result-oriented-scoring-inputs">
+              <li>
+                Low technical knowledge, no aptitude & inclination towards tech and
+                related fields, no tech skills.
+              </li>
+              <li>
+                Interested in technology but low aptitude towards tech, no knowledge
+                about technology and related developments.
+              </li>
+              <li>
+                Moderate in tech skills, knowledge and aptitute towards technology,
+                Avg inclination towards technology.
+              </li>
+              <li>
+                Good in tech knowledge, skills, interest. Good inclination towards
+                technology.
+              </li>
+              <li>
+                Very good, Has knowledge about latest technology, skills & inclination
+                towards tech building things on own.
+              </li>
+              </ol>
+              </div>
+        </div>
+        <script>
+                        const ctx1rs = document.getElementById("myChart1rs");
 
-    </li>
-    <li>           Structured plans to carry out tasks / project. Maintains timelines. Good team player. Risk averse. Needs to a good mentor
-
-    </li>
-    <li>           Leader in the project. Organised events. people person. Good with people & money. Takes calculated risks
-
-    </li>
-    
-    
-</ol>
-  </div>
-  
-  <script>
-  
-    var data = {
-        labels: ["January", "February", "March", "April", "May", "June", "July"],
-        datasets: [
-          {
-            label: "Sales",
-            data: [65, 59, 80, 81, 56, 55, 40],
-            backgroundColor: "rgba(75, 192, 192, 0.2)", // Color for the area under the line
-            borderColor: "rgba(75, 192, 192, 1)", // Color of the line
-            borderWidth: 2, // Width of the line
-            fill: true, // Fill the area under the line
-          },
-        ],
-      };
-  
-      // Chart configuration options
-      var options = {
-        responsive: true,
-        maintainAspectRatio: false,
-        scales: {
-          y: {
-            beginAtZero: true,
-          },
-        },
-      };
-  
-      // Create an area chart
-      var ctx1pm = document.getElementById("myChart1pm").getContext("2d");
-      var myChart = new Chart(ctx1pm, {
-        type: "line", // Use the line chart type
-        data: data,
-        options: options,
-      });
-    </script>
-  
-</div>
-<!-- end of project management...  -->
-<div><p class="text-center"><b>Interpersonal skills </b></p>
-    <div class="" style="display: flex;
-    justify-content: center;
-    align-items: center;">
-        <canvas id="myChart1is" style="width:100%;max-width:800px;height: 200px; "></canvas> 
+                        new Chart(ctx1rs, {
+                        type: "line",
+                        data: {
+                        labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
+                        datasets: [
+                          {
+                            label: "# of Votes",
+                            data: [12, 19, 3, 5, 2, 3],
+                              borderWidth: 1,
+                            },
+                          ],
+                        },
+                        options: {
+                          scales: {
+                            y: {
+                              beginAtZero: true,
+                            },
+                          },
+                        },
+                      });
+                            </script>
+                          </div>
     </div>
-  <div class="pl-3">
-<p class="text-center pt-5">Scoring Inputs</p>
-<ol>
-    <li>                Highly Introvert. Keeps only to himself/herself. Prefers the same. Does not mingle easily. Has understanding issues/no empathy
+    <div class="page7">
+      <div class="smartchaps-logo-for-page3">
+        <p class="skill-title text-center"><b>Project Management</b></p>
+        <img src="{{ url_for('static',filename='images/logo.jpeg')}}" alt="Smartchaps">
+      </div>
+      <div>
+        <div class="" style="display: flex; justify-content: center; align-items: center">
+          <canvas id="myChart1pm"
+            style="border:2px solid #423FB9; border-radius:7px; width: 100%; max-width: 600px; height: 200px"></canvas>
+        </div>
+        <div class="pl-3">
+          <p class="score-input-title text-center pt-3">Scoring Inputs</p>
+          <div class="project-mngmt-section">
+            <ol class="project-mngmt-scoring-inputs">
+              <li>
+                Lack of planning and less involvement in any academic tasks / project,
+                No enthusiasm, Issues with working with others.
+              </li>
+              <li>
+                Less Interest in any task / project, Lack of structured planning,
+                Needs extensive monitoring.
+              </li>
+              <li>
+                Interested in tasks, Needs guidance, Lacks clarity of how to go about
+                tasks, Timelines issue, Needs a mentor and tracking.
+              </li>
+              <li>
+                Structured plans to carry out tasks / project, Maintains timelines,
+                Good team player, Risk averse, Needs to a good mentor.
+              </li>
+              <li>
+                Leader in the project, Organised events, people person, Good with
+                people & money, Takes calculated risks.
+              </li>
+            </ol>
+            </div>
+        </div>
+        <script>
+                        const ctx1pm = document.getElementById("myChart1pm");
 
-    </li>
-    <li>               Introvert. Waits for others to talk to him. Mingles with only few people.less on understanding others. Lacks empathy most of the times
-
-
-    </li>
-    <li>             Normal. Confident but hesitates to take part in activities. Moderate understanding capability. Needs a push
-
-    </li>
-    <li>            Extrovert. Takes part extra activities. Good understanding of others. Has people around all the time. Needs a mentor
-
-    </li>
-    <li>            Extrovert. Takes part in lot of extra activities. Organises events. Leadership material. Highly empathetic and understanding of others
-
-    </li>
-
-    
-</ol>
-  </div>
-  
-  <script>
-  
-    var data = {
-        labels: ["January", "February", "March", "April", "May", "June", "July"],
-        datasets: [
-          {
-            label: "Sales",
-            data: [65, 59, 80, 81, 56, 55, 40],
-            backgroundColor: "pink", // Color for the area under the line
-            borderColor: "rgba(75, 192, 192, 1)", // Color of the line
-            borderWidth: 2, // Width of the line
-            fill: true, // Fill the area under the line
-          },
-        ],
-      };
-  
-      // Chart configuration options
-      var options = {
-        responsive: true,
-        maintainAspectRatio: false,
-        scales: {
-          y: {
-            beginAtZero: true,
-          },
-        },
-      };
-  
-      // Create an area chart
-      var ctx1is = document.getElementById("myChart1is").getContext("2d");
-      var myChart = new Chart(ctx1is, {
-        type: "line", // Use the line chart type
-        data: data,
-        options: options,
-      });
-    </script>
-  
-</div>
-<!-- end of interpersonal skills...  -->
-<div><p class="text-center"><b>Leadership skills </b></p>
-    <div class="" style="display: flex;
-    justify-content: center;
-    align-items: center;">
-        <canvas id="myChart1ls" style="width:100%;max-width:800px;height: 400px; "></canvas> 
+                        new Chart(ctx1pm, {
+                          type: "line",
+                          data: {
+                            labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
+                            datasets: [
+                              {
+                              label: "# of Votes",
+                              data: [12, 19, 3, 5, 2, 3],
+                              borderWidth: 1,
+                            },
+                          ],
+                        },
+                        options: {
+                          scales: {
+                            y: {
+                              beginAtZero: true,
+                            },
+                          },
+                        },
+                      });
+                      </script>
+      </div>
     </div>
-  <div class="pl-3">
-<p class="text-center pt-5">Scoring Inputs</p>
-<ol>
-    <li>                     Waits for tasks to be given. No creativity. Just follows orders. Doer
+    <div class="page8">
+      <div class="smartchaps-logo-for-page3">
+        <p class="skill-title text-center"><b>InterPersonnal Skill</b></p>
+        <img src="{{ url_for('static',filename='images/logo.jpeg')}}" alt="Smartchaps">
+      </div>
+      <div>
+        <div class="" style="display: flex; justify-content: center; align-items: center">
+          <canvas id="myChart1is"
+            style="border:2px solid #423FB9; border-radius:7px; width: 100%; max-width: 600px; height: 200px"></canvas>
+        </div>
+        <div class="pl-3">
+          <p class="score-input-title text-center pt-3">Scoring Inputs</p>
+          <div class="interpersonnal-section">
+            <ol class="interpersonnal-scoring-inputs">
+              <li>
+                Highly Introvert, Keeps only to himself/herself, Prefers the same,
+                Does not mingle easily, Has understanding issues/no empathy.
+              </li>
+              <li>
+                Introvert, Waits for others to talk to him, Mingles with only few
+                people, Less on understanding others, Lacks empathy most of the times.
+              </li>
+              <li>
+                Normal, Confident but hesitates to take part in activities, Moderate
+                understanding capability, Needs a push.
+              </li>
+              <li>
+                Extrovert. Takes part extra activities, Good understanding of others,
+                Has people around all the time, Needs a mentor.
+              </li>
+              <li>
+                Extrovert, Takes part in lot of extra activities, Organises events,
+                Leadership material, Highly empathetic and understanding of others.
+              </li>
+            </ol>
+            </div>
+        </div>
+        <script>
+                        const ctx1is = document.getElementById("myChart1is");
 
-    </li>
-    <li>              Follows instruction. Gives some ideas. Doer. Does not question
-
-    </li>
-    <li>              Gives new ideas but does not take it up further. Follows instruction
-    </li>
-    <li>                 Good leader, organises events. Gives ideas, follows up and implements the ideas. Can influence others
-
-    </li>
-    <li>                Strong leadership skills. very creative. Bonds people and good at delegation
-
-    </li>
-     
-    
-    
-    
-</ol>
-  </div>
-  
-  <script>
-  
-    var data = {
-        labels: ["aqua", "pink", "brown"],
-        datasets: [
-          {
-            data: [10, 20, 30],
-            backgroundColor: ["aqua", "pink", "brown"],
-            hoverOffset: 5, // Increase the offset when hovering over a slice
-            borderWidth: 2, // Border width of the doughnut
-          },
-        ],
-      };
-  
-      // Chart configuration options
-      var options = {
-        responsive: true,
-        maintainAspectRatio: false,
-      };
-  
-      // Create a doughnut chart
-      var ctx1ls = document.getElementById("myChart1ls").getContext("2d");
-      var myChart = new Chart(ctx1ls, {
-        type: "doughnut",
-        data: data,
-        options: options,
-      });
-    
-    </script>
-  
-</div>
-<!-- end of leadership skills...  -->
-<div><p class="text-center"><b>General knowledge </b></p>
-    <div class="" style="display: flex;
-    justify-content: center;
-    align-items: center;">
-        <canvas id="myChart1gks" style="width:100%;max-width:800px;height:300px; "></canvas> 
+                        new Chart(ctx1is, {
+                          type: "line",
+                          data: {
+                            labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
+                            datasets: [
+                              {
+                              label: "# of Votes",
+                              data: [12, 19, 3, 5, 2, 3],
+                              borderWidth: 1,
+                            },
+                          ],
+                        },
+                        options: {
+                          scales: {
+                            y: {
+                              beginAtZero: true,
+                            },
+                          },
+                        },
+                      });
+                      </script>
+      </div>
     </div>
-  <div class="pl-3">
-<p class="text-center pt-5">Scoring Inputs</p>
-<ol>
-    <li>                          Has no idea about business world / technology related current affairs
+    <div class="page9">
+      <div class="smartchaps-logo-for-page3">
+        <p class="skill-title text-center"><b>Leadership Skill</b></p>
+        <img src="{{ url_for('static',filename='images/logo.jpeg')}}" alt="Smartchaps">
+      </div>
+      <div>
+        <div class="" style="display: flex; justify-content: center; align-items: center">
+          <canvas id="myChart1ls"
+            style="border:2px solid #423FB9; border-radius:7px; width: 100%; max-width: 600px; height: 200px"></canvas>
+        </div>
+        <div class="pl-3">
+          <p class="score-input-title text-center pt-3">Scoring Inputs</p>
+          <div class="leadership-section">
+            <ol class="leadership-scoring-inputs">
+              <li>
+                Waits for tasks to be given. No creativity. Just follows orders. Doer.
+              </li>
+              <li>Follows instruction. Gives some ideas. Doer. Does not question.</li>
+              <li>
+                Gives new ideas but does not take it up further. Follows instruction.
+              </li>
+              <li>
+                Good leader, organises events. Gives ideas, follows up and implements
+                the ideas. Can influence others.
+              </li>
+              <li>
+                Strong leadership skills. very creative. Bonds people and good at
+                delegation.
+              </li>
+            </ol>
+            </div>
+        </div>
+        <script>
+                        const ctx1ls = document.getElementById("myChart1ls");
 
-    </li>
-    <li>               Interested in technology but low aptitude towards technology and less knowledge about technology and related developments
-
-    </li>
-    <li>             Moderate in technical skills, knowledge & aptitude towards technology, average inclination towards technology
-
-    </li>
-    <li>                 Good in tech knowledge, skills, interest. Good inclination towards technology
-
-    </li>
-    <li>               Very good. Has good knowledge about latest technology developments, skills and good inclination towards building things on own
-
-    </li>
-     
-
-    
-    
-</ol>
-  </div>
-  
-  <script>
-  
-    var data = {
-        labels: ["Red", "Blue", "green"],
-        datasets: [
-          {
-            data: [10, 20, 30],
-            backgroundColor: ["red", "blue", "green"],
-            hoverOffset: 5, // Increase the offset when hovering over a slice
-            borderWidth: 2, // Border width of the doughnut
-          },
-        ],
-      };
-  
-      // Chart configuration options
-      var options = {
-        responsive: true,
-        maintainAspectRatio: false,
-      };
-  
-      // Create a doughnut chart
-      var ctx1gks = document.getElementById("myChart1gks").getContext("2d");
-      var myChart = new Chart(ctx1gks, {
-        type: "pie",
-        data: data,
-        options: options,
-      });
-    
-    </script>
-  
-</div>
-<!-- end of Geeral Knowledge...  -->
-<div><p class="text-center"><b>Aptitide Skills </b></p>
-    <div class="" style="display: flex;
-    justify-content: center;
-    align-items: center;">
-        <canvas id="myChart1as" style="width:100%;max-width:800px;height:300px; "></canvas> 
+                        new Chart(ctx1ls, {
+                          type: "line",
+                          data: {
+                            labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
+                            datasets: [
+                              {
+                              label: "# of Votes",
+                              data: [12, 19, 3, 5, 2, 3],
+                              borderWidth: 1,
+                            },
+                          ],
+                        },
+                        options: {
+                          scales: {
+                            y: {
+                              beginAtZero: true,
+                            },
+                          },
+                        },
+                      });
+</script>
+      </div>
     </div>
-  <div class="pl-3">
-<p class="text-center pt-5">Scoring Inputs</p>
-<ol>
-    <li>                     Waits for tasks to be given. No creativity. Just follows orders. Doer
+    <div class="page10">
+      <div class="smartchaps-logo-for-page3">
+        <p class="skill-title text-center"><b>General Knowledge</b></p>
+        <img src="{{ url_for('static',filename='images/logo.jpeg')}}" alt="Smartchaps">
+      </div>
+      <div>
+        <div class="" style="display: flex; justify-content: center; align-items: center">
+          <canvas id="myChart1gks"
+            style="border:2px solid #423FB9; border-radius:7px; width: 100%; max-width: 600px; height: 200px"></canvas>
+        </div>
+        <div class="pl-3">
+          <p class="score-input-title text-center pt-3">Scoring Inputs</p>
+          <div class="general-knowledge-section">
+            <ol class="general-knowledge-scoring-inputs">
+              <li>
+                Has no idea about business world / technology related current affairs.
+              </li>
+              <li>
+                Interested in technology but low aptitude towards technology and less
+                knowledge about technology and related developments.
+              </li>
+              <li>
+                Moderate in technical skills, knowledge & aptitude towards technology,
+                average inclination towards technology.
+              </li>
+              <li>
+                Good in tech knowledge, skills, interest. Good inclination towards
+                technology.
+              </li>
+              <li>
+                Very good. Has good knowledge about latest technology developments,
+                skills and good inclination towards building things on own.
+              </li>
+            </ol>
+            </div>
+        </div>
+        <script>
+                        const ctx1gks = document.getElementById("myChart1gks");
 
-    </li>
-    <li>              Follows instruction. Gives some ideas. Doer. Does not question
+                        new Chart(ctx1gks, {
+                          type: "line",
+                          data: {
+                            labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
+                            datasets: [
+                              {
+                              label: "# of Votes",
+                              data: [12, 19, 3, 5, 2, 3],
+                              borderWidth: 1,
+                            },
+                          ],
+                        },
+                        options: {
+                          scales: {
+                            y: {
+                              beginAtZero: true,
+                            },
+                          },
+                        },
+                      });
+</script>
+      </div>
+      </div>
 
-    </li>
-    <li>              Gives new ideas but does not take it up further. Follows instruction
-    </li>
-    <li>                 Good leader, organises events. Gives ideas, follows up and implements the ideas. Can influence others
+    <div class="page11">
+      <div class="smartchaps-logo-for-page3">
+        <p class="skill-title text-center"><b>Aptitude Skill</b></p>
+        <img src="{{ url_for('static',filename='images/logo.jpeg')}}" alt="Smartchaps">
+      </div>
+      <div>
+        <div class="" style="display: flex; justify-content: center; align-items: center">
+          <canvas id="myChart1as"
+            style="border:2px solid #423FB9; border-radius:7px; width: 100%; max-width: 600px; height: 200px"></canvas>
+        </div>
+        <div class="pl-3">
+          <p class="score-input-title text-center pt-3">Scoring Inputs</p>
+          <div class="aptitude-section">
+            <ol class="aptitude-scoring-inputs">
+              <li>
+                Waits for tasks to be given. No creativity. Just follows orders. Doer.
+              </li>
+              <li>Follows instruction. Gives some ideas. Doer. Does not question.</li>
+              <li>
+                Gives new ideas but does not take it up further. Follows instruction.
+              </li>
+              <li>
+                Good leader, organises events. Gives ideas, follows up and implements
+                the ideas. Can influence others.
+              </li>
+              <li>
+                Strong leadership skills. very creative. Bonds people and good at
+                delegation.
+              </li>
+            </ol>
+            </div>
+        </div>
+        <script>
+                        const ctx1as = document.getElementById("myChart1as");
 
-    </li>
-    <li>                Strong leadership skills. very creative. Bonds people and good at delegation
+                        new Chart(ctx1as, {
+                          type: "line",
+                          data: {
+                            labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
+                            datasets: [
+                              {
+                              label: "# of Votes",
+                              data: [12, 19, 3, 5, 2, 3],
+                              borderWidth: 1,
+                            },
+                          ],
+                        },
+                        options: {
+                          scales: {
+                            y: {
+                              beginAtZero: true,
+                            },
+                          },
+                        },
+                      });
+</script>
+      </div>
+      </div>
 
-    </li>
-       
-    
-    
-</ol>
-  </div>
-  
-  <script>
-  
-    var data = {
-        labels: ["Red", "Blue", "green"],
-        datasets: [
-          {
-            data: [10, 20, 30],
-            backgroundColor: ["red", "blue", "green"],
-            hoverOffset: 5, // Increase the offset when hovering over a slice
-            borderWidth: 2, // Border width of the doughnut
-          },
-        ],
-      };
-  
-      // Chart configuration options
-      var options = {
-        responsive: true,
-        maintainAspectRatio: false,
-      };
-  
-      // Create a doughnut chart
-      var ctx1as = document.getElementById("myChart1as").getContext("2d");
-      var myChart = new Chart(ctx1as, {
-        type: "pie",
-        data: data,
-        options: options,
-      });
-    
-    </script>
-  
-</div>
-<!-- end of aptitude skills...  -->
-<div><p class="text-center"><b>Time management </b></p>
-    <div class="" style="display: flex;
-    justify-content: center;
-    align-items: center;">
-        <canvas id="myChart1tms" style="width:100%;max-width:800px;height:300px; "></canvas> 
-    </div>
-  <div class="pl-3">
-<p class="text-center pt-5">Scoring Inputs</p>
-<ol>
-    <li>                         No time sense.No planning . Lethargic. Always missing deadlines
+    <div class="page12">
+      <div class="smartchaps-logo-for-page3">
+        <p class="skill-title text-center"><b>Time Management</b></p>
+        <img src="{{ url_for('static',filename='images/logo.jpeg')}}" alt="Smartchaps">
+      </div>
+      <div>
+        <div class="" style="display: flex; justify-content: center; align-items: center">
+          <canvas id="myChart1tms"
+            style="border:2px solid #423FB9; border-radius:7px; width: 100%; max-width: 600px; height: 200px"></canvas>
+        </div>
+        <div class="pl-3">
+          <p class="score-input-title text-center pt-3">Scoring Inputs</p>
+          <div class="time-mngmt-section">
+            <ol class="time-mngmt-scoring-inputs">
+              <li>No time sense.No planning . Lethargic. Always missing deadlines.</li>
+              <li>
+                Little time sense. Misses deadlines sometimes. Improper planning.
+              </li>
+              <li>
+                Last minute completion for most of tasks. No structured plan (time,
+                activities, output etc).
+              </li>
+              <li>
+                Completes all tasks in time. Never late. Always meets deadlines.
+                structured planning.
+              </li>
+              <li>
+                Completes tasks well in time and does additional tasks in the original
+                stipulated time.
+              </li>
+            </ol>
+            </div>
+        </div>
+        <script>
+                        const ctx1tms = document.getElementById("myChart1tms");
 
-    </li>
-    <li>             Little time sense. Misses deadlines sometimes. Improper planning
+                        new Chart(ctx1tms, {
+                          type: "line",
+                          data: {
+                            labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
+                            datasets: [
+                              {
+                              label: "# of Votes",
+                              data: [12, 19, 3, 5, 2, 3],
+                              borderWidth: 1,
+                            },
+                          ],
+                        },
+                        options: {
+                          scales: {
+                            y: {
+                              beginAtZero: true,
+                            },
+                          },
+                        },
+                      });
+</script>
+      </div>
+      </div>
 
-    </li>
-    <li>              Last minute completion for most of tasks. No structured plan (time, activities, output etc)
-
-    </li>
-    <li>                Completes all tasks in time. Never late. Always meets deadlines. structured planning
-
-    </li>
-    <li>                 Completes tasks well in time and does additional tasks in the original stipulated time.
-
-    </li>
-       
-    
-
-</ol>
-  </div>
-  
-  <script>
-  
-    var data = {
-        labels: ["cyan", "lightblue", "yellow"],
-        datasets: [
-          {
-            data: [10, 20, 15],
-            backgroundColor: ["cyan", "lightblue", "yellow"],
-            hoverOffset: 5, // Increase the offset when hovering over a slice
-            borderWidth: 2, // Border width of the doughnut
-          },
-        ],
-      };
-  
-      // Chart configuration options
-      var options = {
-        responsive: true,
-        maintainAspectRatio: false,
-      };
-  
-      // Create a doughnut chart
-      var ctx1tms = document.getElementById("myChart1tms").getContext("2d");
-      var myChart = new Chart(ctx1tms, {
-        type: "doughnut",
-        data: data,
-        options: options,
-      });
-    
-    </script>
-  
-</div>
-<p class="text-center pt-5"> <b>Student profile indicating more suitable role(s),
-    based on the scores in the final assessment</b></p>
-    <p><b>Strong Inclination</b></p>
-    <ol>
-        <li>Strong in Tech</li>
-        <li>Leadership roles</li>
-        <li>Customer facing roles</li>
-    </ol>
-    <p><b>Inclined Towards</b></p>
-    <ol>
-        <li>Project Management</li>
-        <li>Designing profile</li>
-        <li>Sales / Marketing</li>
-        <li>Entrepreneurial</li>
-    </ol>
+    <div class="page13">
+      <div class="smartchaps-logo">
+        <img src="{{ url_for('static',filename='images/logo.jpeg')}}" alt="Smartchaps">
+      </div>
+      <div class="inclination-content">
+        <p class="final-report-sentence text-center pt-5">
+          <b>Student profile indicating more suitable role(s), based on the scores in
+            the final assessment</b>
+        </p>
+        <div class="inclination-skills-list">
+          <div class="strong-inclination">
+            <p><b>Strong Inclination</b></p>
+            <ol class="key-points">
+              <li>Strong in Tech</li>
+              <li>Leadership roles</li>
+              <li>Customer facing roles</li>
+            </ol>
+          </div>
+          <div class="incline-towards">
+            <p><b>Inclined Towards</b></p>
+            <ol class="key-points">
+              <li>Project Management</li>
+              <li>Designing profile</li>
+              <li>Sales / Marketing</li>
+              <li>Entrepreneurial</li>
+            </ol>
+          </div>
+          </div>
+          </div>
+          </div>
+          </div>
+          </div>
+          
+          <div class="download-report-button">
+            <button class="btn btn-primary mt-5 download-report" href="#" id="download" role="button">
+              Download report
+            </button>
 </div>
 
 <script>
     window.onload = function () {
-        document.getElementById("download")
-            .addEventListener("click", () => {
-                const invoice = this.document.getElementById("invoice");
-                console.log(invoice);
-                console.log(window);
-                var opt = {
-                    margin: 0,
-                    filename: 'myreport.pdf',
-                    image: { type: 'jpeg', quality: 0.98 },
-                    html2canvas: { scale: 2},
-                    jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
-                };
-                html2pdf().from(invoice).set(opt).save();
-            })
-    }
-    
-  </script>
+      document.getElementById("download").addEventListener("click", () => {
+        const invoice = this.document.getElementById("invoice");
+        console.log(invoice);
+        console.log(window);
+        var opt = {
+          margin: 0,
+          filename: "myreport.pdf",
+          image: { type: "jpeg", quality: 0.98 },
+          html2canvas: { scale: 2 },
+          jsPDF: { unit: "in", format: "letter", orientation: "portrait" },
+        };
+        html2pdf().from(invoice).set(opt).save();
+      });
+        };
+      </script>
 
-
-
-     {% endblock content %}
+{% endblock content %}

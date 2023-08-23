@@ -12,17 +12,17 @@
     
         <div class="col-md-7 col-lg-8">
           
-          <form class="needs-validation" method="POST"  enctype="multipart/form-data" novalidate>
+   <form class="needs-validation" method="POST"  enctype="multipart/form-data" novalidate>
             <div class="row g-3">
               
   
               <div class="col-12">
-                <label for="username" class="form-label">Username</label>
+                <label for="username" class="form-label">Name</label>
                 <div class="input-group has-validation">
                   <span class="input-group-text">@</span>
                   <input type="text" class="form-control" id="username" name="username" placeholder="Username" required>
                 <div class="invalid-feedback">
-                    Your username is required.
+                    Your name is required.
                   </div>
                 </div>
               </div>
@@ -43,36 +43,50 @@
                 </div>
               </div>
               <div class="col-12">
-                <label for="address" class="form-label">College</label>
+                <label for="college" class="form-label">College</label>
                 <input type="text" class="form-control" id="college" name="college" placeholder="college" required>
                 <div class="invalid-feedback">
                   Please enter your college .
                 </div>
               </div>
               <div class="col-12">
-                <label for="address" class="form-label">Number of Certifications</label>
-                <select class="form-select shadow-none" aria-label="Default select example">
+                <label for="college" class="form-label">City</label>
+                <input type="text" class="form-control" id="college" name="city" placeholder="college" required>
+                <div class="invalid-feedback">
+                  Please enter your city .
+                </div>
+              </div>
+              <div class="col-12">
+                <label for="num_inputs" class="form-label">Number of Certifications</label>
+                <select class="form-select shadow-none" id="num_inputs" name="numberofcertifications" aria-label="Default select example">
                   <option selected>Please select from the dropdown</option>
                   <option value="1">1</option>
                   <option value="2">2</option>
                   <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
                 </select>       
                     </div>
               </div>
+
               <div class="col-12">
                 <label for="skills" class="form-label pt-3">Number of Skills</label>
-                <div class="d-flex form-skills"><select class="form-select shadow-none  mb-3" aria-label="Large select example">
+                <div class="d-flex form-skills"><select class="form-select shadow-none  mb-3" name="technicalskills"aria-label="Large select example">
                   <option selected>Technical Skills</option>
                   <option value="1">1</option>
                   <option value="2">2</option>
                   <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
                 </select>
                 
-                <select class="form-select shadow-none  mb-3  " aria-label="Small select example">
+                <select class="form-select shadow-none  mb-3  " name="softskills" aria-label="Small select example">
                   <option selected>SoftSkills</option>
                   <option value="1">1</option>
                   <option value="2">2</option>
                   <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
                 </select>
               </div>
                 
@@ -80,15 +94,15 @@
               </div>
               <div class="col-12">
                 <label for="skills" class="form-label pt-2 mb-3 pl-5" aria-label="Small select example">Class 10: Board And Marks Scored</label>
-                <div class="d-flex form-skills"><select class="form-select shadow-none mb-3" aria-label="Large select example">
+                <div class="d-flex form-skills"><select class="form-select shadow-none mb-3" name="tenthboard" aria-label="Large select example">
                   <option selected>Select Board</option>
-                  <option value="1">State</option>
-                  <option value="2">CBSE</option>
-                  <option value="3">ICSE</option>
+                  <option value="state">State</option>
+                  <option value="cbse">CBSE</option>
+                  <option value="icse">ICSE</option>
                 </select>
                 <div class="pl-5">
                   <!-- <label for="address" class="form-label">Phone</label> -->
-                  <input type="text" class="form-control" id="text" name="text" placeholder="Enter your marks" required>
+                  <input type="number" class="form-control" id="text" name="tenthmarks" placeholder="Enter your marks" required>
                   <div class="invalid-feedback">
                     Please enter your valid marks
                   </div>
@@ -102,7 +116,7 @@
              
               <div class="col-12">
                 <label for="skills" class="form-label mb-3 pt-2 pl-5" aria-label="Small select example">Class 12: Board And Marks Scored</label>
-                <div class="d-flex form-skills"><select class="form-select shadow-none  mb-3" aria-label="Large select example">
+                <div class="d-flex form-skills"><select class="form-select shadow-none  mb-3" name="twelvethboard"aria-label="Large select example">
                   <option selected>Select Board</option>
                   <option value="1">State</option>
                   <option value="2">CBSE</option>
@@ -111,7 +125,7 @@
 
                 <div class="pl-5">
                   <!-- <label for="address" class="form-label">Phone</label> -->
-                  <input type="text" class="form-control " id="text" name="text" placeholder="Enter your marks" required>
+                  <input type="number" class="form-control " id="text" name="twelvethmarks" placeholder="Enter your marks" required>
                   <div class="invalid-feedback">
                     Please enter your valid marks
                   </div>
@@ -123,7 +137,7 @@
              
               <div class="col-12 pt-2">
                 <label for="address" class="form-label">UG Average % from the semesters</label>
-                <input type="text" class="form-control" id="college" name="college" placeholder="marks" required>
+                <input type="number" class="form-control" id="college" name="ugaverage" placeholder="marks" required>
                 <div class="invalid-feedback">
                   Please enter your average marks .
                 </div>
@@ -140,69 +154,42 @@
               </div>
               
   
-              <!-- <div class="col-md-5">
-                <label for="country" class="form-label">Country</label>
-                <select class="form-select" id="country" required>
-                  <option value="">Choose...</option>
-                  <option>United States</option>
-                </select>
-                <div class="invalid-feedback">
-                  Please select a valid country.
-                </div>
-              </div> -->
-
+   
   
              <hr>
-             <!-- <div class="mb-3">
-              <label for="exampleFormControlTextarea1" class="form-label">Please mention the Internship Experience:</label>
-              <textarea class="form-control" id="exampleFormControlTextarea1" rows="5"></textarea>
-            </div>
-            
-            <div class="col-md-3">
-              <label for="cc-expiration" class="form-label">Please Mention the certification below</label>
-              <input type="text" class="form-control mb-2" id="cc-name" name="intrest-1" placeholder="certificate-1" required >
-              <input type="text" class="form-control  mb-2" id="cc-name"name="in-2" placeholder="certificate-2" >
-              <input type="text" class="form-control  mb-2" id="cc-name"name="in-3" placeholder="certificate-3" >
-                                <div class="invalid-feedback">
-                Mention any one
-              </div>
-            </div> 
-            <div class="col-md-6">
-              <label for="cc-name" class="form-label">Please Select the skills below </label>
-              <input type="text" class="form-control" id="college" name="college" placeholder="marks" required>
-
-              <input type="text" class="form-control mb-2" id="cc-name" name = "i-1" placeholder="Skill1" required >
-              <input type="text" class="form-control  mb-2" id="cc-name" name = "i-2" placeholder="Skill2" >
-              <input type="text" class="form-control  mb-2" id="cc-name" name = "i-3" placeholder="Skill3" >
-            
-              <small class="text-muted"></small>
-              <div class="invalid-feedback">
-                  Enter skills details                </div>
-            </div> -->
+           
             <div class="col-12">
               <label for="" class="form-label">Please Select the skills below  </label>
-              <input type="text" class="form-control mt-2" id="certification" name="certification" placeholder="Skill-1" required>
-              <input type="text" class="form-control mt-2" id="certification" name="certification" placeholder="Skill-2" required>
-              <input type="text" class="form-control mt-2" id="certification" name="certification" placeholder="Skill-3" required>
+              <input type="text" class="form-control mt-2" id="certification" name="skill1" placeholder="Skill-1" required>
+              <input type="text" class="form-control mt-2" id="certification" name="skill2" placeholder="Skill-2" required>
+              <input type="text" class="form-control mt-2" id="certification" name="skill3" placeholder="Skill-3" >
+              <input type="text" class="form-control mt-2" id="certification" name="skill4" placeholder="Skill-4" >
+              <input type="text" class="form-control mt-2" id="certification" name="skill5" placeholder="Skill-5" >
               <div class="invalid-feedback">
-                Please enter a valid email 3ddress for shipping updates.
+                Please select the valid skills below
               </div>
               
             </div>
-            <div class="col-12 pt-3">
-              <label for="" class="form-label">Please Mention the certification below </label>
-              <input type="text" class="form-control mt-2" id="certification" name="certification" placeholder="certification-1" required>
-              <input type="text" class="form-control mt-2" id="certification" name="certification" placeholder="certification-2" required>
-              <input type="text" class="form-control mt-2" id="certification" name="certification" placeholder="certification-3" required>
+            <div class="col-12 pt-3" id="inputFields">
+              <label for="" class="form-label">Please Mention the certification below </label>   
+              <input type="text" class="form-control mt-2" id="certification" name="certification1" placeholder="Certificate-1" required>
+              <input type="text" class="form-control mt-2" id="certification" name="certification2" placeholder="Certificate-2" required>
+              <input type="text" class="form-control mt-2" id="certification" name="certification3" placeholder="Certificate-3" >
+              <input type="text" class="form-control mt-2" id="certification" name="certification4" placeholder="Certificate-4" >
+              <input type="text" class="form-control mt-2" id="certification" name="certification5" placeholder="Certificate-5" >
               <div class="invalid-feedback">
-                Please enter a valid email 3ddress for shipping updates.
+                Please mention the certificates.
               </div>
+              
+              <!-- <input type="text" class="form-control mt-2" id="certification" name="certification" placeholder="certification-2" required>
+              <input type="text" class="form-control mt-2" id="certification" name="certification" placeholder="certification-3" required> -->
+              
               
             </div>
             <div class="col-12 pt-3">
               <label for="" class="form-label">Why I Should be hired (in 100 words): </label>
               <div class="form-floating">
-  <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px"></textarea>
+  <textarea class="form-control" name="hiredcontent" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px"></textarea>
   <!-- <label for="floatingTextarea2">....</label> -->
 </div>
               
@@ -238,6 +225,23 @@
       @copyright PME 2023
     </div>
      </div>
-  
+     <script>
+      $(document).ready(function() {
+          $("#updateBtn").click(function() {
+              var numInputs = parseInt($("#num_inputs").val());
+              var inputFieldsHTML = "";
+              for (var i = 1; i <= numInputs; i++) {
+                  inputFieldsHTML += `
+                 
+                  <input type="text" class="form-control mt-2" id="certification${i}" name="certification${i}" placeholder="certification-1" required>
+                  <div class="invalid-feedback">
+                    Please enter a valid email 3ddress for shipping updates.
+                  </div><br>
+                  `;
+              }
+              $("#inputFields").html(inputFieldsHTML);
+          });
+      });
+  </script>
   
        {% endblock content %}

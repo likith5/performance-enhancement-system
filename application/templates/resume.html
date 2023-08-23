@@ -13,20 +13,20 @@
     <div class="container ">
         <div class="row =" style="margin:0 0 10px 0" >
 
-            <div class="col fw-bolder " style="display: flex;">Name:<p class="  fw-bold " style="padding:0 0 0 15px">Likith</p></div>
-            <div class="col fw-bolder " style="display: flex; ">E-mail:<p class="fw-bold" style="padding:0 0 0 15px">lavinelev@gmail.com</p></div>
+            <div class="col fw-bolder " style="display: flex;">Name:<p class="  fw-bold " style="padding:0 0 0 15px">{{user.personal.username}}</p></div>
+            <div class="col fw-bolder " style="display: flex; ">E-mail:<p class="fw-bold" style="padding:0 0 0 15px">{{user.personal.email}}</p></div>
         </div>
         <div class="row" style="margin:0 0 10px 0" >
-            <div class="col fw-bolder" style="display: flex;">UGCollege: <p class=" fw-bold" style="padding:0 0 0 15px">Dayananda Sagar college</p></div>
+            <div class="col fw-bolder" style="display: flex;">UGCollege: <p class=" fw-bold" style="padding:0 0 0 15px">{{user.personal.college}}</p></div>
 
-            <div class="col fw-bolder" style="display: flex;">Phone:<p class=" fw-bold" style="padding:0 0 0 15px">9148248299</p></div>
+            <div class="col fw-bolder" style="display: flex;">Phone:<p class=" fw-bold" style="padding:0 0 0 15px">{{user.personal.phone}}</p></div>
         </div>
         <div class="row" style="margin:0 0 10px 0" >
-            <div class="col fw-bolder" style="display: flex;">Number of technical Skills: <p class=" fw-bold" style="padding:0 0 0 15px">8</p></div>
-            <div class="col fw-bolder" style="display: flex;">City:<p class=" fw-bold" style="padding:0 0 0 15px">9148248299</p></div>
+            <div class="col fw-bolder" style="display: flex;">Number of technical Skills: <p class=" fw-bold" style="padding:0 0 0 15px">{{user.personal.technicalskills}}</p></div>
+            <div class="col fw-bolder" style="display: flex;">City:<p class=" fw-bold" style="padding:0 0 0 15px">{{user.personal.phone}}</p></div>
         </div>
         <div class="row" style="margin:0 0 10px 0">
-            <div class="col fw-bolder" style="display: flex;">Number of soft Skills: <p class=" fw-bold" style="padding:0 0 0 15px">5</p></div>
+            <div class="col fw-bolder" style="display: flex;">Number of soft Skills: <p class=" fw-bold" style="padding:0 0 0 15px">{{user.personal.softskills}}</p></div>
         </div>
       
        
@@ -44,14 +44,14 @@
         <tbody>
           <tr>
             <th scope="row">Board</th>
-            <td>State</td>
-            <td>cbse</td>
+            <td>{{user.personal.tenthboard  }}123</td>
+            <td>{{user.personal.twelvethboard}}</td>
             
           </tr>
           <tr >
             <th scope="row">percentage</th>
-            <td>98%</td>
-            <td>92%</td>
+            <td>{{user.personal.tenthmarks}}%</td>
+            <td>{{user.personal.twelvethmarks}}%</td>
           </tr>
          
         </tbody>

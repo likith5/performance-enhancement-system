@@ -22,15 +22,15 @@
       <div class="student-details">
         <div class="name">
           <p>Name: </p>
-          <span class="label-answers mx-2"> Likith Gowda</span>
+          <span class="label-answers mx-2"> {{user.personal.username}}</span>
         </div>
         <div class="college">
           <p>College: </p>
-          <span class="label-answers mx-2"> Dayananda Sagar College of Engineering</span>
+          <span class="label-answers mx-2"> {{user.personal.college}}</span>
         </div>
         <div class="course">
           <p>Course: </p>
-          <span class="label-answers mx-2"> Artificial Intelligence and Machine Learning</span>
+          <span class="label-answers mx-2"> {{user.personal.course}}</span>
         </div>
         <div class="batch">
           <p>Batch: </p>
@@ -44,7 +44,7 @@
         </div>
         <div class="certificate-sentence">
           <div class="text-container">
-            This is to Certify that Mr / Ms. <span class="student-name">Likith Gowda</span> has undergone training on the
+            This is to Certify that Mr / Ms. <span class="student-name">{{user.personal.username}}</span> has undergone training on the
             below
             mentioned Industry skills from <span class="starting-date">20th July 2023</span> to <span class="end-date">20th
               August
@@ -88,16 +88,18 @@
             </div>
         </div>
         <script>
+          let communication = JSON.parse({{ communication | tojson }});
+
                         const ctx1cs = document.getElementById("myChart1cs");
 
                         new Chart(ctx1cs, {
                         type: "line",
                         data: {
-                        labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
+                        labels: ["test1", "test2", "test3"],
                         datasets: [
                           {
                             label: "# of Votes",
-                            data: [12, 19, 3, 5, 2, 3],
+                            data: communication,
                               borderWidth: 1,
                             },
                           ],
@@ -151,15 +153,16 @@
             </div>
         </div>
         <script>
+                        let presentation = JSON.parse({{ presentation | tojson }});
                         const ctx1ps = document.getElementById("myChart1ps");
                         new Chart(ctx1ps, {
                         type: "line",
                         data: {
-                        labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
+                        labels: ["test1", "test2", "test3"],
                         datasets: [
                           {
                             label: "# of Votes",
-                            data: [12, 19, 3, 5, 2, 3],
+                            data: presentation,
                               borderWidth: 1,
                             },
                           ],
@@ -213,16 +216,19 @@
             </div>
         </div>
         <script>
-                        const ctx1ts = document.getElementById("myChart1ts");
+          let technical = JSON.parse({{ technical | tojson }});
+
+              
+          const ctx1ts = document.getElementById("myChart1ts");
 
                         new Chart(ctx1ts, {
                         type: "line",
                         data: {
-                        labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
+                        labels: ["test1", "test2", "test3"],
                         datasets: [
                           {
                             label: "# of Votes",
-                            data: [12, 19, 3, 5, 2, 3],
+                            data: technical,
                               borderWidth: 1,
                             },
                           ],
@@ -278,17 +284,19 @@
               </div>
         </div>
         <script>
+          let resultoriented = JSON.parse({{ resultoriented | tojson }});
+
                         const ctx1rs = document.getElementById("myChart1rs");
 
                         new Chart(ctx1rs, {
                         type: "line",
                         data: {
-                        labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
+                        labels: ["test1", "test2", "test3"],
                         datasets: [
                           {
                             label: "# of Votes",
-                            data: [12, 19, 3, 5, 2, 3],
-                              borderWidth: 1,
+                            data: resultoriented,
+                            borderWidth: 1,
                             },
                           ],
                         },
@@ -341,16 +349,18 @@
             </div>
         </div>
         <script>
+          let projectmmt = JSON.parse({{ projectmmt | tojson }});
+
                         const ctx1pm = document.getElementById("myChart1pm");
 
                         new Chart(ctx1pm, {
                           type: "line",
                           data: {
-                            labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
+                            labels:  ["test1", "test2", "test3"],
                             datasets: [
                               {
                               label: "# of Votes",
-                              data: [12, 19, 3, 5, 2, 3],
+                              data: projectmmt,
                               borderWidth: 1,
                             },
                           ],
@@ -404,16 +414,18 @@
             </div>
         </div>
         <script>
+          let interpersonal = JSON.parse({{ interpersonal | tojson }});
+
                         const ctx1is = document.getElementById("myChart1is");
 
                         new Chart(ctx1is, {
                           type: "line",
                           data: {
-                            labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
+                            labels: ["test1", "test2", "test3"],
                             datasets: [
                               {
                               label: "# of Votes",
-                              data: [12, 19, 3, 5, 2, 3],
+                              data: interpersonal,
                               borderWidth: 1,
                             },
                           ],
@@ -462,16 +474,18 @@
             </div>
         </div>
         <script>
+          let leadership = JSON.parse({{ leadership | tojson }});
+
                         const ctx1ls = document.getElementById("myChart1ls");
 
                         new Chart(ctx1ls, {
                           type: "line",
                           data: {
-                            labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
+                            labels:  ["test1", "test2", "test3"],
                             datasets: [
                               {
                               label: "# of Votes",
-                              data: [12, 19, 3, 5, 2, 3],
+                              data: leadership,
                               borderWidth: 1,
                             },
                           ],
@@ -524,16 +538,18 @@
             </div>
         </div>
         <script>
+          let gk = JSON.parse({{ gk | tojson }});
+
                         const ctx1gks = document.getElementById("myChart1gks");
 
                         new Chart(ctx1gks, {
                           type: "line",
                           data: {
-                            labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
+                            labels: ["test1", "test2", "test3"],
                             datasets: [
                               {
                               label: "# of Votes",
-                              data: [12, 19, 3, 5, 2, 3],
+                              data: gk,
                               borderWidth: 1,
                             },
                           ],
@@ -583,16 +599,18 @@
             </div>
         </div>
         <script>
+          let creativity = JSON.parse({{ creativity | tojson }});
+
                         const ctx1as = document.getElementById("myChart1as");
 
                         new Chart(ctx1as, {
                           type: "line",
                           data: {
-                            labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
+                            labels:  ["test1", "test2", "test3"],
                             datasets: [
                               {
                               label: "# of Votes",
-                              data: [12, 19, 3, 5, 2, 3],
+                              data: creativity,
                               borderWidth: 1,
                             },
                           ],
@@ -643,16 +661,18 @@
             </div>
         </div>
         <script>
+          let timemmt = JSON.parse({{ timemmt | tojson }});
+
                         const ctx1tms = document.getElementById("myChart1tms");
 
                         new Chart(ctx1tms, {
                           type: "line",
                           data: {
-                            labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
+                            labels:  ["test1", "test2", "test3"],
                             datasets: [
                               {
                               label: "# of Votes",
-                              data: [12, 19, 3, 5, 2, 3],
+                              data: timemmt,
                               borderWidth: 1,
                             },
                           ],
@@ -682,18 +702,16 @@
           <div class="strong-inclination">
             <p><b>Strong Inclination</b></p>
             <ol class="key-points">
-              <li>Strong in Tech</li>
-              <li>Leadership roles</li>
-              <li>Customer facing roles</li>
+              <li>{{strong}}</li>
+              <li>{{leader}}</li>
             </ol>
           </div>
           <div class="incline-towards">
             <p><b>Inclined Towards</b></p>
             <ol class="key-points">
-              <li>Project Management</li>
-              <li>Designing profile</li>
-              <li>Sales / Marketing</li>
-              <li>Entrepreneurial</li>
+              <li>{{customer}}</li>
+              <li>{{project}}</li>
+             
             </ol>
           </div>
           </div>
@@ -702,12 +720,7 @@
           </div>
           </div>
           
-          <div class="download-report-button">
-            <button class="btn btn-primary mt-5 download-report" href="#" id="download" role="button">
-              Download report
-            </button>
-</div>
-
+   
 <script>
     window.onload = function () {
       document.getElementById("download").addEventListener("click", () => {

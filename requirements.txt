@@ -4,3 +4,4 @@ openpyxl
 xlsxwriter
 bcrypt
 flask_session
+gunicorn

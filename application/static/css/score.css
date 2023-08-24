@@ -1,0 +1,120 @@
+body {
+    /* font-family: 'Poppins', sans-serif; */
+    font-family: 'Bakbak One', cursive;
+}
+
+.heading{
+    text-align: center;
+    color: blueviolet;
+}
+
+.student-deatils{
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-evenly;
+    color: blueviolet;
+}
+
+.hr-line{
+    margin: 20px 20px 0px 20px;
+    border-bottom: 1px solid blueviolet;
+    margin-bottom: 20px;
+}
+
+select {
+    margin-top: 25px;
+    margin-bottom: 20px;
+    width: 400px;
+    padding: 15px;
+    font-size: 16px;
+    font-weight: 700;
+    font-family: 'Poppins', sans-serif;
+    border: none;
+    border-radius: 8px;
+    border: 2px solid #3f51b5;
+    box-shadow: 0 15px 15px #efefef;
+    appearance: none;
+    background: #e8eaf6 url(./arrow.png) no-repeat;
+    background-position: 95% 55%;
+    background-size: 22px;
+}
+
+input {
+    padding: 5px;
+    height: 40px;
+    width: 40px;
+    border-radius: 5px;
+    margin-right: 40px;
+    margin-top: 5px;
+    background-color: blueviolet;
+    color: white;
+    font-size: 20px;
+    border: none;
+}
+
+.container1{
+    display: flex;
+    justify-content: space-around;
+}
+
+#demo1,
+#demo2,
+#demo3,
+#demo4,
+#demo5,
+#demo6,
+#demo7,
+#demo8,
+#demo9,
+#demo10 {
+    margin-top: 15px;
+    border: 1px solid blueviolet;
+    border-radius: 7px;
+    font-size: 20px;
+    width: 400px;
+    font-weight: bold;
+
+}
+
+.buttons{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.btn{
+    color: #fff;
+    background-color: blueviolet;
+    border: none;
+    border-radius: 7px;
+    padding: 13px;
+    width: 100px;
+    font-size: 18px;
+    text-align: center;
+}
+
+.btn:hover{
+    cursor: pointer;
+    color: blueviolet;
+    background-color: #fff;
+    border: none;
+    border: 1px solid blueviolet;
+}
+/* #e8eaf6 */
+.reset{
+    color: #fff;
+    background-color: blueviolet;
+    border: none;
+    border-radius: 7px;
+    padding: 13px;
+    width: 100px;
+    font-size: 18px;
+    text-align: center;
+}
+
+.reset:hover{
+    cursor: pointer;
+    color: blueviolet;
+    background-color: #fff;
+    border: none;
+    border: 1px solid blueviolet;
+}

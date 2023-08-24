@@ -148,11 +148,11 @@ def marksenter():
                 resultoriented= request.form.get('resultoriented')
                 leardership= request.form.get('leardership')
                 presentation= request.form.get('presentation')
-                
-                # print(leardership)
-                # print(presentation)
-                # print(studentname)
-                # print(communication)
+                print(test)
+                print(leardership)
+                print(presentation)
+                print(studentname)
+                print(communication)
 
                 # user = db.users.find_one({'username':username })
                 # email = user['email']
@@ -615,8 +615,8 @@ def search():
                 session["studentname"] = usn
                 # bro = session.get['studentname']
                 flash('User found Kindly enter the marks ', category='success')
-                return redirect(url_for('views.marksenter'))
-                # return render_template('marksenter.html')
+                return redirect(url_for('views.score'))
+                # return render_template('score.html')
             else:
                 flash('User not found', category='error')
                 return redirect(url_for('views.search'))
@@ -1006,7 +1006,132 @@ def resume():
     return render_template('resume.html',user=user)
 
 
+@views.route('/score',methods=['GET','POST'])
+def score():
+    usn = session.get('studentname')
+    user = db.users.find_one({'usn':usn })
+    username = user["personal"].get('username')
+    userusn = user["personal"].get('usn')
 
+    title="marks enter"
+    if  'teacheremail' in session:
+
+        if request.method == 'POST':
+
+                test= request.form.get('test')
+                technical= request.form.get('technical')
+                form1= request.form
+                c1=form1.get('communication')
+                print(c1)
+                # t1=form1.get('')
+                communication= request.form.get('communication')
+               
+                creativity= request.form.get('creativity')
+                projectmmt= request.form.get('projectmmt')
+                timemanagement= request.form.get('timemanagement')
+                generalknowledge= request.form.get('generalknowledge')
+                interpersonal= request.form.get('interpersonal')
+                resultoriented= request.form.get('resultoriented')
+                leardership= request.form.get('leardership')
+                presentation= request.form.get('presentation')
+                
+                print(leardership)
+                print(presentation)
+                print(communication)
+
+                # user = db.users.find_one({'username':username })
+                # email = user['email']
+                # db.marks.insert_one({"communication": communication})
+                if test == "Test1":
+                    try:
+
+                        db.users.update_one(
+                        {"usn": usn},
+                        {
+                            "$set": {
+                                "test1": {
+                                    "communication": communication,
+                                    "technical": technical,
+                                    "creativity": creativity,
+                                    "projectmmt": projectmmt,
+                                    "timemanagement": timemanagement,
+                                    "generalknowledge": generalknowledge,
+                                    "interpersonal": interpersonal,
+                                    "resultoriented": resultoriented,
+                                    "leardership": leardership,
+                                    "presentation": presentation
+                                }
+                            }
+                        }
+                    )
+                        flash('Marks entered successfully', category='success')
+                        return redirect(url_for('views.dashboard'))
+                    except PyMongoError as e:
+                        flash(f'Error: {str(e)}', category='error')
+                    # Handle the error accordingly, such as logging it or displaying an error message to the user
+                        return redirect(url_for('views.score'))
+                if test == "Test2":
+                    try:
+
+                        db.users.update_one(
+                        {"usn": usn},
+                        {
+                            "$set": {
+                                "test2": {
+                                    "communication": communication,
+                                    "technical": technical,
+                                    "creativity": creativity,
+                                    "projectmmt": projectmmt,
+                                    "timemanagement": timemanagement,
+                                    "generalknowledge": generalknowledge,
+                                    "interpersonal": interpersonal,
+                                    "resultoriented": resultoriented,
+                                    "leardership": leardership,
+                                    "presentation": presentation
+                                }
+                            }
+                        }
+                    )
+                        flash('Marks entered successfully', category='success')
+                        return redirect(url_for('views.dashboard'))
+                    except PyMongoError as e:
+                        flash(f'Error: {str(e)}', category='error')
+                    # Handle the error accordingly, such as logging it or displaying an error message to the user
+                        return redirect(url_for('views.score'))
+                if test == "Test3":
+                    try:
+
+                        db.users.update_one(
+                        {"usn": usn},
+                        {
+                            "$set": {
+                                "test3": {
+                                    "communication": communication,
+                                    "technical": technical,
+                                    "creativity": creativity,
+                                    "projectmmt": projectmmt,
+                                    "timemanagement": timemanagement,
+                                    "generalknowledge": generalknowledge,
+                                    "interpersonal": interpersonal,
+                                    "resultoriented": resultoriented,
+                                    "leardership": leardership,
+                                    "presentation": presentation
+                                }
+                            }
+                        }
+                    )
+                        flash('Marks entered successfully', category='success')
+                        return redirect(url_for('views.dashboard'))
+                    except PyMongoError as e:
+                        flash(f'Error: {str(e)}', category='error')
+                    # Handle the error accordingly, such as logging it or displaying an error message to the user
+                        return redirect(url_for('views.score'))
+                    
+        
+        # print(studentname)
+        # return render_template("marksenter.html",title=title,studentname=studentname)
+        return render_template("score.html",username=username,usn=usn)
+    return redirect(url_for('auth.login'))
 
 
 

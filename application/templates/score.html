@@ -1,0 +1,549 @@
+
+{% extends "index.html" %}
+
+
+
+{% block content %}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/score.css')}}" />
+
+<div class="main">
+    <div class="heading">
+        <h1>Marks Entering System</h1>
+    </div>
+    <div class="student-deatils">
+        <h3><span>Student Name:</span> {{username}}</h3>
+        <h3><span>Student USN:</span>{{usn}}</h3>
+    </div>
+    <div class="hr-line"></div>
+    <a href="{{ url_for('views.downloadi_csv') }}">Download CSV</a>
+
+    <form action="#" method="POST">
+
+    <div class=" addpadding">                   
+        <select class="form-control  rounded-pill inputcontrol " type="text" name="test" id="test"  placeholder="Click here" aria-label="default input example" required>
+         <option >Select Test</option>
+         <option >Test1</option>
+
+         <option >Test2</option>
+         <option >Test3</option>
+       </select>
+     </div>
+    <div class="container1">
+        <div class="row1">
+            <!-- technical -->
+            <div class="predict">
+                <input id="t1" type="button" value="1" onmouseover="enter1(value)" onmouseout="out()">
+                <input id="t2" type="button" value="2" onmouseover="enter1(value)" onmouseout="out()">
+                <input id="t3" type="button" value="3" onmouseover="enter1(value)" onmouseout="out()">
+                <input id="t4" type="button" value="4" onmouseover="enter1(value)" onmouseout="out()">
+                <input id="t5" type="button" value="5" onmouseover="enter1(value)" onmouseout="out()">
+            </div>
+            <div id="demo1"></div>
+            <div class="dropdown">
+                <select  id="Technical" name="technical">
+                    <option value="0">Technical Skill</option>
+                    <option >1</option>
+                    <option >2</option>
+                    <option >3</option>
+                    <option >4</option>
+                    <option >5</option>
+                </select>
+            </div>
+            <!-- end technical -->
+
+            <!-- communication -->
+            <div class="predict">
+                <input id="c1" type="button" value="1" onmouseover="enter2(value)" onmouseout="out()">
+                <input id="c2" type="button" value="2" onmouseover="enter2(value)" onmouseout="out()">
+                <input id="c3" type="button" value="3" onmouseover="enter2(value)" onmouseout="out()">
+                <input id="c4" type="button" value="4" onmouseover="enter2(value)" onmouseout="out()">
+                <input id="c5" type="button" value="5" onmouseover="enter2(value)" onmouseout="out()">
+            </div>
+            <div id="demo2"></div>
+            <div class="dropdown">
+                <select  id="communication"  name="communication">
+                    <option value="0">Communication Skill</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
+            </div>
+            <!-- end communication -->
+
+            <!-- Presentation -->
+            <div class="predict">
+                <input id="p1" type="button" value="1" onmouseover="enter3(value)" onmouseout="out()">
+                <input id="p2" type="button" value="2" onmouseover="enter3(value)" onmouseout="out()">
+                <input id="p3" type="button" value="3" onmouseover="enter3(value)" onmouseout="out()">
+                <input id="p4" type="button" value="4" onmouseover="enter3(value)" onmouseout="out()">
+                <input id="p5" type="button" value="5" onmouseover="enter3(value)" onmouseout="out()">
+            </div>
+            <div id="demo3"></div>
+            <div class="dropdown">
+                <select  id="Presentation" name="presentation">
+                    <option value="0">Presentation Skill</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
+            </div>
+            <!-- end Presentation -->
+
+            <!-- Creativity -->
+            <div class="predict">
+                <input id="cr1" type="button" value="1" onmouseover="enter4(value)" onmouseout="out()">
+                <input id="cr2" type="button" value="2" onmouseover="enter4(value)" onmouseout="out()">
+                <input id="cr3" type="button" value="3" onmouseover="enter4(value)" onmouseout="out()">
+                <input id="cr4" type="button" value="4" onmouseover="enter4(value)" onmouseout="out()">
+                <input id="cr5" type="button" value="5" onmouseover="enter4(value)" onmouseout="out()">
+            </div>
+            <div id="demo4"></div>
+            <div class="dropdown">
+                <select  id="Creativity" name="creativity">
+                    <option value="0">Creativity Skill</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
+            </div>
+            <!-- end Creativity -->
+
+            <!-- Aptitude -->
+            <div class="predict">
+                <input id="a1" type="button" value="1" onmouseover="enter5(value)" onmouseout="out()">
+                <input id="a2" type="button" value="2" onmouseover="enter5(value)" onmouseout="out()">
+                <input id="a3" type="button" value="3" onmouseover="enter5(value)" onmouseout="out()">
+                <input id="a4" type="button" value="4" onmouseover="enter5(value)" onmouseout="out()">
+                <input id="a5" type="button" value="5" onmouseover="enter5(value)" onmouseout="out()">
+            </div>
+            <div id="demo5"></div>
+            <div class="dropdown">
+                <select id="Aptitude" name="resultoriented">
+                    <option value="0">Aptitude Skill</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
+            </div>
+            <!-- end Aptitude -->
+        </div>
+        <div class="row2">
+            <!-- General Knowledge -->
+            <div class="predict">
+                <input id="gk1" type="button" value="1" onmouseover="enter6(value)" onmouseout="out()">
+                <input id="gk2" type="button" value="2" onmouseover="enter6(value)" onmouseout="out()">
+                <input id="gk3" type="button" value="3" onmouseover="enter6(value)" onmouseout="out()">
+                <input id="gk4" type="button" value="4" onmouseover="enter6(value)" onmouseout="out()">
+                <input id="gk5" type="button" value="5" onmouseover="enter6(value)" onmouseout="out()">
+            </div>
+            <div id="demo6"></div>
+            <div class="dropdown">
+                <select id="GeneralKnowledge" name="generalknowledge">
+                    <option value="0">General Knowledge</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
+            </div>
+            <!-- end General Knowledge -->
+
+            <!-- Project Management -->
+            <div class="predict">
+                <input id="pm1" type="button" value="1" onmouseover="enter7(value)" onmouseout="out()">
+                <input id="pm2" type="button" value="2" onmouseover="enter7(value)" onmouseout="out()">
+                <input id="pm3" type="button" value="3" onmouseover="enter7(value)" onmouseout="out()">
+                <input id="pm4" type="button" value="4" onmouseover="enter7(value)" onmouseout="out()">
+                <input id="pm5" type="button" value="5" onmouseover="enter7(value)" onmouseout="out()">
+            </div>
+            <div id="demo7"></div>
+            <div class="dropdown">
+                <select id="ProjectManagement" name="projectmmt">
+                    <option value="0">Project Management</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
+            </div>
+            <!-- end Project Management -->
+
+            <!-- Time Management -->
+            <div class="predict">
+                <input id="tm1" type="button" value="1" onmouseover="enter8(value)" onmouseout="out()">
+                <input id="tm2" type="button" value="2" onmouseover="enter8(value)" onmouseout="out()">
+                <input id="tm3" type="button" value="3" onmouseover="enter8(value)" onmouseout="out()">
+                <input id="tm4" type="button" value="4" onmouseover="enter8(value)" onmouseout="out()">
+                <input id="tm5" type="button" value="5" onmouseover="enter8(value)" onmouseout="out()">
+            </div>
+            <div id="demo8"></div>
+            <div class="dropdown">
+                <select id="TimeManagement" name="timemanagement">
+                    <option value="0">Time Management</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
+            </div>
+            <!-- end Time Management -->
+
+            <!-- Interpersonal -->
+            <div class="predict">
+                <input id="i1" type="button" value="1" onmouseover="enter9(value)" onmouseout="out()">
+                <input id="i2" type="button" value="2" onmouseover="enter9(value)" onmouseout="out()">
+                <input id="i3" type="button" value="3" onmouseover="enter9(value)" onmouseout="out()">
+                <input id="i4" type="button" value="4" onmouseover="enter9(value)" onmouseout="out()">
+                <input id="i5" type="button" value="5" onmouseover="enter9(value)" onmouseout="out()">
+            </div>
+            <div id="demo9"></div>
+            <div class="dropdown">
+                <select  id="Interpersonal" name="interpersonal">
+                    <option value="0">Interpersonal Skill</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
+            </div>
+            <!-- end Interpersonal -->
+
+            <!-- Leadership -->
+            <div class="predict">
+                <input id="l1" type="button" value="1" onmouseover="enter10(value)" onmouseout="out()">
+                <input id="l2" type="button" value="2" onmouseover="enter10(value)" onmouseout="out()">
+                <input id="l3" type="button" value="3" onmouseover="enter10(value)" onmouseout="out()">
+                <input id="l4" type="button" value="4" onmouseover="enter10(value)" onmouseout="out()">
+                <input id="l5" type="button" value="5" onmouseover="enter10(value)" onmouseout="out()">
+            </div>
+            <div id="demo10"></div>
+            <div class="dropdown">
+                <select  id="Leadership"  name="leardership">
+                    <option value="0">Leadership Skill</option>
+                    <option >1</option>
+                    <option >2</option>
+                    <option >3</option>
+                    <option >4</option>
+                    <option >5</option>
+                </select>
+            </div>
+            <!-- end Leadership -->
+        </div>
+    </div>
+    <div class="buttons">
+        <input class="reset" type="reset" value="Clear">
+        <input class="btn" type="submit" value="Submit">
+    </div>
+</form>
+
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+<script>
+    $("#demo1").hide();
+    $("#demo2").hide();
+    $("#demo3").hide();
+    $("#demo4").hide();
+    $("#demo5").hide();
+    $("#demo6").hide();
+    $("#demo7").hide();
+    $("#demo8").hide();
+    $("#demo9").hide();
+    $("#demo10").hide();
+    $(document).ready(function () {
+        $("#t1,#t2,#t3,#t4,#t5").mouseenter(function () {
+            $("#demo1").show();
+        });
+        $("input").mouseleave(function () {
+            $("#demo1").hide();
+        });
+    });
+
+    $(document).ready(function () {
+        $("#c1,#c2,#c3,#c4,#c5").mouseenter(function () {
+            $("#demo2").show();
+        });
+        $("input").mouseleave(function () {
+            $("#demo2").hide();
+        });
+    });
+
+    $(document).ready(function () {
+        $("#p1,#p2,#p3,#p4,#p5").mouseenter(function () {
+            $("#demo3").show();
+        });
+        $("input").mouseleave(function () {
+            $("#demo3").hide();
+        });
+    });
+
+    $(document).ready(function () {
+        $("#cr1,#cr2,#cr3,#cr4,#cr5").mouseenter(function () {
+            $("#demo4").show();
+        });
+        $("input").mouseleave(function () {
+            $("#demo4").hide();
+        });
+    });
+
+    $(document).ready(function () {
+        $("#a1,#a2,#a3,#a4,#a5").mouseenter(function () {
+            $("#demo5").show();
+        });
+        $("input").mouseleave(function () {
+            $("#demo5").hide();
+        });
+    });
+
+    $(document).ready(function () {
+        $("#gk1,#gk2,#gk3,#gk4,#gk5").mouseenter(function () {
+            $("#demo6").show();
+        });
+        $("input").mouseleave(function () {
+            $("#demo6").hide();
+        });
+    });
+
+    $(document).ready(function () {
+        $("#pm1,#pm2,#pm3,#pm4,#pm5").mouseenter(function () {
+            $("#demo7").show();
+        });
+        $("input").mouseleave(function () {
+            $("#demo7").hide();
+        });
+    });
+
+    $(document).ready(function () {
+        $("#tm1,#tm2,#tm3,#tm4,#tm5").mouseenter(function () {
+            $("#demo8").show();
+        });
+        $("input").mouseleave(function () {
+            $("#demo8").hide();
+        });
+    });
+
+    $(document).ready(function () {
+        $("#i1,#i2,#i3,#i4,#i5").mouseenter(function () {
+            $("#demo9").show();
+        });
+        $("input").mouseleave(function () {
+            $("#demo9").hide();
+        });
+    });
+
+    $(document).ready(function () {
+        $("#l1,#l2,#l3,#l4,#l5").mouseenter(function () {
+            $("#demo10").show();
+        });
+        $("input").mouseleave(function () {
+            $("#demo10").hide();
+        });
+    });
+
+
+    function enter1(value) {
+        if (value == "1") {
+            document.getElementById("demo1").innerHTML = "Low technical knowledge, no aptitude & inclination towards tech and related fields, no tech skills";
+        }
+        else if (value == 2) {
+            document.getElementById("demo1").innerHTML = "Interested in technology but low aptitude towards tech. no knowledge about technology and related developments";
+        }
+        else if (value == 3) {
+            document.getElementById("demo1").innerHTML = "Moderate in tech skills, knowledge and aptitute towards technology. Avg inclination towards technology";
+        }
+        else if (value == 4) {
+            document.getElementById("demo1").innerHTML = "Good in tech knowledge,skills, interest. Good inclination towards technology";
+        }
+        else if (value == 5) {
+            document.getElementById("demo1").innerHTML = "Very good. Has knowledge about latest technology, skills & inclination towards tech building things on own";
+        }
+    }
+
+    function enter2(value) {
+        if (value == "1") {
+            document.getElementById("demo2").innerHTML = "Poor english, lack of proper body language, unable to frame senetences properly";
+        }
+        else if (value == 2) {
+            document.getElementById("demo2").innerHTML = "Average english speaking skills, tries but struggles to frame sentences, improper body language";
+        }
+        else if (value == 3) {
+            document.getElementById("demo2").innerHTML = "Moderate english speaking skills, frames sentences but jumbled words, use of body language while communciting";
+        }
+        else if (value == 4) {
+            document.getElementById("demo2").innerHTML = "Good in English and articulation. Good body language";
+        }
+        else if (value == 5) {
+            document.getElementById("demo2").innerHTML = "Excellent English and Articulation. Very good body language and highly confident";
+        }
+    }
+
+    function enter3(value) {
+        if (value == "1") {
+            document.getElementById("demo3").innerHTML = "No confidence at all, very nervous, shivers, does not know how to prepare a PPT, does not know to articulate";
+        }
+        else if (value == 2) {
+            document.getElementById("demo3").innerHTML = "Low in confidence, nervous, average PPT quality, stage fear, lack of body language, does not know articulate effectively";
+        }
+        else if (value == 3) {
+            document.getElementById("demo3").innerHTML = "Moderate quality PPT, slightly confident, some amount of stage fear, average usage of body language/gestures, does not engage";
+        }
+        else if (value == 4) {
+            document.getElementById("demo3").innerHTML = "Good PPT, confident, little stage fear, good body language & gestures. Average in engaging the audience, tries to answer questions";
+        }
+        else if (value == 5) {
+            document.getElementById("demo3").innerHTML = "Excellent PPT preparation, no stage fear, excellent body language, engages the audience, answers questions confidently";
+        }
+    }
+
+    function enter4(value) {
+        if (value == "1") {
+            document.getElementById("demo4").innerHTML = "No inputs. Does things as per the given instruction";
+        }
+        else if (value == 2) {
+            document.getElementById("demo4").innerHTML = "Gives new inputs but not confident enough to take it up further. Lack of self confidence";
+        }
+        else if (value == 3) {
+            document.getElementById("demo4").innerHTML = "Imaginative but resistant to change, needs to think more and be open to change and new ways";
+        }
+        else if (value == 4) {
+            document.getElementById("demo4").innerHTML = "Imaginative, Gives good ideas. Needs some push and mentoring";
+        }
+        else if (value == 5) {
+            document.getElementById("demo4").innerHTML = "Highly imaginative, always thinks of doing things differently. Open to change and new styles.";
+        }
+    }
+
+    function enter5(value) {
+        if (value == "1") {
+            document.getElementById("demo5").innerHTML = "Has issues understanding end results, has no idea about output of any task";
+        }
+        else if (value == 2) {
+            document.getElementById("demo5").innerHTML = "Understands goals & end result of a task but slow in starting work. Lags in timelines. Requires regular monitoring";
+        }
+        else if (value == 3) {
+            document.getElementById("demo5").innerHTML = "Understands projects, timelines etc has done projects but has not completed any. Requires monitoring & followups";
+        }
+        else if (value == 4) {
+            document.getElementById("demo5").innerHTML = "Strives towards achieving goals, completes on time. Requires mentoring";
+        }
+        else if (value == 5) {
+            document.getElementById("demo5").innerHTML = "Takes up tasks/projects on his/her and completes with / without dependencies on others";
+        }
+    }
+
+    function enter6(value) {
+        if (value == "1") {
+            document.getElementById("demo6").innerHTML = "Has no idea about business world / technology related current affairs";
+        }
+        else if (value == 2) {
+            document.getElementById("demo6").innerHTML = "Interested in technology but low aptitude towards technology and less knowledge about technology and related developments";
+        }
+        else if (value == 3) {
+            document.getElementById("demo6").innerHTML = "Moderate in technical skills, knowledge & aptitude towards technology, average inclination towards techonology";
+        }
+        else if (value == 4) {
+            document.getElementById("demo6").innerHTML = "Good in tech knowledge, skills, interest. Good incliation towards technology";
+        }
+        else if (value == 5) {
+            document.getElementById("demo6").innerHTML = "Very good. Has good knowledge about latest technology developments, skills and good inclination towards building things on own";
+        }
+    }
+
+    function enter7(value) {
+        if (value == "1") {
+            document.getElementById("demo7").innerHTML = "Lack of planning and less involvement in any academic tasks / project. No enthusiasm. Issues with working with others";
+        }
+        else if (value == 2) {
+            document.getElementById("demo7").innerHTML = "Less Interest in any task / project. Lack of structured planning. Needs extensive monitoring";
+        }
+        else if (value == 3) {
+            document.getElementById("demo7").innerHTML = "Interested in tasks. Needs guidance.lacks clarity of how to go about tasks. Timelines issue. Needs a mentor and tracking";
+        }
+        else if (value == 4) {
+            document.getElementById("demo7").innerHTML = "Structured plans to carry out tasks / project. Maintaines timelines. Good team player.Risk averse.Needs to a good mentor";
+        }
+        else if (value == 5) {
+            document.getElementById("demo7").innerHTML = "Leader in the project. Organised events.people person. Good with people & money. Takes calculated risks";
+        }
+    }
+
+    function enter8(value) {
+        if (value == "1") {
+            document.getElementById("demo8").innerHTML = "No time sense.No planning . Lethargic. Always missing deadlines";
+        }
+        else if (value == 2) {
+            document.getElementById("demo8").innerHTML = "Little time sense. Misses deadlines sometimes. Improper planning";
+        }
+        else if (value == 3) {
+            document.getElementById("demo8").innerHTML = "Last minute completion for most of tasks. No structured plan ( time, activities, output etc)";
+        }
+        else if (value == 4) {
+            document.getElementById("demo8").innerHTML = "Completes all tasks in time. Never late. Always meets deadlines. structured planning";
+        }
+        else if (value == 5) {
+            document.getElementById("demo8").innerHTML = "Completes tasks well in time and does additional tasks in the original stipulated time.";
+        }
+    }
+
+    function enter9(value) {
+        if (value == "1") {
+            document.getElementById("demo9").innerHTML = "Highly Introvert. Keeps only to himself/herself. Prefers the same. Does not mingle easily. Has understanding issues/no empathy";
+        }
+        else if (value == 2) {
+            document.getElementById("demo9").innerHTML = "Introvert. Waits for others to talk to him. Mingles with only few people.less on understanding others. Lacks empathy most of the times";
+        }
+        else if (value == 3) {
+            document.getElementById("demo9").innerHTML = "Normal. Confident but hesitates to take part in activities. Moderate understanding capability. Needs a push";
+        }
+        else if (value == 4) {
+            document.getElementById("demo9").innerHTML = "Extrovert. Takes part extra activities. Good understanding of others. Has people around all the time. Needs a mentor";
+        }
+        else if (value == 5) {
+            document.getElementById("demo9").innerHTML = "Extrovert. Takes part in lot of extra activities.Organises events. Leadership material. Highly emphathatic and Understanding of others";
+        }
+    }
+
+    function enter10(value) {
+        if (value == "1") {
+            document.getElementById("demo10").innerHTML = "Waits for tasks to be given. No creativity. Just follows orders. Doer";
+        }
+        else if (value == 2) {
+            document.getElementById("demo10").innerHTML = "Follows instruction. Gives some ideas. Doer. Does not question";
+        }
+        else if (value == 3) {
+            document.getElementById("demo10").innerHTML = "Gives new ideas but does not take it up further. Follows instruction";
+        }
+        else if (value == 4) {
+            document.getElementById("demo10").innerHTML = "Good leader, organises events. Gives ideas, follows up and implements the ideas. Can influence others";
+        }
+        else if (value == 5) {
+            document.getElementById("demo10").innerHTML = "Stong leadership skills.very creative. Bonds people and good at delegation";
+        }
+    }
+
+    function out() {
+        document.getElementById("demo1").innerHTML = "";
+        document.getElementById("demo2").innerHTML = "";
+        document.getElementById("demo3").innerHTML = "";
+        document.getElementById("demo4").innerHTML = "";
+        document.getElementById("demo5").innerHTML = "";
+        document.getElementById("demo6").innerHTML = "";
+        document.getElementById("demo7").innerHTML = "";
+        document.getElementById("demo8").innerHTML = "";
+        document.getElementById("demo9").innerHTML = "";
+        document.getElementById("demo10").innerHTML = "";
+    }
+</script>
+
+     {% endblock content %}

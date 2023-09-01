@@ -22,10 +22,16 @@
     <div class=" addpadding">                   
         <select class="form-control  rounded-pill inputcontrol " type="text" name="test" id="test"  placeholder="Click here" aria-label="default input example" required>
          <option >Select Test</option>
-         <option >Test1</option>
+         <option >Assessment1</option>
+         <option >Assessment2</option>
+         <option >Assessment3</option>
+         <option >Assessment4</option>
+         <option >Assessment5</option>
+         <option >Assessment6</option>
+         <option >Assessment7</option>
+         <option >Assessment8</option>
 
-         <option >Test2</option>
-         <option >Test3</option>
+         
        </select>
      </div>
     <div class="container1">
@@ -40,7 +46,7 @@
             </div>
             <div id="demo1"></div>
             <div class="dropdown">
-                <select  id="Technical" name="technical">
+                <select  id="Technical" name="technical" required>
                     <option value="0">Technical Skill</option>
                     <option >1</option>
                     <option >2</option>
@@ -134,8 +140,6 @@
                 </select>
             </div>
             <!-- end Aptitude -->
-        </div>
-        <div class="row2">
             <!-- General Knowledge -->
             <div class="predict">
                 <input id="gk1" type="button" value="1" onmouseover="enter6(value)" onmouseout="out()">
@@ -156,6 +160,9 @@
                 </select>
             </div>
             <!-- end General Knowledge -->
+        </div>
+        <div class="row2">
+            
 
             <!-- Project Management -->
             <div class="predict">
@@ -209,7 +216,6 @@
             </div>
             <div id="demo9"></div>
             <div class="dropdown">
-                <select  id="Interpersonal" name="interpersonal">
                     <option value="0">Interpersonal Skill</option>
                     <option value="1">1</option>
                     <option value="2">2</option>
@@ -240,9 +246,19 @@
                 </select>
             </div>
             <!-- end Leadership -->
+                    <option value="0">Entrepreneurl Skill</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
+            </div>
+        
+            <!-- end entr.... -->
         </div>
     </div>
-    <div class="buttons">
+    <div class="buttons" style="margin:50px 0 0 0; padding:0 0 50px 0;">
         <input class="reset" type="reset" value="Clear">
         <input class="btn" type="submit" value="Submit">
     </div>
@@ -261,6 +277,8 @@
     $("#demo8").hide();
     $("#demo9").hide();
     $("#demo10").hide();
+    $("#demo11").hide();
+    $("#demo12").hide();
     $(document).ready(function () {
         $("#t1,#t2,#t3,#t4,#t5").mouseenter(function () {
             $("#demo1").show();
@@ -348,6 +366,22 @@
         });
         $("input").mouseleave(function () {
             $("#demo10").hide();
+        });
+    });
+    $(document).ready(function () {
+        $("#re1,#re2,#re3,#re4,#re5").mouseenter(function () {
+            $("#demo11").show();
+        });
+        $("input").mouseleave(function () {
+            $("#demo11").hide();
+        });
+    });
+    $(document).ready(function () {
+        $("#eee1,#eee2,#eee3,#eee4,#eee5").mouseenter(function () {
+            $("#demo12").show();
+        });
+        $("input").mouseleave(function () {
+            $("#demo12").hide();
         });
     });
 
@@ -531,6 +565,40 @@
             document.getElementById("demo10").innerHTML = "Stong leadership skills.very creative. Bonds people and good at delegation";
         }
     }
+    function enter11(value) {
+        if (value == "1") {
+            document.getElementById("demo11").innerHTML = "Waits likith for tasks to be given. No creativity. Just follows orders. Doer";
+        }
+        else if (value == 2) {
+            document.getElementById("demo11").innerHTML = "Follows instruction. Gives some ideas. Doer. Does not question";
+        }
+        else if (value == 3) {
+            document.getElementById("demo11").innerHTML = "Gives new ideas but does not take it up further. Follows instruction";
+        }
+        else if (value == 4) {
+            document.getElementById("demo11").innerHTML = "Good leader, organises events. Gives ideas, follows up and implements the ideas. Can influence others";
+        }
+        else if (value == 5) {
+            document.getElementById("demo11").innerHTML = "Stong leadership skills.very creative. Bonds people and good at delegation";
+        }
+    }
+    function enter12(value) {
+        if (value == "1") {
+            document.getElementById("demo12").innerHTML = "Waits madmax for tasks to be given. No creativity. Just follows orders. Doer";
+        }
+        else if (value == 2) {
+            document.getElementById("demo12").innerHTML = "Follows instruction. Gives some ideas. Doer. Does not question";
+        }
+        else if (value == 3) {
+            document.getElementById("demo12").innerHTML = "Gives new ideas but does not take it up further. Follows instruction";
+        }
+        else if (value == 4) {
+            document.getElementById("demo12").innerHTML = "Good leader, organises events. Gives ideas, follows up and implements the ideas. Can influence others";
+        }
+        else if (value == 5) {
+            document.getElementById("demo12").innerHTML = "Stong leadership skills.very creative. Bonds people and good at delegation";
+        }
+    }
 
     function out() {
         document.getElementById("demo1").innerHTML = "";
@@ -543,6 +611,8 @@
         document.getElementById("demo8").innerHTML = "";
         document.getElementById("demo9").innerHTML = "";
         document.getElementById("demo10").innerHTML = "";
+        document.getElementById("demo11").innerHTML = "";
+        document.getElementById("demo12").innerHTML = "";
     }
 </script>
 

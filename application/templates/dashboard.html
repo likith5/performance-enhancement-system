@@ -9,10 +9,14 @@
 <div class=" addpadding">                   
     <select class="form-control  rounded-pill inputcontrol " type="text" name="test" id="test"  placeholder="Click here" aria-label="default input example" required>
      <option >Select Test</option>
-     <option >Test1</option>
-
-     <option >Test2</option>
-     <option >Test3</option>
+     <option >Assessment1</option>
+     <option >Assessment2</option>
+     <option >Assessment3</option>
+     <option >Assessment4</option>
+     <option >Assessment5</option>
+     <option >Assessment6</option>
+     <option >Assessment7</option>
+     <option >Assessment8</option>
    </select>
    <button class="btn btn-primary pt-3 mt-3" type="submit">click</button>
 
@@ -28,7 +32,7 @@
        <div class="contain15 text-center ">
 
 
-        <h2 class="top-grade-title  fadeIn first"><u>Your Top Performance</u> </h2>
+        <h2 class="top-grade-title  fadeIn first"><u>Your Top Scoring Skills</u> </h2>
         
         <div class="  wow fadeIn"  data-wow-duration="0.5s" data-wow-delay="0.5s">
             <li class="grade-explain">
@@ -155,7 +159,7 @@
     <div class=" col col-lg-6 col-md-12  bari  wow fadeInRight" data-wow-duration="1s" data-wow-delay="0.5s">
         <div class=" contain3">
 
-            <span class="top-grade-title" style="padding:10px 5px 0 15px">Interpersonal skill</span>
+            <span class="top-grade-title" style="padding:10px 5px 0 15px">Interperosnal skill</span>
             <div class="circular-progress">
                <span class="progress-value">{{ interpersonal }}</span>
                 
@@ -233,7 +237,7 @@
      <div class="col col-md-12 col-lg-6 bari wow fadeInLeft  bari"  data-wow-duration="0.5s" data-wow-delay="0.5s">
         <div class=" contain3">
             
-          <span class="top-grade-title" style="padding:10px 5px 0 15px">General Knowledge</span>
+          <span class="top-grade-title" style="padding:10px 5px 0 15px">GK on business</span>
           <div class="circular-progress">
              <span class="progress-value">{{ generalknowledge }}</span>
               
@@ -322,6 +326,53 @@
                 </div>
                 
     </div>
+    <div class=" col col-md-6 col-lg-6 bari wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.3s">
+        <div class=" contain3">
+            
+            <span class="top-grade-title" style="padding:10px 5px 0 15px">Aptitude</span>
+            <div class="circular-progress">
+               <span class="progress-value">{{ aptitude }}</span>
+                
+                   </div>
+                   <div class="content">
+                    {% if presentation  == 1  %}
+                    <span class="message">Find someone to speak only in English, Enroll for a communication class, read news paper</span>
+                    {% elif presentation  == 2 %}
+                    <span class="message">Watch english movies, think in English, Read paper and Novels</span>
+                    {% elif presentation  == 3 %}
+                    <span class="message">Read business articles, watch Tedx videos on presentation skills, Read Newspaper </span>
+                    {% elif presentation  == 4 %}
+                    <span class="message">Read business articles, watch Tedx videos on presentation skills, Read Newspaper. Participate in Intercollege fests</span>
+                    {% elif presentation  == 5 %}
+                    <span class="message">Train others. Read a lot of business articles</span>
+                    {% endif%}                  </div>
+                </div>
+                
+    </div>
+   
+    <div class=" col col-md-6 col-lg-6 bari wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.3s">
+        <div class=" contain3">
+            
+            <span class="top-grade-title" style="padding:10px 5px 0 15px">Entrepreneurial</span>
+            <div class="circular-progress">
+               <span class="progress-value">{{ entrepreneur }}</span>
+                
+                   </div>
+                   <div class="content">
+                    {% if presentation  == 1  %}
+                    <span class="message">Find someone to speak only in English, Enroll for a communication class, read news paper</span>
+                    {% elif presentation  == 2 %}
+                    <span class="message">Watch english movies, think in English, Read paper and Novels</span>
+                    {% elif presentation  == 3 %}
+                    <span class="message">Read business articles, watch Tedx videos on presentation skills, Read Newspaper </span>
+                    {% elif presentation  == 4 %}
+                    <span class="message">Read business articles, watch Tedx videos on presentation skills, Read Newspaper. Participate in Intercollege fests</span>
+                    {% elif presentation  == 5 %}
+                    <span class="message">Train others. Read a lot of business articles</span>
+                    {% endif%}                  </div>
+                </div>
+                
+    </div>
    
 
 
@@ -360,18 +411,19 @@
   
       
       const ctxi = document.getElementById('mycharttest2');
-    
+      Chart.defaults.font.size = 16;
+
     new Chart(ctxi, {
       type: 'bar',
       data: {
-        labels: ['Communication', 'Presentation', 'Technical', 'Result oriented', 'Project Management', 'Interpersonal','Leadership','General knowledge','Time Management','Creativity'],
+        labels: ['Communication', 'Presentation', 'Technical', 'Result oriented', 'Project Management', 'Interpersonal','Leadership','General knowledge','Time Management','Creativity','Aptiude','Entrepreneur'],
         datasets: [{
-          label: 'Test1',
+          label: 'Assessment1',
           data:  test1_results,
           borderWidth: 1
         },
         {
-          label: 'Test2',
+          label: 'Assessment2',
           data:  test2_results,
           borderWidth: 1
         }]
@@ -381,7 +433,9 @@
               x: {
                 grid: {
                   display: true, // hide x-axis grid lines
-                }
+                },
+                
+
               },
               y: {
                 min: 0, // Set the minimum value for the y-axis
@@ -413,13 +467,18 @@
   
        <div class="col"> <div class="container addpadding pt-5"  style="width:100%;max-width:1100px; ">
         <canvas id="mylinetest2" class="aligngraph"></canvas>
+        <canvas id="arrowCanvas" style="position: absolute; top: 0; left: 0;"></canvas>
+
   
       </div></div>
   
     </div>
    
  
-<script>  let test1_results = JSON.parse({{ p | tojson }});
+<script> 
+  Chart.defaults.font.size = 16;
+
+  let test1_results = JSON.parse({{ p | tojson }});
   let test2_results = JSON.parse({{ q | tojson }});
   let test3_results = JSON.parse({{ r | tojson }});
   let score1 = JSON.parse({{ score1 | tojson }});
@@ -430,19 +489,19 @@
 new Chart(ctxii, {
 type: 'bar',
 data: {
-  labels: ['Communication', 'Presentation', 'Technical', 'Result oriented', 'Project Management', 'Interpersonal','Leadership','General knowledge','Time Management','Creativity'],
+  labels: ['Communication', 'Presentation', 'Technical', 'Result oriented', 'Project Management', 'Interpersonal','Leadership','General knowledge','Time Management','Creativity','Aptiude','Entrepreneur'],
   datasets: [{
-    label: 'Test1',
+    label: 'Assessment1',
     data:  test1_results,
     borderWidth: 1
   },
   {
-    label: 'Test2',
+    label: 'Assessment2',
     data:  test2_results,
     borderWidth: 1
   },
   {
-    label: 'Test3',
+    label: 'Assessment3',
     data:  test3_results,
     borderWidth: 1
   }]
@@ -451,7 +510,8 @@ options: {
     scales: {
         x: {
           grid: {
-            display: true, // hide x-axis grid lines
+            display: true,
+             // hide x-axis grid lines
           }
         },
         y: {
@@ -477,9 +537,693 @@ const myline2 = document.getElementById('mylinetest2');
 new Chart(myline2, {
 type: 'line',
 data: {
-  labels: ['Test1', 'Test2', 'Test3'],
+  labels: ['Assessment1', 'Assessment2', 'Assessment3'],
   datasets: [{
-    label: 'Test Summary',
+    label: 'Assessment Summary',
+    data: score1,
+    borderWidth: 1
+  }]
+},
+options: {
+    scales: {
+        x: {
+          
+          grid: {
+            display: false, // hide x-axis grid lines
+          }
+        },
+        y: {
+            min: 0, // Set the minimum value for the y-axis
+            max: 5, // Set the maximum value for the y-axis
+          grid: {
+           //  display: false, // hide y-axis grid lines 
+          },
+          ticks: {
+             
+             
+            stepSize: 1,
+            // set the maximum value of the y-axis to 5
+             // set the step size between values
+          }
+        }
+      }
+      
+   
+}
+});
+
+
+</script>
+
+    
+    <!-- <canvas id="mycharttest2" class="aligngraph"></canvas> -->
+
+    {% endif %}
+
+{% if  show_graph4 %}
+
+<div class="container">
+  <h2 class="top-grade-title text-center fadeIn first pt-5"><b>Summary of your Skills</b> </h2>
+  
+      <div class="col text-center"> <div class="container addpadding pt-5 " style="width:100%;max-width:1100px; ">
+        <canvas id="mycharttest4" class="aligngraph"></canvas>
+      
+       </div></div>
+       <h2 class="top-grade-title text-center fadeIn first"><b>Overall summary of Tests</b> </h2>
+  
+       <div class="col"> <div class="container addpadding pt-5"  style="width:100%;max-width:1100px; ">
+        <canvas id="mylinetest4" class="aligngraph"></canvas>
+  
+      </div></div>
+  
+    </div>
+   
+ 
+<script>
+  Chart.defaults.font.size = 16;  
+  let test1_results = JSON.parse({{ p | tojson }});
+  let test2_results = JSON.parse({{ q | tojson }});
+  let test3_results = JSON.parse({{ r | tojson }});
+  let test4_results = JSON.parse({{ s | tojson }});
+  let score1 = JSON.parse({{ score1 | tojson }});
+
+  
+  const ctxii4 = document.getElementById('mycharttest4');
+
+new Chart(ctxii4, {
+type: 'bar',
+data: {
+  labels: ['Communication', 'Presentation', 'Technical', 'Result oriented', 'Project Management', 'Interpersonal','Leadership','General knowledge','Time Management','Creativity','Aptiude','Entrepreneur'],
+  datasets: [{
+    label: 'Assesment1',
+    data:  test1_results,
+    borderWidth: 1
+  },
+  {
+    label: 'Assesment2',
+    data:  test2_results,
+    borderWidth: 1
+  },
+  {
+    label: 'Assesment3',
+    data:  test3_results,
+    borderWidth: 1
+  },
+  {
+    label: 'Assesment4',
+    data:  test4_results,
+    borderWidth: 1
+  }]
+},
+options: {
+    scales: {
+        x: {
+          grid: {
+            display: true, // hide x-axis grid lines
+          }
+        },
+        y: {
+          grid: {
+            //display: false, // hide y-axis grid lines
+          },
+          ticks: {
+            stepSize: 1,
+           // set the maximum value of the y-axis to 5
+            // set the step size between values
+         }
+        }
+      }
+}
+});
+
+
+
+
+
+const myline4 = document.getElementById('mylinetest4');
+
+new Chart(myline4, {
+type: 'line',
+data: {
+  labels: ['Assesment1', 'Assesment2', 'Assesment3','Assesment4'],
+  datasets: [{
+    label: 'Assessment Summary',
+    data: score1,
+    borderWidth: 1
+  }]
+},
+options: {
+    scales: {
+        x: {
+          grid: {
+            display: false, // hide x-axis grid lines
+          }
+        },
+        y: {
+            min: 0, // Set the minimum value for the y-axis
+            max: 5, // Set the maximum value for the y-axis
+          grid: {
+            display: false, // hide y-axis grid lines
+          },
+          ticks: {
+             
+             
+            stepSize: 1,
+            // set the maximum value of the y-axis to 5
+             // set the step size between values
+          }
+        }
+      }
+}
+});
+
+
+</script>
+
+    
+    <!-- <canvas id="mycharttest2" class="aligngraph"></canvas> -->
+
+    {% endif %}
+{% if  show_graph5 %}
+
+<div class="container">
+  <h2 class="top-grade-title text-center fadeIn first pt-5"><b>Summary of your Skills</b> </h2>
+  
+      <div class="col text-center"> <div class="container addpadding pt-5 " style="width:100%;max-width:1100px; ">
+        <canvas id="mycharttest5" class="aligngraph"></canvas>
+      
+       </div></div>
+       <h2 class="top-grade-title text-center fadeIn first"><b>Overall summary of Tests</b> </h2>
+  
+       <div class="col"> <div class="container addpadding pt-5"  style="width:100%;max-width:1100px; ">
+        <canvas id="mylinetest5" class="aligngraph"></canvas>
+  
+      </div></div>
+  
+    </div>
+   
+ 
+<script> 
+  Chart.defaults.font.size = 16; 
+  let test1_results = JSON.parse({{ p | tojson }});
+  let test2_results = JSON.parse({{ q | tojson }});
+  let test3_results = JSON.parse({{ r | tojson }});
+  let test4_results = JSON.parse({{ s | tojson }});
+  let test5_results = JSON.parse({{ t | tojson }});
+  let score1 = JSON.parse({{ score1 | tojson }});
+
+  
+  const ctxii5 = document.getElementById('mycharttest5');
+
+new Chart(ctxii5, {
+type: 'bar',
+data: {
+  labels: ['Communication', 'Presentation', 'Technical', 'Result oriented', 'Project Management', 'Interpersonal','Leadership','General knowledge','Time Management','Creativity','Aptiude','Entrepreneur'],
+  datasets: [{
+    label: 'Assesment1',
+    data:  test1_results,
+    borderWidth: 1
+  },
+  {
+    label: 'Assesment2',
+    data:  test2_results,
+    borderWidth: 1
+  },
+  {
+    label: 'Assesment3',
+    data:  test3_results,
+    borderWidth: 1
+  },
+  {
+    label: 'Assesment4',
+    data:  test4_results,
+    borderWidth: 1
+  },
+  {
+    label: 'Assesment5',
+    data:  test5_results,
+    borderWidth: 1
+  }]
+},
+options: {
+    scales: {
+        x: {
+          grid: {
+            display: true, // hide x-axis grid lines
+          }
+        },
+        y: {
+          grid: {
+            //display: false, // hide y-axis grid lines
+          },
+          ticks: {
+            stepSize: 1,
+           // set the maximum value of the y-axis to 5
+            // set the step size between values
+         }
+        }
+      }
+}
+});
+
+
+
+
+
+const myline5 = document.getElementById('mylinetest5');
+
+new Chart(myline5, {
+type: 'line',
+data: {
+  labels: ['Assesment1', 'Assesment2', 'Assesment3','Assesment4','Assesment5'],
+  datasets: [{
+    label: 'Assessment Summary',
+    data: score1,
+    borderWidth: 1
+  }]
+},
+options: {
+    scales: {
+        x: {
+          grid: {
+            display: false, // hide x-axis grid lines
+          }
+        },
+        y: {
+            min: 0, // Set the minimum value for the y-axis
+            max: 5, // Set the maximum value for the y-axis
+          grid: {
+            display: false, // hide y-axis grid lines
+          },
+          ticks: {
+             
+             
+            stepSize: 1,
+            // set the maximum value of the y-axis to 5
+             // set the step size between values
+          }
+        }
+      }
+}
+});
+
+
+</script>
+
+    
+    <!-- <canvas id="mycharttest2" class="aligngraph"></canvas> -->
+
+    {% endif %}
+{% if  show_graph6 %}
+
+<div class="container">
+  <h2 class="top-grade-title text-center fadeIn first pt-5"><b>Summary of your Skills</b> </h2>
+  
+      <div class="col text-center"> <div class="container addpadding pt-5 " style="width:100%;max-width:1100px; ">
+        <canvas id="mycharttest6" class="aligngraph"></canvas>
+      
+       </div></div>
+       <h2 class="top-grade-title text-center fadeIn first"><b>Overall summary of Tests</b> </h2>
+  
+       <div class="col"> <div class="container addpadding pt-5"  style="width:100%;max-width:1100px; ">
+        <canvas id="mylinetest6" class="aligngraph"></canvas>
+  
+      </div></div>
+  
+    </div>
+   
+ 
+<script>  
+  Chart.defaults.font.size = 16;
+  let test1_results = JSON.parse({{ p | tojson }});
+  let test2_results = JSON.parse({{ q | tojson }});
+  let test3_results = JSON.parse({{ r | tojson }});
+  let test4_results = JSON.parse({{ s | tojson }});
+  let test5_results = JSON.parse({{ t | tojson }});
+  let test6_results = JSON.parse({{ u | tojson }});
+  let score1 = JSON.parse({{ score1 | tojson }});
+
+  
+  const ctxii6 = document.getElementById('mycharttest6');
+
+new Chart(ctxii6, {
+type: 'bar',
+data: {
+  labels: ['Communication', 'Presentation', 'Technical', 'Result oriented', 'Project Management', 'Interpersonal','Leadership','General knowledge','Time Management','Creativity','Aptiude','Entrepreneur'],
+  datasets: [{
+    label: 'Assesment1',
+    data:  test1_results,
+    borderWidth: 1
+  },
+  {
+    label: 'Assesment2',
+    data:  test2_results,
+    borderWidth: 1
+  },
+  {
+    label: 'Assesment3',
+    data:  test3_results,
+    borderWidth: 1
+  },
+  {
+    label: 'Assesment4',
+    data:  test4_results,
+    borderWidth: 1
+  },
+  {
+    label: 'Assesment5',
+    data:  test5_results,
+    borderWidth: 1
+  },
+  {
+    label: 'Assesment6',
+    data:  test6_results,
+    borderWidth: 1
+  }]
+},
+options: {
+    scales: {
+        x: {
+          grid: {
+            display: true, // hide x-axis grid lines
+          }
+        },
+        y: {
+          grid: {
+            //display: false, // hide y-axis grid lines
+          },
+          ticks: {
+            stepSize: 1,
+           // set the maximum value of the y-axis to 5
+            // set the step size between values
+         }
+        }
+      }
+}
+});
+
+
+
+
+
+const myline6 = document.getElementById('mylinetest6');
+
+new Chart(myline6, {
+type: 'line',
+data: {
+  labels: ['Assesment1', 'Assesment2', 'Assesment3','Assesment4','Assesment5','Assesment6'],
+  datasets: [{
+    label: 'Assessment Summary',
+    data: score1,
+    borderWidth: 1
+  }]
+},
+options: {
+    scales: {
+        x: {
+          grid: {
+            display: false, // hide x-axis grid lines
+          }
+        },
+        y: {
+            min: 0, // Set the minimum value for the y-axis
+            max: 5, // Set the maximum value for the y-axis
+          grid: {
+            display: false, // hide y-axis grid lines
+          },
+          ticks: {
+             
+             
+            stepSize: 1,
+            // set the maximum value of the y-axis to 5
+             // set the step size between values
+          }
+        }
+      }
+}
+});
+
+
+</script>
+
+    
+    <!-- <canvas id="mycharttest2" class="aligngraph"></canvas> -->
+
+    {% endif %}
+{% if  show_graph7 %}
+
+<div class="container">
+  <h2 class="top-grade-title text-center fadeIn first pt-5"><b>Summary of your Skills</b> </h2>
+  
+      <div class="col text-center"> <div class="container addpadding pt-5 " style="width:100%;max-width:1100px; ">
+        <canvas id="mycharttest7" class="aligngraph"></canvas>
+      
+       </div></div>
+       <h2 class="top-grade-title text-center fadeIn first"><b>Overall summary of Tests</b> </h2>
+  
+       <div class="col"> <div class="container addpadding pt-5"  style="width:100%;max-width:1100px; ">
+        <canvas id="mylinetest7" class="aligngraph"></canvas>
+  
+      </div></div>
+  
+    </div>
+   
+ 
+<script>  
+  Chart.defaults.font.size = 16;
+  let test1_results = JSON.parse({{ p | tojson }});
+  let test2_results = JSON.parse({{ q | tojson }});
+  let test3_results = JSON.parse({{ r | tojson }});
+  let test4_results = JSON.parse({{ s | tojson }});
+  let test5_results = JSON.parse({{ t | tojson }});
+  let test6_results = JSON.parse({{ u | tojson }});
+  let test7_results = JSON.parse({{ v | tojson }});
+  let score1 = JSON.parse({{ score1 | tojson }});
+
+  
+  const ctxii7 = document.getElementById('mycharttest7');
+
+new Chart(ctxii7, {
+type: 'bar',
+data: {
+  labels: ['Communication', 'Presentation', 'Technical', 'Result oriented', 'Project Management', 'Interpersonal','Leadership','General knowledge','Time Management','Creativity','Aptiude','Entrepreneur'],
+  datasets: [{
+    label: 'Assesment1',
+    data:  test1_results,
+    borderWidth: 1
+  },
+  {
+    label: 'Assesment2',
+    data:  test2_results,
+    borderWidth: 1
+  },
+  {
+    label: 'Assesment3',
+    data:  test3_results,
+    borderWidth: 1
+  },
+  {
+    label: 'Assesment4',
+    data:  test4_results,
+    borderWidth: 1
+  },
+  {
+    label: 'Assesment5',
+    data:  test5_results,
+    borderWidth: 1
+  },
+  {
+    label: 'Assesment6',
+    data:  test6_results,
+    borderWidth: 1
+  },
+  {
+    label: 'Assesment7',
+    data:  test7_results,
+    borderWidth: 1
+  }]
+},
+options: {
+    scales: {
+        x: {
+          grid: {
+            display: true, // hide x-axis grid lines
+          }
+        },
+        y: {
+          grid: {
+            //display: false, // hide y-axis grid lines
+          },
+          ticks: {
+            stepSize: 1,
+           // set the maximum value of the y-axis to 5
+            // set the step size between values
+         }
+        }
+      }
+}
+});
+
+
+
+
+
+const myline7 = document.getElementById('mylinetest7');
+
+new Chart(myline7, {
+type: 'line',
+data: {
+  labels: ['Assesment1', 'Assesment2', 'Assesment3','Assesment4','Assesment5','Assesment6','Assesment7'],
+  datasets: [{
+    label: 'Assessment Summary',
+    data: score1,
+    borderWidth: 1
+  }]
+},
+options: {
+    scales: {
+        x: {
+          grid: {
+            display: false, // hide x-axis grid lines
+          }
+        },
+        y: {
+            min: 0, // Set the minimum value for the y-axis
+            max: 5, // Set the maximum value for the y-axis
+          grid: {
+            display: false, // hide y-axis grid lines
+          },
+          ticks: {
+             
+             
+            stepSize: 1,
+            // set the maximum value of the y-axis to 5
+             // set the step size between values
+          }
+        }
+      }
+}
+});
+
+
+</script>
+
+    
+    <!-- <canvas id="mycharttest2" class="aligngraph"></canvas> -->
+
+    {% endif %}
+{% if  show_graph8 %}
+
+<div class="container">
+  <h2 class="top-grade-title text-center fadeIn first pt-5"><b>Summary of your Skills</b> </h2>
+  
+      <div class="col text-center"> <div class="container addpadding pt-5 " style="width:100%;max-width:1100px; ">
+        <canvas id="mycharttest8" class="aligngraph"></canvas>
+      
+       </div></div>
+       <h2 class="top-grade-title text-center fadeIn first"><b>Overall summary of Tests</b> </h2>
+  
+       <div class="col"> <div class="container addpadding pt-5"  style="width:100%;max-width:1100px; ">
+        <canvas id="mylinetest8" class="aligngraph"></canvas>
+  
+      </div></div>
+  
+    </div>
+   
+ 
+<script>  
+  Chart.defaults.font.size = 16;
+  let test1_results = JSON.parse({{ p | tojson }});
+  let test2_results = JSON.parse({{ q | tojson }});
+  let test3_results = JSON.parse({{ r | tojson }});
+  let test4_results = JSON.parse({{ s | tojson }});
+  let test5_results = JSON.parse({{ t | tojson }});
+  let test6_results = JSON.parse({{ u | tojson }});
+  let test7_results = JSON.parse({{ v | tojson }});
+  let test8_results = JSON.parse({{ w | tojson }});
+  let score1 = JSON.parse({{ score1 | tojson }});
+
+  
+  const ctxii8 = document.getElementById('mycharttest8');
+
+new Chart(ctxii8, {
+type: 'bar',
+data: {
+  labels: ['Communication', 'Presentation', 'Technical', 'Result oriented', 'Project Management', 'Interpersonal','Leadership','General knowledge','Time Management','Creativity','Aptiude','Entrepreneur'],
+  datasets: [{
+    label: 'Assesment1',
+    data:  test1_results,
+    borderWidth: 1
+  },
+  {
+    label: 'Assesment2',
+    data:  test2_results,
+    borderWidth: 1
+  },
+  {
+    label: 'Assesment3',
+    data:  test3_results,
+    borderWidth: 1
+  },
+  {
+    label: 'Assesment4',
+    data:  test4_results,
+    borderWidth: 1
+  },
+  {
+    label: 'Assesment5',
+    data:  test5_results,
+    borderWidth: 1
+  },
+  {
+    label: 'Assesment6',
+    data:  test6_results,
+    borderWidth: 1
+  },
+  {
+    label: 'Assesment7',
+    data:  test7_results,
+    borderWidth: 1
+  },
+  {
+    label: 'Assesment8',
+    data:  test8_results,
+    borderWidth: 1
+  }]
+},
+options: {
+    scales: {
+        x: {
+          grid: {
+            display: true, // hide x-axis grid lines
+          }
+        },
+        y: {
+          grid: {
+            //display: false, // hide y-axis grid lines
+          },
+          ticks: {
+            stepSize: 1,
+           // set the maximum value of the y-axis to 5
+            // set the step size between values
+         }
+        }
+      }
+}
+});
+
+
+
+
+
+const myline8 = document.getElementById('mylinetest8');
+
+new Chart(myline8, {
+type: 'line',
+data: {
+  labels: ['Assesment1', 'Assesment2', 'Assesment3','Assesment4','Assesment5','Assesment6','Assesment7','Assesment8'],
+  datasets: [{
+    label: 'Assessment Summary',
     data: score1,
     borderWidth: 1
   }]

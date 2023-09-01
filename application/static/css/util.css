@@ -1,3 +1,14 @@
+/* graph css ...  */
+/* Bold X-axis label */
+.x-axis-label {
+  font-weight: bold;
+}
+
+/* Bold Y-axis label */
+.y-axis-label {
+  font-weight: bold;
+}
+
 /* main csss ...  */
 .back{
 

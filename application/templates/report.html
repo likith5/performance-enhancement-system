@@ -10,9 +10,9 @@
         <img src="{{ url_for('static',filename='images/logo.jpeg')}}" alt="Smartchaps">
       </div>
       <div class="main-title text-center">
-        <p>The Best Performance Analyser</p>
+        <p>Best Performance Analyser</p>
         <p>and</p>
-        <p>The Enhancement System</p>
+        <p> Enhancement System</p>
       </div>
 
       <div class="quote-title text-center">
@@ -88,6 +88,8 @@
             </div>
         </div>
         <script>
+          Chart.defaults.font.size = 16;
+
           let communication = JSON.parse({{ communication | tojson }});
 
                         const ctx1cs = document.getElementById("myChart1cs");
@@ -95,10 +97,10 @@
                         new Chart(ctx1cs, {
                         type: "line",
                         data: {
-                        labels: ["test1", "test2", "test3"],
-                        datasets: [
+                          labels: ["Assessment1","Assessment2","Assessment3","Assessment4","Assessment5","Assessment6","Assessment7","Assessment8"],
+                          datasets: [
                           {
-                            label: "# of Votes",
+                            label: "Assesments",
                             data: communication,
                               borderWidth: 1,
                             },
@@ -106,10 +108,23 @@
                         },
                         options: {
                           scales: {
-                            y: {
-                              beginAtZero: true,
+                            x: {
+                              grid: {
+                                display: true,
+                                 // hide x-axis grid lines
+                              }
                             },
-                          },
+                            y: {
+                              grid: {
+                                display: true, // hide y-axis grid lines
+                              },
+                              ticks: {
+                                stepSize: 1,
+                               // set the maximum value of the y-axis to 5
+                                // set the step size between values
+                             }
+                            }
+                          }
                         },
                       });
                             </script>
@@ -153,15 +168,17 @@
             </div>
         </div>
         <script>
+          Chart.defaults.font.size = 16;
+
                         let presentation = JSON.parse({{ presentation | tojson }});
                         const ctx1ps = document.getElementById("myChart1ps");
                         new Chart(ctx1ps, {
                         type: "line",
                         data: {
-                        labels: ["test1", "test2", "test3"],
-                        datasets: [
+                          labels: ["Assessment1","Assessment2","Assessment3","Assessment4","Assessment5","Assessment6","Assessment7","Assessment8"],
+                          datasets: [
                           {
-                            label: "# of Votes",
+                            label: "Assessments",
                             data: presentation,
                               borderWidth: 1,
                             },
@@ -169,10 +186,23 @@
                         },
                         options: {
                           scales: {
-                            y: {
-                              beginAtZero: true,
+                            x: {
+                              grid: {
+                                display: true,
+                                 // hide x-axis grid lines
+                              }
                             },
-                          },
+                            y: {
+                              grid: {
+                                display: true, // hide y-axis grid lines
+                              },
+                              ticks: {
+                                stepSize: 1,
+                               // set the maximum value of the y-axis to 5
+                                // set the step size between values
+                             }
+                            }
+                          }
                         },
                       });
                             </script>
@@ -216,6 +246,8 @@
             </div>
         </div>
         <script>
+          Chart.defaults.font.size = 16;
+
           let technical = JSON.parse({{ technical | tojson }});
 
               
@@ -224,10 +256,10 @@
                         new Chart(ctx1ts, {
                         type: "line",
                         data: {
-                        labels: ["test1", "test2", "test3"],
-                        datasets: [
+                          labels: ["Assessment1","Assessment2","Assessment3","Assessment4","Assessment5","Assessment6","Assessment7","Assessment8"],
+                          datasets: [
                           {
-                            label: "# of Votes",
+                            label: "Assessments",
                             data: technical,
                               borderWidth: 1,
                             },
@@ -235,10 +267,23 @@
                         },
                         options: {
                           scales: {
-                            y: {
-                              beginAtZero: true,
+                            x: {
+                              grid: {
+                                display: true,
+                                 // hide x-axis grid lines
+                              }
                             },
-                          },
+                            y: {
+                              grid: {
+                                display: true, // hide y-axis grid lines
+                              },
+                              ticks: {
+                                stepSize: 1,
+                               // set the maximum value of the y-axis to 5
+                                // set the step size between values
+                             }
+                            }
+                          }
                         },
                       });
                             </script>
@@ -284,6 +329,8 @@
               </div>
         </div>
         <script>
+          Chart.defaults.font.size = 16;
+
           let resultoriented = JSON.parse({{ resultoriented | tojson }});
 
                         const ctx1rs = document.getElementById("myChart1rs");
@@ -291,10 +338,10 @@
                         new Chart(ctx1rs, {
                         type: "line",
                         data: {
-                        labels: ["test1", "test2", "test3"],
-                        datasets: [
+                          labels: ["Assessment1","Assessment2","Assessment3","Assessment4","Assessment5","Assessment6","Assessment7","Assessment8"],
+                          datasets: [
                           {
-                            label: "# of Votes",
+                            label: "Assessments",
                             data: resultoriented,
                             borderWidth: 1,
                             },
@@ -302,10 +349,23 @@
                         },
                         options: {
                           scales: {
-                            y: {
-                              beginAtZero: true,
+                            x: {
+                              grid: {
+                                display: true,
+                                 // hide x-axis grid lines
+                              }
                             },
-                          },
+                            y: {
+                              grid: {
+                                display: true, // hide y-axis grid lines
+                              },
+                              ticks: {
+                                stepSize: 1,
+                               // set the maximum value of the y-axis to 5
+                                // set the step size between values
+                             }
+                            }
+                          }
                         },
                       });
                             </script>
@@ -349,6 +409,8 @@
             </div>
         </div>
         <script>
+          Chart.defaults.font.size = 16;
+
           let projectmmt = JSON.parse({{ projectmmt | tojson }});
 
                         const ctx1pm = document.getElementById("myChart1pm");
@@ -356,10 +418,10 @@
                         new Chart(ctx1pm, {
                           type: "line",
                           data: {
-                            labels:  ["test1", "test2", "test3"],
+                            labels: ["Assessment1","Assessment2","Assessment3","Assessment4","Assessment5","Assessment6","Assessment7","Assessment8"],
                             datasets: [
                               {
-                              label: "# of Votes",
+                              label: "Assessments",
                               data: projectmmt,
                               borderWidth: 1,
                             },
@@ -367,10 +429,23 @@
                         },
                         options: {
                           scales: {
-                            y: {
-                              beginAtZero: true,
+                            x: {
+                              grid: {
+                                display: true,
+                                 // hide x-axis grid lines
+                              }
                             },
-                          },
+                            y: {
+                              grid: {
+                                display: true, // hide y-axis grid lines
+                              },
+                              ticks: {
+                                stepSize: 1,
+                               // set the maximum value of the y-axis to 5
+                                // set the step size between values
+                             }
+                            }
+                          }
                         },
                       });
                       </script>
@@ -378,7 +453,7 @@
     </div>
     <div class="page8">
       <div class="smartchaps-logo-for-page3">
-        <p class="skill-title text-center"><b>InterPersonnal Skill</b></p>
+        <p class="skill-title text-center"><b>InterPerosnnal Skill</b></p>
         <img src="{{ url_for('static',filename='images/logo.jpeg')}}" alt="Smartchaps">
       </div>
       <div>
@@ -414,6 +489,8 @@
             </div>
         </div>
         <script>
+          Chart.defaults.font.size = 16;
+
           let interpersonal = JSON.parse({{ interpersonal | tojson }});
 
                         const ctx1is = document.getElementById("myChart1is");
@@ -421,10 +498,10 @@
                         new Chart(ctx1is, {
                           type: "line",
                           data: {
-                            labels: ["test1", "test2", "test3"],
+                            labels: ["Assessment1","Assessment2","Assessment3","Assessment4","Assessment5","Assessment6","Assessment7","Assessment8"],
                             datasets: [
                               {
-                              label: "# of Votes",
+                              label: "Assessments",
                               data: interpersonal,
                               borderWidth: 1,
                             },
@@ -432,10 +509,23 @@
                         },
                         options: {
                           scales: {
-                            y: {
-                              beginAtZero: true,
+                            x: {
+                              grid: {
+                                display: true,
+                                 // hide x-axis grid lines
+                              }
                             },
-                          },
+                            y: {
+                              grid: {
+                                display: true, // hide y-axis grid lines
+                              },
+                              ticks: {
+                                stepSize: 1,
+                               // set the maximum value of the y-axis to 5
+                                // set the step size between values
+                             }
+                            }
+                          }
                         },
                       });
                       </script>
@@ -474,6 +564,8 @@
             </div>
         </div>
         <script>
+          Chart.defaults.font.size = 16;
+
           let leadership = JSON.parse({{ leadership | tojson }});
 
                         const ctx1ls = document.getElementById("myChart1ls");
@@ -481,10 +573,10 @@
                         new Chart(ctx1ls, {
                           type: "line",
                           data: {
-                            labels:  ["test1", "test2", "test3"],
+                            labels: ["Assessment1","Assessment2","Assessment3","Assessment4","Assessment5","Assessment6","Assessment7","Assessment8"],
                             datasets: [
                               {
-                              label: "# of Votes",
+                              label: "Assessments",
                               data: leadership,
                               borderWidth: 1,
                             },
@@ -492,10 +584,23 @@
                         },
                         options: {
                           scales: {
-                            y: {
-                              beginAtZero: true,
+                            x: {
+                              grid: {
+                                display: true,
+                                 // hide x-axis grid lines
+                              }
                             },
-                          },
+                            y: {
+                              grid: {
+                                display: true, // hide y-axis grid lines
+                              },
+                              ticks: {
+                                stepSize: 1,
+                               // set the maximum value of the y-axis to 5
+                                // set the step size between values
+                             }
+                            }
+                          }
                         },
                       });
 </script>
@@ -538,6 +643,8 @@
             </div>
         </div>
         <script>
+          Chart.defaults.font.size = 16;
+
           let gk = JSON.parse({{ gk | tojson }});
 
                         const ctx1gks = document.getElementById("myChart1gks");
@@ -545,10 +652,10 @@
                         new Chart(ctx1gks, {
                           type: "line",
                           data: {
-                            labels: ["test1", "test2", "test3"],
+                            labels: ["Assessment1","Assessment2","Assessment3","Assessment4","Assessment5","Assessment6","Assessment7","Assessment8"],
                             datasets: [
                               {
-                              label: "# of Votes",
+                              label: "Assessments",
                               data: gk,
                               borderWidth: 1,
                             },
@@ -556,17 +663,188 @@
                         },
                         options: {
                           scales: {
-                            y: {
-                              beginAtZero: true,
+                            x: {
+                              grid: {
+                                display: true,
+                                 // hide x-axis grid lines
+                              }
                             },
-                          },
+                            y: {
+                              grid: {
+                                display: true, // hide y-axis grid lines
+                              },
+                              ticks: {
+                                stepSize: 1,
+                               // set the maximum value of the y-axis to 5
+                                // set the step size between values
+                             }
+                            }
+                          }
+                        },
+                      });
+</script>
+      </div>
+      </div>
+    <div class="page11">
+      <div class="smartchaps-logo-for-page3">
+        <p class="skill-title text-center"><b>Creativity</b></p>
+        <img src="{{ url_for('static',filename='images/logo.jpeg')}}" alt="Smartchaps">
+      </div>
+      <div>
+        <div class="" style="display: flex; justify-content: center; align-items: center">
+          <canvas id="myChart1cre"
+            style="border:2px solid #423FB9; border-radius:7px; width: 100%; max-width: 600px; height: 200px"></canvas>
+        </div>
+        <div class="pl-3">
+          <p class="score-input-title text-center pt-3">Scoring Inputs</p>
+          <div class="general-knowledge-section">
+            <ol class="general-knowledge-scoring-inputs">
+              <li>
+                Has no idea about business world / technology related current affairs.
+              </li>
+              <li>
+                Interested in technology but low aptitude towards technology and less
+                knowledge about technology and related developments.
+              </li>
+              <li>
+                Moderate in technical skills, knowledge & aptitude towards technology,
+                average inclination towards technology.
+              </li>
+              <li>
+                Good in tech knowledge, skills, interest. Good inclination towards
+                technology.
+              </li>
+              <li>
+                Very good. Has good knowledge about latest technology developments,
+                skills and good inclination towards building things on own.
+              </li>
+            </ol>
+            </div>
+        </div>
+        <script>
+          Chart.defaults.font.size = 16;
+
+          let cre = JSON.parse({{ creativity | tojson }});
+
+                        const ctx1cre = document.getElementById("myChart1cre");
+
+                        new Chart(ctx1cre, {
+                          type: "line",
+                          data: {
+                            labels: ["Assessment1","Assessment2","Assessment3","Assessment4","Assessment5","Assessment6","Assessment7","Assessment8"],
+                            datasets: [
+                              {
+                              label: "Assessments",
+                              data: cre,
+                              borderWidth: 1,
+                            },
+                          ],
+                        },
+                        options: {
+                          scales: {
+                            x: {
+                              grid: {
+                                display: true,
+                                 // hide x-axis grid lines
+                              }
+                            },
+                            y: {
+                              grid: {
+                                display: true, // hide y-axis grid lines
+                              },
+                              ticks: {
+                                stepSize: 1,
+                               // set the maximum value of the y-axis to 5
+                                // set the step size between values
+                             }
+                            }
+                          }
+                        },
+                      });
+</script>
+      </div>
+      </div>
+    <div class="page12">
+      <div class="smartchaps-logo-for-page3">
+        <p class="skill-title text-center"><b>Entreprenuerial</b></p>
+        <img src="{{ url_for('static',filename='images/logo.jpeg')}}" alt="Smartchaps">
+      </div>
+      <div>
+        <div class="" style="display: flex; justify-content: center; align-items: center">
+          <canvas id="myChart1ent"
+            style="border:2px solid #423FB9; border-radius:7px; width: 100%; max-width: 600px; height: 200px"></canvas>
+        </div>
+        <div class="pl-3">
+          <p class="score-input-title text-center pt-3">Scoring Inputs</p>
+          <div class="general-knowledge-section">
+            <ol class="general-knowledge-scoring-inputs">
+              <li>
+                Has no idea about business world / technology related current affairs.
+              </li>
+              <li>
+                Interested in technology but low aptitude towards technology and less
+                knowledge about technology and related developments.
+              </li>
+              <li>
+                Moderate in technical skills, knowledge & aptitude towards technology,
+                average inclination towards technology.
+              </li>
+              <li>
+                Good in tech knowledge, skills, interest. Good inclination towards
+                technology.
+              </li>
+              <li>
+                Very good. Has good knowledge about latest technology developments,
+                skills and good inclination towards building things on own.
+              </li>
+            </ol>
+            </div>
+        </div>
+        <script>
+          Chart.defaults.font.size = 16;
+
+          let ent1 = JSON.parse({{ ent1 | tojson }});
+
+                        const ctx1ent = document.getElementById("myChart1ent");
+
+                        new Chart(ctx1ent, {
+                          type: "line",
+                          data: {
+                            labels: ["Assessment1","Assessment2","Assessment3","Assessment4","Assessment5","Assessment6","Assessment7","Assessment8"],
+                            datasets: [
+                              {
+                              label: "Assessments",
+                              data: ent1,
+                              borderWidth: 1,
+                            },
+                          ],
+                        },
+                        options: {
+                          scales: {
+                            x: {
+                              grid: {
+                                display: true,
+                                 // hide x-axis grid lines
+                              }
+                            },
+                            y: {
+                              grid: {
+                                display: true, // hide y-axis grid lines
+                              },
+                              ticks: {
+                                stepSize: 1,
+                               // set the maximum value of the y-axis to 5
+                                // set the step size between values
+                             }
+                            }
+                          }
                         },
                       });
 </script>
       </div>
       </div>
 
-    <div class="page11">
+    <div class="page13">
       <div class="smartchaps-logo-for-page3">
         <p class="skill-title text-center"><b>Aptitude Skill</b></p>
         <img src="{{ url_for('static',filename='images/logo.jpeg')}}" alt="Smartchaps">
@@ -599,35 +877,51 @@
             </div>
         </div>
         <script>
-          let creativity = JSON.parse({{ creativity | tojson }});
+          //this is  for the data aptitude  
+          Chart.defaults.font.size = 16;
+
+          let apt = JSON.parse({{ apt | tojson }});
 
                         const ctx1as = document.getElementById("myChart1as");
 
                         new Chart(ctx1as, {
                           type: "line",
                           data: {
-                            labels:  ["test1", "test2", "test3"],
+                            labels: ["Assessment1","Assessment2","Assessment3","Assessment4","Assessment5","Assessment6","Assessment7","Assessment8"],
                             datasets: [
                               {
-                              label: "# of Votes",
-                              data: creativity,
+                              label: "Assessments",
+                              data: apt,
                               borderWidth: 1,
                             },
                           ],
                         },
                         options: {
                           scales: {
-                            y: {
-                              beginAtZero: true,
+                            x: {
+                              grid: {
+                                display: true,
+                                 // hide x-axis grid lines
+                              }
                             },
-                          },
+                            y: {
+                              grid: {
+                                display: true, // hide y-axis grid lines
+                              },
+                              ticks: {
+                                stepSize: 1,
+                               // set the maximum value of the y-axis to 5
+                                // set the step size between values
+                             }
+                            }
+                          }
                         },
                       });
 </script>
       </div>
       </div>
 
-    <div class="page12">
+    <div class="page14">
       <div class="smartchaps-logo-for-page3">
         <p class="skill-title text-center"><b>Time Management</b></p>
         <img src="{{ url_for('static',filename='images/logo.jpeg')}}" alt="Smartchaps">
@@ -661,6 +955,8 @@
             </div>
         </div>
         <script>
+          Chart.defaults.font.size = 16;
+
           let timemmt = JSON.parse({{ timemmt | tojson }});
 
                         const ctx1tms = document.getElementById("myChart1tms");
@@ -668,10 +964,10 @@
                         new Chart(ctx1tms, {
                           type: "line",
                           data: {
-                            labels:  ["test1", "test2", "test3"],
+                            labels: ["Assessment1","Assessment2","Assessment3","Assessment4","Assessment5","Assessment6","Assessment7","Assessment8"],
                             datasets: [
                               {
-                              label: "# of Votes",
+                              label: "Assessments",
                               data: timemmt,
                               borderWidth: 1,
                             },
@@ -679,17 +975,30 @@
                         },
                         options: {
                           scales: {
-                            y: {
-                              beginAtZero: true,
+                            x: {
+                              grid: {
+                                display: true,
+                                 // hide x-axis grid lines
+                              }
                             },
-                          },
+                            y: {
+                              grid: {
+                                display: true, // hide y-axis grid lines
+                              },
+                              ticks: {
+                                stepSize: 1,
+                               // set the maximum value of the y-axis to 5
+                                // set the step size between values
+                             }
+                            }
+                          }
                         },
                       });
 </script>
       </div>
       </div>
 
-    <div class="page13">
+    <div class="page14">
       <div class="smartchaps-logo">
         <img src="{{ url_for('static',filename='images/logo.jpeg')}}" alt="Smartchaps">
       </div>

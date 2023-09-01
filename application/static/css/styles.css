@@ -482,7 +482,9 @@ label{
 .page10,
 .page11,
 .page12,
-.page13 {
+.page13,
+.page14,
+.page15{
   border: 10px solid black;
   border-radius: 7px;
   margin: 20px;

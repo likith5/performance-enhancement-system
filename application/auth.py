@@ -18,7 +18,7 @@ def login():
 
         if user and check_password_hash(user['password'], password):
             def userto():
-                test1 = user.get('test1')
+                test1 = user.get('Assessment1')
                 if test1 is not None :
                     flash('Logged in successfully.', category='success')
                     session["studentemail"] = usn

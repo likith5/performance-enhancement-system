@@ -137,7 +137,7 @@ def marksenter():
 
         if request.method == 'POST':
 
-                test= request.form.get('test')
+                test= request.form.get('assesment')
                 communication= request.form.get('communication')
                 technical= request.form.get('technical')
                 creativity= request.form.get('creativity')
@@ -242,6 +242,35 @@ def marksenter():
                     # Handle the error accordingly, such as logging it or displaying an error message to the user
                         return redirect(url_for('views.marksenter'))
                     
+                if test == "assesment4":
+                    try:
+
+                        db.users.update_one(
+                        {"usn": usn},
+                        {
+                            "$set": {
+                                "assesment4": {
+                                    "communication": communication,
+                                    "technical": technical,
+                                    "creativity": creativity,
+                                    "projectmmt": projectmmt,
+                                    "timemanagement": timemanagement,
+                                    "generalknowledge": generalknowledge,
+                                    "interpersonal": interpersonal,
+                                    "resultoriented": resultoriented,
+                                    "leardership": leardership,
+                                    "presentation": presentation
+                                }
+                            }
+                        }
+                    )
+                        flash('Marks entered successfully', category='success')
+                        return redirect(url_for('views.dashboard'))
+                    except PyMongoError as e:
+                        flash(f'Error: {str(e)}', category='error')
+                    # Handle the error accordingly, such as logging it or displaying an error message to the user
+                        return redirect(url_for('views.marksenter'))
+                    
         
         # print(studentname)
         # return render_template("marksenter.html",title=title,studentname=studentname)
@@ -258,7 +287,7 @@ def dashboard():
         username = user["personal"].get('username')
         test11 ="Test1"
         title="dashboard"
-        test1_skills = user["test1"]
+        test1_skills = user["Assesment1"]
         
         # for item in test:
         #     print(item.)
@@ -270,7 +299,7 @@ def dashboard():
         test_function_summary=summary(test1_skills) 
         
        
-        particular_testsummary=int((sum(test_function_summary)/50)*5)
+        particular_testsummary=int((sum(test_function_summary)/60)*5)
         
         
      
@@ -278,7 +307,7 @@ def dashboard():
         if request.method=="POST":
             man= request.form.get('test')
             test1 = man.capitalize()
-            test =man.lower()
+            test =man
             title="dashboard"
             usn = session.get("studentemail")
             user = db.users.find_one({'usn':usn })
@@ -286,22 +315,32 @@ def dashboard():
             show_graph1=False
             show_graph2=False
             show_graph3=False
+            show_graph4=False
+            show_graph5=False
+            show_graph6=False
+            show_graph7=False
+            show_graph8=False
+            
+
             
 
             # print(test)
 
-            if test=="test1":
+            if test=="Assessment1":
              
-                communication = int(user['test1'].get('communication'))
-                technical = int(user["test1"].get('technical'))
-                creativity = int(user['test1'].get('creativity'))
-                projectmm = int(user['test1'].get('projectmmt'))
-                timemanagement = int(user['test1'].get('timemanagement'))
-                generalknowledge = int(user['test1'].get('generalknowledge'))
-                interpersonal = int(user['test1'].get('interpersonal'))
-                resultoriented = int(user['test1'].get('resultoriented'))
-                leardership = int(user['test1'].get('leardership'))
-                presentation = int(user['test1'].get('presentation'))
+                communication = int(user['Assessment1'].get('communication'))
+                technical = int(user["Assessment1"].get('technical'))
+                creativity = int(user['Assessment1'].get('creativity'))
+                projectmm = int(user['Assessment1'].get('projectmmt'))
+                timemanagement = int(user['Assessment1'].get('timemanagement'))
+                generalknowledge = int(user['Assessment1'].get('generalknowledge'))
+                interpersonal = int(user['Assessment1'].get('interpersonal'))
+                resultoriented = int(user['Assessment1'].get('resultoriented'))
+                leardership = int(user['Assessment1'].get('leardership'))
+                presentation = int(user['Assessment1'].get('presentation'))
+                entrepreneur = int(user['Assessment1'].get('entrepreneur'))
+                aptitude = int(user['Assessment1'].get('aptitude'))
+
                 show_graph1=True
                 def summary(userr):
                     p=[]
@@ -311,64 +350,62 @@ def dashboard():
                 p=summary(test1_skills) 
                 
                 
-                particular_test1summary=int((sum(p)/50)*5)
-              
-                
-
-                return render_template('dashboard.html',show_graph1=show_graph1,particular_testsummary=particular_test1summary,test1=test1,username=username,title=title,creativity=creativity,communication=communication,technical=technical,projectmm=projectmm,timemanagement=timemanagement,generalknowledge=generalknowledge,interpersonal=interpersonal,resultoriented=resultoriented,leardership=leardership,presentation=presentation)
+                particular_test1summary=int((sum(p)/60)*5)
+                return render_template('dashboard.html',show_graph1=show_graph1,particular_testsummary=particular_test1summary,test1=test,entrepreneur=entrepreneur,aptitude=aptitude,username=username,title=title,creativity=creativity,communication=communication,technical=technical,projectmm=projectmm,timemanagement=timemanagement,generalknowledge=generalknowledge,interpersonal=interpersonal,resultoriented=resultoriented,leardership=leardership,presentation=presentation)
 
                 # redirect(url_for('views.dashboard'))
             
-            if test=="test2":
-                # test2 =user.get('test2')
-
-                # if test2 is None:
-                #     return   flash(" second test marks has not been given yet")
-
-                # else:
+            if test=="Assessment2":
+                test2 =user.get('Assessment2')
 
                
-                communication = int(user['test2'].get('communication'))
-                technical = int(user["test2"].get('technical'))
-                creativity = int(user['test2'].get('creativity'))
-                projectmm = int(user['test2'].get('projectmmt'))
-                timemanagement = int(user['test2'].get('timemanagement'))
-                generalknowledge = int(user['test2'].get('generalknowledge'))
-                interpersonal = int(user['test2'].get('interpersonal'))
-                resultoriented = int(user['test2'].get('resultoriented'))
-                leardership = int(user['test2'].get('leardership'))
-                presentation = int(user['test2'].get('presentation'))
+               
+                communication = int(user['Assessment2'].get('communication'))
+                technical = int(user["Assessment2"].get('technical'))
+                creativity = int(user['Assessment2'].get('creativity'))
+                projectmm = int(user['Assessment2'].get('projectmmt'))
+                timemanagement = int(user['Assessment2'].get('timemanagement'))
+                generalknowledge = int(user['Assessment2'].get('generalknowledge'))
+                interpersonal = int(user['Assessment2'].get('interpersonal'))
+                resultoriented = int(user['Assessment2'].get('resultoriented'))
+                leardership = int(user['Assessment2'].get('leardership'))
+                presentation = int(user['Assessment2'].get('presentation'))
+                entrepreneur = int(user['Assessment2'].get('entrepreneur'))
+                aptitude = int(user['Assessment2'].get('aptitude'))
                 show_graph2=True
-                test1_skills = user["test1"]
-                test2_skills = user["test2"]
+                test1_skills = user["Assessment1"]
+                test2_skills = user["Assessment2"]
                 def summary(userr):
                     p=[]
                     for key, value in userr.items():
-                            p.append(int(value))
+                        p.append(int(value))
                     return p                
                 list_of_second_test_results=summary(test2_skills)            
                 list_of_first_test_results=summary(test1_skills)            
-                particular_test2summary=int((sum(list_of_second_test_results)/50)*5)
-                particular_test1summary=int((sum(list_of_first_test_results)/50)*5)
+                particular_test2summary=int((sum(list_of_second_test_results)/60)*5)
+                particular_test1summary=int((sum(list_of_first_test_results)/60)*5)
                 
+                return render_template('dashboard.html',show_graph2=show_graph2,particular_testsummary=particular_test2summary,p=json.dumps(list_of_first_test_results),q=json.dumps(list_of_second_test_results),entrepreneur=entrepreneur,aptitude=aptitude,test1=test,username=username,title=title,creativity=creativity,communication=communication,technical=technical,projectmm=projectmm,timemanagement=timemanagement,generalknowledge=generalknowledge,interpersonal=interpersonal,resultoriented=resultoriented,leardership=leardership,presentation=presentation)
+            if test=="Assessment3":
+                test3 =user.get('Assessment3')
                 
-                return render_template('dashboard.html',show_graph2=show_graph2,particular_testsummary=particular_test2summary,p=json.dumps(list_of_first_test_results),q=json.dumps(list_of_second_test_results),test1=test1,username=username,title=title,creativity=creativity,communication=communication,technical=technical,projectmm=projectmm,timemanagement=timemanagement,generalknowledge=generalknowledge,interpersonal=interpersonal,resultoriented=resultoriented,leardership=leardership,presentation=presentation)
-            if test=="test3":
-               
-                communication = int(user['test3'].get('communication'))
-                technical = int(user["test3"].get('technical'))
-                creativity = int(user['test3'].get('creativity'))
-                projectmm = int(user['test3'].get('projectmmt'))
-                timemanagement = int(user['test3'].get('timemanagement'))
-                generalknowledge = int(user['test3'].get('generalknowledge'))
-                interpersonal = int(user['test3'].get('interpersonal'))
-                resultoriented = int(user['test3'].get('resultoriented'))
-                leardership = int(user['test3'].get('leardership'))
-                presentation = int(user['test3'].get('presentation'))
+                communication = int(user['Assessment3'].get('communication'))
+                technical = int(user["Assessment3"].get('technical'))
+                creativity = int(user['Assessment3'].get('creativity'))
+                projectmm = int(user['Assessment3'].get('projectmmt'))
+                timemanagement = int(user['Assessment3'].get('timemanagement'))
+                generalknowledge = int(user['Assessment3'].get('generalknowledge'))
+                interpersonal = int(user['Assessment3'].get('interpersonal'))
+                resultoriented = int(user['Assessment3'].get('resultoriented'))
+                leardership = int(user['Assessment3'].get('leardership'))
+                presentation = int(user['Assessment3'].get('presentation'))
+                entrepreneur = int(user['Assessment3'].get('entrepreneur'))
+                aptitude = int(user['Assessment3'].get('aptitude'))
+                
                 show_graph3=True
-                test1_skills = user["test1"]
-                test2_skills = user["test2"]
-                test3_skills = user["test3"]
+                test1_skills = user["Assessment1"]
+                test2_skills = user["Assessment2"]
+                test3_skills = user["Assessment3"]
                 def summary(userr):
                     p=[]
                     for key, value in userr.items():
@@ -378,9 +415,9 @@ def dashboard():
                 list_of_third_test_results=summary(test3_skills)
                 list_of_second_test_results=summary(test2_skills)
                 list_of_first_test_results=summary(test1_skills)
-                particular_test3summary=int((sum(list_of_third_test_results)/50)*5)
-                particular_test2summary=int((sum(list_of_second_test_results)/50)*5)
-                particular_test1summary=int((sum(list_of_first_test_results)/50)*5)
+                particular_test3summary=int((sum(list_of_third_test_results)/60)*5)
+                particular_test2summary=int((sum(list_of_second_test_results)/60)*5)
+                particular_test1summary=int((sum(list_of_first_test_results)/60)*5)
                 def sumskills(user1,user2,user3):
                     p=[]
                     q=[]
@@ -390,41 +427,443 @@ def dashboard():
                     t3=[]            
                     for key, value in user1.items():
                         p.append(int(value))
-
-                    t1.append(int((sum(p)/50)*5))
+                    t1.append(int((sum(p)/60)*5))
                     # print(t1)
-
                     for key, value in user2.items():
                         q.append(int(value))
-
-                    t2.append(int((sum(q)/50)*5))
-
+                    t2.append(int((sum(q)/60)*5))
                     for key, value in user3.items():
                         r.append(int(value))
-                    t3.append(int((sum(r)/50)*5) )
+                    t3.append(int((sum(r)/60)*5) )
                     score1=t1+t2+t3           
                     return score1
                 score1= sumskills(test1_skills,test2_skills,test3_skills)
-                return render_template('dashboard.html',show_graph3=show_graph3,score1=json.dumps(score1),p=json.dumps(list_of_first_test_results),particular_testsummary=particular_test3summary,q=json.dumps(list_of_second_test_results),r=json.dumps(list_of_third_test_results),test1=test1,username=username,title=title,creativity=creativity,communication=communication,technical=technical,projectmm=projectmm,timemanagement=timemanagement,generalknowledge=generalknowledge,interpersonal=interpersonal,resultoriented=resultoriented,leardership=leardership,presentation=presentation)
+            
+                return render_template('dashboard.html',show_graph3=show_graph3,score1=json.dumps(score1),p=json.dumps(list_of_first_test_results),particular_testsummary=particular_test3summary,q=json.dumps(list_of_second_test_results),r=json.dumps(list_of_third_test_results),test1=test,entrepreneur=entrepreneur,aptitude=aptitude,username=username,title=title,creativity=creativity,communication=communication,technical=technical,projectmm=projectmm,timemanagement=timemanagement,generalknowledge=generalknowledge,interpersonal=interpersonal,resultoriented=resultoriented,leardership=leardership,presentation=presentation)
+            if test=="Assessment4":
+                test4 =user.get('Assessment4')
+                
+                communication = int(user['Assessment4'].get('communication'))
+                technical = int(user["Assessment4"].get('technical'))
+                creativity = int(user['Assessment4'].get('creativity'))
+                projectmm = int(user['Assessment4'].get('projectmmt'))
+                timemanagement = int(user['Assessment4'].get('timemanagement'))
+                generalknowledge = int(user['Assessment4'].get('generalknowledge'))
+                interpersonal = int(user['Assessment4'].get('interpersonal'))
+                resultoriented = int(user['Assessment4'].get('resultoriented'))
+                leardership = int(user['Assessment4'].get('leardership'))
+                presentation = int(user['Assessment4'].get('presentation'))
+                entrepreneur = int(user['Assessment4'].get('entrepreneur'))
+                aptitude = int(user['Assessment4'].get('aptitude'))
+                show_graph4=True
+                test1_skills = user["Assessment1"]
+                test2_skills = user["Assessment2"]
+                test3_skills = user["Assessment3"]
+                test4_skills = user["Assessment4"]
+                def summary(userr):
+                    p=[]
+                    for key, value in userr.items():
+                        p.append(int(value))
+                    return p
+                
+                list_of_fourth_test_results=summary(test4_skills)
+                print(len(list_of_fourth_test_results))
+                list_of_third_test_results=summary(test3_skills)
+                list_of_second_test_results=summary(test2_skills)
+                list_of_first_test_results=summary(test1_skills)
+                particular_test4summary=int((sum(list_of_fourth_test_results)/60)*5)
+                print(particular_test4summary)
+                particular_test3summary=int((sum(list_of_third_test_results)/60)*5)
+                particular_test2summary=int((sum(list_of_second_test_results)/60)*5)
+                particular_test1summary=int((sum(list_of_first_test_results)/60)*5)
+                def sumskills(user1,user2,user3,user4):
+                    p=[]
+                    q=[]
+                    r=[]
+                    s=[]
+                    t1=[]
+                    t2=[]
+                    t3=[]            
+                    t4=[]            
+                    for key, value in user1.items():
+                        p.append(int(value))
+                    t1.append(int((sum(p)/60)*5))
+                    # print(t1)
+                    for key, value in user2.items():
+                        q.append(int(value))
+                    t2.append(int((sum(q)/60)*5))
+                    for key, value in user3.items():
+                        r.append(int(value))
+                    t3.append(int((sum(r)/60)*5) )
+                    for key, value in user4.items():
+                        s.append(int(value))
+                    t4.append(int((sum(s)/60)*5) )
+                    score1=t1+t2+t3+t4          
+                    return score1
+                score1= sumskills(test1_skills,test2_skills,test3_skills,test4_skills)
+            
+                return render_template('dashboard.html',show_graph4=show_graph4,score1=json.dumps(score1),p=json.dumps(list_of_first_test_results),particular_testsummary=particular_test4summary,q=json.dumps(list_of_second_test_results),r=json.dumps(list_of_third_test_results),s=json.dumps(list_of_fourth_test_results),test1=test,username=username,title=title,creativity=creativity,communication=communication,technical=technical,projectmm=projectmm,timemanagement=timemanagement,generalknowledge=generalknowledge,interpersonal=interpersonal,resultoriented=resultoriented,leardership=leardership,presentation=presentation,entrepreneur=entrepreneur,aptitude=aptitude)
+            if test=="Assessment5":
+                test4 =user.get('Assessment5')
+                
+                communication = int(user['Assessment5'].get('communication'))
+                technical = int(user["Assessment5"].get('technical'))
+                creativity = int(user['Assessment5'].get('creativity'))
+                projectmm = int(user['Assessment5'].get('projectmmt'))
+                timemanagement = int(user['Assessment5'].get('timemanagement'))
+                generalknowledge = int(user['Assessment5'].get('generalknowledge'))
+                interpersonal = int(user['Assessment5'].get('interpersonal'))
+                resultoriented = int(user['Assessment5'].get('resultoriented'))
+                leardership = int(user['Assessment5'].get('leardership'))
+                presentation = int(user['Assessment5'].get('presentation'))
+                entrepreneur = int(user['Assessment5'].get('entrepreneur'))
+                aptitude = int(user['Assessment5'].get('aptitude'))
+                show_graph5=True
+                test1_skills = user["Assessment1"]
+                test2_skills = user["Assessment2"]
+                test3_skills = user["Assessment3"]
+                test4_skills = user["Assessment4"]
+                test5_skills = user["Assessment5"]
+                def summary(userr):
+                    p=[]
+                    for key, value in userr.items():
+                        p.append(int(value))
+                    return p
+                
+                list_of_fifth_test_results=summary(test5_skills)
+                list_of_fourth_test_results=summary(test4_skills)
+                list_of_third_test_results=summary(test3_skills)
+                list_of_second_test_results=summary(test2_skills)
+                list_of_first_test_results=summary(test1_skills)
+                particular_test5summary=int((sum(list_of_fifth_test_results)/60)*5)
+                particular_test4summary=int((sum(list_of_fourth_test_results)/60)*5)
+                particular_test3summary=int((sum(list_of_third_test_results)/60)*5)
+                particular_test2summary=int((sum(list_of_second_test_results)/60)*5)
+                particular_test1summary=int((sum(list_of_first_test_results)/60)*5)
+                def sumskills(user1,user2,user3,user4,user5):
+                    p=[]
+                    q=[]
+                    r=[]
+                    s=[]
+                    t=[]
+                    
+                    t1=[]
+                    t2=[]
+                    t3=[]            
+                    t4=[]            
+                    t5=[]            
+                                
+                    for key, value in user1.items():
+                        p.append(int(value))
+                    t1.append(int((sum(p)/60)*5))
+                    # print(t1)
+                    for key, value in user2.items():
+                        q.append(int(value))
+                    t2.append(int((sum(q)/60)*5))
+                    for key, value in user3.items():
+                        r.append(int(value))
+                    t3.append(int((sum(r)/60)*5) )
+                    for key, value in user4.items():
+                        s.append(int(value))
+                    t4.append(int((sum(s)/60)*5) )
+                    for key, value in user5.items():
+                        t.append(int(value))
+                    t5.append(int((sum(t)/60)*5) )
+                   
+                    score1=t1+t2+t3+t4+t5  
+                    print(score1)     
+                    return score1
+                score1= sumskills(test1_skills,test2_skills,test3_skills,test4_skills,test5_skills)
+            
+                return render_template('dashboard.html',show_graph5=show_graph5,score1=json.dumps(score1),p=json.dumps(list_of_first_test_results),particular_testsummary=particular_test5summary,q=json.dumps(list_of_second_test_results),r=json.dumps(list_of_third_test_results),s=json.dumps(list_of_fourth_test_results),t=json.dumps(list_of_fifth_test_results),test1=test,username=username,title=title,creativity=creativity,communication=communication,technical=technical,projectmm=projectmm,timemanagement=timemanagement,generalknowledge=generalknowledge,interpersonal=interpersonal,resultoriented=resultoriented,leardership=leardership,presentation=presentation,entrepreneur=entrepreneur,aptitude=aptitude)
+            if test=="Assessment6":
+                test4 =user.get('Assessment6')
+                
+                communication = int(user['Assessment6'].get('communication'))
+                technical = int(user["Assessment6"].get('technical'))
+                creativity = int(user['Assessment6'].get('creativity'))
+                projectmm = int(user['Assessment6'].get('projectmmt'))
+                timemanagement = int(user['Assessment6'].get('timemanagement'))
+                generalknowledge = int(user['Assessment6'].get('generalknowledge'))
+                interpersonal = int(user['Assessment6'].get('interpersonal'))
+                resultoriented = int(user['Assessment6'].get('resultoriented'))
+                leardership = int(user['Assessment6'].get('leardership'))
+                presentation = int(user['Assessment6'].get('presentation'))
+                entrepreneur = int(user['Assessment6'].get('entrepreneur'))
+                aptitude = int(user['Assessment6'].get('aptitude'))
+                show_graph6=True
+                test1_skills = user["Assessment1"]
+                test2_skills = user["Assessment2"]
+                test3_skills = user["Assessment3"]
+                test4_skills = user["Assessment4"]
+                test5_skills = user["Assessment5"]
+                test6_skills = user["Assessment6"]
+                def summary(userr):
+                    p=[]
+                    for key, value in userr.items():
+                        p.append(int(value))
+                    return p
+                
+                list_of_sixth_test_results=summary(test6_skills)
+                list_of_fifth_test_results=summary(test5_skills)
+                list_of_fourth_test_results=summary(test4_skills)
+                list_of_third_test_results=summary(test3_skills)
+                list_of_second_test_results=summary(test2_skills)
+                list_of_first_test_results=summary(test1_skills)
+                particular_test6summary=int((sum(list_of_sixth_test_results)/60)*5)
+                particular_test5summary=int((sum(list_of_fifth_test_results)/60)*5)
+                particular_test4summary=int((sum(list_of_fourth_test_results)/60)*5)
+                print(particular_test6summary)
+                particular_test3summary=int((sum(list_of_third_test_results)/60)*5)
+                particular_test2summary=int((sum(list_of_second_test_results)/60)*5)
+                particular_test1summary=int((sum(list_of_first_test_results)/60)*5)
+                def sumskills(user1,user2,user3,user4,user5,user6):
+                    p=[]
+                    q=[]
+                    r=[]
+                    s=[]
+                    t=[]
+                    u=[]
+                    t1=[]
+                    t2=[]
+                    t3=[]            
+                    t4=[]            
+                    t5=[]            
+                    t6=[]            
+                    for key, value in user1.items():
+                        p.append(int(value))
+                    t1.append(int((sum(p)/60)*5))
+                    # print(t1)
+                    for key, value in user2.items():
+                        q.append(int(value))
+                    t2.append(int((sum(q)/60)*5))
+                    for key, value in user3.items():
+                        r.append(int(value))
+                    t3.append(int((sum(r)/60)*5) )
+                    for key, value in user4.items():
+                        s.append(int(value))
+                    t4.append(int((sum(s)/60)*5) )
+                    for key, value in user5.items():
+                        t.append(int(value))
+                    t5.append(int((sum(t)/60)*5) )
+                    for key, value in user6.items():
+                        u.append(int(value))
+                    t6.append(int((sum(u)/60)*5) )
+                    score1=t1+t2+t3+t4+t5+t6 
+                    print(t6)
+                          
+                    return score1
+                score1= sumskills(test1_skills,test2_skills,test3_skills,test4_skills,test5_skills,test6_skills)
+                print(score1) 
+            
+                return render_template('dashboard.html',show_graph6=show_graph6,score1=json.dumps(score1),p=json.dumps(list_of_first_test_results),particular_testsummary=particular_test6summary,q=json.dumps(list_of_second_test_results),r=json.dumps(list_of_third_test_results),s=json.dumps(list_of_fourth_test_results),t=json.dumps(list_of_fifth_test_results),u=json.dumps(list_of_sixth_test_results),test1=test,username=username,title=title,creativity=creativity,communication=communication,technical=technical,projectmm=projectmm,timemanagement=timemanagement,generalknowledge=generalknowledge,interpersonal=interpersonal,resultoriented=resultoriented,leardership=leardership,presentation=presentation,entrepreneur=entrepreneur,aptitude=aptitude)
+            if test=="Assessment7":
+                test4 =user.get('Assessment7')
+                
+                communication = int(user['Assessment7'].get('communication'))
+                technical = int(user["Assessment7"].get('technical'))
+                creativity = int(user['Assessment7'].get('creativity'))
+                projectmm = int(user['Assessment7'].get('projectmmt'))
+                timemanagement = int(user['Assessment7'].get('timemanagement'))
+                generalknowledge = int(user['Assessment7'].get('generalknowledge'))
+                interpersonal = int(user['Assessment7'].get('interpersonal'))
+                resultoriented = int(user['Assessment7'].get('resultoriented'))
+                leardership = int(user['Assessment7'].get('leardership'))
+                presentation = int(user['Assessment7'].get('presentation'))
+                entrepreneur = int(user['Assessment7'].get('entrepreneur'))
+                aptitude = int(user['Assessment7'].get('aptitude'))
+                show_graph7=True
+                test1_skills = user["Assessment1"]
+                test2_skills = user["Assessment2"]
+                test3_skills = user["Assessment3"]
+                test4_skills = user["Assessment4"]
+                test5_skills = user["Assessment5"]
+                test6_skills = user["Assessment6"]
+                test7_skills = user["Assessment7"]
+                def summary(userr):
+                    p=[]
+                    for key, value in userr.items():
+                        p.append(int(value))
+                    return p
+                
+                list_of_seventh_test_results=summary(test7_skills)
+                list_of_sixth_test_results=summary(test6_skills)
+                list_of_fifth_test_results=summary(test5_skills)
+                list_of_fourth_test_results=summary(test4_skills)
+                list_of_third_test_results=summary(test3_skills)
+                list_of_second_test_results=summary(test2_skills)
+                list_of_first_test_results=summary(test1_skills)
+                particular_test7summary=int((sum(list_of_seventh_test_results)/60)*5)
+                particular_test6summary=int((sum(list_of_sixth_test_results)/60)*5)
+                particular_test5summary=int((sum(list_of_fifth_test_results)/60)*5)
+                particular_test4summary=int((sum(list_of_fourth_test_results)/60)*5)
+                print(particular_test6summary)
+                particular_test3summary=int((sum(list_of_third_test_results)/60)*5)
+                particular_test2summary=int((sum(list_of_second_test_results)/60)*5)
+                particular_test1summary=int((sum(list_of_first_test_results)/60)*5)
+                def sumskills(user1,user2,user3,user4,user5,user6,user7):
+                    p=[]
+                    q=[]
+                    r=[]
+                    s=[]
+                    t=[]
+                    u=[]
+                    v=[]
+                    t1=[]
+                    t2=[]
+                    t3=[]            
+                    t4=[]            
+                    t5=[]            
+                    t6=[]            
+                    t7=[]            
+                    for key, value in user1.items():
+                        p.append(int(value))
+                    t1.append(int((sum(p)/60)*5))
+                    # print(t1)
+                    for key, value in user2.items():
+                        q.append(int(value))
+                    t2.append(int((sum(q)/60)*5))
+                    for key, value in user3.items():
+                        r.append(int(value))
+                    t3.append(int((sum(r)/60)*5) )
+                    for key, value in user4.items():
+                        s.append(int(value))
+                    t4.append(int((sum(s)/60)*5) )
+                    for key, value in user5.items():
+                        t.append(int(value))
+                    t5.append(int((sum(t)/60)*5) )
+                    for key, value in user6.items():
+                        u.append(int(value))
+                    t6.append(int((sum(u)/60)*5) )
+                    for key, value in user7.items():
+                        v.append(int(value))
+                    t7.append(int((sum(v)/60)*5) )
+                    score1=t1+t2+t3+t4+t5+t6+t7
+                    print(t6)
+                          
+                    return score1
+                score1= sumskills(test1_skills,test2_skills,test3_skills,test4_skills,test5_skills,test6_skills,test7_skills)
+                print(score1) 
+            
+                return render_template('dashboard.html',show_graph7=show_graph7,score1=json.dumps(score1),p=json.dumps(list_of_first_test_results),particular_testsummary=particular_test7summary,q=json.dumps(list_of_second_test_results),r=json.dumps(list_of_third_test_results),s=json.dumps(list_of_fourth_test_results),t=json.dumps(list_of_fifth_test_results),u=json.dumps(list_of_sixth_test_results),v=json.dumps(list_of_seventh_test_results),test1=test,username=username,title=title,creativity=creativity,communication=communication,technical=technical,projectmm=projectmm,timemanagement=timemanagement,generalknowledge=generalknowledge,interpersonal=interpersonal,resultoriented=resultoriented,leardership=leardership,presentation=presentation,entrepreneur=entrepreneur,aptitude=aptitude)
+            if test=="Assessment8":
+                test4 =user.get('Assessment8')
+                
+                communication = int(user['Assessment8'].get('communication'))
+                technical = int(user["Assessment8"].get('technical'))
+                creativity = int(user['Assessment8'].get('creativity'))
+                projectmm = int(user['Assessment8'].get('projectmmt'))
+                timemanagement = int(user['Assessment8'].get('timemanagement'))
+                generalknowledge = int(user['Assessment8'].get('generalknowledge'))
+                interpersonal = int(user['Assessment8'].get('interpersonal'))
+                resultoriented = int(user['Assessment8'].get('resultoriented'))
+                leardership = int(user['Assessment8'].get('leardership'))
+                presentation = int(user['Assessment8'].get('presentation'))
+                entrepreneur = int(user['Assessment8'].get('entrepreneur'))
+                aptitude = int(user['Assessment8'].get('aptitude'))
+                show_graph8=True
+                test1_skills = user["Assessment1"]
+                test2_skills = user["Assessment2"]
+                test3_skills = user["Assessment3"]
+                test4_skills = user["Assessment4"]
+                test5_skills = user["Assessment5"]
+                test6_skills = user["Assessment6"]
+                test7_skills = user["Assessment7"]
+                test8_skills = user["Assessment8"]
+                def summary(userr):
+                    p=[]
+                    for key, value in userr.items():
+                        p.append(int(value))
+                    return p
+                
+                list_of_eightth_test_results=summary(test8_skills)
+                list_of_seventh_test_results=summary(test7_skills)
+                list_of_sixth_test_results=summary(test6_skills)
+                list_of_fifth_test_results=summary(test5_skills)
+                list_of_fourth_test_results=summary(test4_skills)
+                list_of_third_test_results=summary(test3_skills)
+                list_of_second_test_results=summary(test2_skills)
+                list_of_first_test_results=summary(test1_skills)
+                particular_test8summary=int((sum(list_of_eightth_test_results)/60)*5)
+                particular_test7summary=int((sum(list_of_seventh_test_results)/60)*5)
+                particular_test6summary=int((sum(list_of_sixth_test_results)/60)*5)
+                particular_test5summary=int((sum(list_of_fifth_test_results)/60)*5)
+                particular_test4summary=int((sum(list_of_fourth_test_results)/60)*5)
+                print(particular_test6summary)
+                particular_test3summary=int((sum(list_of_third_test_results)/60)*5)
+                particular_test2summary=int((sum(list_of_second_test_results)/60)*5)
+                particular_test1summary=int((sum(list_of_first_test_results)/60)*5)
+                def sumskills(user1,user2,user3,user4,user5,user6,user7,user8):
+                    p=[]
+                    q=[]
+                    r=[]
+                    s=[]
+                    t=[]
+                    u=[]
+                    v=[]
+                    w=[]
+                    t1=[]
+                    t2=[]
+                    t3=[]            
+                    t4=[]            
+                    t5=[]            
+                    t6=[]            
+                    t7=[]            
+                    t8=[]            
+                    for key, value in user1.items():
+                        p.append(int(value))
+                    t1.append(int((sum(p)/60)*5))
+                    # print(t1)
+                    for key, value in user2.items():
+                        q.append(int(value))
+                    t2.append(int((sum(q)/60)*5))
+                    for key, value in user3.items():
+                        r.append(int(value))
+                    t3.append(int((sum(r)/60)*5) )
+                    for key, value in user4.items():
+                        s.append(int(value))
+                    t4.append(int((sum(s)/60)*5) )
+                    for key, value in user5.items():
+                        t.append(int(value))
+                    t5.append(int((sum(t)/60)*5) )
+                    for key, value in user6.items():
+                        u.append(int(value))
+                    t6.append(int((sum(u)/60)*5) )
+                    for key, value in user7.items():
+                        v.append(int(value))
+                    t7.append(int((sum(v)/60)*5) )
+                    for key, value in user8.items():
+                        w.append(int(value))
+                    t8.append(int((sum(w)/60)*5) )
+                    score1=t1+t2+t3+t4+t5+t6+t7+t8
+                    print(t6)
+                          
+                    return score1
+                score1= sumskills(test1_skills,test2_skills,test3_skills,test4_skills,test5_skills,test6_skills,test7_skills,test8_skills)
+                print(score1) 
+            
+                return render_template('dashboard.html',show_graph8=show_graph8,score1=json.dumps(score1),p=json.dumps(list_of_first_test_results),particular_testsummary=particular_test8summary,q=json.dumps(list_of_second_test_results),r=json.dumps(list_of_third_test_results),s=json.dumps(list_of_fourth_test_results),t=json.dumps(list_of_fifth_test_results),u=json.dumps(list_of_sixth_test_results),v=json.dumps(list_of_seventh_test_results),w=json.dumps(list_of_eightth_test_results),test1=test,username=username,title=title,creativity=creativity,communication=communication,technical=technical,projectmm=projectmm,timemanagement=timemanagement,generalknowledge=generalknowledge,interpersonal=interpersonal,resultoriented=resultoriented,leardership=leardership,presentation=presentation,entrepreneur=entrepreneur,aptitude=aptitude)
 
-        communication = int(user['test1'].get('communication'))
-        technical = int(user["test1"].get('technical'))
-        creativity = int(user['test1'].get('creativity'))
-        projectmm = int(user['test1'].get('projectmmt'))
-        timemanagement = int(user['test1'].get('timemanagement'))
-        generalknowledge = int(user['test1'].get('generalknowledge'))
-        interpersonal = int(user['test1'].get('interpersonal'))
-        resultoriented = int(user['test1'].get('resultoriented'))
-        leardership = int(user['test1'].get('leardership'))
-        presentation = int(user['test1'].get('presentation'))
-        print(type(presentation))
-        
-        
+        communication = int(user['Assessment1'].get('communication'))
+        technical = int(user["Assessment1"].get('technical'))
+        creativity = int(user['Assessment1'].get('creativity'))
+        projectmm = int(user['Assessment1'].get('projectmmt'))
+        timemanagement = int(user['Assessment1'].get('timemanagement'))
+        generalknowledge = int(user['Assessment1'].get('generalknowledge'))
+        interpersonal = int(user['Assessment1'].get('interpersonal'))
+        resultoriented = int(user['Assessment1'].get('resultoriented'))
+        leardership = int(user['Assessment1'].get('leardership'))
+        presentation = int(user['Assessment1'].get('presentation'))
+        entrepreneur = int(user['Assessment1'].get('entrepreneur'))
+        aptitude = int(user['Assessment1'].get('aptitude'))
 
-        
-        # return redirect(url_for('auth.login'))
-        return render_template('dashboard.html',particular_testsummary=particular_testsummary,test1=test11,username=username,title=title,creativity=creativity,communication=communication,technical=technical,projectmm=projectmm,timemanagement=timemanagement,generalknowledge=generalknowledge,interpersonal=interpersonal,resultoriented=resultoriented,leardership=leardership,presentation=presentation)
+         
+                       
+        test11="Assessment1"
+      
 
+
+        return render_template('dashboard.html',particular_testsummary=particular_testsummary,test1=test11,username=username,title=title,creativity=creativity,communication=communication,technical=technical,projectmm=projectmm,timemanagement=timemanagement,generalknowledge=generalknowledge,interpersonal=interpersonal,resultoriented=resultoriented,leardership=leardership,presentation=presentation,entrepreneur=entrepreneur,aptitude=aptitude)
 
         
 
@@ -441,17 +880,18 @@ def dashboard():
         usn = session.get("studentname")
         user = db.users.find_one({'usn':usn })
         username = user["personal"].get('username')
-        test1_skills = user["test1"]
+        test1_skills = user["Assesment1"]
         def summary(userr):
             p=[]
             for key, value in userr.items():
                 p.append(int(value))
             return p
         test_function_summary=summary(test1_skills)       
-        particular_testsummary=int((sum(test_function_summary)/50)*5)      
+        particular_testsummary=int((sum(test_function_summary)/60)*5)      
         if request.method=="POST":
             man= request.form.get('test')
-            test =man.lower()
+            test =man
+            print(test)
             title="dashboard"
             usn = session.get("studentname")
             user = db.users.find_one({'usn':usn })
@@ -459,21 +899,29 @@ def dashboard():
             show_graph1=False
             show_graph2=False
             show_graph3=False
+            show_graph4=False
+            show_graph5=False
+            show_graph6=False
+            show_graph7=False
+            show_graph8=False
             
 
             # print(test)
-            if test=="test1":
+            if test=="Assessment1":
              
-                communication = int(user['test1'].get('communication'))
-                technical = int(user["test1"].get('technical'))
-                creativity = int(user['test1'].get('creativity'))
-                projectmm = int(user['test1'].get('projectmmt'))
-                timemanagement = int(user['test1'].get('timemanagement'))
-                generalknowledge = int(user['test1'].get('generalknowledge'))
-                interpersonal = int(user['test1'].get('interpersonal'))
-                resultoriented = int(user['test1'].get('resultoriented'))
-                leardership = int(user['test1'].get('leardership'))
-                presentation = int(user['test1'].get('presentation'))
+                communication = int(user['Assessment1'].get('communication'))
+                technical = int(user["Assessment1"].get('technical'))
+                creativity = int(user['Assessment1'].get('creativity'))
+                projectmm = int(user['Assessment1'].get('projectmmt'))
+                timemanagement = int(user['Assessment1'].get('timemanagement'))
+                generalknowledge = int(user['Assessment1'].get('generalknowledge'))
+                interpersonal = int(user['Assessment1'].get('interpersonal'))
+                resultoriented = int(user['Assessment1'].get('resultoriented'))
+                leardership = int(user['Assessment1'].get('leardership'))
+                presentation = int(user['Assessment1'].get('presentation'))
+                entrepreneur = int(user['Assessment1'].get('entrepreneur'))
+                aptitude = int(user['Assessment1'].get('aptitude'))
+
                 show_graph1=True
                 def summary(userr):
                     p=[]
@@ -483,27 +931,29 @@ def dashboard():
                 p=summary(test1_skills) 
                 
                 
-                particular_test1summary=int((sum(p)/50)*5)
-                return render_template('dashboard.html',show_graph1=show_graph1,particular_testsummary=particular_test1summary,test1=test,username=username,title=title,creativity=creativity,communication=communication,technical=technical,projectmm=projectmm,timemanagement=timemanagement,generalknowledge=generalknowledge,interpersonal=interpersonal,resultoriented=resultoriented,leardership=leardership,presentation=presentation)
+                particular_test1summary=int((sum(p)/60)*5)
+                return render_template('dashboard.html',show_graph1=show_graph1,particular_testsummary=particular_test1summary,test1=test,entrepreneur=entrepreneur,aptitude=aptitude,username=username,title=title,creativity=creativity,communication=communication,technical=technical,projectmm=projectmm,timemanagement=timemanagement,generalknowledge=generalknowledge,interpersonal=interpersonal,resultoriented=resultoriented,leardership=leardership,presentation=presentation)
 
-            if test=="test2":
-                test2 =user.get('test2')
+            if test=="Assessment2":
+                test2 =user.get('Assessment2')
 
                
                
-                communication = int(user['test2'].get('communication'))
-                technical = int(user["test2"].get('technical'))
-                creativity = int(user['test2'].get('creativity'))
-                projectmm = int(user['test2'].get('projectmmt'))
-                timemanagement = int(user['test2'].get('timemanagement'))
-                generalknowledge = int(user['test2'].get('generalknowledge'))
-                interpersonal = int(user['test2'].get('interpersonal'))
-                resultoriented = int(user['test2'].get('resultoriented'))
-                leardership = int(user['test2'].get('leardership'))
-                presentation = int(user['test2'].get('presentation'))
+                communication = int(user['Assessment2'].get('communication'))
+                technical = int(user["Assessment2"].get('technical'))
+                creativity = int(user['Assessment2'].get('creativity'))
+                projectmm = int(user['Assessment2'].get('projectmmt'))
+                timemanagement = int(user['Assessment2'].get('timemanagement'))
+                generalknowledge = int(user['Assessment2'].get('generalknowledge'))
+                interpersonal = int(user['Assessment2'].get('interpersonal'))
+                resultoriented = int(user['Assessment2'].get('resultoriented'))
+                leardership = int(user['Assessment2'].get('leardership'))
+                presentation = int(user['Assessment2'].get('presentation'))
+                entrepreneur = int(user['Assessment2'].get('entrepreneur'))
+                aptitude = int(user['Assessment2'].get('aptitude'))
                 show_graph2=True
-                test1_skills = user["test1"]
-                test2_skills = user["test2"]
+                test1_skills = user["Assessment1"]
+                test2_skills = user["Assessment2"]
                 def summary(userr):
                     p=[]
                     for key, value in userr.items():
@@ -511,27 +961,30 @@ def dashboard():
                     return p                
                 list_of_second_test_results=summary(test2_skills)            
                 list_of_first_test_results=summary(test1_skills)            
-                particular_test2summary=int((sum(list_of_second_test_results)/50)*5)
-                particular_test1summary=int((sum(list_of_first_test_results)/50)*5)
+                particular_test2summary=int((sum(list_of_second_test_results)/60)*5)
+                particular_test1summary=int((sum(list_of_first_test_results)/60)*5)
                 
-                return render_template('dashboard.html',show_graph2=show_graph2,particular_testsummary=particular_test2summary,p=json.dumps(list_of_first_test_results),q=json.dumps(list_of_second_test_results),test1=test,username=username,title=title,creativity=creativity,communication=communication,technical=technical,projectmm=projectmm,timemanagement=timemanagement,generalknowledge=generalknowledge,interpersonal=interpersonal,resultoriented=resultoriented,leardership=leardership,presentation=presentation)
-            if test=="test3":
-                test3 =user.get('test3')
+                return render_template('dashboard.html',show_graph2=show_graph2,particular_testsummary=particular_test2summary,p=json.dumps(list_of_first_test_results),q=json.dumps(list_of_second_test_results),entrepreneur=entrepreneur,aptitude=aptitude,test1=test,username=username,title=title,creativity=creativity,communication=communication,technical=technical,projectmm=projectmm,timemanagement=timemanagement,generalknowledge=generalknowledge,interpersonal=interpersonal,resultoriented=resultoriented,leardership=leardership,presentation=presentation)
+            if test=="Assessment3":
+                test3 =user.get('Assessment3')
                 
-                communication = int(user['test3'].get('communication'))
-                technical = int(user["test3"].get('technical'))
-                creativity = int(user['test3'].get('creativity'))
-                projectmm = int(user['test3'].get('projectmmt'))
-                timemanagement = int(user['test3'].get('timemanagement'))
-                generalknowledge = int(user['test3'].get('generalknowledge'))
-                interpersonal = int(user['test3'].get('interpersonal'))
-                resultoriented = int(user['test3'].get('resultoriented'))
-                leardership = int(user['test3'].get('leardership'))
-                presentation = int(user['test3'].get('presentation'))
+                communication = int(user['Assessment3'].get('communication'))
+                technical = int(user["Assessment3"].get('technical'))
+                creativity = int(user['Assessment3'].get('creativity'))
+                projectmm = int(user['Assessment3'].get('projectmmt'))
+                timemanagement = int(user['Assessment3'].get('timemanagement'))
+                generalknowledge = int(user['Assessment3'].get('generalknowledge'))
+                interpersonal = int(user['Assessment3'].get('interpersonal'))
+                resultoriented = int(user['Assessment3'].get('resultoriented'))
+                leardership = int(user['Assessment3'].get('leardership'))
+                presentation = int(user['Assessment3'].get('presentation'))
+                entrepreneur = int(user['Assessment3'].get('entrepreneur'))
+                aptitude = int(user['Assessment3'].get('aptitude'))
+                
                 show_graph3=True
-                test1_skills = user["test1"]
-                test2_skills = user["test2"]
-                test3_skills = user["test3"]
+                test1_skills = user["Assessment1"]
+                test2_skills = user["Assessment2"]
+                test3_skills = user["Assessment3"]
                 def summary(userr):
                     p=[]
                     for key, value in userr.items():
@@ -541,9 +994,9 @@ def dashboard():
                 list_of_third_test_results=summary(test3_skills)
                 list_of_second_test_results=summary(test2_skills)
                 list_of_first_test_results=summary(test1_skills)
-                particular_test3summary=int((sum(list_of_third_test_results)/50)*5)
-                particular_test2summary=int((sum(list_of_second_test_results)/50)*5)
-                particular_test1summary=int((sum(list_of_first_test_results)/50)*5)
+                particular_test3summary=int((sum(list_of_third_test_results)/60)*5)
+                particular_test2summary=int((sum(list_of_second_test_results)/60)*5)
+                particular_test1summary=int((sum(list_of_first_test_results)/60)*5)
                 def sumskills(user1,user2,user3):
                     p=[]
                     q=[]
@@ -553,42 +1006,447 @@ def dashboard():
                     t3=[]            
                     for key, value in user1.items():
                         p.append(int(value))
-                    t1.append(int((sum(p)/50)*5))
+                    t1.append(int((sum(p)/60)*5))
                     # print(t1)
                     for key, value in user2.items():
                         q.append(int(value))
-                    t2.append(int((sum(q)/50)*5))
+                    t2.append(int((sum(q)/60)*5))
                     for key, value in user3.items():
                         r.append(int(value))
-                    t3.append(int((sum(r)/50)*5) )
+                    t3.append(int((sum(r)/60)*5) )
                     score1=t1+t2+t3           
                     return score1
                 score1= sumskills(test1_skills,test2_skills,test3_skills)
             
-                return render_template('dashboard.html',show_graph3=show_graph3,score1=json.dumps(score1),p=json.dumps(list_of_first_test_results),particular_testsummary=particular_test3summary,q=json.dumps(list_of_second_test_results),r=json.dumps(list_of_third_test_results),test1=test,username=username,title=title,creativity=creativity,communication=communication,technical=technical,projectmm=projectmm,timemanagement=timemanagement,generalknowledge=generalknowledge,interpersonal=interpersonal,resultoriented=resultoriented,leardership=leardership,presentation=presentation)
+                return render_template('dashboard.html',show_graph3=show_graph3,score1=json.dumps(score1),p=json.dumps(list_of_first_test_results),particular_testsummary=particular_test3summary,q=json.dumps(list_of_second_test_results),r=json.dumps(list_of_third_test_results),test1=test,entrepreneur=entrepreneur,aptitude=aptitude,username=username,title=title,creativity=creativity,communication=communication,technical=technical,projectmm=projectmm,timemanagement=timemanagement,generalknowledge=generalknowledge,interpersonal=interpersonal,resultoriented=resultoriented,leardership=leardership,presentation=presentation)
+            if test=="Assessment4":
+                test4 =user.get('Assessment4')
+                
+                communication = int(user['Assessment4'].get('communication'))
+                technical = int(user["Assessment4"].get('technical'))
+                creativity = int(user['Assessment4'].get('creativity'))
+                projectmm = int(user['Assessment4'].get('projectmmt'))
+                timemanagement = int(user['Assessment4'].get('timemanagement'))
+                generalknowledge = int(user['Assessment4'].get('generalknowledge'))
+                interpersonal = int(user['Assessment4'].get('interpersonal'))
+                resultoriented = int(user['Assessment4'].get('resultoriented'))
+                leardership = int(user['Assessment4'].get('leardership'))
+                presentation = int(user['Assessment4'].get('presentation'))
+                entrepreneur = int(user['Assessment4'].get('entrepreneur'))
+                aptitude = int(user['Assessment4'].get('aptitude'))
+                show_graph4=True
+                test1_skills = user["Assessment1"]
+                test2_skills = user["Assessment2"]
+                test3_skills = user["Assessment3"]
+                test4_skills = user["Assessment4"]
+                def summary(userr):
+                    p=[]
+                    for key, value in userr.items():
+                        p.append(int(value))
+                    return p
+                
+                list_of_fourth_test_results=summary(test4_skills)
+                print(len(list_of_fourth_test_results))
+                list_of_third_test_results=summary(test3_skills)
+                list_of_second_test_results=summary(test2_skills)
+                list_of_first_test_results=summary(test1_skills)
+                particular_test4summary=int((sum(list_of_fourth_test_results)/60)*5)
+                print(particular_test4summary)
+                particular_test3summary=int((sum(list_of_third_test_results)/60)*5)
+                particular_test2summary=int((sum(list_of_second_test_results)/60)*5)
+                particular_test1summary=int((sum(list_of_first_test_results)/60)*5)
+                def sumskills(user1,user2,user3,user4):
+                    p=[]
+                    q=[]
+                    r=[]
+                    s=[]
+                    t1=[]
+                    t2=[]
+                    t3=[]            
+                    t4=[]            
+                    for key, value in user1.items():
+                        p.append(int(value))
+                    t1.append(int((sum(p)/60)*5))
+                    # print(t1)
+                    for key, value in user2.items():
+                        q.append(int(value))
+                    t2.append(int((sum(q)/60)*5))
+                    for key, value in user3.items():
+                        r.append(int(value))
+                    t3.append(int((sum(r)/60)*5) )
+                    for key, value in user4.items():
+                        s.append(int(value))
+                    t4.append(int((sum(s)/60)*5) )
+                    score1=t1+t2+t3+t4          
+                    return score1
+                score1= sumskills(test1_skills,test2_skills,test3_skills,test4_skills)
+            
+                return render_template('dashboard.html',show_graph4=show_graph4,score1=json.dumps(score1),p=json.dumps(list_of_first_test_results),particular_testsummary=particular_test4summary,q=json.dumps(list_of_second_test_results),r=json.dumps(list_of_third_test_results),s=json.dumps(list_of_fourth_test_results),test1=test,username=username,title=title,creativity=creativity,communication=communication,technical=technical,projectmm=projectmm,timemanagement=timemanagement,generalknowledge=generalknowledge,interpersonal=interpersonal,resultoriented=resultoriented,leardership=leardership,presentation=presentation,entrepreneur=entrepreneur,aptitude=aptitude)
+            if test=="Assessment5":
+                test4 =user.get('Assessment5')
+                
+                communication = int(user['Assessment5'].get('communication'))
+                technical = int(user["Assessment5"].get('technical'))
+                creativity = int(user['Assessment5'].get('creativity'))
+                projectmm = int(user['Assessment5'].get('projectmmt'))
+                timemanagement = int(user['Assessment5'].get('timemanagement'))
+                generalknowledge = int(user['Assessment5'].get('generalknowledge'))
+                interpersonal = int(user['Assessment5'].get('interpersonal'))
+                resultoriented = int(user['Assessment5'].get('resultoriented'))
+                leardership = int(user['Assessment5'].get('leardership'))
+                presentation = int(user['Assessment5'].get('presentation'))
+                entrepreneur = int(user['Assessment5'].get('entrepreneur'))
+                aptitude = int(user['Assessment5'].get('aptitude'))
+                show_graph5=True
+                test1_skills = user["Assessment1"]
+                test2_skills = user["Assessment2"]
+                test3_skills = user["Assessment3"]
+                test4_skills = user["Assessment4"]
+                test5_skills = user["Assessment5"]
+                def summary(userr):
+                    p=[]
+                    for key, value in userr.items():
+                        p.append(int(value))
+                    return p
+                
+                list_of_fifth_test_results=summary(test5_skills)
+                list_of_fourth_test_results=summary(test4_skills)
+                list_of_third_test_results=summary(test3_skills)
+                list_of_second_test_results=summary(test2_skills)
+                list_of_first_test_results=summary(test1_skills)
+                particular_test5summary=int((sum(list_of_fifth_test_results)/60)*5)
+                particular_test4summary=int((sum(list_of_fourth_test_results)/60)*5)
+                particular_test3summary=int((sum(list_of_third_test_results)/60)*5)
+                particular_test2summary=int((sum(list_of_second_test_results)/60)*5)
+                particular_test1summary=int((sum(list_of_first_test_results)/60)*5)
+                def sumskills(user1,user2,user3,user4,user5):
+                    p=[]
+                    q=[]
+                    r=[]
+                    s=[]
+                    t=[]
+                    
+                    t1=[]
+                    t2=[]
+                    t3=[]            
+                    t4=[]            
+                    t5=[]            
+                                
+                    for key, value in user1.items():
+                        p.append(int(value))
+                    t1.append(int((sum(p)/60)*5))
+                    # print(t1)
+                    for key, value in user2.items():
+                        q.append(int(value))
+                    t2.append(int((sum(q)/60)*5))
+                    for key, value in user3.items():
+                        r.append(int(value))
+                    t3.append(int((sum(r)/60)*5) )
+                    for key, value in user4.items():
+                        s.append(int(value))
+                    t4.append(int((sum(s)/60)*5) )
+                    for key, value in user5.items():
+                        t.append(int(value))
+                    t5.append(int((sum(t)/60)*5) )
+                   
+                    score1=t1+t2+t3+t4+t5  
+                    print(score1)     
+                    return score1
+                score1= sumskills(test1_skills,test2_skills,test3_skills,test4_skills,test5_skills)
+            
+                return render_template('dashboard.html',show_graph5=show_graph5,score1=json.dumps(score1),p=json.dumps(list_of_first_test_results),particular_testsummary=particular_test5summary,q=json.dumps(list_of_second_test_results),r=json.dumps(list_of_third_test_results),s=json.dumps(list_of_fourth_test_results),t=json.dumps(list_of_fifth_test_results),test1=test,username=username,title=title,creativity=creativity,communication=communication,technical=technical,projectmm=projectmm,timemanagement=timemanagement,generalknowledge=generalknowledge,interpersonal=interpersonal,resultoriented=resultoriented,leardership=leardership,presentation=presentation,entrepreneur=entrepreneur,aptitude=aptitude)
+            if test=="Assessment6":
+                test4 =user.get('Assessment6')
+                
+                communication = int(user['Assessment6'].get('communication'))
+                technical = int(user["Assessment6"].get('technical'))
+                creativity = int(user['Assessment6'].get('creativity'))
+                projectmm = int(user['Assessment6'].get('projectmmt'))
+                timemanagement = int(user['Assessment6'].get('timemanagement'))
+                generalknowledge = int(user['Assessment6'].get('generalknowledge'))
+                interpersonal = int(user['Assessment6'].get('interpersonal'))
+                resultoriented = int(user['Assessment6'].get('resultoriented'))
+                leardership = int(user['Assessment6'].get('leardership'))
+                presentation = int(user['Assessment6'].get('presentation'))
+                entrepreneur = int(user['Assessment6'].get('entrepreneur'))
+                aptitude = int(user['Assessment6'].get('aptitude'))
+                show_graph6=True
+                test1_skills = user["Assessment1"]
+                test2_skills = user["Assessment2"]
+                test3_skills = user["Assessment3"]
+                test4_skills = user["Assessment4"]
+                test5_skills = user["Assessment5"]
+                test6_skills = user["Assessment6"]
+                def summary(userr):
+                    p=[]
+                    for key, value in userr.items():
+                        p.append(int(value))
+                    return p
+                
+                list_of_sixth_test_results=summary(test6_skills)
+                list_of_fifth_test_results=summary(test5_skills)
+                list_of_fourth_test_results=summary(test4_skills)
+                list_of_third_test_results=summary(test3_skills)
+                list_of_second_test_results=summary(test2_skills)
+                list_of_first_test_results=summary(test1_skills)
+                particular_test6summary=int((sum(list_of_sixth_test_results)/60)*5)
+                particular_test5summary=int((sum(list_of_fifth_test_results)/60)*5)
+                particular_test4summary=int((sum(list_of_fourth_test_results)/60)*5)
+                print(particular_test6summary)
+                particular_test3summary=int((sum(list_of_third_test_results)/60)*5)
+                particular_test2summary=int((sum(list_of_second_test_results)/60)*5)
+                particular_test1summary=int((sum(list_of_first_test_results)/60)*5)
+                def sumskills(user1,user2,user3,user4,user5,user6):
+                    p=[]
+                    q=[]
+                    r=[]
+                    s=[]
+                    t=[]
+                    u=[]
+                    t1=[]
+                    t2=[]
+                    t3=[]            
+                    t4=[]            
+                    t5=[]            
+                    t6=[]            
+                    for key, value in user1.items():
+                        p.append(int(value))
+                    t1.append(int((sum(p)/60)*5))
+                    # print(t1)
+                    for key, value in user2.items():
+                        q.append(int(value))
+                    t2.append(int((sum(q)/60)*5))
+                    for key, value in user3.items():
+                        r.append(int(value))
+                    t3.append(int((sum(r)/60)*5) )
+                    for key, value in user4.items():
+                        s.append(int(value))
+                    t4.append(int((sum(s)/60)*5) )
+                    for key, value in user5.items():
+                        t.append(int(value))
+                    t5.append(int((sum(t)/60)*5) )
+                    for key, value in user6.items():
+                        u.append(int(value))
+                    t6.append(int((sum(u)/60)*5) )
+                    score1=t1+t2+t3+t4+t5+t6 
+                    print(t6)
+                          
+                    return score1
+                score1= sumskills(test1_skills,test2_skills,test3_skills,test4_skills,test5_skills,test6_skills)
+                print(score1) 
+            
+                return render_template('dashboard.html',show_graph6=show_graph6,score1=json.dumps(score1),p=json.dumps(list_of_first_test_results),particular_testsummary=particular_test6summary,q=json.dumps(list_of_second_test_results),r=json.dumps(list_of_third_test_results),s=json.dumps(list_of_fourth_test_results),t=json.dumps(list_of_fifth_test_results),u=json.dumps(list_of_sixth_test_results),test1=test,username=username,title=title,creativity=creativity,communication=communication,technical=technical,projectmm=projectmm,timemanagement=timemanagement,generalknowledge=generalknowledge,interpersonal=interpersonal,resultoriented=resultoriented,leardership=leardership,presentation=presentation,entrepreneur=entrepreneur,aptitude=aptitude)
+            if test=="Assessment7":
+                test4 =user.get('Assessment7')
+                
+                communication = int(user['Assessment7'].get('communication'))
+                technical = int(user["Assessment7"].get('technical'))
+                creativity = int(user['Assessment7'].get('creativity'))
+                projectmm = int(user['Assessment7'].get('projectmmt'))
+                timemanagement = int(user['Assessment7'].get('timemanagement'))
+                generalknowledge = int(user['Assessment7'].get('generalknowledge'))
+                interpersonal = int(user['Assessment7'].get('interpersonal'))
+                resultoriented = int(user['Assessment7'].get('resultoriented'))
+                leardership = int(user['Assessment7'].get('leardership'))
+                presentation = int(user['Assessment7'].get('presentation'))
+                entrepreneur = int(user['Assessment7'].get('entrepreneur'))
+                aptitude = int(user['Assessment7'].get('aptitude'))
+                show_graph7=True
+                test1_skills = user["Assessment1"]
+                test2_skills = user["Assessment2"]
+                test3_skills = user["Assessment3"]
+                test4_skills = user["Assessment4"]
+                test5_skills = user["Assessment5"]
+                test6_skills = user["Assessment6"]
+                test7_skills = user["Assessment7"]
+                def summary(userr):
+                    p=[]
+                    for key, value in userr.items():
+                        p.append(int(value))
+                    return p
+                
+                list_of_seventh_test_results=summary(test7_skills)
+                list_of_sixth_test_results=summary(test6_skills)
+                list_of_fifth_test_results=summary(test5_skills)
+                list_of_fourth_test_results=summary(test4_skills)
+                list_of_third_test_results=summary(test3_skills)
+                list_of_second_test_results=summary(test2_skills)
+                list_of_first_test_results=summary(test1_skills)
+                particular_test7summary=int((sum(list_of_seventh_test_results)/60)*5)
+                particular_test6summary=int((sum(list_of_sixth_test_results)/60)*5)
+                particular_test5summary=int((sum(list_of_fifth_test_results)/60)*5)
+                particular_test4summary=int((sum(list_of_fourth_test_results)/60)*5)
+                print(particular_test6summary)
+                particular_test3summary=int((sum(list_of_third_test_results)/60)*5)
+                particular_test2summary=int((sum(list_of_second_test_results)/60)*5)
+                particular_test1summary=int((sum(list_of_first_test_results)/60)*5)
+                def sumskills(user1,user2,user3,user4,user5,user6,user7):
+                    p=[]
+                    q=[]
+                    r=[]
+                    s=[]
+                    t=[]
+                    u=[]
+                    v=[]
+                    t1=[]
+                    t2=[]
+                    t3=[]            
+                    t4=[]            
+                    t5=[]            
+                    t6=[]            
+                    t7=[]            
+                    for key, value in user1.items():
+                        p.append(int(value))
+                    t1.append(int((sum(p)/60)*5))
+                    # print(t1)
+                    for key, value in user2.items():
+                        q.append(int(value))
+                    t2.append(int((sum(q)/60)*5))
+                    for key, value in user3.items():
+                        r.append(int(value))
+                    t3.append(int((sum(r)/60)*5) )
+                    for key, value in user4.items():
+                        s.append(int(value))
+                    t4.append(int((sum(s)/60)*5) )
+                    for key, value in user5.items():
+                        t.append(int(value))
+                    t5.append(int((sum(t)/60)*5) )
+                    for key, value in user6.items():
+                        u.append(int(value))
+                    t6.append(int((sum(u)/60)*5) )
+                    for key, value in user7.items():
+                        v.append(int(value))
+                    t7.append(int((sum(v)/60)*5) )
+                    score1=t1+t2+t3+t4+t5+t6+t7
+                    print(t6)
+                          
+                    return score1
+                score1= sumskills(test1_skills,test2_skills,test3_skills,test4_skills,test5_skills,test6_skills,test7_skills)
+                print(score1) 
+            
+                return render_template('dashboard.html',show_graph7=show_graph7,score1=json.dumps(score1),p=json.dumps(list_of_first_test_results),particular_testsummary=particular_test7summary,q=json.dumps(list_of_second_test_results),r=json.dumps(list_of_third_test_results),s=json.dumps(list_of_fourth_test_results),t=json.dumps(list_of_fifth_test_results),u=json.dumps(list_of_sixth_test_results),v=json.dumps(list_of_seventh_test_results),test1=test,username=username,title=title,creativity=creativity,communication=communication,technical=technical,projectmm=projectmm,timemanagement=timemanagement,generalknowledge=generalknowledge,interpersonal=interpersonal,resultoriented=resultoriented,leardership=leardership,presentation=presentation,entrepreneur=entrepreneur,aptitude=aptitude)
+            if test=="Assessment8":
+                test4 =user.get('Assessment8')
+                
+                communication = int(user['Assessment8'].get('communication'))
+                technical = int(user["Assessment8"].get('technical'))
+                creativity = int(user['Assessment8'].get('creativity'))
+                projectmm = int(user['Assessment8'].get('projectmmt'))
+                timemanagement = int(user['Assessment8'].get('timemanagement'))
+                generalknowledge = int(user['Assessment8'].get('generalknowledge'))
+                interpersonal = int(user['Assessment8'].get('interpersonal'))
+                resultoriented = int(user['Assessment8'].get('resultoriented'))
+                leardership = int(user['Assessment8'].get('leardership'))
+                presentation = int(user['Assessment8'].get('presentation'))
+                entrepreneur = int(user['Assessment8'].get('entrepreneur'))
+                aptitude = int(user['Assessment8'].get('aptitude'))
+                show_graph8=True
+                test1_skills = user["Assessment1"]
+                test2_skills = user["Assessment2"]
+                test3_skills = user["Assessment3"]
+                test4_skills = user["Assessment4"]
+                test5_skills = user["Assessment5"]
+                test6_skills = user["Assessment6"]
+                test7_skills = user["Assessment7"]
+                test8_skills = user["Assessment8"]
+                def summary(userr):
+                    p=[]
+                    for key, value in userr.items():
+                        p.append(int(value))
+                    return p
+                
+                list_of_eightth_test_results=summary(test8_skills)
+                list_of_seventh_test_results=summary(test7_skills)
+                list_of_sixth_test_results=summary(test6_skills)
+                list_of_fifth_test_results=summary(test5_skills)
+                list_of_fourth_test_results=summary(test4_skills)
+                list_of_third_test_results=summary(test3_skills)
+                list_of_second_test_results=summary(test2_skills)
+                list_of_first_test_results=summary(test1_skills)
+                particular_test8summary=int((sum(list_of_eightth_test_results)/60)*5)
+                particular_test7summary=int((sum(list_of_seventh_test_results)/60)*5)
+                particular_test6summary=int((sum(list_of_sixth_test_results)/60)*5)
+                particular_test5summary=int((sum(list_of_fifth_test_results)/60)*5)
+                particular_test4summary=int((sum(list_of_fourth_test_results)/60)*5)
+                print(particular_test6summary)
+                particular_test3summary=int((sum(list_of_third_test_results)/60)*5)
+                particular_test2summary=int((sum(list_of_second_test_results)/60)*5)
+                particular_test1summary=int((sum(list_of_first_test_results)/60)*5)
+                def sumskills(user1,user2,user3,user4,user5,user6,user7,user8):
+                    p=[]
+                    q=[]
+                    r=[]
+                    s=[]
+                    t=[]
+                    u=[]
+                    v=[]
+                    w=[]
+                    t1=[]
+                    t2=[]
+                    t3=[]            
+                    t4=[]            
+                    t5=[]            
+                    t6=[]            
+                    t7=[]            
+                    t8=[]            
+                    for key, value in user1.items():
+                        p.append(int(value))
+                    t1.append(int((sum(p)/60)*5))
+                    # print(t1)
+                    for key, value in user2.items():
+                        q.append(int(value))
+                    t2.append(int((sum(q)/60)*5))
+                    for key, value in user3.items():
+                        r.append(int(value))
+                    t3.append(int((sum(r)/60)*5) )
+                    for key, value in user4.items():
+                        s.append(int(value))
+                    t4.append(int((sum(s)/60)*5) )
+                    for key, value in user5.items():
+                        t.append(int(value))
+                    t5.append(int((sum(t)/60)*5) )
+                    for key, value in user6.items():
+                        u.append(int(value))
+                    t6.append(int((sum(u)/60)*5) )
+                    for key, value in user7.items():
+                        v.append(int(value))
+                    t7.append(int((sum(v)/60)*5) )
+                    for key, value in user8.items():
+                        w.append(int(value))
+                    t8.append(int((sum(w)/60)*5) )
+                    score1=t1+t2+t3+t4+t5+t6+t7+t8
+                    print(t6)
+                          
+                    return score1
+                score1= sumskills(test1_skills,test2_skills,test3_skills,test4_skills,test5_skills,test6_skills,test7_skills,test8_skills)
+                print(score1) 
+            
+                return render_template('dashboard.html',show_graph8=show_graph8,score1=json.dumps(score1),p=json.dumps(list_of_first_test_results),particular_testsummary=particular_test8summary,q=json.dumps(list_of_second_test_results),r=json.dumps(list_of_third_test_results),s=json.dumps(list_of_fourth_test_results),t=json.dumps(list_of_fifth_test_results),u=json.dumps(list_of_sixth_test_results),v=json.dumps(list_of_seventh_test_results),w=json.dumps(list_of_eightth_test_results),test1=test,username=username,title=title,creativity=creativity,communication=communication,technical=technical,projectmm=projectmm,timemanagement=timemanagement,generalknowledge=generalknowledge,interpersonal=interpersonal,resultoriented=resultoriented,leardership=leardership,presentation=presentation,entrepreneur=entrepreneur,aptitude=aptitude)
 
        
         
         
 
-        communication = int(user['test1'].get('communication'))
-        technical = int(user["test1"].get('technical'))
-        creativity = int(user['test1'].get('creativity'))
-        projectmm = int(user['test1'].get('projectmmt'))
-        timemanagement = int(user['test1'].get('timemanagement'))
-        generalknowledge = int(user['test1'].get('generalknowledge'))
-        interpersonal = int(user['test1'].get('interpersonal'))
-        resultoriented = int(user['test1'].get('resultoriented'))
-        leardership = int(user['test1'].get('leardership'))
-        presentation = int(user['test1'].get('presentation'))
+        communication = int(user['Assessment1'].get('communication'))
+        technical = int(user["Assessment1"].get('technical'))
+        creativity = int(user['Assessment1'].get('creativity'))
+        projectmm = int(user['Assessment1'].get('projectmmt'))
+        timemanagement = int(user['Assessment1'].get('timemanagement'))
+        generalknowledge = int(user['Assessment1'].get('generalknowledge'))
+        interpersonal = int(user['Assessment1'].get('interpersonal'))
+        resultoriented = int(user['Assessment1'].get('resultoriented'))
+        leardership = int(user['Assessment1'].get('leardership'))
+        presentation = int(user['Assessment1'].get('presentation'))
+        entrepreneur = int(user['Assessment1'].get('entrepreneur'))
+        aptitude = int(user['Assessment1'].get('aptitude'))
 
          
                        
-        test11="Test1"
+        test11="Assessment1"
       
 
 
-        return render_template('dashboard.html',particular_testsummary=particular_testsummary,test1=test11,username=username,title=title,creativity=creativity,communication=communication,technical=technical,projectmm=projectmm,timemanagement=timemanagement,generalknowledge=generalknowledge,interpersonal=interpersonal,resultoriented=resultoriented,leardership=leardership,presentation=presentation)
+        return render_template('dashboard.html',particular_testsummary=particular_testsummary,test1=test11,username=username,title=title,creativity=creativity,communication=communication,technical=technical,projectmm=projectmm,timemanagement=timemanagement,generalknowledge=generalknowledge,interpersonal=interpersonal,resultoriented=resultoriented,leardership=leardership,presentation=presentation,entrepreneur=entrepreneur,aptitude=aptitude)
 
         # return render_template('dashboard.html')
     return redirect(url_for('auth.login'))
@@ -784,7 +1642,7 @@ def downloadi_csv():
     sheet = workbook.active
 
     # Write headers with formatting
-    sheet.append(['Serial Number', 'usn', 'Username', 'tests', 'Communication', 'Technical', 'creativity', 'projectmanagement', 'timemanagement', 'genearl knowledge', 'interpersonal', 'resultoriented', 'leadership', 'Presentation'])
+    sheet.append(['Serial Number', 'usn', 'Username', 'tests', 'Communication', 'Technical', 'creativity', 'projectmanagement', 'timemanagement', 'genearl knowledge', 'interpersonal', 'resultoriented', 'leadership', 'Presentation','entrepreneur','aptitude'])
     header_row = sheet[1]
     
     color_mapping = {
@@ -798,7 +1656,7 @@ def downloadi_csv():
     for item in data:
         usn = item['usn']
         username = item.get('personal', {}).get('username', '')
-        test1 = item.get('test1', {})
+        test1 = item.get('Assessment1', {})
         communication = test1.get('communication', '')
         technical = test1.get('technical', '')
         creativity = test1.get('creativity', '')
@@ -809,8 +1667,10 @@ def downloadi_csv():
         resultoriented = test1.get('resultoriented', '')
         leadership = test1.get('leardership', '')
         presentation = test1.get('presentation', '')
+        aptitude = test1.get('aptitude', '')
+        entrepreneur = test1.get('entrepreneur', '')
 
-        test2 = item.get('test2', {})
+        test2 = item.get('Assessment2', {})
         communications = test2.get('communication', '')
         technicals = test2.get('technical', '')
         creativitys = test2.get('creativity', '')
@@ -821,10 +1681,11 @@ def downloadi_csv():
         resultorienteds = test2.get('resultoriented', '')
         leaderships = test2.get('leardership', '')
         presentations = test2.get('presentation', '')
+        aptitudes = test2.get('aptitude', '')
+        entrepreneurs = test2.get('entrepreneur', '')
         # print(creativitys)
         # print(type(creativitys))
-
-        test3 = item.get('test3', {})
+        test3 = item.get('Assessment3', {})
         communicationss = test3.get('communication', '')
         technicalss = test3.get('technical', '')
         creativityss = test3.get('creativity', '')
@@ -835,15 +1696,94 @@ def downloadi_csv():
         resultorientedss = test3.get('resultoriented', '')
         leadershipss = test3.get('leardership', '')
         presentationss = test3.get('presentation', '')
+        aptitudess = test3.get('aptitude', '')
+        entrepreneurss = test3.get('entrepreneur', '')
 
-        sheet.append([serial_number, usn, username, 'test1', communication, technical, creativity, projectmanagement, timemangement, generalknowledge, interpersonal, resultoriented, leadership, presentation])
-        sheet.append(['', '', '', 'test2', communications, technicals, creativitys, projectmanagements, timemangements, generalknowledges, interpersonals, resultorienteds, leaderships, presentations])
-        sheet.append(['', '', '', 'test3', communicationss, technicalss, creativityss, projectmanagementss, timemangementss, generalknowledgess, interpersonalss, resultorientedss, leadershipss, presentationss])
-        sheet.append([''])
+        test4 = item.get('Assessment4', {})
+        communicationss4 = test4.get('communication', '')
+        technicalss4 = test4.get('technical', '')
+        creativityss4 = test4.get('creativity', '')
+        projectmanagementss4 = test4.get('projectmmt', '')
+        timemangementss4 = test4.get('timemanagement', '')
+        generalknowledgess4 = test4.get('generalknowledge', '')
+        interpersonalss4 = test4.get('interpersonal', '')
+        resultorientedss4 = test4.get('resultoriented', '')
+        leadershipss4 = test4.get('leardership', '')
+        presentationss4 = test4.get('presentation', '')
+        aptitudess4 = test4.get('aptitude', '')
+        entrepreneuress4 = test4.get('entrepreneur', '')
+       
+        test5 = item.get('Assessment5', {})
+        communicationss5 = test5.get('communication', '')
+        technicalss5 = test5.get('technical', '')
+        creativityss5 = test5.get('creativity', '')
+        projectmanagementss5 = test5.get('projectmmt', '')
+        timemangementss5 = test5.get('timemanagement', '')
+        generalknowledgess5 = test5.get('generalknowledge', '')
+        interpersonalss5 = test5.get('interpersonal', '')
+        resultorientedss5 = test5.get('resultoriented', '')
+        leadershipss5 = test5.get('leardership', '')
+        presentationss5 = test5.get('presentation', '')
+        aptitudess5 = test5.get('aptitude', '')
+        entrepreneuress5 = test5.get('entrepreneur', '')
+
+        test6 = item.get('Assessment6', {})
+        communicationss6 = test6.get('communication', '')
+        technicalss6 = test6.get('technical', '')
+        creativityss6 = test6.get('creativity', '')
+        projectmanagementss6 = test6.get('projectmmt', '')
+        timemangementss6 = test6.get('timemanagement', '')
+        generalknowledgess6 = test6.get('generalknowledge', '')
+        interpersonalss6 = test6.get('interpersonal', '')
+        resultorientedss6 = test6.get('resultoriented', '')
+        leadershipss6 = test6.get('leardership', '')
+        presentationss6 = test6.get('presentation', '')
+        aptitudes6 = test6.get('aptitude', '')
+        entrepreneurs6 = test6.get('entrepreneur', '')
         
+        test7 = item.get('Assessment7', {})
+        communicationss7 = test7.get('communication', '')
+        technicalss7 = test7.get('technical', '')
+        creativityss7 = test7.get('creativity', '')
+        projectmanagementss7 = test7.get('projectmmt', '')
+        timemangementss7 = test7.get('timemanagement', '')
+        generalknowledgess7 = test7.get('generalknowledge', '')
+        interpersonalss7 = test7.get('interpersonal', '')
+        resultorientedss7 = test7.get('resultoriented', '')
+        leadershipss7 = test7.get('leardership', '')
+        presentationss7 = test7.get('presentation', '')
+        aptitudes7 = test7.get('aptitude', '')
+        entrepreneurs7 = test7.get('entrepreneur', '')
+
+        test8 = item.get('Assessment8', {})
+        communicationss8 = test8.get('communication', '')
+        technicalss8 = test8.get('technical', '')
+        creativityss8 = test8.get('creativity', '')
+        projectmanagementss8 = test8.get('projectmmt', '')
+        timemangementss8 = test8.get('timemanagement', '')
+        generalknowledgess8 = test8.get('generalknowledge', '')
+        interpersonalss8 = test8.get('interpersonal', '')
+        resultorientedss8 = test8.get('resultoriented', '')
+        leadershipss8 = test8.get('leardership', '')
+        presentationss8 = test8.get('presentation', '')
+        aptitudes8 = test8.get('aptitude', '')
+        entrepreneurs8 = test8.get('entrepreneur', '')
+        
+
+
+        sheet.append([serial_number, usn, username, 'Assesment1', communication, technical, creativity, projectmanagement, timemangement, generalknowledge, interpersonal, resultoriented, leadership, presentation,entrepreneur,aptitude])
+        sheet.append(['',  usn, username, 'Assesment2', communications, technicals, creativitys, projectmanagements, timemangements, generalknowledges, interpersonals, resultorienteds, leaderships, presentations,entrepreneurs,aptitudes])
+        sheet.append(['', usn, username, 'Assesment3', communicationss, technicalss, creativityss, projectmanagementss, timemangementss, generalknowledgess, interpersonalss, resultorientedss, leadershipss, presentationss,entrepreneurss,aptitudess])
+        sheet.append(['', usn, username, 'Assesment4', communicationss4, technicalss4, creativityss4, projectmanagementss4, timemangementss4, generalknowledgess4, interpersonalss4, resultorientedss4, leadershipss4, presentationss4,entrepreneuress4,aptitudess4])
+        sheet.append(['', usn, username, 'Assesment5', communicationss5, technicalss5, creativityss5, projectmanagementss5, timemangementss5, generalknowledgess5, interpersonalss5, resultorientedss5, leadershipss5, presentationss5,entrepreneuress5,aptitudess5])
+        sheet.append(['', usn, username, 'Assesment7', communicationss6, technicalss6, creativityss6, projectmanagementss6, timemangementss6, generalknowledgess6, interpersonalss6, resultorientedss6, leadershipss6, presentationss6,entrepreneurs6,aptitudes6])
+        sheet.append(['', usn, username, 'Assesment6', communicationss7, technicalss7, creativityss7, projectmanagementss7, timemangementss7, generalknowledgess7, interpersonalss7, resultorientedss7, leadershipss7, presentationss7,entrepreneurs7,aptitudes7])
+        sheet.append(['', usn, username, 'Assesment8', communicationss8, technicalss8, creativityss8, projectmanagementss8, timemangementss8, generalknowledgess8, interpersonalss8, resultorientedss8, leadershipss8, presentationss8,entrepreneurs8,aptitudes8])
+        sheet.append([''])
+    
         serial_number += 1
-        # Apply background color to cells with values 1, 2, 3, 4, 5 in columns E to N
-        for row in sheet.iter_rows(min_row=2, min_col=5, max_col=14):
+       # Apply background color to cells with values 1, 2, 3, 4, 5 in columns E to N
+        for row in sheet.iter_rows(min_row=2, min_col=5, max_col=17):
             for cell in row:
                 if isinstance(cell.value, int) and cell.value in colors:
                     fill = PatternFill(start_color=colors[cell.value], end_color=colors[cell.value], fill_type="solid")
@@ -886,19 +1826,24 @@ def report():
     if 'studentemail' in session :
         usn = session.get('studentemail')
         user = db.users.find_one({'usn':usn })
-        test1_skills = user["test1"]
-        test2_skills = user["test2"]
-        test3_skills = user["test3"]
-        communication1 = int(user['test1'].get('communication'))
-        technical1 = int(user["test1"].get('technical'))
-        creativity1 = int(user['test1'].get('creativity'))
-        projectmm1 = int(user['test1'].get('projectmmt'))
-        timemanagement1 = int(user['test1'].get('timemanagement'))
-        generalknowledge1 = int(user['test1'].get('generalknowledge'))
-        interpersonal1 = int(user['test1'].get('interpersonal'))
-        resultoriented1 = int(user['test1'].get('resultoriented'))
-        leardership1 = int(user['test1'].get('leardership'))
-        presentation1 = int(user['test1'].get('presentation'))
+        test1_skills = user["Assessment1"]
+        test2_skills = user["Assessment2"]
+        test3_skills = user["Assessment3"]
+        test4_skills = user["Assessment4"]
+        test5_skills = user["Assessment5"]
+        test6_skills = user["Assessment6"]
+        test7_skills = user["Assessment7"]
+        test8_skills = user["Assessment8"]
+        communication1 = int(user['Assessment1'].get('communication'))
+        technical1 = int(user["Assessment1"].get('technical'))
+        creativity1 = int(user['Assessment1'].get('creativity'))
+        projectmm1 = int(user['Assessment1'].get('projectmmt'))
+        timemanagement1 = int(user['Assessment1'].get('timemanagement'))
+        generalknowledge1 = int(user['Assessment1'].get('generalknowledge'))
+        interpersonal1 = int(user['Assessment1'].get('interpersonal'))
+        resultoriented1 = int(user['Assessment1'].get('resultoriented'))
+        leardership1 = int(user['Assessment1'].get('leardership'))
+        presentation1 = int(user['Assessment1'].get('presentation'))
         
         strongi = int(((technical1+creativity1+resultoriented1)/15)*5)
         leaderi = int(((projectmm1+leardership1+timemanagement1+resultoriented1+communication1)/25)*5)
@@ -951,18 +1896,31 @@ def report():
         list_of_second_test_results=summary(test2_skills)            
         list_of_first_test_results=summary(test1_skills)
         list_of_third_test_results=summary(test3_skills)
-        communication=[list_of_first_test_results[0],list_of_second_test_results[0],list_of_third_test_results[0]]
-        technical=[list_of_first_test_results[1],list_of_second_test_results[1],list_of_third_test_results[1]]
-        creativity=[list_of_first_test_results[2],list_of_second_test_results[2],list_of_third_test_results[2]]
-        projectmmt=[list_of_first_test_results[3],list_of_second_test_results[3],list_of_third_test_results[3]]
-        timemmt=[list_of_first_test_results[4],list_of_second_test_results[4],list_of_third_test_results[4]]
-        gk=[list_of_first_test_results[5],list_of_second_test_results[5],list_of_third_test_results[5]]
-        interpersonal=[list_of_first_test_results[6],list_of_second_test_results[6],list_of_third_test_results[6]]
-        resultoriented=[list_of_first_test_results[7],list_of_second_test_results[7],list_of_third_test_results[7]]
-        leadership=[list_of_first_test_results[8],list_of_second_test_results[8],list_of_third_test_results[8]]
-        presentation=[list_of_first_test_results[9],list_of_second_test_results[9],list_of_third_test_results[9]]
+        list_of_fourth_test_results=summary(test4_skills)
+        list_of_fifth_test_results=summary(test5_skills)
+        list_of_sixth_test_results=summary(test6_skills)
+        list_of_seventh_test_results=summary(test7_skills)
+        print(list_of_sixth_test_results)
+        list_of_eight_test_results=summary(test8_skills)
+        print(list_of_eight_test_results)
 
-    return render_template('report.html',user=user,design=design,market=market,strong=strong,leader=leader,customer=customer,project=project,presentation=json.dumps(presentation),resultoriented=json.dumps(resultoriented),leadership=json.dumps(leadership),interpersonal=json.dumps(interpersonal),communication=json.dumps(communication),technical=json.dumps(technical),creativity=json.dumps(creativity),projectmmt=json.dumps(projectmmt),timemmt=json.dumps(timemmt),gk=json.dumps(gk))
+        communication=[list_of_first_test_results[0],list_of_second_test_results[0],list_of_third_test_results[0],list_of_fourth_test_results[0],list_of_fifth_test_results[0],list_of_sixth_test_results[0],list_of_seventh_test_results[0],list_of_eight_test_results[0]]
+        technical=[list_of_first_test_results[1],list_of_second_test_results[1],list_of_third_test_results[1],list_of_fourth_test_results[1],list_of_fifth_test_results[1],list_of_sixth_test_results[1],list_of_seventh_test_results[1],list_of_eight_test_results[1]]
+        creativity=[list_of_first_test_results[2],list_of_second_test_results[2],list_of_third_test_results[2],list_of_fourth_test_results[2],list_of_fifth_test_results[2],list_of_sixth_test_results[2],list_of_seventh_test_results[2],list_of_eight_test_results[2]]
+        projectmmt=[list_of_first_test_results[3],list_of_second_test_results[3],list_of_third_test_results[3],list_of_fourth_test_results[3],list_of_fifth_test_results[3],list_of_sixth_test_results[3],list_of_seventh_test_results[3],list_of_eight_test_results[3]]
+        timemmt=[list_of_first_test_results[4],list_of_second_test_results[4],list_of_third_test_results[4],list_of_fourth_test_results[4],list_of_fifth_test_results[4],list_of_sixth_test_results[4],list_of_seventh_test_results[4],list_of_eight_test_results[4]]
+        gk=[list_of_first_test_results[5],list_of_second_test_results[5],list_of_third_test_results[5],list_of_fourth_test_results[5],list_of_fifth_test_results[5],list_of_sixth_test_results[5],list_of_seventh_test_results[5],list_of_eight_test_results[5]]
+        interpersonal=[list_of_first_test_results[6],list_of_second_test_results[6],list_of_third_test_results[6],list_of_fourth_test_results[6],list_of_fifth_test_results[6],list_of_sixth_test_results[6],list_of_seventh_test_results[6],list_of_eight_test_results[6]]
+        resultoriented=[list_of_first_test_results[7],list_of_second_test_results[7],list_of_third_test_results[7],list_of_fourth_test_results[7],list_of_fifth_test_results[7],list_of_sixth_test_results[7],list_of_seventh_test_results[7],list_of_eight_test_results[7]]
+        leadership=[list_of_first_test_results[8],list_of_second_test_results[8],list_of_third_test_results[8],list_of_fourth_test_results[8],list_of_fifth_test_results[8],list_of_sixth_test_results[8],list_of_seventh_test_results[8],list_of_eight_test_results[8]]
+        presentation=[list_of_first_test_results[9],list_of_second_test_results[9],list_of_third_test_results[9],list_of_fourth_test_results[9],list_of_fifth_test_results[9],list_of_sixth_test_results[9],list_of_seventh_test_results[9],list_of_eight_test_results[9]]
+        entreprenuerial=[list_of_first_test_results[10],list_of_second_test_results[10],list_of_third_test_results[10],list_of_fourth_test_results[10],list_of_fifth_test_results[10],list_of_sixth_test_results[10],list_of_seventh_test_results[10],list_of_eight_test_results[10]]
+        aptitude=[list_of_first_test_results[11],list_of_second_test_results[11],list_of_third_test_results[11],list_of_fourth_test_results[11],list_of_fifth_test_results[11],list_of_sixth_test_results[11],list_of_seventh_test_results[11],list_of_eight_test_results[11]]
+        print(aptitude)
+        print(entreprenuerial)
+        print(gk)
+        print('++++')
+    return render_template('report.html',user=user,design=design,market=market,strong=strong,leader=leader,customer=customer,project=project,presentation=json.dumps(presentation),resultoriented=json.dumps(resultoriented),leadership=json.dumps(leadership),ent1=json.dumps(entreprenuerial),apt=json.dumps(aptitude),interpersonal=json.dumps(interpersonal),communication=json.dumps(communication),technical=json.dumps(technical),creativity=json.dumps(creativity),projectmmt=json.dumps(projectmmt),timemmt=json.dumps(timemmt),gk=json.dumps(gk))
 @views.route('/resume')
 def resume():
     if 'studentemail' in session :
@@ -1019,13 +1977,12 @@ def score():
         if request.method == 'POST':
 
                 test= request.form.get('test')
-                technical= request.form.get('technical')
                 form1= request.form
                 c1=form1.get('communication')
                 print(c1)
                 # t1=form1.get('')
                 communication= request.form.get('communication')
-               
+                technical= request.form.get('technical')
                 creativity= request.form.get('creativity')
                 projectmmt= request.form.get('projectmmt')
                 timemanagement= request.form.get('timemanagement')
@@ -1034,6 +1991,8 @@ def score():
                 resultoriented= request.form.get('resultoriented')
                 leardership= request.form.get('leardership')
                 presentation= request.form.get('presentation')
+                aptitude= request.form.get('aptitude')
+                entrepreneur= request.form.get('entrepreneur')
                 
                 print(leardership)
                 print(presentation)
@@ -1042,14 +2001,13 @@ def score():
                 # user = db.users.find_one({'username':username })
                 # email = user['email']
                 # db.marks.insert_one({"communication": communication})
-                if test == "Test1":
-                    try:
-
-                        db.users.update_one(
+                # if test == "Test1":
+                try:
+                    db.users.update_one(
                         {"usn": usn},
                         {
                             "$set": {
-                                "test1": {
+                                test: {
                                     "communication": communication,
                                     "technical": technical,
                                     "creativity": creativity,
@@ -1059,73 +2017,22 @@ def score():
                                     "interpersonal": interpersonal,
                                     "resultoriented": resultoriented,
                                     "leardership": leardership,
-                                    "presentation": presentation
+                                    "presentation": presentation,
+                                    "aptitude": aptitude,
+                                    "entrepreneur": entrepreneur
                                 }
                             }
                         }
                     )
-                        flash('Marks entered successfully', category='success')
-                        return redirect(url_for('views.dashboard'))
-                    except PyMongoError as e:
-                        flash(f'Error: {str(e)}', category='error')
-                    # Handle the error accordingly, such as logging it or displaying an error message to the user
-                        return redirect(url_for('views.score'))
-                if test == "Test2":
-                    try:
+                    flash('Marks entered successfully', category='success')
+                    return redirect(url_for('views.dashboard'))
 
-                        db.users.update_one(
-                        {"usn": usn},
-                        {
-                            "$set": {
-                                "test2": {
-                                    "communication": communication,
-                                    "technical": technical,
-                                    "creativity": creativity,
-                                    "projectmmt": projectmmt,
-                                    "timemanagement": timemanagement,
-                                    "generalknowledge": generalknowledge,
-                                    "interpersonal": interpersonal,
-                                    "resultoriented": resultoriented,
-                                    "leardership": leardership,
-                                    "presentation": presentation
-                                }
-                            }
-                        }
-                    )
-                        flash('Marks entered successfully', category='success')
-                        return redirect(url_for('views.dashboard'))
-                    except PyMongoError as e:
-                        flash(f'Error: {str(e)}', category='error')
+                        
+                except PyMongoError as e:
+                    flash(f'Error: {str(e)}', category='error')
                     # Handle the error accordingly, such as logging it or displaying an error message to the user
-                        return redirect(url_for('views.score'))
-                if test == "Test3":
-                    try:
-
-                        db.users.update_one(
-                        {"usn": usn},
-                        {
-                            "$set": {
-                                "test3": {
-                                    "communication": communication,
-                                    "technical": technical,
-                                    "creativity": creativity,
-                                    "projectmmt": projectmmt,
-                                    "timemanagement": timemanagement,
-                                    "generalknowledge": generalknowledge,
-                                    "interpersonal": interpersonal,
-                                    "resultoriented": resultoriented,
-                                    "leardership": leardership,
-                                    "presentation": presentation
-                                }
-                            }
-                        }
-                    )
-                        flash('Marks entered successfully', category='success')
-                        return redirect(url_for('views.dashboard'))
-                    except PyMongoError as e:
-                        flash(f'Error: {str(e)}', category='error')
-                    # Handle the error accordingly, such as logging it or displaying an error message to the user
-                        return redirect(url_for('views.score'))
+                    return redirect(url_for('views.score'))
+            
                     
         
         # print(studentname)

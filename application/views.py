@@ -287,7 +287,7 @@ def dashboard():
         username = user["personal"].get('username')
         test11 ="Test1"
         title="dashboard"
-        test1_skills = user["Assesment1"]
+        test1_skills = user["Assessment1"]
         
         # for item in test:
         #     print(item.)
@@ -297,9 +297,26 @@ def dashboard():
                 p.append(int(value))
             return p
         test_function_summary=summary(test1_skills) 
+       
+        # print((max(test_function_summary)).index())
         
        
         particular_testsummary=int((sum(test_function_summary)/60)*5)
+        skilllist=[ 'Communication', 'Technical', 'creativity', 'projectmanagement', 'timemanagement', 'genearl knowledge', 'interpersonal', 'resultoriented', 'leadership', 'Presentation','aptitude','entrepreneur']
+        elements={key:value for key,value in zip(skilllist,test_function_summary)}
+        # Sort the dictionary based on values (descending order)
+        sortedinorder = dict(sorted(elements.items(), key=lambda item: item[1], reverse=True))
+        iterator = iter(sortedinorder.items())
+        first_element=next(iterator)
+        # next(iterator)  # Skip the first element
+        second_element = next(iterator)
+        # next(iterator) 
+        third_element = next(iterator)
+
+       
+        # print(sorted_dict_descending)
+
+        # print(elements)
         
         
      
@@ -312,6 +329,7 @@ def dashboard():
             usn = session.get("studentemail")
             user = db.users.find_one({'usn':usn })
             username = user["personal"].get('username')
+
             show_graph1=False
             show_graph2=False
             show_graph3=False
@@ -327,523 +345,643 @@ def dashboard():
             # print(test)
 
             if test=="Assessment1":
+                if test is not None:
+                
+                
+
+                
              
-                communication = int(user['Assessment1'].get('communication'))
-                technical = int(user["Assessment1"].get('technical'))
-                creativity = int(user['Assessment1'].get('creativity'))
-                projectmm = int(user['Assessment1'].get('projectmmt'))
-                timemanagement = int(user['Assessment1'].get('timemanagement'))
-                generalknowledge = int(user['Assessment1'].get('generalknowledge'))
-                interpersonal = int(user['Assessment1'].get('interpersonal'))
-                resultoriented = int(user['Assessment1'].get('resultoriented'))
-                leardership = int(user['Assessment1'].get('leardership'))
-                presentation = int(user['Assessment1'].get('presentation'))
-                entrepreneur = int(user['Assessment1'].get('entrepreneur'))
-                aptitude = int(user['Assessment1'].get('aptitude'))
+                    communication = int(user['Assessment1'].get('communication'))
+                    technical = int(user["Assessment1"].get('technical'))
+                    creativity = int(user['Assessment1'].get('creativity'))
+                    projectmm = int(user['Assessment1'].get('projectmmt'))
+                    timemanagement = int(user['Assessment1'].get('timemanagement'))
+                    generalknowledge = int(user['Assessment1'].get('generalknowledge'))
+                    interpersonal = int(user['Assessment1'].get('interpersonal'))
+                    resultoriented = int(user['Assessment1'].get('resultoriented'))
+                    leardership = int(user['Assessment1'].get('leardership'))
+                    presentation = int(user['Assessment1'].get('presentation'))
+                    entrepreneur = int(user['Assessment1'].get('entrepreneur'))
+                    aptitude = int(user['Assessment1'].get('aptitude'))
 
-                show_graph1=True
-                def summary(userr):
-                    p=[]
-                    for key, value in userr.items():
-                        p.append(int(value))
-                    return p
-                p=summary(test1_skills) 
-                
-                
-                particular_test1summary=int((sum(p)/60)*5)
-                return render_template('dashboard.html',show_graph1=show_graph1,particular_testsummary=particular_test1summary,test1=test,entrepreneur=entrepreneur,aptitude=aptitude,username=username,title=title,creativity=creativity,communication=communication,technical=technical,projectmm=projectmm,timemanagement=timemanagement,generalknowledge=generalknowledge,interpersonal=interpersonal,resultoriented=resultoriented,leardership=leardership,presentation=presentation)
+                    show_graph1=True
+                    def summary(userr):
+                        p=[]
+                        for key, value in userr.items():
+                            p.append(int(value))
+                        return p
+                    p=summary(test1_skills) 
+                    skilllist=[ 'Communication', 'Technical', 'creativity', 'projectmanagement', 'timemanagement', 'genearl knowledge', 'interpersonal', 'resultoriented', 'leadership', 'Presentation','aptitude','entrepreneur']
+                    elements={key:value for key,value in zip(skilllist,p)}
+                    # Sort the dictionary based on values (descending order)
+                    sortedinorder = dict(sorted(elements.items(), key=lambda item: item[1], reverse=True))
+                    iterator = iter(sortedinorder.items())
+                    first_element=next(iterator)
+                    # next(iterator)  # Skip the first element
+                    second_element = next(iterator)
+                    # next(iterator) 
+                    third_element = next(iterator)
 
-                # redirect(url_for('views.dashboard'))
+                    print(p)
+                    
+                    
+                    particular_test1summary=int((sum(p)/60)*5)
+                    return render_template('dashboard.html',show_graph1=show_graph1,first_element=first_element,second_element=second_element,third_element=third_element,particular_testsummary=particular_test1summary,test1=test,entrepreneur=entrepreneur,aptitude=aptitude,username=username,title=title,creativity=creativity,communication=communication,technical=technical,projectmm=projectmm,timemanagement=timemanagement,generalknowledge=generalknowledge,interpersonal=interpersonal,resultoriented=resultoriented,leardership=leardership,presentation=presentation)
+                else:
+                    flash('Marks has not been allotted.', category='error')                # redirect(url_for('views.dashboard'))
             
             if test=="Assessment2":
                 test2 =user.get('Assessment2')
+                if test is not None:
+                    test2 =user.get('Assessment2')
 
-               
-               
-                communication = int(user['Assessment2'].get('communication'))
-                technical = int(user["Assessment2"].get('technical'))
-                creativity = int(user['Assessment2'].get('creativity'))
-                projectmm = int(user['Assessment2'].get('projectmmt'))
-                timemanagement = int(user['Assessment2'].get('timemanagement'))
-                generalknowledge = int(user['Assessment2'].get('generalknowledge'))
-                interpersonal = int(user['Assessment2'].get('interpersonal'))
-                resultoriented = int(user['Assessment2'].get('resultoriented'))
-                leardership = int(user['Assessment2'].get('leardership'))
-                presentation = int(user['Assessment2'].get('presentation'))
-                entrepreneur = int(user['Assessment2'].get('entrepreneur'))
-                aptitude = int(user['Assessment2'].get('aptitude'))
-                show_graph2=True
-                test1_skills = user["Assessment1"]
-                test2_skills = user["Assessment2"]
-                def summary(userr):
-                    p=[]
-                    for key, value in userr.items():
-                        p.append(int(value))
-                    return p                
-                list_of_second_test_results=summary(test2_skills)            
-                list_of_first_test_results=summary(test1_skills)            
-                particular_test2summary=int((sum(list_of_second_test_results)/60)*5)
-                particular_test1summary=int((sum(list_of_first_test_results)/60)*5)
                 
-                return render_template('dashboard.html',show_graph2=show_graph2,particular_testsummary=particular_test2summary,p=json.dumps(list_of_first_test_results),q=json.dumps(list_of_second_test_results),entrepreneur=entrepreneur,aptitude=aptitude,test1=test,username=username,title=title,creativity=creativity,communication=communication,technical=technical,projectmm=projectmm,timemanagement=timemanagement,generalknowledge=generalknowledge,interpersonal=interpersonal,resultoriented=resultoriented,leardership=leardership,presentation=presentation)
+                
+                    communication = int(user['Assessment2'].get('communication'))
+                    technical = int(user["Assessment2"].get('technical'))
+                    creativity = int(user['Assessment2'].get('creativity'))
+                    projectmm = int(user['Assessment2'].get('projectmmt'))
+                    timemanagement = int(user['Assessment2'].get('timemanagement'))
+                    generalknowledge = int(user['Assessment2'].get('generalknowledge'))
+                    interpersonal = int(user['Assessment2'].get('interpersonal'))
+                    resultoriented = int(user['Assessment2'].get('resultoriented'))
+                    leardership = int(user['Assessment2'].get('leardership'))
+                    presentation = int(user['Assessment2'].get('presentation'))
+                    entrepreneur = int(user['Assessment2'].get('entrepreneur'))
+                    aptitude = int(user['Assessment2'].get('aptitude'))
+                    show_graph2=True
+                    test1_skills = user["Assessment1"]
+                    test2_skills = user["Assessment2"]
+                    def summary(userr):
+                        p=[]
+                        for key, value in userr.items():
+                            p.append(int(value))
+                        return p                
+                    list_of_second_test_results=summary(test2_skills)            
+                    list_of_first_test_results=summary(test1_skills)            
+                    particular_test2summary=int((sum(list_of_second_test_results)/60)*5)
+                    particular_test1summary=int((sum(list_of_first_test_results)/60)*5)
+                    skilllist=[ 'Communication', 'Technical', 'creativity', 'projectmanagement', 'timemanagement', 'genearl knowledge', 'interpersonal', 'resultoriented', 'leadership', 'Presentation','aptitude','entrepreneur']
+                    elements={key:value for key,value in zip(skilllist,list_of_second_test_results)}
+                    # Sort the dictionary based on values (descending order)
+                    sortedinorder = dict(sorted(elements.items(), key=lambda item: item[1], reverse=True))
+                    iterator = iter(sortedinorder.items())
+                    first_element=next(iterator)
+                    # next(iterator)  # Skip the first element
+                    second_element = next(iterator)
+                    # next(iterator) 
+                    third_element = next(iterator)
+                
+                    return render_template('dashboard.html',show_graph2=show_graph2,first_element=first_element,second_element=second_element,third_element=third_element,particular_testsummary=particular_test2summary,p=json.dumps(list_of_first_test_results),q=json.dumps(list_of_second_test_results),entrepreneur=entrepreneur,aptitude=aptitude,test1=test,username=username,title=title,creativity=creativity,communication=communication,technical=technical,projectmm=projectmm,timemanagement=timemanagement,generalknowledge=generalknowledge,interpersonal=interpersonal,resultoriented=resultoriented,leardership=leardership,presentation=presentation)
+                else:
+                    flash('Marks has not been allotted.', category='error')                # redirect(url_for('views.dashboard'))
+  
             if test=="Assessment3":
                 test3 =user.get('Assessment3')
+                if test3 is not None:
+                    test3 =user.get('Assessment3')
+                    
+                    communication = int(user['Assessment3'].get('communication'))
+                    technical = int(user["Assessment3"].get('technical'))
+                    creativity = int(user['Assessment3'].get('creativity'))
+                    projectmm = int(user['Assessment3'].get('projectmmt'))
+                    timemanagement = int(user['Assessment3'].get('timemanagement'))
+                    generalknowledge = int(user['Assessment3'].get('generalknowledge'))
+                    interpersonal = int(user['Assessment3'].get('interpersonal'))
+                    resultoriented = int(user['Assessment3'].get('resultoriented'))
+                    leardership = int(user['Assessment3'].get('leardership'))
+                    presentation = int(user['Assessment3'].get('presentation'))
+                    entrepreneur = int(user['Assessment3'].get('entrepreneur'))
+                    aptitude = int(user['Assessment3'].get('aptitude'))
+                    
+                    show_graph3=True
+                    test1_skills = user["Assessment1"]
+                    test2_skills = user["Assessment2"]
+                    test3_skills = user["Assessment3"]
+                    def summary(userr):
+                        p=[]
+                        for key, value in userr.items():
+                            p.append(int(value))
+                        return p
+                    
+                    list_of_third_test_results=summary(test3_skills)
+                    list_of_second_test_results=summary(test2_skills)
+                    list_of_first_test_results=summary(test1_skills)
+                    particular_test3summary=int((sum(list_of_third_test_results)/60)*5)
+                    particular_test2summary=int((sum(list_of_second_test_results)/60)*5)
+                    particular_test1summary=int((sum(list_of_first_test_results)/60)*5)
+                    skilllist=[ 'Communication', 'Technical', 'creativity', 'projectmanagement', 'timemanagement', 'genearl knowledge', 'interpersonal', 'resultoriented', 'leadership', 'Presentation','aptitude','entrepreneur']
+                    elements={key:value for key,value in zip(skilllist,list_of_third_test_results)}
+                    # Sort the dictionary based on values (descending order)
+                    sortedinorder = dict(sorted(elements.items(), key=lambda item: item[1], reverse=True))
+                    iterator = iter(sortedinorder.items())
+                    first_element=next(iterator)
+                    # next(iterator)  # Skip the first element
+                    second_element = next(iterator)
+                    # next(iterator) 
+                    third_element = next(iterator)
+                    
+                    def sumskills(user1,user2,user3):
+                        p=[]
+                        q=[]
+                        r=[]
+                        t1=[]
+                        t2=[]
+                        t3=[]            
+                        for key, value in user1.items():
+                            p.append(int(value))
+                        t1.append(int((sum(p)/60)*5))
+                        # print(t1)
+                        for key, value in user2.items():
+                            q.append(int(value))
+                        t2.append(int((sum(q)/60)*5))
+                        for key, value in user3.items():
+                            r.append(int(value))
+                        t3.append(int((sum(r)/60)*5) )
+                        score1=t1+t2+t3           
+                        return score1
+                    score1= sumskills(test1_skills,test2_skills,test3_skills)
                 
-                communication = int(user['Assessment3'].get('communication'))
-                technical = int(user["Assessment3"].get('technical'))
-                creativity = int(user['Assessment3'].get('creativity'))
-                projectmm = int(user['Assessment3'].get('projectmmt'))
-                timemanagement = int(user['Assessment3'].get('timemanagement'))
-                generalknowledge = int(user['Assessment3'].get('generalknowledge'))
-                interpersonal = int(user['Assessment3'].get('interpersonal'))
-                resultoriented = int(user['Assessment3'].get('resultoriented'))
-                leardership = int(user['Assessment3'].get('leardership'))
-                presentation = int(user['Assessment3'].get('presentation'))
-                entrepreneur = int(user['Assessment3'].get('entrepreneur'))
-                aptitude = int(user['Assessment3'].get('aptitude'))
-                
-                show_graph3=True
-                test1_skills = user["Assessment1"]
-                test2_skills = user["Assessment2"]
-                test3_skills = user["Assessment3"]
-                def summary(userr):
-                    p=[]
-                    for key, value in userr.items():
-                        p.append(int(value))
-                    return p
-                
-                list_of_third_test_results=summary(test3_skills)
-                list_of_second_test_results=summary(test2_skills)
-                list_of_first_test_results=summary(test1_skills)
-                particular_test3summary=int((sum(list_of_third_test_results)/60)*5)
-                particular_test2summary=int((sum(list_of_second_test_results)/60)*5)
-                particular_test1summary=int((sum(list_of_first_test_results)/60)*5)
-                def sumskills(user1,user2,user3):
-                    p=[]
-                    q=[]
-                    r=[]
-                    t1=[]
-                    t2=[]
-                    t3=[]            
-                    for key, value in user1.items():
-                        p.append(int(value))
-                    t1.append(int((sum(p)/60)*5))
-                    # print(t1)
-                    for key, value in user2.items():
-                        q.append(int(value))
-                    t2.append(int((sum(q)/60)*5))
-                    for key, value in user3.items():
-                        r.append(int(value))
-                    t3.append(int((sum(r)/60)*5) )
-                    score1=t1+t2+t3           
-                    return score1
-                score1= sumskills(test1_skills,test2_skills,test3_skills)
-            
-                return render_template('dashboard.html',show_graph3=show_graph3,score1=json.dumps(score1),p=json.dumps(list_of_first_test_results),particular_testsummary=particular_test3summary,q=json.dumps(list_of_second_test_results),r=json.dumps(list_of_third_test_results),test1=test,entrepreneur=entrepreneur,aptitude=aptitude,username=username,title=title,creativity=creativity,communication=communication,technical=technical,projectmm=projectmm,timemanagement=timemanagement,generalknowledge=generalknowledge,interpersonal=interpersonal,resultoriented=resultoriented,leardership=leardership,presentation=presentation)
+                    return render_template('dashboard.html',show_graph3=show_graph3,score1=json.dumps(score1),first_element=first_element,second_element=second_element,third_element=third_element,p=json.dumps(list_of_first_test_results),particular_testsummary=particular_test3summary,q=json.dumps(list_of_second_test_results),r=json.dumps(list_of_third_test_results),test1=test,entrepreneur=entrepreneur,aptitude=aptitude,username=username,title=title,creativity=creativity,communication=communication,technical=technical,projectmm=projectmm,timemanagement=timemanagement,generalknowledge=generalknowledge,interpersonal=interpersonal,resultoriented=resultoriented,leardership=leardership,presentation=presentation)
+                else:
+                    flash('Marks has not been allotted.', category='error')     
             if test=="Assessment4":
                 test4 =user.get('Assessment4')
+                if test4 is not None:
+
+                    test4 =user.get('Assessment4')
+                    
+                    communication = int(user['Assessment4'].get('communication'))
+                    technical = int(user["Assessment4"].get('technical'))
+                    creativity = int(user['Assessment4'].get('creativity'))
+                    projectmm = int(user['Assessment4'].get('projectmmt'))
+                    timemanagement = int(user['Assessment4'].get('timemanagement'))
+                    generalknowledge = int(user['Assessment4'].get('generalknowledge'))
+                    interpersonal = int(user['Assessment4'].get('interpersonal'))
+                    resultoriented = int(user['Assessment4'].get('resultoriented'))
+                    leardership = int(user['Assessment4'].get('leardership'))
+                    presentation = int(user['Assessment4'].get('presentation'))
+                    entrepreneur = int(user['Assessment4'].get('entrepreneur'))
+                    aptitude = int(user['Assessment4'].get('aptitude'))
+                    show_graph4=True
+                    test1_skills = user["Assessment1"]
+                    test2_skills = user["Assessment2"]
+                    test3_skills = user["Assessment3"]
+                    test4_skills = user["Assessment4"]
+                    def summary(userr):
+                        p=[]
+                        for key, value in userr.items():
+                            p.append(int(value))
+                        return p
+                    
+                    list_of_fourth_test_results=summary(test4_skills)
+                    
+                    print(len(list_of_fourth_test_results))
+                    list_of_third_test_results=summary(test3_skills)
+                    list_of_second_test_results=summary(test2_skills)
+                    list_of_first_test_results=summary(test1_skills)
+                    particular_test4summary=int((sum(list_of_fourth_test_results)/60)*5)
+                    print(particular_test4summary)
+                    particular_test3summary=int((sum(list_of_third_test_results)/60)*5)
+                    particular_test2summary=int((sum(list_of_second_test_results)/60)*5)
+                    particular_test1summary=int((sum(list_of_first_test_results)/60)*5)
+                    skilllist=[ 'Communication', 'Technical', 'creativity', 'projectmanagement', 'timemanagement', 'genearl knowledge', 'interpersonal', 'resultoriented', 'leadership', 'Presentation','aptitude','entrepreneur']
+                    elements={key:value for key,value in zip(skilllist,list_of_fourth_test_results)}
+                    # Sort the dictionary based on values (descending order)
+                    sortedinorder = dict(sorted(elements.items(), key=lambda item: item[1], reverse=True))
+                    iterator = iter(sortedinorder.items())
+                    first_element=next(iterator)
+                    # next(iterator)  # Skip the first element
+                    second_element = next(iterator)
+                    # next(iterator) 
+                    third_element = next(iterator)
+                    def sumskills(user1,user2,user3,user4):
+                        p=[]
+                        q=[]
+                        r=[]
+                        s=[]
+                        t1=[]
+                        t2=[]
+                        t3=[]            
+                        t4=[]            
+                        for key, value in user1.items():
+                            p.append(int(value))
+                        t1.append(int((sum(p)/60)*5))
+                        # print(t1)
+                        for key, value in user2.items():
+                            q.append(int(value))
+                        t2.append(int((sum(q)/60)*5))
+                        for key, value in user3.items():
+                            r.append(int(value))
+                        t3.append(int((sum(r)/60)*5) )
+                        for key, value in user4.items():
+                            s.append(int(value))
+                        t4.append(int((sum(s)/60)*5) )
+                        score1=t1+t2+t3+t4          
+                        return score1
+                    score1= sumskills(test1_skills,test2_skills,test3_skills,test4_skills)
                 
-                communication = int(user['Assessment4'].get('communication'))
-                technical = int(user["Assessment4"].get('technical'))
-                creativity = int(user['Assessment4'].get('creativity'))
-                projectmm = int(user['Assessment4'].get('projectmmt'))
-                timemanagement = int(user['Assessment4'].get('timemanagement'))
-                generalknowledge = int(user['Assessment4'].get('generalknowledge'))
-                interpersonal = int(user['Assessment4'].get('interpersonal'))
-                resultoriented = int(user['Assessment4'].get('resultoriented'))
-                leardership = int(user['Assessment4'].get('leardership'))
-                presentation = int(user['Assessment4'].get('presentation'))
-                entrepreneur = int(user['Assessment4'].get('entrepreneur'))
-                aptitude = int(user['Assessment4'].get('aptitude'))
-                show_graph4=True
-                test1_skills = user["Assessment1"]
-                test2_skills = user["Assessment2"]
-                test3_skills = user["Assessment3"]
-                test4_skills = user["Assessment4"]
-                def summary(userr):
-                    p=[]
-                    for key, value in userr.items():
-                        p.append(int(value))
-                    return p
-                
-                list_of_fourth_test_results=summary(test4_skills)
-                print(len(list_of_fourth_test_results))
-                list_of_third_test_results=summary(test3_skills)
-                list_of_second_test_results=summary(test2_skills)
-                list_of_first_test_results=summary(test1_skills)
-                particular_test4summary=int((sum(list_of_fourth_test_results)/60)*5)
-                print(particular_test4summary)
-                particular_test3summary=int((sum(list_of_third_test_results)/60)*5)
-                particular_test2summary=int((sum(list_of_second_test_results)/60)*5)
-                particular_test1summary=int((sum(list_of_first_test_results)/60)*5)
-                def sumskills(user1,user2,user3,user4):
-                    p=[]
-                    q=[]
-                    r=[]
-                    s=[]
-                    t1=[]
-                    t2=[]
-                    t3=[]            
-                    t4=[]            
-                    for key, value in user1.items():
-                        p.append(int(value))
-                    t1.append(int((sum(p)/60)*5))
-                    # print(t1)
-                    for key, value in user2.items():
-                        q.append(int(value))
-                    t2.append(int((sum(q)/60)*5))
-                    for key, value in user3.items():
-                        r.append(int(value))
-                    t3.append(int((sum(r)/60)*5) )
-                    for key, value in user4.items():
-                        s.append(int(value))
-                    t4.append(int((sum(s)/60)*5) )
-                    score1=t1+t2+t3+t4          
-                    return score1
-                score1= sumskills(test1_skills,test2_skills,test3_skills,test4_skills)
-            
-                return render_template('dashboard.html',show_graph4=show_graph4,score1=json.dumps(score1),p=json.dumps(list_of_first_test_results),particular_testsummary=particular_test4summary,q=json.dumps(list_of_second_test_results),r=json.dumps(list_of_third_test_results),s=json.dumps(list_of_fourth_test_results),test1=test,username=username,title=title,creativity=creativity,communication=communication,technical=technical,projectmm=projectmm,timemanagement=timemanagement,generalknowledge=generalknowledge,interpersonal=interpersonal,resultoriented=resultoriented,leardership=leardership,presentation=presentation,entrepreneur=entrepreneur,aptitude=aptitude)
+                    return render_template('dashboard.html',show_graph4=show_graph4,first_element=first_element,second_element=second_element,third_element=third_element,score1=json.dumps(score1),p=json.dumps(list_of_first_test_results),particular_testsummary=particular_test4summary,q=json.dumps(list_of_second_test_results),r=json.dumps(list_of_third_test_results),s=json.dumps(list_of_fourth_test_results),test1=test,username=username,title=title,creativity=creativity,communication=communication,technical=technical,projectmm=projectmm,timemanagement=timemanagement,generalknowledge=generalknowledge,interpersonal=interpersonal,resultoriented=resultoriented,leardership=leardership,presentation=presentation,entrepreneur=entrepreneur,aptitude=aptitude)
+                else:
+                    flash('Marks has not been allotted.', category='error')     
             if test=="Assessment5":
                 test4 =user.get('Assessment5')
-                
-                communication = int(user['Assessment5'].get('communication'))
-                technical = int(user["Assessment5"].get('technical'))
-                creativity = int(user['Assessment5'].get('creativity'))
-                projectmm = int(user['Assessment5'].get('projectmmt'))
-                timemanagement = int(user['Assessment5'].get('timemanagement'))
-                generalknowledge = int(user['Assessment5'].get('generalknowledge'))
-                interpersonal = int(user['Assessment5'].get('interpersonal'))
-                resultoriented = int(user['Assessment5'].get('resultoriented'))
-                leardership = int(user['Assessment5'].get('leardership'))
-                presentation = int(user['Assessment5'].get('presentation'))
-                entrepreneur = int(user['Assessment5'].get('entrepreneur'))
-                aptitude = int(user['Assessment5'].get('aptitude'))
-                show_graph5=True
-                test1_skills = user["Assessment1"]
-                test2_skills = user["Assessment2"]
-                test3_skills = user["Assessment3"]
-                test4_skills = user["Assessment4"]
-                test5_skills = user["Assessment5"]
-                def summary(userr):
-                    p=[]
-                    for key, value in userr.items():
-                        p.append(int(value))
-                    return p
-                
-                list_of_fifth_test_results=summary(test5_skills)
-                list_of_fourth_test_results=summary(test4_skills)
-                list_of_third_test_results=summary(test3_skills)
-                list_of_second_test_results=summary(test2_skills)
-                list_of_first_test_results=summary(test1_skills)
-                particular_test5summary=int((sum(list_of_fifth_test_results)/60)*5)
-                particular_test4summary=int((sum(list_of_fourth_test_results)/60)*5)
-                particular_test3summary=int((sum(list_of_third_test_results)/60)*5)
-                particular_test2summary=int((sum(list_of_second_test_results)/60)*5)
-                particular_test1summary=int((sum(list_of_first_test_results)/60)*5)
-                def sumskills(user1,user2,user3,user4,user5):
-                    p=[]
-                    q=[]
-                    r=[]
-                    s=[]
-                    t=[]
+                if test4 is not None:
+                    test4 =user.get('Assessment5')
                     
-                    t1=[]
-                    t2=[]
-                    t3=[]            
-                    t4=[]            
-                    t5=[]            
-                                
-                    for key, value in user1.items():
-                        p.append(int(value))
-                    t1.append(int((sum(p)/60)*5))
-                    # print(t1)
-                    for key, value in user2.items():
-                        q.append(int(value))
-                    t2.append(int((sum(q)/60)*5))
-                    for key, value in user3.items():
-                        r.append(int(value))
-                    t3.append(int((sum(r)/60)*5) )
-                    for key, value in user4.items():
-                        s.append(int(value))
-                    t4.append(int((sum(s)/60)*5) )
-                    for key, value in user5.items():
-                        t.append(int(value))
-                    t5.append(int((sum(t)/60)*5) )
-                   
-                    score1=t1+t2+t3+t4+t5  
-                    print(score1)     
-                    return score1
-                score1= sumskills(test1_skills,test2_skills,test3_skills,test4_skills,test5_skills)
-            
-                return render_template('dashboard.html',show_graph5=show_graph5,score1=json.dumps(score1),p=json.dumps(list_of_first_test_results),particular_testsummary=particular_test5summary,q=json.dumps(list_of_second_test_results),r=json.dumps(list_of_third_test_results),s=json.dumps(list_of_fourth_test_results),t=json.dumps(list_of_fifth_test_results),test1=test,username=username,title=title,creativity=creativity,communication=communication,technical=technical,projectmm=projectmm,timemanagement=timemanagement,generalknowledge=generalknowledge,interpersonal=interpersonal,resultoriented=resultoriented,leardership=leardership,presentation=presentation,entrepreneur=entrepreneur,aptitude=aptitude)
+                    communication = int(user['Assessment5'].get('communication'))
+                    technical = int(user["Assessment5"].get('technical'))
+                    creativity = int(user['Assessment5'].get('creativity'))
+                    projectmm = int(user['Assessment5'].get('projectmmt'))
+                    timemanagement = int(user['Assessment5'].get('timemanagement'))
+                    generalknowledge = int(user['Assessment5'].get('generalknowledge'))
+                    interpersonal = int(user['Assessment5'].get('interpersonal'))
+                    resultoriented = int(user['Assessment5'].get('resultoriented'))
+                    leardership = int(user['Assessment5'].get('leardership'))
+                    presentation = int(user['Assessment5'].get('presentation'))
+                    entrepreneur = int(user['Assessment5'].get('entrepreneur'))
+                    aptitude = int(user['Assessment5'].get('aptitude'))
+                    show_graph5=True
+                    test1_skills = user["Assessment1"]
+                    test2_skills = user["Assessment2"]
+                    test3_skills = user["Assessment3"]
+                    test4_skills = user["Assessment4"]
+                    test5_skills = user["Assessment5"]
+                    def summary(userr):
+                        p=[]
+                        for key, value in userr.items():
+                            p.append(int(value))
+                        return p
+                    
+                    list_of_fifth_test_results=summary(test5_skills)
+                    list_of_fourth_test_results=summary(test4_skills)
+                    list_of_third_test_results=summary(test3_skills)
+                    list_of_second_test_results=summary(test2_skills)
+                    list_of_first_test_results=summary(test1_skills)
+                    particular_test5summary=int((sum(list_of_fifth_test_results)/60)*5)
+                    particular_test4summary=int((sum(list_of_fourth_test_results)/60)*5)
+                    particular_test3summary=int((sum(list_of_third_test_results)/60)*5)
+                    particular_test2summary=int((sum(list_of_second_test_results)/60)*5)
+                    particular_test1summary=int((sum(list_of_first_test_results)/60)*5)
+                    skilllist=[ 'Communication', 'Technical', 'creativity', 'projectmanagement', 'timemanagement', 'genearl knowledge', 'interpersonal', 'resultoriented', 'leadership', 'Presentation','aptitude','entrepreneur']
+                    elements={key:value for key,value in zip(skilllist,list_of_fifth_test_results)}
+                    # Sort the dictionary based on values (descending order)
+                    sortedinorder = dict(sorted(elements.items(), key=lambda item: item[1], reverse=True))
+                    iterator = iter(sortedinorder.items())
+                    first_element=next(iterator)
+                    # next(iterator)  # Skip the first element
+                    second_element = next(iterator)
+                    # next(iterator) 
+                    third_element = next(iterator)
+                    def sumskills(user1,user2,user3,user4,user5):
+                        p=[]
+                        q=[]
+                        r=[]
+                        s=[]
+                        t=[]
+                        
+                        t1=[]
+                        t2=[]
+                        t3=[]            
+                        t4=[]            
+                        t5=[]            
+                                    
+                        for key, value in user1.items():
+                            p.append(int(value))
+                        t1.append(int((sum(p)/60)*5))
+                        # print(t1)
+                        for key, value in user2.items():
+                            q.append(int(value))
+                        t2.append(int((sum(q)/60)*5))
+                        for key, value in user3.items():
+                            r.append(int(value))
+                        t3.append(int((sum(r)/60)*5) )
+                        for key, value in user4.items():
+                            s.append(int(value))
+                        t4.append(int((sum(s)/60)*5) )
+                        for key, value in user5.items():
+                            t.append(int(value))
+                        t5.append(int((sum(t)/60)*5) )
+                    
+                        score1=t1+t2+t3+t4+t5  
+                        print(score1)     
+                        return score1
+                    score1= sumskills(test1_skills,test2_skills,test3_skills,test4_skills,test5_skills)
+                
+                    return render_template('dashboard.html',show_graph5=show_graph5,first_element=first_element,second_element=second_element,third_element=third_element,score1=json.dumps(score1),p=json.dumps(list_of_first_test_results),particular_testsummary=particular_test5summary,q=json.dumps(list_of_second_test_results),r=json.dumps(list_of_third_test_results),s=json.dumps(list_of_fourth_test_results),t=json.dumps(list_of_fifth_test_results),test1=test,username=username,title=title,creativity=creativity,communication=communication,technical=technical,projectmm=projectmm,timemanagement=timemanagement,generalknowledge=generalknowledge,interpersonal=interpersonal,resultoriented=resultoriented,leardership=leardership,presentation=presentation,entrepreneur=entrepreneur,aptitude=aptitude)
+                else:
+                    flash('Marks has not been allotted.', category='error')     
             if test=="Assessment6":
                 test4 =user.get('Assessment6')
+                if test4 is not None:
+
+                    test4 =user.get('Assessment6')
+                    
+                    communication = int(user['Assessment6'].get('communication'))
+                    technical = int(user["Assessment6"].get('technical'))
+                    creativity = int(user['Assessment6'].get('creativity'))
+                    projectmm = int(user['Assessment6'].get('projectmmt'))
+                    timemanagement = int(user['Assessment6'].get('timemanagement'))
+                    generalknowledge = int(user['Assessment6'].get('generalknowledge'))
+                    interpersonal = int(user['Assessment6'].get('interpersonal'))
+                    resultoriented = int(user['Assessment6'].get('resultoriented'))
+                    leardership = int(user['Assessment6'].get('leardership'))
+                    presentation = int(user['Assessment6'].get('presentation'))
+                    entrepreneur = int(user['Assessment6'].get('entrepreneur'))
+                    aptitude = int(user['Assessment6'].get('aptitude'))
+                    show_graph6=True
+                    test1_skills = user["Assessment1"]
+                    test2_skills = user["Assessment2"]
+                    test3_skills = user["Assessment3"]
+                    test4_skills = user["Assessment4"]
+                    test5_skills = user["Assessment5"]
+                    test6_skills = user["Assessment6"]
+                    def summary(userr):
+                        p=[]
+                        for key, value in userr.items():
+                            p.append(int(value))
+                        return p
+                    
+                    list_of_sixth_test_results=summary(test6_skills)
+                    list_of_fifth_test_results=summary(test5_skills)
+                    list_of_fourth_test_results=summary(test4_skills)
+                    list_of_third_test_results=summary(test3_skills)
+                    list_of_second_test_results=summary(test2_skills)
+                    list_of_first_test_results=summary(test1_skills)
+                    particular_test6summary=int((sum(list_of_sixth_test_results)/60)*5)
+                    particular_test5summary=int((sum(list_of_fifth_test_results)/60)*5)
+                    particular_test4summary=int((sum(list_of_fourth_test_results)/60)*5)
+                    print(particular_test6summary)
+                    particular_test3summary=int((sum(list_of_third_test_results)/60)*5)
+                    particular_test2summary=int((sum(list_of_second_test_results)/60)*5)
+                    particular_test1summary=int((sum(list_of_first_test_results)/60)*5)
+                    skilllist=[ 'Communication', 'Technical', 'creativity', 'projectmanagement', 'timemanagement', 'genearl knowledge', 'interpersonal', 'resultoriented', 'leadership', 'Presentation','aptitude','entrepreneur']
+                    elements={key:value for key,value in zip(skilllist,list_of_sixth_test_results)}
+                    # Sort the dictionary based on values (descending order)
+                    sortedinorder = dict(sorted(elements.items(), key=lambda item: item[1], reverse=True))
+                    iterator = iter(sortedinorder.items())
+                    first_element=next(iterator)
+                    # next(iterator)  # Skip the first element
+                    second_element = next(iterator)
+                    # next(iterator) 
+                    third_element = next(iterator)
+                    def sumskills(user1,user2,user3,user4,user5,user6):
+                        p=[]
+                        q=[]
+                        r=[]
+                        s=[]
+                        t=[]
+                        u=[]
+                        t1=[]
+                        t2=[]
+                        t3=[]            
+                        t4=[]            
+                        t5=[]            
+                        t6=[]            
+                        for key, value in user1.items():
+                            p.append(int(value))
+                        t1.append(int((sum(p)/60)*5))
+                        # print(t1)
+                        for key, value in user2.items():
+                            q.append(int(value))
+                        t2.append(int((sum(q)/60)*5))
+                        for key, value in user3.items():
+                            r.append(int(value))
+                        t3.append(int((sum(r)/60)*5) )
+                        for key, value in user4.items():
+                            s.append(int(value))
+                        t4.append(int((sum(s)/60)*5) )
+                        for key, value in user5.items():
+                            t.append(int(value))
+                        t5.append(int((sum(t)/60)*5) )
+                        for key, value in user6.items():
+                            u.append(int(value))
+                        t6.append(int((sum(u)/60)*5) )
+                        score1=t1+t2+t3+t4+t5+t6 
+                        print(t6)
+                            
+                        return score1
+                    score1= sumskills(test1_skills,test2_skills,test3_skills,test4_skills,test5_skills,test6_skills)
+                    print(score1) 
                 
-                communication = int(user['Assessment6'].get('communication'))
-                technical = int(user["Assessment6"].get('technical'))
-                creativity = int(user['Assessment6'].get('creativity'))
-                projectmm = int(user['Assessment6'].get('projectmmt'))
-                timemanagement = int(user['Assessment6'].get('timemanagement'))
-                generalknowledge = int(user['Assessment6'].get('generalknowledge'))
-                interpersonal = int(user['Assessment6'].get('interpersonal'))
-                resultoriented = int(user['Assessment6'].get('resultoriented'))
-                leardership = int(user['Assessment6'].get('leardership'))
-                presentation = int(user['Assessment6'].get('presentation'))
-                entrepreneur = int(user['Assessment6'].get('entrepreneur'))
-                aptitude = int(user['Assessment6'].get('aptitude'))
-                show_graph6=True
-                test1_skills = user["Assessment1"]
-                test2_skills = user["Assessment2"]
-                test3_skills = user["Assessment3"]
-                test4_skills = user["Assessment4"]
-                test5_skills = user["Assessment5"]
-                test6_skills = user["Assessment6"]
-                def summary(userr):
-                    p=[]
-                    for key, value in userr.items():
-                        p.append(int(value))
-                    return p
-                
-                list_of_sixth_test_results=summary(test6_skills)
-                list_of_fifth_test_results=summary(test5_skills)
-                list_of_fourth_test_results=summary(test4_skills)
-                list_of_third_test_results=summary(test3_skills)
-                list_of_second_test_results=summary(test2_skills)
-                list_of_first_test_results=summary(test1_skills)
-                particular_test6summary=int((sum(list_of_sixth_test_results)/60)*5)
-                particular_test5summary=int((sum(list_of_fifth_test_results)/60)*5)
-                particular_test4summary=int((sum(list_of_fourth_test_results)/60)*5)
-                print(particular_test6summary)
-                particular_test3summary=int((sum(list_of_third_test_results)/60)*5)
-                particular_test2summary=int((sum(list_of_second_test_results)/60)*5)
-                particular_test1summary=int((sum(list_of_first_test_results)/60)*5)
-                def sumskills(user1,user2,user3,user4,user5,user6):
-                    p=[]
-                    q=[]
-                    r=[]
-                    s=[]
-                    t=[]
-                    u=[]
-                    t1=[]
-                    t2=[]
-                    t3=[]            
-                    t4=[]            
-                    t5=[]            
-                    t6=[]            
-                    for key, value in user1.items():
-                        p.append(int(value))
-                    t1.append(int((sum(p)/60)*5))
-                    # print(t1)
-                    for key, value in user2.items():
-                        q.append(int(value))
-                    t2.append(int((sum(q)/60)*5))
-                    for key, value in user3.items():
-                        r.append(int(value))
-                    t3.append(int((sum(r)/60)*5) )
-                    for key, value in user4.items():
-                        s.append(int(value))
-                    t4.append(int((sum(s)/60)*5) )
-                    for key, value in user5.items():
-                        t.append(int(value))
-                    t5.append(int((sum(t)/60)*5) )
-                    for key, value in user6.items():
-                        u.append(int(value))
-                    t6.append(int((sum(u)/60)*5) )
-                    score1=t1+t2+t3+t4+t5+t6 
-                    print(t6)
-                          
-                    return score1
-                score1= sumskills(test1_skills,test2_skills,test3_skills,test4_skills,test5_skills,test6_skills)
-                print(score1) 
-            
-                return render_template('dashboard.html',show_graph6=show_graph6,score1=json.dumps(score1),p=json.dumps(list_of_first_test_results),particular_testsummary=particular_test6summary,q=json.dumps(list_of_second_test_results),r=json.dumps(list_of_third_test_results),s=json.dumps(list_of_fourth_test_results),t=json.dumps(list_of_fifth_test_results),u=json.dumps(list_of_sixth_test_results),test1=test,username=username,title=title,creativity=creativity,communication=communication,technical=technical,projectmm=projectmm,timemanagement=timemanagement,generalknowledge=generalknowledge,interpersonal=interpersonal,resultoriented=resultoriented,leardership=leardership,presentation=presentation,entrepreneur=entrepreneur,aptitude=aptitude)
+                    return render_template('dashboard.html',first_element=first_element,second_element=second_element,third_element=third_element,show_graph6=show_graph6,score1=json.dumps(score1),p=json.dumps(list_of_first_test_results),particular_testsummary=particular_test6summary,q=json.dumps(list_of_second_test_results),r=json.dumps(list_of_third_test_results),s=json.dumps(list_of_fourth_test_results),t=json.dumps(list_of_fifth_test_results),u=json.dumps(list_of_sixth_test_results),test1=test,username=username,title=title,creativity=creativity,communication=communication,technical=technical,projectmm=projectmm,timemanagement=timemanagement,generalknowledge=generalknowledge,interpersonal=interpersonal,resultoriented=resultoriented,leardership=leardership,presentation=presentation,entrepreneur=entrepreneur,aptitude=aptitude)
+                else:
+                    flash('Marks has not been allotted.', category='error')     
             if test=="Assessment7":
                 test4 =user.get('Assessment7')
+                if test4 is not None:
+                    test4 =user.get('Assessment7')
+                    
+                    communication = int(user['Assessment7'].get('communication'))
+                    technical = int(user["Assessment7"].get('technical'))
+                    creativity = int(user['Assessment7'].get('creativity'))
+                    projectmm = int(user['Assessment7'].get('projectmmt'))
+                    timemanagement = int(user['Assessment7'].get('timemanagement'))
+                    generalknowledge = int(user['Assessment7'].get('generalknowledge'))
+                    interpersonal = int(user['Assessment7'].get('interpersonal'))
+                    resultoriented = int(user['Assessment7'].get('resultoriented'))
+                    leardership = int(user['Assessment7'].get('leardership'))
+                    presentation = int(user['Assessment7'].get('presentation'))
+                    entrepreneur = int(user['Assessment7'].get('entrepreneur'))
+                    aptitude = int(user['Assessment7'].get('aptitude'))
+                    show_graph7=True
+                    test1_skills = user["Assessment1"]
+                    test2_skills = user["Assessment2"]
+                    test3_skills = user["Assessment3"]
+                    test4_skills = user["Assessment4"]
+                    test5_skills = user["Assessment5"]
+                    test6_skills = user["Assessment6"]
+                    test7_skills = user["Assessment7"]
+                    def summary(userr):
+                        p=[]
+                        for key, value in userr.items():
+                            p.append(int(value))
+                        return p
+                    
+                    list_of_seventh_test_results=summary(test7_skills)
+                    list_of_sixth_test_results=summary(test6_skills)
+                    list_of_fifth_test_results=summary(test5_skills)
+                    list_of_fourth_test_results=summary(test4_skills)
+                    list_of_third_test_results=summary(test3_skills)
+                    list_of_second_test_results=summary(test2_skills)
+                    list_of_first_test_results=summary(test1_skills)
+                    particular_test7summary=int((sum(list_of_seventh_test_results)/60)*5)
+                    particular_test6summary=int((sum(list_of_sixth_test_results)/60)*5)
+                    particular_test5summary=int((sum(list_of_fifth_test_results)/60)*5)
+                    particular_test4summary=int((sum(list_of_fourth_test_results)/60)*5)
+                    print(particular_test6summary)
+                    particular_test3summary=int((sum(list_of_third_test_results)/60)*5)
+                    particular_test2summary=int((sum(list_of_second_test_results)/60)*5)
+                    particular_test1summary=int((sum(list_of_first_test_results)/60)*5)
+                    skilllist=[ 'Communication', 'Technical', 'creativity', 'projectmanagement', 'timemanagement', 'genearl knowledge', 'interpersonal', 'resultoriented', 'leadership', 'Presentation','aptitude','entrepreneur']
+                    elements={key:value for key,value in zip(skilllist,list_of_seventh_test_results)}
+                    # Sort the dictionary based on values (descending order)
+                    sortedinorder = dict(sorted(elements.items(), key=lambda item: item[1], reverse=True))
+                    iterator = iter(sortedinorder.items())
+                    first_element=next(iterator)
+                    # next(iterator)  # Skip the first element
+                    second_element = next(iterator)
+                    # next(iterator) 
+                    third_element = next(iterator)
+                    def sumskills(user1,user2,user3,user4,user5,user6,user7):
+                        p=[]
+                        q=[]
+                        r=[]
+                        s=[]
+                        t=[]
+                        u=[]
+                        v=[]
+                        t1=[]
+                        t2=[]
+                        t3=[]            
+                        t4=[]            
+                        t5=[]            
+                        t6=[]            
+                        t7=[]            
+                        for key, value in user1.items():
+                            p.append(int(value))
+                        t1.append(int((sum(p)/60)*5))
+                        # print(t1)
+                        for key, value in user2.items():
+                            q.append(int(value))
+                        t2.append(int((sum(q)/60)*5))
+                        for key, value in user3.items():
+                            r.append(int(value))
+                        t3.append(int((sum(r)/60)*5) )
+                        for key, value in user4.items():
+                            s.append(int(value))
+                        t4.append(int((sum(s)/60)*5) )
+                        for key, value in user5.items():
+                            t.append(int(value))
+                        t5.append(int((sum(t)/60)*5) )
+                        for key, value in user6.items():
+                            u.append(int(value))
+                        t6.append(int((sum(u)/60)*5) )
+                        for key, value in user7.items():
+                            v.append(int(value))
+                        t7.append(int((sum(v)/60)*5) )
+                        score1=t1+t2+t3+t4+t5+t6+t7
+                        print(t6)
+                            
+                        return score1
+                    score1= sumskills(test1_skills,test2_skills,test3_skills,test4_skills,test5_skills,test6_skills,test7_skills)
+                    print(score1) 
                 
-                communication = int(user['Assessment7'].get('communication'))
-                technical = int(user["Assessment7"].get('technical'))
-                creativity = int(user['Assessment7'].get('creativity'))
-                projectmm = int(user['Assessment7'].get('projectmmt'))
-                timemanagement = int(user['Assessment7'].get('timemanagement'))
-                generalknowledge = int(user['Assessment7'].get('generalknowledge'))
-                interpersonal = int(user['Assessment7'].get('interpersonal'))
-                resultoriented = int(user['Assessment7'].get('resultoriented'))
-                leardership = int(user['Assessment7'].get('leardership'))
-                presentation = int(user['Assessment7'].get('presentation'))
-                entrepreneur = int(user['Assessment7'].get('entrepreneur'))
-                aptitude = int(user['Assessment7'].get('aptitude'))
-                show_graph7=True
-                test1_skills = user["Assessment1"]
-                test2_skills = user["Assessment2"]
-                test3_skills = user["Assessment3"]
-                test4_skills = user["Assessment4"]
-                test5_skills = user["Assessment5"]
-                test6_skills = user["Assessment6"]
-                test7_skills = user["Assessment7"]
-                def summary(userr):
-                    p=[]
-                    for key, value in userr.items():
-                        p.append(int(value))
-                    return p
-                
-                list_of_seventh_test_results=summary(test7_skills)
-                list_of_sixth_test_results=summary(test6_skills)
-                list_of_fifth_test_results=summary(test5_skills)
-                list_of_fourth_test_results=summary(test4_skills)
-                list_of_third_test_results=summary(test3_skills)
-                list_of_second_test_results=summary(test2_skills)
-                list_of_first_test_results=summary(test1_skills)
-                particular_test7summary=int((sum(list_of_seventh_test_results)/60)*5)
-                particular_test6summary=int((sum(list_of_sixth_test_results)/60)*5)
-                particular_test5summary=int((sum(list_of_fifth_test_results)/60)*5)
-                particular_test4summary=int((sum(list_of_fourth_test_results)/60)*5)
-                print(particular_test6summary)
-                particular_test3summary=int((sum(list_of_third_test_results)/60)*5)
-                particular_test2summary=int((sum(list_of_second_test_results)/60)*5)
-                particular_test1summary=int((sum(list_of_first_test_results)/60)*5)
-                def sumskills(user1,user2,user3,user4,user5,user6,user7):
-                    p=[]
-                    q=[]
-                    r=[]
-                    s=[]
-                    t=[]
-                    u=[]
-                    v=[]
-                    t1=[]
-                    t2=[]
-                    t3=[]            
-                    t4=[]            
-                    t5=[]            
-                    t6=[]            
-                    t7=[]            
-                    for key, value in user1.items():
-                        p.append(int(value))
-                    t1.append(int((sum(p)/60)*5))
-                    # print(t1)
-                    for key, value in user2.items():
-                        q.append(int(value))
-                    t2.append(int((sum(q)/60)*5))
-                    for key, value in user3.items():
-                        r.append(int(value))
-                    t3.append(int((sum(r)/60)*5) )
-                    for key, value in user4.items():
-                        s.append(int(value))
-                    t4.append(int((sum(s)/60)*5) )
-                    for key, value in user5.items():
-                        t.append(int(value))
-                    t5.append(int((sum(t)/60)*5) )
-                    for key, value in user6.items():
-                        u.append(int(value))
-                    t6.append(int((sum(u)/60)*5) )
-                    for key, value in user7.items():
-                        v.append(int(value))
-                    t7.append(int((sum(v)/60)*5) )
-                    score1=t1+t2+t3+t4+t5+t6+t7
-                    print(t6)
-                          
-                    return score1
-                score1= sumskills(test1_skills,test2_skills,test3_skills,test4_skills,test5_skills,test6_skills,test7_skills)
-                print(score1) 
-            
-                return render_template('dashboard.html',show_graph7=show_graph7,score1=json.dumps(score1),p=json.dumps(list_of_first_test_results),particular_testsummary=particular_test7summary,q=json.dumps(list_of_second_test_results),r=json.dumps(list_of_third_test_results),s=json.dumps(list_of_fourth_test_results),t=json.dumps(list_of_fifth_test_results),u=json.dumps(list_of_sixth_test_results),v=json.dumps(list_of_seventh_test_results),test1=test,username=username,title=title,creativity=creativity,communication=communication,technical=technical,projectmm=projectmm,timemanagement=timemanagement,generalknowledge=generalknowledge,interpersonal=interpersonal,resultoriented=resultoriented,leardership=leardership,presentation=presentation,entrepreneur=entrepreneur,aptitude=aptitude)
+                    return render_template('dashboard.html',first_element=first_element,second_element=second_element,third_element=third_element,show_graph7=show_graph7,score1=json.dumps(score1),p=json.dumps(list_of_first_test_results),particular_testsummary=particular_test7summary,q=json.dumps(list_of_second_test_results),r=json.dumps(list_of_third_test_results),s=json.dumps(list_of_fourth_test_results),t=json.dumps(list_of_fifth_test_results),u=json.dumps(list_of_sixth_test_results),v=json.dumps(list_of_seventh_test_results),test1=test,username=username,title=title,creativity=creativity,communication=communication,technical=technical,projectmm=projectmm,timemanagement=timemanagement,generalknowledge=generalknowledge,interpersonal=interpersonal,resultoriented=resultoriented,leardership=leardership,presentation=presentation,entrepreneur=entrepreneur,aptitude=aptitude)
+                else:
+                    flash('Marks has not been allotted.', category='error')     
             if test=="Assessment8":
                 test4 =user.get('Assessment8')
-                
-                communication = int(user['Assessment8'].get('communication'))
-                technical = int(user["Assessment8"].get('technical'))
-                creativity = int(user['Assessment8'].get('creativity'))
-                projectmm = int(user['Assessment8'].get('projectmmt'))
-                timemanagement = int(user['Assessment8'].get('timemanagement'))
-                generalknowledge = int(user['Assessment8'].get('generalknowledge'))
-                interpersonal = int(user['Assessment8'].get('interpersonal'))
-                resultoriented = int(user['Assessment8'].get('resultoriented'))
-                leardership = int(user['Assessment8'].get('leardership'))
-                presentation = int(user['Assessment8'].get('presentation'))
-                entrepreneur = int(user['Assessment8'].get('entrepreneur'))
-                aptitude = int(user['Assessment8'].get('aptitude'))
-                show_graph8=True
-                test1_skills = user["Assessment1"]
-                test2_skills = user["Assessment2"]
-                test3_skills = user["Assessment3"]
-                test4_skills = user["Assessment4"]
-                test5_skills = user["Assessment5"]
-                test6_skills = user["Assessment6"]
-                test7_skills = user["Assessment7"]
-                test8_skills = user["Assessment8"]
-                def summary(userr):
-                    p=[]
-                    for key, value in userr.items():
-                        p.append(int(value))
-                    return p
-                
-                list_of_eightth_test_results=summary(test8_skills)
-                list_of_seventh_test_results=summary(test7_skills)
-                list_of_sixth_test_results=summary(test6_skills)
-                list_of_fifth_test_results=summary(test5_skills)
-                list_of_fourth_test_results=summary(test4_skills)
-                list_of_third_test_results=summary(test3_skills)
-                list_of_second_test_results=summary(test2_skills)
-                list_of_first_test_results=summary(test1_skills)
-                particular_test8summary=int((sum(list_of_eightth_test_results)/60)*5)
-                particular_test7summary=int((sum(list_of_seventh_test_results)/60)*5)
-                particular_test6summary=int((sum(list_of_sixth_test_results)/60)*5)
-                particular_test5summary=int((sum(list_of_fifth_test_results)/60)*5)
-                particular_test4summary=int((sum(list_of_fourth_test_results)/60)*5)
-                print(particular_test6summary)
-                particular_test3summary=int((sum(list_of_third_test_results)/60)*5)
-                particular_test2summary=int((sum(list_of_second_test_results)/60)*5)
-                particular_test1summary=int((sum(list_of_first_test_results)/60)*5)
-                def sumskills(user1,user2,user3,user4,user5,user6,user7,user8):
-                    p=[]
-                    q=[]
-                    r=[]
-                    s=[]
-                    t=[]
-                    u=[]
-                    v=[]
-                    w=[]
-                    t1=[]
-                    t2=[]
-                    t3=[]            
-                    t4=[]            
-                    t5=[]            
-                    t6=[]            
-                    t7=[]            
-                    t8=[]            
-                    for key, value in user1.items():
-                        p.append(int(value))
-                    t1.append(int((sum(p)/60)*5))
-                    # print(t1)
-                    for key, value in user2.items():
-                        q.append(int(value))
-                    t2.append(int((sum(q)/60)*5))
-                    for key, value in user3.items():
-                        r.append(int(value))
-                    t3.append(int((sum(r)/60)*5) )
-                    for key, value in user4.items():
-                        s.append(int(value))
-                    t4.append(int((sum(s)/60)*5) )
-                    for key, value in user5.items():
-                        t.append(int(value))
-                    t5.append(int((sum(t)/60)*5) )
-                    for key, value in user6.items():
-                        u.append(int(value))
-                    t6.append(int((sum(u)/60)*5) )
-                    for key, value in user7.items():
-                        v.append(int(value))
-                    t7.append(int((sum(v)/60)*5) )
-                    for key, value in user8.items():
-                        w.append(int(value))
-                    t8.append(int((sum(w)/60)*5) )
-                    score1=t1+t2+t3+t4+t5+t6+t7+t8
-                    print(t6)
-                          
-                    return score1
-                score1= sumskills(test1_skills,test2_skills,test3_skills,test4_skills,test5_skills,test6_skills,test7_skills,test8_skills)
-                print(score1) 
-            
-                return render_template('dashboard.html',show_graph8=show_graph8,score1=json.dumps(score1),p=json.dumps(list_of_first_test_results),particular_testsummary=particular_test8summary,q=json.dumps(list_of_second_test_results),r=json.dumps(list_of_third_test_results),s=json.dumps(list_of_fourth_test_results),t=json.dumps(list_of_fifth_test_results),u=json.dumps(list_of_sixth_test_results),v=json.dumps(list_of_seventh_test_results),w=json.dumps(list_of_eightth_test_results),test1=test,username=username,title=title,creativity=creativity,communication=communication,technical=technical,projectmm=projectmm,timemanagement=timemanagement,generalknowledge=generalknowledge,interpersonal=interpersonal,resultoriented=resultoriented,leardership=leardership,presentation=presentation,entrepreneur=entrepreneur,aptitude=aptitude)
+                if test4 is not None:
 
+                    test4 =user.get('Assessment8')
+                    
+                    communication = int(user['Assessment8'].get('communication'))
+                    technical = int(user["Assessment8"].get('technical'))
+                    creativity = int(user['Assessment8'].get('creativity'))
+                    projectmm = int(user['Assessment8'].get('projectmmt'))
+                    timemanagement = int(user['Assessment8'].get('timemanagement'))
+                    generalknowledge = int(user['Assessment8'].get('generalknowledge'))
+                    interpersonal = int(user['Assessment8'].get('interpersonal'))
+                    resultoriented = int(user['Assessment8'].get('resultoriented'))
+                    leardership = int(user['Assessment8'].get('leardership'))
+                    presentation = int(user['Assessment8'].get('presentation'))
+                    entrepreneur = int(user['Assessment8'].get('entrepreneur'))
+                    aptitude = int(user['Assessment8'].get('aptitude'))
+                    show_graph8=True
+                    test1_skills = user["Assessment1"]
+                    test2_skills = user["Assessment2"]
+                    test3_skills = user["Assessment3"]
+                    test4_skills = user["Assessment4"]
+                    test5_skills = user["Assessment5"]
+                    test6_skills = user["Assessment6"]
+                    test7_skills = user["Assessment7"]
+                    test8_skills = user["Assessment8"]
+                    def summary(userr):
+                        p=[]
+                        for key, value in userr.items():
+                            p.append(int(value))
+                        return p
+                    
+                    list_of_eightth_test_results=summary(test8_skills)
+                    list_of_seventh_test_results=summary(test7_skills)
+                    list_of_sixth_test_results=summary(test6_skills)
+                    list_of_fifth_test_results=summary(test5_skills)
+                    list_of_fourth_test_results=summary(test4_skills)
+                    list_of_third_test_results=summary(test3_skills)
+                    list_of_second_test_results=summary(test2_skills)
+                    list_of_first_test_results=summary(test1_skills)
+                    particular_test8summary=int((sum(list_of_eightth_test_results)/60)*5)
+                    particular_test7summary=int((sum(list_of_seventh_test_results)/60)*5)
+                    particular_test6summary=int((sum(list_of_sixth_test_results)/60)*5)
+                    particular_test5summary=int((sum(list_of_fifth_test_results)/60)*5)
+                    particular_test4summary=int((sum(list_of_fourth_test_results)/60)*5)
+                    print(particular_test6summary)
+                    particular_test3summary=int((sum(list_of_third_test_results)/60)*5)
+                    particular_test2summary=int((sum(list_of_second_test_results)/60)*5)
+                    particular_test1summary=int((sum(list_of_first_test_results)/60)*5)
+                    skilllist=[ 'Communication', 'Technical', 'creativity', 'projectmanagement', 'timemanagement', 'genearl knowledge', 'interpersonal', 'resultoriented', 'leadership', 'Presentation','aptitude','entrepreneur']
+                    elements={key:value for key,value in zip(skilllist,list_of_eightth_test_results)}
+                    # Sort the dictionary based on values (descending order)
+                    sortedinorder = dict(sorted(elements.items(), key=lambda item: item[1], reverse=True))
+                    iterator = iter(sortedinorder.items())
+                    first_element=next(iterator)
+                    # next(iterator)  # Skip the first element
+                    second_element = next(iterator)
+                    # next(iterator) 
+                    third_element = next(iterator)
+                    def sumskills(user1,user2,user3,user4,user5,user6,user7,user8):
+                        p=[]
+                        q=[]
+                        r=[]
+                        s=[]
+                        t=[]
+                        u=[]
+                        v=[]
+                        w=[]
+                        t1=[]
+                        t2=[]
+                        t3=[]            
+                        t4=[]            
+                        t5=[]            
+                        t6=[]            
+                        t7=[]            
+                        t8=[]            
+                        for key, value in user1.items():
+                            p.append(int(value))
+                        t1.append(int((sum(p)/60)*5))
+                        # print(t1)
+                        for key, value in user2.items():
+                            q.append(int(value))
+                        t2.append(int((sum(q)/60)*5))
+                        for key, value in user3.items():
+                            r.append(int(value))
+                        t3.append(int((sum(r)/60)*5) )
+                        for key, value in user4.items():
+                            s.append(int(value))
+                        t4.append(int((sum(s)/60)*5) )
+                        for key, value in user5.items():
+                            t.append(int(value))
+                        t5.append(int((sum(t)/60)*5) )
+                        for key, value in user6.items():
+                            u.append(int(value))
+                        t6.append(int((sum(u)/60)*5) )
+                        for key, value in user7.items():
+                            v.append(int(value))
+                        t7.append(int((sum(v)/60)*5) )
+                        for key, value in user8.items():
+                            w.append(int(value))
+                        t8.append(int((sum(w)/60)*5) )
+                        score1=t1+t2+t3+t4+t5+t6+t7+t8
+                        print(t6)
+                            
+                        return score1
+                    score1= sumskills(test1_skills,test2_skills,test3_skills,test4_skills,test5_skills,test6_skills,test7_skills,test8_skills)
+                    print(score1) 
+                
+                    return render_template('dashboard.html',first_element=first_element,second_element=second_element,third_element=third_element,show_graph8=show_graph8,score1=json.dumps(score1),p=json.dumps(list_of_first_test_results),particular_testsummary=particular_test8summary,q=json.dumps(list_of_second_test_results),r=json.dumps(list_of_third_test_results),s=json.dumps(list_of_fourth_test_results),t=json.dumps(list_of_fifth_test_results),u=json.dumps(list_of_sixth_test_results),v=json.dumps(list_of_seventh_test_results),w=json.dumps(list_of_eightth_test_results),test1=test,username=username,title=title,creativity=creativity,communication=communication,technical=technical,projectmm=projectmm,timemanagement=timemanagement,generalknowledge=generalknowledge,interpersonal=interpersonal,resultoriented=resultoriented,leardership=leardership,presentation=presentation,entrepreneur=entrepreneur,aptitude=aptitude)
+                else:
+                    flash('Marks has not been allotted.', category='error')     
         communication = int(user['Assessment1'].get('communication'))
         technical = int(user["Assessment1"].get('technical'))
         creativity = int(user['Assessment1'].get('creativity'))
@@ -863,7 +1001,7 @@ def dashboard():
       
 
 
-        return render_template('dashboard.html',particular_testsummary=particular_testsummary,test1=test11,username=username,title=title,creativity=creativity,communication=communication,technical=technical,projectmm=projectmm,timemanagement=timemanagement,generalknowledge=generalknowledge,interpersonal=interpersonal,resultoriented=resultoriented,leardership=leardership,presentation=presentation,entrepreneur=entrepreneur,aptitude=aptitude)
+        return render_template('dashboard.html',first_element=first_element,second_element=second_element,third_element=third_element,particular_testsummary=particular_testsummary,test1=test11,username=username,title=title,creativity=creativity,communication=communication,technical=technical,projectmm=projectmm,timemanagement=timemanagement,generalknowledge=generalknowledge,interpersonal=interpersonal,resultoriented=resultoriented,leardership=leardership,presentation=presentation,entrepreneur=entrepreneur,aptitude=aptitude)
 
         
 
@@ -886,8 +1024,19 @@ def dashboard():
             for key, value in userr.items():
                 p.append(int(value))
             return p
-        test_function_summary=summary(test1_skills)       
-        particular_testsummary=int((sum(test_function_summary)/60)*5)      
+        test_function_summary=summary(test1_skills)  
+        skilllist=[ 'Communication', 'Technical', 'creativity', 'projectmanagement', 'timemanagement', 'genearl knowledge', 'interpersonal', 'resultoriented', 'leadership', 'Presentation','aptitude','entrepreneur']
+        elements={key:value for key,value in zip(skilllist, test_function_summary)}
+        # Sort the dictionary based on values (descending order)
+        sortedinorder = dict(sorted(elements.items(), key=lambda item: item[1], reverse=True))
+        iterator = iter(sortedinorder.items())
+        first_element=next(iterator)
+        # next(iterator)  # Skip the first element
+        second_element = next(iterator)
+        # next(iterator) 
+        third_element = next(iterator)     
+        particular_testsummary=int((sum(test_function_summary)/60)*5)  
+               
         if request.method=="POST":
             man= request.form.get('test')
             test =man
@@ -929,501 +1078,799 @@ def dashboard():
                         p.append(int(value))
                     return p
                 p=summary(test1_skills) 
+                skilllist=[ 'Communication', 'Technical', 'creativity', 'projectmanagement', 'timemanagement', 'genearl knowledge', 'interpersonal', 'resultoriented', 'leadership', 'Presentation','aptitude','entrepreneur']
+                elements={key:value for key,value in zip(skilllist, p)}
+                # Sort the dictionary based on values (descending order)
+                sortedinorder = dict(sorted(elements.items(), key=lambda item: item[1], reverse=True))
+                iterator = iter(sortedinorder.items())
+                first_element=next(iterator)
+                # next(iterator)  # Skip the first element
+                second_element = next(iterator)
+                # next(iterator) 
+                third_element = next(iterator)     
                 
                 
                 particular_test1summary=int((sum(p)/60)*5)
-                return render_template('dashboard.html',show_graph1=show_graph1,particular_testsummary=particular_test1summary,test1=test,entrepreneur=entrepreneur,aptitude=aptitude,username=username,title=title,creativity=creativity,communication=communication,technical=technical,projectmm=projectmm,timemanagement=timemanagement,generalknowledge=generalknowledge,interpersonal=interpersonal,resultoriented=resultoriented,leardership=leardership,presentation=presentation)
+                return render_template('dashboard.html',first_element=first_element,second_element=second_element,third_element=third_element,show_graph1=show_graph1,particular_testsummary=particular_test1summary,test1=test,entrepreneur=entrepreneur,aptitude=aptitude,username=username,title=title,creativity=creativity,communication=communication,technical=technical,projectmm=projectmm,timemanagement=timemanagement,generalknowledge=generalknowledge,interpersonal=interpersonal,resultoriented=resultoriented,leardership=leardership,presentation=presentation)
 
             if test=="Assessment2":
                 test2 =user.get('Assessment2')
 
-               
-               
-                communication = int(user['Assessment2'].get('communication'))
-                technical = int(user["Assessment2"].get('technical'))
-                creativity = int(user['Assessment2'].get('creativity'))
-                projectmm = int(user['Assessment2'].get('projectmmt'))
-                timemanagement = int(user['Assessment2'].get('timemanagement'))
-                generalknowledge = int(user['Assessment2'].get('generalknowledge'))
-                interpersonal = int(user['Assessment2'].get('interpersonal'))
-                resultoriented = int(user['Assessment2'].get('resultoriented'))
-                leardership = int(user['Assessment2'].get('leardership'))
-                presentation = int(user['Assessment2'].get('presentation'))
-                entrepreneur = int(user['Assessment2'].get('entrepreneur'))
-                aptitude = int(user['Assessment2'].get('aptitude'))
-                show_graph2=True
-                test1_skills = user["Assessment1"]
-                test2_skills = user["Assessment2"]
-                def summary(userr):
-                    p=[]
-                    for key, value in userr.items():
-                        p.append(int(value))
-                    return p                
-                list_of_second_test_results=summary(test2_skills)            
-                list_of_first_test_results=summary(test1_skills)            
-                particular_test2summary=int((sum(list_of_second_test_results)/60)*5)
-                particular_test1summary=int((sum(list_of_first_test_results)/60)*5)
+                if test2 is not None:
                 
-                return render_template('dashboard.html',show_graph2=show_graph2,particular_testsummary=particular_test2summary,p=json.dumps(list_of_first_test_results),q=json.dumps(list_of_second_test_results),entrepreneur=entrepreneur,aptitude=aptitude,test1=test,username=username,title=title,creativity=creativity,communication=communication,technical=technical,projectmm=projectmm,timemanagement=timemanagement,generalknowledge=generalknowledge,interpersonal=interpersonal,resultoriented=resultoriented,leardership=leardership,presentation=presentation)
+                    test2 =user.get('Assessment2')
+
+                
+                
+                    communication = int(user['Assessment2'].get('communication'))
+                    technical = int(user["Assessment2"].get('technical'))
+                    creativity = int(user['Assessment2'].get('creativity'))
+                    projectmm = int(user['Assessment2'].get('projectmmt'))
+                    timemanagement = int(user['Assessment2'].get('timemanagement'))
+                    generalknowledge = int(user['Assessment2'].get('generalknowledge'))
+                    interpersonal = int(user['Assessment2'].get('interpersonal'))
+                    resultoriented = int(user['Assessment2'].get('resultoriented'))
+                    leardership = int(user['Assessment2'].get('leardership'))
+                    presentation = int(user['Assessment2'].get('presentation'))
+                    entrepreneur = int(user['Assessment2'].get('entrepreneur'))
+                    aptitude = int(user['Assessment2'].get('aptitude'))
+                    show_graph2=True
+                    test1_skills = user["Assessment1"]
+                    test2_skills = user["Assessment2"]
+                    def summary(userr):
+                        p=[]
+                        for key, value in userr.items():
+                            p.append(int(value))
+                        return p                
+                    list_of_second_test_results=summary(test2_skills)            
+                    list_of_first_test_results=summary(test1_skills)            
+                    particular_test2summary=int((sum(list_of_second_test_results)/60)*5)
+                    particular_test1summary=int((sum(list_of_first_test_results)/60)*5)
+                    skilllist=[ 'Communication', 'Technical', 'creativity', 'projectmanagement', 'timemanagement', 'genearl knowledge', 'interpersonal', 'resultoriented', 'leadership', 'Presentation','aptitude','entrepreneur']
+                    elements={key:value for key,value in zip(skilllist, list_of_second_test_results )}
+                    # Sort the dictionary based on values (descending order)
+                    sortedinorder = dict(sorted(elements.items(), key=lambda item: item[1], reverse=True))
+                    iterator = iter(sortedinorder.items())
+                    first_element=next(iterator)
+                    # next(iterator)  # Skip the first element
+                    second_element = next(iterator)
+                    # next(iterator) 
+                    third_element = next(iterator)     
+                    
+                    return render_template('dashboard.html',first_element=first_element,second_element=second_element,third_element=third_element,show_graph2=show_graph2,particular_testsummary=particular_test2summary,p=json.dumps(list_of_first_test_results),q=json.dumps(list_of_second_test_results),entrepreneur=entrepreneur,aptitude=aptitude,test1=test,username=username,title=title,creativity=creativity,communication=communication,technical=technical,projectmm=projectmm,timemanagement=timemanagement,generalknowledge=generalknowledge,interpersonal=interpersonal,resultoriented=resultoriented,leardership=leardership,presentation=presentation)
+                else:
+                    flash('Marks has not been allotted.', category='error')                # redirect(url_for('views.dashboard'))
+  
             if test=="Assessment3":
                 test3 =user.get('Assessment3')
+                if test3 is not None:
+                    test3 =user.get('Assessment3')
+
                 
-                communication = int(user['Assessment3'].get('communication'))
-                technical = int(user["Assessment3"].get('technical'))
-                creativity = int(user['Assessment3'].get('creativity'))
-                projectmm = int(user['Assessment3'].get('projectmmt'))
-                timemanagement = int(user['Assessment3'].get('timemanagement'))
-                generalknowledge = int(user['Assessment3'].get('generalknowledge'))
-                interpersonal = int(user['Assessment3'].get('interpersonal'))
-                resultoriented = int(user['Assessment3'].get('resultoriented'))
-                leardership = int(user['Assessment3'].get('leardership'))
-                presentation = int(user['Assessment3'].get('presentation'))
-                entrepreneur = int(user['Assessment3'].get('entrepreneur'))
-                aptitude = int(user['Assessment3'].get('aptitude'))
+                    communication = int(user['Assessment3'].get('communication'))
+                    technical = int(user["Assessment3"].get('technical'))
+                    creativity = int(user['Assessment3'].get('creativity'))
+                    projectmm = int(user['Assessment3'].get('projectmmt'))
+                    timemanagement = int(user['Assessment3'].get('timemanagement'))
+                    generalknowledge = int(user['Assessment3'].get('generalknowledge'))
+                    interpersonal = int(user['Assessment3'].get('interpersonal'))
+                    resultoriented = int(user['Assessment3'].get('resultoriented'))
+                    leardership = int(user['Assessment3'].get('leardership'))
+                    presentation = int(user['Assessment3'].get('presentation'))
+                    entrepreneur = int(user['Assessment3'].get('entrepreneur'))
+                    aptitude = int(user['Assessment3'].get('aptitude'))
+                    
+                    show_graph3=True
+                    test1_skills = user["Assessment1"]
+                    test2_skills = user["Assessment2"]
+                    test3_skills = user["Assessment3"]
+                    def summary(userr):
+                        p=[]
+                        for key, value in userr.items():
+                            p.append(int(value))
+                        return p
+                    
+                    list_of_third_test_results=summary(test3_skills)
+                    list_of_second_test_results=summary(test2_skills)
+                    list_of_first_test_results=summary(test1_skills)
+                    particular_test3summary=int((sum(list_of_third_test_results)/60)*5)
+                    particular_test2summary=int((sum(list_of_second_test_results)/60)*5)
+                    particular_test1summary=int((sum(list_of_first_test_results)/60)*5)
+                    skilllist=[ 'Communication', 'Technical', 'creativity', 'projectmanagement', 'timemanagement', 'genearl knowledge', 'interpersonal', 'resultoriented', 'leadership', 'Presentation','aptitude','entrepreneur']
+                    elements={key:value for key,value in zip(skilllist, list_of_third_test_results )}
+                    # Sort the dictionary based on values (descending order)
+                    sortedinorder = dict(sorted(elements.items(), key=lambda item: item[1], reverse=True))
+                    iterator = iter(sortedinorder.items())
+                    first_element=next(iterator)
+                    # next(iterator)  # Skip the first element
+                    second_element = next(iterator)
+                    # next(iterator) 
+                    third_element = next(iterator)     
+                    def sumskills(user1,user2,user3):
+                        p=[]
+                        q=[]
+                        r=[]
+                        t1=[]
+                        t2=[]
+                        t3=[]            
+                        for key, value in user1.items():
+                            p.append(int(value))
+                        t1.append(int((sum(p)/60)*5))
+                        # print(t1)
+                        for key, value in user2.items():
+                            q.append(int(value))
+                        t2.append(int((sum(q)/60)*5))
+                        for key, value in user3.items():
+                            r.append(int(value))
+                        t3.append(int((sum(r)/60)*5) )
+                        score1=t1+t2+t3           
+                        return score1
+                    score1= sumskills(test1_skills,test2_skills,test3_skills)
                 
-                show_graph3=True
-                test1_skills = user["Assessment1"]
-                test2_skills = user["Assessment2"]
-                test3_skills = user["Assessment3"]
-                def summary(userr):
-                    p=[]
-                    for key, value in userr.items():
-                        p.append(int(value))
-                    return p
-                
-                list_of_third_test_results=summary(test3_skills)
-                list_of_second_test_results=summary(test2_skills)
-                list_of_first_test_results=summary(test1_skills)
-                particular_test3summary=int((sum(list_of_third_test_results)/60)*5)
-                particular_test2summary=int((sum(list_of_second_test_results)/60)*5)
-                particular_test1summary=int((sum(list_of_first_test_results)/60)*5)
-                def sumskills(user1,user2,user3):
-                    p=[]
-                    q=[]
-                    r=[]
-                    t1=[]
-                    t2=[]
-                    t3=[]            
-                    for key, value in user1.items():
-                        p.append(int(value))
-                    t1.append(int((sum(p)/60)*5))
-                    # print(t1)
-                    for key, value in user2.items():
-                        q.append(int(value))
-                    t2.append(int((sum(q)/60)*5))
-                    for key, value in user3.items():
-                        r.append(int(value))
-                    t3.append(int((sum(r)/60)*5) )
-                    score1=t1+t2+t3           
-                    return score1
-                score1= sumskills(test1_skills,test2_skills,test3_skills)
-            
-                return render_template('dashboard.html',show_graph3=show_graph3,score1=json.dumps(score1),p=json.dumps(list_of_first_test_results),particular_testsummary=particular_test3summary,q=json.dumps(list_of_second_test_results),r=json.dumps(list_of_third_test_results),test1=test,entrepreneur=entrepreneur,aptitude=aptitude,username=username,title=title,creativity=creativity,communication=communication,technical=technical,projectmm=projectmm,timemanagement=timemanagement,generalknowledge=generalknowledge,interpersonal=interpersonal,resultoriented=resultoriented,leardership=leardership,presentation=presentation)
+                    return render_template('dashboard.html',first_element=first_element,second_element=second_element,third_element=third_element,show_graph3=show_graph3,score1=json.dumps(score1),p=json.dumps(list_of_first_test_results),particular_testsummary=particular_test3summary,q=json.dumps(list_of_second_test_results),r=json.dumps(list_of_third_test_results),test1=test,entrepreneur=entrepreneur,aptitude=aptitude,username=username,title=title,creativity=creativity,communication=communication,technical=technical,projectmm=projectmm,timemanagement=timemanagement,generalknowledge=generalknowledge,interpersonal=interpersonal,resultoriented=resultoriented,leardership=leardership,presentation=presentation)
+                if test=="Assessment4":
+                    print("Iam in")
+                    test4 =user.get('Assessment4')
+                    if test4 is not None:
+                        test4 =user.get('Assessment4')                       
+                        communication = int(user['Assessment4'].get('communication'))
+                        technical = int(user["Assessment4"].get('technical'))
+                        creativity = int(user['Assessment4'].get('creativity'))
+                        projectmm = int(user['Assessment4'].get('projectmmt'))
+                        timemanagement = int(user['Assessment4'].get('timemanagement'))
+                        generalknowledge = int(user['Assessment4'].get('generalknowledge'))
+                        interpersonal = int(user['Assessment4'].get('interpersonal'))
+                        resultoriented = int(user['Assessment4'].get('resultoriented'))
+                        leardership = int(user['Assessment4'].get('leardership'))
+                        presentation = int(user['Assessment4'].get('presentation'))
+                        entrepreneur = int(user['Assessment4'].get('entrepreneur'))
+                        aptitude = int(user['Assessment4'].get('aptitude'))
+                        show_graph4=True
+                        test1_skills = user["Assessment1"]
+                        test2_skills = user["Assessment2"]
+                        test3_skills = user["Assessment3"]
+                        test4_skills = user["Assessment4"]
+                        print("fyvuybibiubhibh")
+                        def summary(userr):
+                            p=[]
+                            for key, value in userr.items():
+                                p.append(int(value))
+                            return p
+                        
+                        list_of_fourth_test_results=summary(test4_skills)
+                        print(len(list_of_fourth_test_results))
+                        list_of_third_test_results=summary(test3_skills)
+                        list_of_second_test_results=summary(test2_skills)
+                        list_of_first_test_results=summary(test1_skills)
+                        particular_test4summary=int((sum(list_of_fourth_test_results)/60)*5)
+                        print(particular_test4summary)
+                        particular_test3summary=int((sum(list_of_third_test_results)/60)*5)
+                        particular_test2summary=int((sum(list_of_second_test_results)/60)*5)
+                        particular_test1summary=int((sum(list_of_first_test_results)/60)*5)
+                        skilllist=[ 'Communication', 'Technical', 'creativity', 'projectmanagement', 'timemanagement', 'genearl knowledge', 'interpersonal', 'resultoriented', 'leadership', 'Presentation','aptitude','entrepreneur']
+                        elements={key:value for key,value in zip(skilllist, list_of_fourth_test_results )}
+                        # Sort the dictionary based on values (descending order)
+                        sortedinorder = dict(sorted(elements.items(), key=lambda item: item[1], reverse=True))
+                        iterator = iter(sortedinorder.items())
+                        first_element=next(iterator)
+                        # next(iterator)  # Skip the first element
+                        second_element = next(iterator)
+                        # next(iterator) 
+                        third_element = next(iterator)     
+                        def sumskills(user1,user2,user3,user4):
+                            p=[]
+                            q=[]
+                            r=[]
+                            s=[]
+                            t1=[]
+                            t2=[]
+                            t3=[]            
+                            t4=[]            
+                            for key, value in user1.items():
+                                p.append(int(value))
+                            t1.append(int((sum(p)/60)*5))
+                            # print(t1)
+                            for key, value in user2.items():
+                                q.append(int(value))
+                            t2.append(int((sum(q)/60)*5))
+                            for key, value in user3.items():
+                                r.append(int(value))
+                            t3.append(int((sum(r)/60)*5) )
+                            for key, value in user4.items():
+                                s.append(int(value))
+                            t4.append(int((sum(s)/60)*5) )
+                            score1=t1+t2+t3+t4          
+                            return score1
+                        score1= sumskills(test1_skills,test2_skills,test3_skills,test4_skills)
+                    
+                        return render_template('dashboard.html',first_element=first_element,second_element=second_element,third_element=third_element,show_graph4=show_graph4,score1=json.dumps(score1),p=json.dumps(list_of_first_test_results),particular_testsummary=particular_test4summary,q=json.dumps(list_of_second_test_results),r=json.dumps(list_of_third_test_results),s=json.dumps(list_of_fourth_test_results),test1=test,username=username,title=title,creativity=creativity,communication=communication,technical=technical,projectmm=projectmm,timemanagement=timemanagement,generalknowledge=generalknowledge,interpersonal=interpersonal,resultoriented=resultoriented,leardership=leardership,presentation=presentation,entrepreneur=entrepreneur,aptitude=aptitude)
+                    else:
+
+                        flash('Marks has not been allotted.', category='error')                # redirect(url_for('views.dashboard'))
             if test=="Assessment4":
                 test4 =user.get('Assessment4')
+                if test4 is not None:
+
+                    test4 =user.get('Assessment4')
+                    
+                    communication = int(user['Assessment4'].get('communication'))
+                    technical = int(user["Assessment4"].get('technical'))
+                    creativity = int(user['Assessment4'].get('creativity'))
+                    projectmm = int(user['Assessment4'].get('projectmmt'))
+                    timemanagement = int(user['Assessment4'].get('timemanagement'))
+                    generalknowledge = int(user['Assessment4'].get('generalknowledge'))
+                    interpersonal = int(user['Assessment4'].get('interpersonal'))
+                    resultoriented = int(user['Assessment4'].get('resultoriented'))
+                    leardership = int(user['Assessment4'].get('leardership'))
+                    presentation = int(user['Assessment4'].get('presentation'))
+                    entrepreneur = int(user['Assessment4'].get('entrepreneur'))
+                    aptitude = int(user['Assessment4'].get('aptitude'))
+                    show_graph4=True
+                    test1_skills = user["Assessment1"]
+                    test2_skills = user["Assessment2"]
+                    test3_skills = user["Assessment3"]
+                    test4_skills = user["Assessment4"]
+                    def summary(userr):
+                        p=[]
+                        for key, value in userr.items():
+                            p.append(int(value))
+                        return p
+                    
+                    list_of_fourth_test_results=summary(test4_skills)
+                    
+                    print(len(list_of_fourth_test_results))
+                    list_of_third_test_results=summary(test3_skills)
+                    list_of_second_test_results=summary(test2_skills)
+                    list_of_first_test_results=summary(test1_skills)
+                    particular_test4summary=int((sum(list_of_fourth_test_results)/60)*5)
+                    print(particular_test4summary)
+                    particular_test3summary=int((sum(list_of_third_test_results)/60)*5)
+                    particular_test2summary=int((sum(list_of_second_test_results)/60)*5)
+                    particular_test1summary=int((sum(list_of_first_test_results)/60)*5)
+                    skilllist=[ 'Communication', 'Technical', 'creativity', 'projectmanagement', 'timemanagement', 'genearl knowledge', 'interpersonal', 'resultoriented', 'leadership', 'Presentation','aptitude','entrepreneur']
+                    elements={key:value for key,value in zip(skilllist,list_of_fourth_test_results)}
+                    # Sort the dictionary based on values (descending order)
+                    sortedinorder = dict(sorted(elements.items(), key=lambda item: item[1], reverse=True))
+                    iterator = iter(sortedinorder.items())
+                    first_element=next(iterator)
+                    # next(iterator)  # Skip the first element
+                    second_element = next(iterator)
+                    # next(iterator) 
+                    third_element = next(iterator)
+                    def sumskills(user1,user2,user3,user4):
+                        p=[]
+                        q=[]
+                        r=[]
+                        s=[]
+                        t1=[]
+                        t2=[]
+                        t3=[]            
+                        t4=[]            
+                        for key, value in user1.items():
+                            p.append(int(value))
+                        t1.append(int((sum(p)/60)*5))
+                        # print(t1)
+                        for key, value in user2.items():
+                            q.append(int(value))
+                        t2.append(int((sum(q)/60)*5))
+                        for key, value in user3.items():
+                            r.append(int(value))
+                        t3.append(int((sum(r)/60)*5) )
+                        for key, value in user4.items():
+                            s.append(int(value))
+                        t4.append(int((sum(s)/60)*5) )
+                        score1=t1+t2+t3+t4          
+                        return score1
+                    score1= sumskills(test1_skills,test2_skills,test3_skills,test4_skills)
                 
-                communication = int(user['Assessment4'].get('communication'))
-                technical = int(user["Assessment4"].get('technical'))
-                creativity = int(user['Assessment4'].get('creativity'))
-                projectmm = int(user['Assessment4'].get('projectmmt'))
-                timemanagement = int(user['Assessment4'].get('timemanagement'))
-                generalknowledge = int(user['Assessment4'].get('generalknowledge'))
-                interpersonal = int(user['Assessment4'].get('interpersonal'))
-                resultoriented = int(user['Assessment4'].get('resultoriented'))
-                leardership = int(user['Assessment4'].get('leardership'))
-                presentation = int(user['Assessment4'].get('presentation'))
-                entrepreneur = int(user['Assessment4'].get('entrepreneur'))
-                aptitude = int(user['Assessment4'].get('aptitude'))
-                show_graph4=True
-                test1_skills = user["Assessment1"]
-                test2_skills = user["Assessment2"]
-                test3_skills = user["Assessment3"]
-                test4_skills = user["Assessment4"]
-                def summary(userr):
-                    p=[]
-                    for key, value in userr.items():
-                        p.append(int(value))
-                    return p
-                
-                list_of_fourth_test_results=summary(test4_skills)
-                print(len(list_of_fourth_test_results))
-                list_of_third_test_results=summary(test3_skills)
-                list_of_second_test_results=summary(test2_skills)
-                list_of_first_test_results=summary(test1_skills)
-                particular_test4summary=int((sum(list_of_fourth_test_results)/60)*5)
-                print(particular_test4summary)
-                particular_test3summary=int((sum(list_of_third_test_results)/60)*5)
-                particular_test2summary=int((sum(list_of_second_test_results)/60)*5)
-                particular_test1summary=int((sum(list_of_first_test_results)/60)*5)
-                def sumskills(user1,user2,user3,user4):
-                    p=[]
-                    q=[]
-                    r=[]
-                    s=[]
-                    t1=[]
-                    t2=[]
-                    t3=[]            
-                    t4=[]            
-                    for key, value in user1.items():
-                        p.append(int(value))
-                    t1.append(int((sum(p)/60)*5))
-                    # print(t1)
-                    for key, value in user2.items():
-                        q.append(int(value))
-                    t2.append(int((sum(q)/60)*5))
-                    for key, value in user3.items():
-                        r.append(int(value))
-                    t3.append(int((sum(r)/60)*5) )
-                    for key, value in user4.items():
-                        s.append(int(value))
-                    t4.append(int((sum(s)/60)*5) )
-                    score1=t1+t2+t3+t4          
-                    return score1
-                score1= sumskills(test1_skills,test2_skills,test3_skills,test4_skills)
-            
-                return render_template('dashboard.html',show_graph4=show_graph4,score1=json.dumps(score1),p=json.dumps(list_of_first_test_results),particular_testsummary=particular_test4summary,q=json.dumps(list_of_second_test_results),r=json.dumps(list_of_third_test_results),s=json.dumps(list_of_fourth_test_results),test1=test,username=username,title=title,creativity=creativity,communication=communication,technical=technical,projectmm=projectmm,timemanagement=timemanagement,generalknowledge=generalknowledge,interpersonal=interpersonal,resultoriented=resultoriented,leardership=leardership,presentation=presentation,entrepreneur=entrepreneur,aptitude=aptitude)
+                    return render_template('dashboard.html',show_graph4=show_graph4,first_element=first_element,second_element=second_element,third_element=third_element,score1=json.dumps(score1),p=json.dumps(list_of_first_test_results),particular_testsummary=particular_test4summary,q=json.dumps(list_of_second_test_results),r=json.dumps(list_of_third_test_results),s=json.dumps(list_of_fourth_test_results),test1=test,username=username,title=title,creativity=creativity,communication=communication,technical=technical,projectmm=projectmm,timemanagement=timemanagement,generalknowledge=generalknowledge,interpersonal=interpersonal,resultoriented=resultoriented,leardership=leardership,presentation=presentation,entrepreneur=entrepreneur,aptitude=aptitude)
+                else:
+                    flash('Marks has not been allotted.', category='error')     
             if test=="Assessment5":
                 test4 =user.get('Assessment5')
-                
-                communication = int(user['Assessment5'].get('communication'))
-                technical = int(user["Assessment5"].get('technical'))
-                creativity = int(user['Assessment5'].get('creativity'))
-                projectmm = int(user['Assessment5'].get('projectmmt'))
-                timemanagement = int(user['Assessment5'].get('timemanagement'))
-                generalknowledge = int(user['Assessment5'].get('generalknowledge'))
-                interpersonal = int(user['Assessment5'].get('interpersonal'))
-                resultoriented = int(user['Assessment5'].get('resultoriented'))
-                leardership = int(user['Assessment5'].get('leardership'))
-                presentation = int(user['Assessment5'].get('presentation'))
-                entrepreneur = int(user['Assessment5'].get('entrepreneur'))
-                aptitude = int(user['Assessment5'].get('aptitude'))
-                show_graph5=True
-                test1_skills = user["Assessment1"]
-                test2_skills = user["Assessment2"]
-                test3_skills = user["Assessment3"]
-                test4_skills = user["Assessment4"]
-                test5_skills = user["Assessment5"]
-                def summary(userr):
-                    p=[]
-                    for key, value in userr.items():
-                        p.append(int(value))
-                    return p
-                
-                list_of_fifth_test_results=summary(test5_skills)
-                list_of_fourth_test_results=summary(test4_skills)
-                list_of_third_test_results=summary(test3_skills)
-                list_of_second_test_results=summary(test2_skills)
-                list_of_first_test_results=summary(test1_skills)
-                particular_test5summary=int((sum(list_of_fifth_test_results)/60)*5)
-                particular_test4summary=int((sum(list_of_fourth_test_results)/60)*5)
-                particular_test3summary=int((sum(list_of_third_test_results)/60)*5)
-                particular_test2summary=int((sum(list_of_second_test_results)/60)*5)
-                particular_test1summary=int((sum(list_of_first_test_results)/60)*5)
-                def sumskills(user1,user2,user3,user4,user5):
-                    p=[]
-                    q=[]
-                    r=[]
-                    s=[]
-                    t=[]
+                if test4 is not None:
+                    test4 =user.get('Assessment5')
                     
-                    t1=[]
-                    t2=[]
-                    t3=[]            
-                    t4=[]            
-                    t5=[]            
-                                
-                    for key, value in user1.items():
-                        p.append(int(value))
-                    t1.append(int((sum(p)/60)*5))
-                    # print(t1)
-                    for key, value in user2.items():
-                        q.append(int(value))
-                    t2.append(int((sum(q)/60)*5))
-                    for key, value in user3.items():
-                        r.append(int(value))
-                    t3.append(int((sum(r)/60)*5) )
-                    for key, value in user4.items():
-                        s.append(int(value))
-                    t4.append(int((sum(s)/60)*5) )
-                    for key, value in user5.items():
-                        t.append(int(value))
-                    t5.append(int((sum(t)/60)*5) )
-                   
-                    score1=t1+t2+t3+t4+t5  
-                    print(score1)     
-                    return score1
-                score1= sumskills(test1_skills,test2_skills,test3_skills,test4_skills,test5_skills)
-            
-                return render_template('dashboard.html',show_graph5=show_graph5,score1=json.dumps(score1),p=json.dumps(list_of_first_test_results),particular_testsummary=particular_test5summary,q=json.dumps(list_of_second_test_results),r=json.dumps(list_of_third_test_results),s=json.dumps(list_of_fourth_test_results),t=json.dumps(list_of_fifth_test_results),test1=test,username=username,title=title,creativity=creativity,communication=communication,technical=technical,projectmm=projectmm,timemanagement=timemanagement,generalknowledge=generalknowledge,interpersonal=interpersonal,resultoriented=resultoriented,leardership=leardership,presentation=presentation,entrepreneur=entrepreneur,aptitude=aptitude)
+                    communication = int(user['Assessment5'].get('communication'))
+                    technical = int(user["Assessment5"].get('technical'))
+                    creativity = int(user['Assessment5'].get('creativity'))
+                    projectmm = int(user['Assessment5'].get('projectmmt'))
+                    timemanagement = int(user['Assessment5'].get('timemanagement'))
+                    generalknowledge = int(user['Assessment5'].get('generalknowledge'))
+                    interpersonal = int(user['Assessment5'].get('interpersonal'))
+                    resultoriented = int(user['Assessment5'].get('resultoriented'))
+                    leardership = int(user['Assessment5'].get('leardership'))
+                    presentation = int(user['Assessment5'].get('presentation'))
+                    entrepreneur = int(user['Assessment5'].get('entrepreneur'))
+                    aptitude = int(user['Assessment5'].get('aptitude'))
+                    show_graph5=True
+                    test1_skills = user["Assessment1"]
+                    test2_skills = user["Assessment2"]
+                    test3_skills = user["Assessment3"]
+                    test4_skills = user["Assessment4"]
+                    test5_skills = user["Assessment5"]
+                    def summary(userr):
+                        p=[]
+                        for key, value in userr.items():
+                            p.append(int(value))
+                        return p
+                    
+                    list_of_fifth_test_results=summary(test5_skills)
+                    list_of_fourth_test_results=summary(test4_skills)
+                    list_of_third_test_results=summary(test3_skills)
+                    list_of_second_test_results=summary(test2_skills)
+                    list_of_first_test_results=summary(test1_skills)
+                    particular_test5summary=int((sum(list_of_fifth_test_results)/60)*5)
+                    particular_test4summary=int((sum(list_of_fourth_test_results)/60)*5)
+                    particular_test3summary=int((sum(list_of_third_test_results)/60)*5)
+                    particular_test2summary=int((sum(list_of_second_test_results)/60)*5)
+                    particular_test1summary=int((sum(list_of_first_test_results)/60)*5)
+                    skilllist=[ 'Communication', 'Technical', 'creativity', 'projectmanagement', 'timemanagement', 'genearl knowledge', 'interpersonal', 'resultoriented', 'leadership', 'Presentation','aptitude','entrepreneur']
+                    elements={key:value for key,value in zip(skilllist, list_of_fifth_test_results )}
+                    # Sort the dictionary based on values (descending order)
+                    sortedinorder = dict(sorted(elements.items(), key=lambda item: item[1], reverse=True))
+                    iterator = iter(sortedinorder.items())
+                    first_element=next(iterator)
+                    # next(iterator)  # Skip the first element
+                    second_element = next(iterator)
+                    # next(iterator) 
+                    third_element = next(iterator)     
+                    def sumskills(user1,user2,user3,user4,user5):
+                        p=[]
+                        q=[]
+                        r=[]
+                        s=[]
+                        t=[]
+                        
+                        t1=[]
+                        t2=[]
+                        t3=[]            
+                        t4=[]            
+                        t5=[]            
+                                    
+                        for key, value in user1.items():
+                            p.append(int(value))
+                        t1.append(int((sum(p)/60)*5))
+                        # print(t1)
+                        for key, value in user2.items():
+                            q.append(int(value))
+                        t2.append(int((sum(q)/60)*5))
+                        for key, value in user3.items():
+                            r.append(int(value))
+                        t3.append(int((sum(r)/60)*5) )
+                        for key, value in user4.items():
+                            s.append(int(value))
+                        t4.append(int((sum(s)/60)*5) )
+                        for key, value in user5.items():
+                            t.append(int(value))
+                        t5.append(int((sum(t)/60)*5) )
+                    
+                        score1=t1+t2+t3+t4+t5  
+                        print(score1)     
+                        return score1
+                    score1= sumskills(test1_skills,test2_skills,test3_skills,test4_skills,test5_skills)
+                
+                    return render_template('dashboard.html',first_element=first_element,second_element=second_element,third_element=third_element,show_graph5=show_graph5,score1=json.dumps(score1),p=json.dumps(list_of_first_test_results),particular_testsummary=particular_test5summary,q=json.dumps(list_of_second_test_results),r=json.dumps(list_of_third_test_results),s=json.dumps(list_of_fourth_test_results),t=json.dumps(list_of_fifth_test_results),test1=test,username=username,title=title,creativity=creativity,communication=communication,technical=technical,projectmm=projectmm,timemanagement=timemanagement,generalknowledge=generalknowledge,interpersonal=interpersonal,resultoriented=resultoriented,leardership=leardership,presentation=presentation,entrepreneur=entrepreneur,aptitude=aptitude)
+                else:
+                    flash('Marks has not been allotted.', category='error')                # redirect(url_for('views.dashboard'))
+  
             if test=="Assessment6":
                 test4 =user.get('Assessment6')
+                if test4 is not None:
+                    test4 =user.get('Assessment6')
                 
-                communication = int(user['Assessment6'].get('communication'))
-                technical = int(user["Assessment6"].get('technical'))
-                creativity = int(user['Assessment6'].get('creativity'))
-                projectmm = int(user['Assessment6'].get('projectmmt'))
-                timemanagement = int(user['Assessment6'].get('timemanagement'))
-                generalknowledge = int(user['Assessment6'].get('generalknowledge'))
-                interpersonal = int(user['Assessment6'].get('interpersonal'))
-                resultoriented = int(user['Assessment6'].get('resultoriented'))
-                leardership = int(user['Assessment6'].get('leardership'))
-                presentation = int(user['Assessment6'].get('presentation'))
-                entrepreneur = int(user['Assessment6'].get('entrepreneur'))
-                aptitude = int(user['Assessment6'].get('aptitude'))
-                show_graph6=True
-                test1_skills = user["Assessment1"]
-                test2_skills = user["Assessment2"]
-                test3_skills = user["Assessment3"]
-                test4_skills = user["Assessment4"]
-                test5_skills = user["Assessment5"]
-                test6_skills = user["Assessment6"]
-                def summary(userr):
-                    p=[]
-                    for key, value in userr.items():
-                        p.append(int(value))
-                    return p
+                    communication = int(user['Assessment6'].get('communication'))
+                    technical = int(user["Assessment6"].get('technical'))
+                    creativity = int(user['Assessment6'].get('creativity'))
+                    projectmm = int(user['Assessment6'].get('projectmmt'))
+                    timemanagement = int(user['Assessment6'].get('timemanagement'))
+                    generalknowledge = int(user['Assessment6'].get('generalknowledge'))
+                    interpersonal = int(user['Assessment6'].get('interpersonal'))
+                    resultoriented = int(user['Assessment6'].get('resultoriented'))
+                    leardership = int(user['Assessment6'].get('leardership'))
+                    presentation = int(user['Assessment6'].get('presentation'))
+                    entrepreneur = int(user['Assessment6'].get('entrepreneur'))
+                    aptitude = int(user['Assessment6'].get('aptitude'))
+                    show_graph6=True
+                    test1_skills = user["Assessment1"]
+                    test2_skills = user["Assessment2"]
+                    test3_skills = user["Assessment3"]
+                    test4_skills = user["Assessment4"]
+                    test5_skills = user["Assessment5"]
+                    test6_skills = user["Assessment6"]
+                    def summary(userr):
+                        p=[]
+                        for key, value in userr.items():
+                            p.append(int(value))
+                        return p
+                    
+                    list_of_sixth_test_results=summary(test6_skills)
+                    list_of_fifth_test_results=summary(test5_skills)
+                    list_of_fourth_test_results=summary(test4_skills)
+                    list_of_third_test_results=summary(test3_skills)
+                    list_of_second_test_results=summary(test2_skills)
+                    list_of_first_test_results=summary(test1_skills)
+                    particular_test6summary=int((sum(list_of_sixth_test_results)/60)*5)
+                    particular_test5summary=int((sum(list_of_fifth_test_results)/60)*5)
+                    particular_test4summary=int((sum(list_of_fourth_test_results)/60)*5)
+                    print(particular_test6summary)
+                    particular_test3summary=int((sum(list_of_third_test_results)/60)*5)
+                    particular_test2summary=int((sum(list_of_second_test_results)/60)*5)
+                    particular_test1summary=int((sum(list_of_first_test_results)/60)*5)
+                    skilllist=[ 'Communication', 'Technical', 'creativity', 'projectmanagement', 'timemanagement', 'genearl knowledge', 'interpersonal', 'resultoriented', 'leadership', 'Presentation','aptitude','entrepreneur']
+                    elements={key:value for key,value in zip(skilllist, list_of_sixth_test_results )}
+                    # Sort the dictionary based on values (descending order)
+                    sortedinorder = dict(sorted(elements.items(), key=lambda item: item[1], reverse=True))
+                    iterator = iter(sortedinorder.items())
+                    first_element=next(iterator)
+                    # next(iterator)  # Skip the first element
+                    second_element = next(iterator)
+                    # next(iterator) 
+                    third_element = next(iterator)     
+                    def sumskills(user1,user2,user3,user4,user5,user6):
+                        p=[]
+                        q=[]
+                        r=[]
+                        s=[]
+                        t=[]
+                        u=[]
+                        t1=[]
+                        t2=[]
+                        t3=[]            
+                        t4=[]            
+                        t5=[]            
+                        t6=[]            
+                        for key, value in user1.items():
+                            p.append(int(value))
+                        t1.append(int((sum(p)/60)*5))
+                        # print(t1)
+                        for key, value in user2.items():
+                            q.append(int(value))
+                        t2.append(int((sum(q)/60)*5))
+                        for key, value in user3.items():
+                            r.append(int(value))
+                        t3.append(int((sum(r)/60)*5) )
+                        for key, value in user4.items():
+                            s.append(int(value))
+                        t4.append(int((sum(s)/60)*5) )
+                        for key, value in user5.items():
+                            t.append(int(value))
+                        t5.append(int((sum(t)/60)*5) )
+                        for key, value in user6.items():
+                            u.append(int(value))
+                        t6.append(int((sum(u)/60)*5) )
+                        score1=t1+t2+t3+t4+t5+t6 
+                        print(t6)
+                            
+                        return score1
+                    score1= sumskills(test1_skills,test2_skills,test3_skills,test4_skills,test5_skills,test6_skills)
+                    print(score1) 
                 
-                list_of_sixth_test_results=summary(test6_skills)
-                list_of_fifth_test_results=summary(test5_skills)
-                list_of_fourth_test_results=summary(test4_skills)
-                list_of_third_test_results=summary(test3_skills)
-                list_of_second_test_results=summary(test2_skills)
-                list_of_first_test_results=summary(test1_skills)
-                particular_test6summary=int((sum(list_of_sixth_test_results)/60)*5)
-                particular_test5summary=int((sum(list_of_fifth_test_results)/60)*5)
-                particular_test4summary=int((sum(list_of_fourth_test_results)/60)*5)
-                print(particular_test6summary)
-                particular_test3summary=int((sum(list_of_third_test_results)/60)*5)
-                particular_test2summary=int((sum(list_of_second_test_results)/60)*5)
-                particular_test1summary=int((sum(list_of_first_test_results)/60)*5)
-                def sumskills(user1,user2,user3,user4,user5,user6):
-                    p=[]
-                    q=[]
-                    r=[]
-                    s=[]
-                    t=[]
-                    u=[]
-                    t1=[]
-                    t2=[]
-                    t3=[]            
-                    t4=[]            
-                    t5=[]            
-                    t6=[]            
-                    for key, value in user1.items():
-                        p.append(int(value))
-                    t1.append(int((sum(p)/60)*5))
-                    # print(t1)
-                    for key, value in user2.items():
-                        q.append(int(value))
-                    t2.append(int((sum(q)/60)*5))
-                    for key, value in user3.items():
-                        r.append(int(value))
-                    t3.append(int((sum(r)/60)*5) )
-                    for key, value in user4.items():
-                        s.append(int(value))
-                    t4.append(int((sum(s)/60)*5) )
-                    for key, value in user5.items():
-                        t.append(int(value))
-                    t5.append(int((sum(t)/60)*5) )
-                    for key, value in user6.items():
-                        u.append(int(value))
-                    t6.append(int((sum(u)/60)*5) )
-                    score1=t1+t2+t3+t4+t5+t6 
-                    print(t6)
-                          
-                    return score1
-                score1= sumskills(test1_skills,test2_skills,test3_skills,test4_skills,test5_skills,test6_skills)
-                print(score1) 
-            
-                return render_template('dashboard.html',show_graph6=show_graph6,score1=json.dumps(score1),p=json.dumps(list_of_first_test_results),particular_testsummary=particular_test6summary,q=json.dumps(list_of_second_test_results),r=json.dumps(list_of_third_test_results),s=json.dumps(list_of_fourth_test_results),t=json.dumps(list_of_fifth_test_results),u=json.dumps(list_of_sixth_test_results),test1=test,username=username,title=title,creativity=creativity,communication=communication,technical=technical,projectmm=projectmm,timemanagement=timemanagement,generalknowledge=generalknowledge,interpersonal=interpersonal,resultoriented=resultoriented,leardership=leardership,presentation=presentation,entrepreneur=entrepreneur,aptitude=aptitude)
+                    return render_template('dashboard.html',first_element=first_element,second_element=second_element,third_element=third_element,show_graph6=show_graph6,score1=json.dumps(score1),p=json.dumps(list_of_first_test_results),particular_testsummary=particular_test6summary,q=json.dumps(list_of_second_test_results),r=json.dumps(list_of_third_test_results),s=json.dumps(list_of_fourth_test_results),t=json.dumps(list_of_fifth_test_results),u=json.dumps(list_of_sixth_test_results),test1=test,username=username,title=title,creativity=creativity,communication=communication,technical=technical,projectmm=projectmm,timemanagement=timemanagement,generalknowledge=generalknowledge,interpersonal=interpersonal,resultoriented=resultoriented,leardership=leardership,presentation=presentation,entrepreneur=entrepreneur,aptitude=aptitude)
+                else:
+                    flash('Marks has not been allotted.', category='error')                # redirect(url_for('views.dashboard'))
+  
+                if test=="Assessment7":
+                    test4 =user.get('Assessment7')
+                    if test4 is not None:
+                        test4 =user.get('Assessment7')
+                        
+                        communication = int(user['Assessment7'].get('communication'))
+                        technical = int(user["Assessment7"].get('technical'))
+                        creativity = int(user['Assessment7'].get('creativity'))
+                        projectmm = int(user['Assessment7'].get('projectmmt'))
+                        timemanagement = int(user['Assessment7'].get('timemanagement'))
+                        generalknowledge = int(user['Assessment7'].get('generalknowledge'))
+                        interpersonal = int(user['Assessment7'].get('interpersonal'))
+                        resultoriented = int(user['Assessment7'].get('resultoriented'))
+                        leardership = int(user['Assessment7'].get('leardership'))
+                        presentation = int(user['Assessment7'].get('presentation'))
+                        entrepreneur = int(user['Assessment7'].get('entrepreneur'))
+                        aptitude = int(user['Assessment7'].get('aptitude'))
+                        show_graph7=True
+                        test1_skills = user["Assessment1"]
+                        test2_skills = user["Assessment2"]
+                        test3_skills = user["Assessment3"]
+                        test4_skills = user["Assessment4"]
+                        test5_skills = user["Assessment5"]
+                        test6_skills = user["Assessment6"]
+                        test7_skills = user["Assessment7"]
+                        def summary(userr):
+                            p=[]
+                            for key, value in userr.items():
+                                p.append(int(value))
+                            return p
+                        
+                        list_of_seventh_test_results=summary(test7_skills)
+                        list_of_sixth_test_results=summary(test6_skills)
+                        list_of_fifth_test_results=summary(test5_skills)
+                        list_of_fourth_test_results=summary(test4_skills)
+                        list_of_third_test_results=summary(test3_skills)
+                        list_of_second_test_results=summary(test2_skills)
+                        list_of_first_test_results=summary(test1_skills)
+                        particular_test7summary=int((sum(list_of_seventh_test_results)/60)*5)
+                        particular_test6summary=int((sum(list_of_sixth_test_results)/60)*5)
+                        particular_test5summary=int((sum(list_of_fifth_test_results)/60)*5)
+                        particular_test4summary=int((sum(list_of_fourth_test_results)/60)*5)
+                        print(particular_test6summary)
+                        particular_test3summary=int((sum(list_of_third_test_results)/60)*5)
+                        particular_test2summary=int((sum(list_of_second_test_results)/60)*5)
+                        particular_test1summary=int((sum(list_of_first_test_results)/60)*5)
+                        skilllist=[ 'Communication', 'Technical', 'creativity', 'projectmanagement', 'timemanagement', 'genearl knowledge', 'interpersonal', 'resultoriented', 'leadership', 'Presentation','aptitude','entrepreneur']
+                        elements={key:value for key,value in zip(skilllist, list_of_seventh_test_results )}
+                        # Sort the dictionary based on values (descending order)
+                        sortedinorder = dict(sorted(elements.items(), key=lambda item: item[1], reverse=True))
+                        iterator = iter(sortedinorder.items())
+                        first_element=next(iterator)
+                        # next(iterator)  # Skip the first element
+                        second_element = next(iterator)
+                        # next(iterator) 
+                        third_element = next(iterator)     
+                        def sumskills(user1,user2,user3,user4,user5,user6,user7):
+                            p=[]
+                            q=[]
+                            r=[]
+                            s=[]
+                            t=[]
+                            u=[]
+                            v=[]
+                            t1=[]
+                            t2=[]
+                            t3=[]            
+                            t4=[]            
+                            t5=[]            
+                            t6=[]            
+                            t7=[]            
+                            for key, value in user1.items():
+                                p.append(int(value))
+                            t1.append(int((sum(p)/60)*5))
+                            # print(t1)
+                            for key, value in user2.items():
+                                q.append(int(value))
+                            t2.append(int((sum(q)/60)*5))
+                            for key, value in user3.items():
+                                r.append(int(value))
+                            t3.append(int((sum(r)/60)*5) )
+                            for key, value in user4.items():
+                                s.append(int(value))
+                            t4.append(int((sum(s)/60)*5) )
+                            for key, value in user5.items():
+                                t.append(int(value))
+                            t5.append(int((sum(t)/60)*5) )
+                            for key, value in user6.items():
+                                u.append(int(value))
+                            t6.append(int((sum(u)/60)*5) )
+                            for key, value in user7.items():
+                                v.append(int(value))
+                            t7.append(int((sum(v)/60)*5) )
+                            score1=t1+t2+t3+t4+t5+t6+t7
+                            print(t6)
+                                
+                            return score1
+                        score1= sumskills(test1_skills,test2_skills,test3_skills,test4_skills,test5_skills,test6_skills,test7_skills)
+                        print(score1) 
+                    
+                        return render_template('dashboard.html',first_element=first_element,second_element=second_element,third_element=third_element,show_graph7=show_graph7,score1=json.dumps(score1),p=json.dumps(list_of_first_test_results),particular_testsummary=particular_test7summary,q=json.dumps(list_of_second_test_results),r=json.dumps(list_of_third_test_results),s=json.dumps(list_of_fourth_test_results),t=json.dumps(list_of_fifth_test_results),u=json.dumps(list_of_sixth_test_results),v=json.dumps(list_of_seventh_test_results),test1=test,username=username,title=title,creativity=creativity,communication=communication,technical=technical,projectmm=projectmm,timemanagement=timemanagement,generalknowledge=generalknowledge,interpersonal=interpersonal,resultoriented=resultoriented,leardership=leardership,presentation=presentation,entrepreneur=entrepreneur,aptitude=aptitude)
+                    else:
+                        flash('Marks has not been allotted.', category='error')                # redirect(url_for('views.dashboard'))
             if test=="Assessment7":
                 test4 =user.get('Assessment7')
+                if test4 is not None:
+                    test4 =user.get('Assessment7')
+                    
+                    communication = int(user['Assessment7'].get('communication'))
+                    technical = int(user["Assessment7"].get('technical'))
+                    creativity = int(user['Assessment7'].get('creativity'))
+                    projectmm = int(user['Assessment7'].get('projectmmt'))
+                    timemanagement = int(user['Assessment7'].get('timemanagement'))
+                    generalknowledge = int(user['Assessment7'].get('generalknowledge'))
+                    interpersonal = int(user['Assessment7'].get('interpersonal'))
+                    resultoriented = int(user['Assessment7'].get('resultoriented'))
+                    leardership = int(user['Assessment7'].get('leardership'))
+                    presentation = int(user['Assessment7'].get('presentation'))
+                    entrepreneur = int(user['Assessment7'].get('entrepreneur'))
+                    aptitude = int(user['Assessment7'].get('aptitude'))
+                    show_graph7=True
+                    test1_skills = user["Assessment1"]
+                    test2_skills = user["Assessment2"]
+                    test3_skills = user["Assessment3"]
+                    test4_skills = user["Assessment4"]
+                    test5_skills = user["Assessment5"]
+                    test6_skills = user["Assessment6"]
+                    test7_skills = user["Assessment7"]
+                    def summary(userr):
+                        p=[]
+                        for key, value in userr.items():
+                            p.append(int(value))
+                        return p
+                    
+                    list_of_seventh_test_results=summary(test7_skills)
+                    list_of_sixth_test_results=summary(test6_skills)
+                    list_of_fifth_test_results=summary(test5_skills)
+                    list_of_fourth_test_results=summary(test4_skills)
+                    list_of_third_test_results=summary(test3_skills)
+                    list_of_second_test_results=summary(test2_skills)
+                    list_of_first_test_results=summary(test1_skills)
+                    particular_test7summary=int((sum(list_of_seventh_test_results)/60)*5)
+                    particular_test6summary=int((sum(list_of_sixth_test_results)/60)*5)
+                    particular_test5summary=int((sum(list_of_fifth_test_results)/60)*5)
+                    particular_test4summary=int((sum(list_of_fourth_test_results)/60)*5)
+                    print(particular_test6summary)
+                    particular_test3summary=int((sum(list_of_third_test_results)/60)*5)
+                    particular_test2summary=int((sum(list_of_second_test_results)/60)*5)
+                    particular_test1summary=int((sum(list_of_first_test_results)/60)*5)
+                    skilllist=[ 'Communication', 'Technical', 'creativity', 'projectmanagement', 'timemanagement', 'genearl knowledge', 'interpersonal', 'resultoriented', 'leadership', 'Presentation','aptitude','entrepreneur']
+                    elements={key:value for key,value in zip(skilllist,list_of_seventh_test_results)}
+                    # Sort the dictionary based on values (descending order)
+                    sortedinorder = dict(sorted(elements.items(), key=lambda item: item[1], reverse=True))
+                    iterator = iter(sortedinorder.items())
+                    first_element=next(iterator)
+                    # next(iterator)  # Skip the first element
+                    second_element = next(iterator)
+                    # next(iterator) 
+                    third_element = next(iterator)
+                    def sumskills(user1,user2,user3,user4,user5,user6,user7):
+                        p=[]
+                        q=[]
+                        r=[]
+                        s=[]
+                        t=[]
+                        u=[]
+                        v=[]
+                        t1=[]
+                        t2=[]
+                        t3=[]            
+                        t4=[]            
+                        t5=[]            
+                        t6=[]            
+                        t7=[]            
+                        for key, value in user1.items():
+                            p.append(int(value))
+                        t1.append(int((sum(p)/60)*5))
+                        # print(t1)
+                        for key, value in user2.items():
+                            q.append(int(value))
+                        t2.append(int((sum(q)/60)*5))
+                        for key, value in user3.items():
+                            r.append(int(value))
+                        t3.append(int((sum(r)/60)*5) )
+                        for key, value in user4.items():
+                            s.append(int(value))
+                        t4.append(int((sum(s)/60)*5) )
+                        for key, value in user5.items():
+                            t.append(int(value))
+                        t5.append(int((sum(t)/60)*5) )
+                        for key, value in user6.items():
+                            u.append(int(value))
+                        t6.append(int((sum(u)/60)*5) )
+                        for key, value in user7.items():
+                            v.append(int(value))
+                        t7.append(int((sum(v)/60)*5) )
+                        score1=t1+t2+t3+t4+t5+t6+t7
+                        print(t6)
+                            
+                        return score1
+                    score1= sumskills(test1_skills,test2_skills,test3_skills,test4_skills,test5_skills,test6_skills,test7_skills)
+                    print(score1) 
                 
-                communication = int(user['Assessment7'].get('communication'))
-                technical = int(user["Assessment7"].get('technical'))
-                creativity = int(user['Assessment7'].get('creativity'))
-                projectmm = int(user['Assessment7'].get('projectmmt'))
-                timemanagement = int(user['Assessment7'].get('timemanagement'))
-                generalknowledge = int(user['Assessment7'].get('generalknowledge'))
-                interpersonal = int(user['Assessment7'].get('interpersonal'))
-                resultoriented = int(user['Assessment7'].get('resultoriented'))
-                leardership = int(user['Assessment7'].get('leardership'))
-                presentation = int(user['Assessment7'].get('presentation'))
-                entrepreneur = int(user['Assessment7'].get('entrepreneur'))
-                aptitude = int(user['Assessment7'].get('aptitude'))
-                show_graph7=True
-                test1_skills = user["Assessment1"]
-                test2_skills = user["Assessment2"]
-                test3_skills = user["Assessment3"]
-                test4_skills = user["Assessment4"]
-                test5_skills = user["Assessment5"]
-                test6_skills = user["Assessment6"]
-                test7_skills = user["Assessment7"]
-                def summary(userr):
-                    p=[]
-                    for key, value in userr.items():
-                        p.append(int(value))
-                    return p
-                
-                list_of_seventh_test_results=summary(test7_skills)
-                list_of_sixth_test_results=summary(test6_skills)
-                list_of_fifth_test_results=summary(test5_skills)
-                list_of_fourth_test_results=summary(test4_skills)
-                list_of_third_test_results=summary(test3_skills)
-                list_of_second_test_results=summary(test2_skills)
-                list_of_first_test_results=summary(test1_skills)
-                particular_test7summary=int((sum(list_of_seventh_test_results)/60)*5)
-                particular_test6summary=int((sum(list_of_sixth_test_results)/60)*5)
-                particular_test5summary=int((sum(list_of_fifth_test_results)/60)*5)
-                particular_test4summary=int((sum(list_of_fourth_test_results)/60)*5)
-                print(particular_test6summary)
-                particular_test3summary=int((sum(list_of_third_test_results)/60)*5)
-                particular_test2summary=int((sum(list_of_second_test_results)/60)*5)
-                particular_test1summary=int((sum(list_of_first_test_results)/60)*5)
-                def sumskills(user1,user2,user3,user4,user5,user6,user7):
-                    p=[]
-                    q=[]
-                    r=[]
-                    s=[]
-                    t=[]
-                    u=[]
-                    v=[]
-                    t1=[]
-                    t2=[]
-                    t3=[]            
-                    t4=[]            
-                    t5=[]            
-                    t6=[]            
-                    t7=[]            
-                    for key, value in user1.items():
-                        p.append(int(value))
-                    t1.append(int((sum(p)/60)*5))
-                    # print(t1)
-                    for key, value in user2.items():
-                        q.append(int(value))
-                    t2.append(int((sum(q)/60)*5))
-                    for key, value in user3.items():
-                        r.append(int(value))
-                    t3.append(int((sum(r)/60)*5) )
-                    for key, value in user4.items():
-                        s.append(int(value))
-                    t4.append(int((sum(s)/60)*5) )
-                    for key, value in user5.items():
-                        t.append(int(value))
-                    t5.append(int((sum(t)/60)*5) )
-                    for key, value in user6.items():
-                        u.append(int(value))
-                    t6.append(int((sum(u)/60)*5) )
-                    for key, value in user7.items():
-                        v.append(int(value))
-                    t7.append(int((sum(v)/60)*5) )
-                    score1=t1+t2+t3+t4+t5+t6+t7
-                    print(t6)
-                          
-                    return score1
-                score1= sumskills(test1_skills,test2_skills,test3_skills,test4_skills,test5_skills,test6_skills,test7_skills)
-                print(score1) 
-            
-                return render_template('dashboard.html',show_graph7=show_graph7,score1=json.dumps(score1),p=json.dumps(list_of_first_test_results),particular_testsummary=particular_test7summary,q=json.dumps(list_of_second_test_results),r=json.dumps(list_of_third_test_results),s=json.dumps(list_of_fourth_test_results),t=json.dumps(list_of_fifth_test_results),u=json.dumps(list_of_sixth_test_results),v=json.dumps(list_of_seventh_test_results),test1=test,username=username,title=title,creativity=creativity,communication=communication,technical=technical,projectmm=projectmm,timemanagement=timemanagement,generalknowledge=generalknowledge,interpersonal=interpersonal,resultoriented=resultoriented,leardership=leardership,presentation=presentation,entrepreneur=entrepreneur,aptitude=aptitude)
+                    return render_template('dashboard.html',first_element=first_element,second_element=second_element,third_element=third_element,show_graph7=show_graph7,score1=json.dumps(score1),p=json.dumps(list_of_first_test_results),particular_testsummary=particular_test7summary,q=json.dumps(list_of_second_test_results),r=json.dumps(list_of_third_test_results),s=json.dumps(list_of_fourth_test_results),t=json.dumps(list_of_fifth_test_results),u=json.dumps(list_of_sixth_test_results),v=json.dumps(list_of_seventh_test_results),test1=test,username=username,title=title,creativity=creativity,communication=communication,technical=technical,projectmm=projectmm,timemanagement=timemanagement,generalknowledge=generalknowledge,interpersonal=interpersonal,resultoriented=resultoriented,leardership=leardership,presentation=presentation,entrepreneur=entrepreneur,aptitude=aptitude)
+                else:
+                    flash('Marks has not been allotted.', category='error')      
             if test=="Assessment8":
                 test4 =user.get('Assessment8')
-                
-                communication = int(user['Assessment8'].get('communication'))
-                technical = int(user["Assessment8"].get('technical'))
-                creativity = int(user['Assessment8'].get('creativity'))
-                projectmm = int(user['Assessment8'].get('projectmmt'))
-                timemanagement = int(user['Assessment8'].get('timemanagement'))
-                generalknowledge = int(user['Assessment8'].get('generalknowledge'))
-                interpersonal = int(user['Assessment8'].get('interpersonal'))
-                resultoriented = int(user['Assessment8'].get('resultoriented'))
-                leardership = int(user['Assessment8'].get('leardership'))
-                presentation = int(user['Assessment8'].get('presentation'))
-                entrepreneur = int(user['Assessment8'].get('entrepreneur'))
-                aptitude = int(user['Assessment8'].get('aptitude'))
-                show_graph8=True
-                test1_skills = user["Assessment1"]
-                test2_skills = user["Assessment2"]
-                test3_skills = user["Assessment3"]
-                test4_skills = user["Assessment4"]
-                test5_skills = user["Assessment5"]
-                test6_skills = user["Assessment6"]
-                test7_skills = user["Assessment7"]
-                test8_skills = user["Assessment8"]
-                def summary(userr):
-                    p=[]
-                    for key, value in userr.items():
-                        p.append(int(value))
-                    return p
-                
-                list_of_eightth_test_results=summary(test8_skills)
-                list_of_seventh_test_results=summary(test7_skills)
-                list_of_sixth_test_results=summary(test6_skills)
-                list_of_fifth_test_results=summary(test5_skills)
-                list_of_fourth_test_results=summary(test4_skills)
-                list_of_third_test_results=summary(test3_skills)
-                list_of_second_test_results=summary(test2_skills)
-                list_of_first_test_results=summary(test1_skills)
-                particular_test8summary=int((sum(list_of_eightth_test_results)/60)*5)
-                particular_test7summary=int((sum(list_of_seventh_test_results)/60)*5)
-                particular_test6summary=int((sum(list_of_sixth_test_results)/60)*5)
-                particular_test5summary=int((sum(list_of_fifth_test_results)/60)*5)
-                particular_test4summary=int((sum(list_of_fourth_test_results)/60)*5)
-                print(particular_test6summary)
-                particular_test3summary=int((sum(list_of_third_test_results)/60)*5)
-                particular_test2summary=int((sum(list_of_second_test_results)/60)*5)
-                particular_test1summary=int((sum(list_of_first_test_results)/60)*5)
-                def sumskills(user1,user2,user3,user4,user5,user6,user7,user8):
-                    p=[]
-                    q=[]
-                    r=[]
-                    s=[]
-                    t=[]
-                    u=[]
-                    v=[]
-                    w=[]
-                    t1=[]
-                    t2=[]
-                    t3=[]            
-                    t4=[]            
-                    t5=[]            
-                    t6=[]            
-                    t7=[]            
-                    t8=[]            
-                    for key, value in user1.items():
-                        p.append(int(value))
-                    t1.append(int((sum(p)/60)*5))
-                    # print(t1)
-                    for key, value in user2.items():
-                        q.append(int(value))
-                    t2.append(int((sum(q)/60)*5))
-                    for key, value in user3.items():
-                        r.append(int(value))
-                    t3.append(int((sum(r)/60)*5) )
-                    for key, value in user4.items():
-                        s.append(int(value))
-                    t4.append(int((sum(s)/60)*5) )
-                    for key, value in user5.items():
-                        t.append(int(value))
-                    t5.append(int((sum(t)/60)*5) )
-                    for key, value in user6.items():
-                        u.append(int(value))
-                    t6.append(int((sum(u)/60)*5) )
-                    for key, value in user7.items():
-                        v.append(int(value))
-                    t7.append(int((sum(v)/60)*5) )
-                    for key, value in user8.items():
-                        w.append(int(value))
-                    t8.append(int((sum(w)/60)*5) )
-                    score1=t1+t2+t3+t4+t5+t6+t7+t8
-                    print(t6)
-                          
-                    return score1
-                score1= sumskills(test1_skills,test2_skills,test3_skills,test4_skills,test5_skills,test6_skills,test7_skills,test8_skills)
-                print(score1) 
-            
-                return render_template('dashboard.html',show_graph8=show_graph8,score1=json.dumps(score1),p=json.dumps(list_of_first_test_results),particular_testsummary=particular_test8summary,q=json.dumps(list_of_second_test_results),r=json.dumps(list_of_third_test_results),s=json.dumps(list_of_fourth_test_results),t=json.dumps(list_of_fifth_test_results),u=json.dumps(list_of_sixth_test_results),v=json.dumps(list_of_seventh_test_results),w=json.dumps(list_of_eightth_test_results),test1=test,username=username,title=title,creativity=creativity,communication=communication,technical=technical,projectmm=projectmm,timemanagement=timemanagement,generalknowledge=generalknowledge,interpersonal=interpersonal,resultoriented=resultoriented,leardership=leardership,presentation=presentation,entrepreneur=entrepreneur,aptitude=aptitude)
+                if test4 is not None:
 
-       
+                    test4 =user.get('Assessment8')
+                    
+                    communication = int(user['Assessment8'].get('communication'))
+                    technical = int(user["Assessment8"].get('technical'))
+                    creativity = int(user['Assessment8'].get('creativity'))
+                    projectmm = int(user['Assessment8'].get('projectmmt'))
+                    timemanagement = int(user['Assessment8'].get('timemanagement'))
+                    generalknowledge = int(user['Assessment8'].get('generalknowledge'))
+                    interpersonal = int(user['Assessment8'].get('interpersonal'))
+                    resultoriented = int(user['Assessment8'].get('resultoriented'))
+                    leardership = int(user['Assessment8'].get('leardership'))
+                    presentation = int(user['Assessment8'].get('presentation'))
+                    entrepreneur = int(user['Assessment8'].get('entrepreneur'))
+                    aptitude = int(user['Assessment8'].get('aptitude'))
+                    show_graph8=True
+                    test1_skills = user["Assessment1"]
+                    test2_skills = user["Assessment2"]
+                    test3_skills = user["Assessment3"]
+                    test4_skills = user["Assessment4"]
+                    test5_skills = user["Assessment5"]
+                    test6_skills = user["Assessment6"]
+                    test7_skills = user["Assessment7"]
+                    test8_skills = user["Assessment8"]
+                    def summary(userr):
+                        p=[]
+                        for key, value in userr.items():
+                            p.append(int(value))
+                        return p
+                    
+                    list_of_eightth_test_results=summary(test8_skills)
+                    list_of_seventh_test_results=summary(test7_skills)
+                    list_of_sixth_test_results=summary(test6_skills)
+                    list_of_fifth_test_results=summary(test5_skills)
+                    list_of_fourth_test_results=summary(test4_skills)
+                    list_of_third_test_results=summary(test3_skills)
+                    list_of_second_test_results=summary(test2_skills)
+                    list_of_first_test_results=summary(test1_skills)
+                    particular_test8summary=int((sum(list_of_eightth_test_results)/60)*5)
+                    particular_test7summary=int((sum(list_of_seventh_test_results)/60)*5)
+                    particular_test6summary=int((sum(list_of_sixth_test_results)/60)*5)
+                    particular_test5summary=int((sum(list_of_fifth_test_results)/60)*5)
+                    particular_test4summary=int((sum(list_of_fourth_test_results)/60)*5)
+                    print(particular_test6summary)
+                    particular_test3summary=int((sum(list_of_third_test_results)/60)*5)
+                    particular_test2summary=int((sum(list_of_second_test_results)/60)*5)
+                    particular_test1summary=int((sum(list_of_first_test_results)/60)*5)
+                    skilllist=[ 'Communication', 'Technical', 'creativity', 'projectmanagement', 'timemanagement', 'genearl knowledge', 'interpersonal', 'resultoriented', 'leadership', 'Presentation','aptitude','entrepreneur']
+                    elements={key:value for key,value in zip(skilllist, list_of_eightth_test_results )}
+                    # Sort the dictionary based on values (descending order)
+                    sortedinorder = dict(sorted(elements.items(), key=lambda item: item[1], reverse=True))
+                    iterator = iter(sortedinorder.items())
+                    first_element=next(iterator)
+                    # next(iterator)  # Skip the first element
+                    second_element = next(iterator)
+                    # next(iterator) 
+                    third_element = next(iterator)     
+                    def sumskills(user1,user2,user3,user4,user5,user6,user7,user8):
+                        p=[]
+                        q=[]
+                        r=[]
+                        s=[]
+                        t=[]
+                        u=[]
+                        v=[]
+                        w=[]
+                        t1=[]
+                        t2=[]
+                        t3=[]            
+                        t4=[]            
+                        t5=[]            
+                        t6=[]            
+                        t7=[]            
+                        t8=[]            
+                        for key, value in user1.items():
+                            p.append(int(value))
+                        t1.append(int((sum(p)/60)*5))
+                        # print(t1)
+                        for key, value in user2.items():
+                            q.append(int(value))
+                        t2.append(int((sum(q)/60)*5))
+                        for key, value in user3.items():
+                            r.append(int(value))
+                        t3.append(int((sum(r)/60)*5) )
+                        for key, value in user4.items():
+                            s.append(int(value))
+                        t4.append(int((sum(s)/60)*5) )
+                        for key, value in user5.items():
+                            t.append(int(value))
+                        t5.append(int((sum(t)/60)*5) )
+                        for key, value in user6.items():
+                            u.append(int(value))
+                        t6.append(int((sum(u)/60)*5) )
+                        for key, value in user7.items():
+                            v.append(int(value))
+                        t7.append(int((sum(v)/60)*5) )
+                        for key, value in user8.items():
+                            w.append(int(value))
+                        t8.append(int((sum(w)/60)*5) )
+                        score1=t1+t2+t3+t4+t5+t6+t7+t8
+                        print(t6)
+                            
+                        return score1
+                    score1= sumskills(test1_skills,test2_skills,test3_skills,test4_skills,test5_skills,test6_skills,test7_skills,test8_skills)
+                    print(score1) 
+                
+                    return render_template('dashboard.html',first_element=first_element,second_element=second_element,third_element=third_element,show_graph8=show_graph8,score1=json.dumps(score1),p=json.dumps(list_of_first_test_results),particular_testsummary=particular_test8summary,q=json.dumps(list_of_second_test_results),r=json.dumps(list_of_third_test_results),s=json.dumps(list_of_fourth_test_results),t=json.dumps(list_of_fifth_test_results),u=json.dumps(list_of_sixth_test_results),v=json.dumps(list_of_seventh_test_results),w=json.dumps(list_of_eightth_test_results),test1=test,username=username,title=title,creativity=creativity,communication=communication,technical=technical,projectmm=projectmm,timemanagement=timemanagement,generalknowledge=generalknowledge,interpersonal=interpersonal,resultoriented=resultoriented,leardership=leardership,presentation=presentation,entrepreneur=entrepreneur,aptitude=aptitude)
+                
+                else:
+                    
+                    flash('Marks has not been allotted.', category='error')                # redirect(url_for('views.dashboard'))
+  
         
         
 
@@ -1446,7 +1893,7 @@ def dashboard():
       
 
 
-        return render_template('dashboard.html',particular_testsummary=particular_testsummary,test1=test11,username=username,title=title,creativity=creativity,communication=communication,technical=technical,projectmm=projectmm,timemanagement=timemanagement,generalknowledge=generalknowledge,interpersonal=interpersonal,resultoriented=resultoriented,leardership=leardership,presentation=presentation,entrepreneur=entrepreneur,aptitude=aptitude)
+        return render_template('dashboard.html',first_element=first_element,second_element=second_element,third_element=third_element,particular_testsummary=particular_testsummary,test1=test11,username=username,title=title,creativity=creativity,communication=communication,technical=technical,projectmm=projectmm,timemanagement=timemanagement,generalknowledge=generalknowledge,interpersonal=interpersonal,resultoriented=resultoriented,leardership=leardership,presentation=presentation,entrepreneur=entrepreneur,aptitude=aptitude)
 
         # return render_template('dashboard.html')
     return redirect(url_for('auth.login'))

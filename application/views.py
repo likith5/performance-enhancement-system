@@ -61,16 +61,16 @@ def profile():
         
         title="dashboard"
 
-        communication = int(user['test1'].get('communication'))
-        technical = int(user["test1"].get('technical'))
-        creativity = int(user['test1'].get('creativity'))
-        projectmm = int(user['test1'].get('projectmmt'))
-        timemanagement = int(user['test1'].get('timemanagement'))
-        generalknowledge = int(user['test1'].get('generalknowledge'))
-        interpersonal = int(user['test1'].get('interpersonal'))
-        resultoriented = int(user['test1'].get('resultoriented'))
-        leardership = int(user['test1'].get('leardership'))
-        presentation = int(user['test1'].get('presentation'))
+        communication = int(user['Assessment1'].get('communication'))
+        technical = int(user["Assessment1"].get('technical'))
+        creativity = int(user['Assessment1'].get('creativity'))
+        projectmm = int(user['Assessment1'].get('projectmmt'))
+        timemanagement = int(user['Assessment1'].get('timemanagement'))
+        generalknowledge = int(user['Assessment1'].get('generalknowledge'))
+        interpersonal = int(user['Assessment1'].get('interpersonal'))
+        resultoriented = int(user['Assessment1'].get('resultoriented'))
+        leardership = int(user['Assessment1'].get('leardership'))
+        presentation = int(user['Assessment1'].get('presentation'))
         
         strongi = int(((technical+creativity+resultoriented)/15)*5)
         leaderi = int(((projectmm+leardership+timemanagement+resultoriented+communication)/25)*5)

@@ -1018,7 +1018,7 @@ def dashboard():
         usn = session.get("studentname")
         user = db.users.find_one({'usn':usn })
         username = user["personal"].get('username')
-        test1_skills = user["Assesment1"]
+        test1_skills = user["Assessment1"]
         def summary(userr):
             p=[]
             for key, value in userr.items():

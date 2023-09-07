@@ -365,6 +365,7 @@ body {
 } */
 
 
+
 /* .row1{
   margin: 100px 0px;
   border: 1px solid black;
@@ -466,7 +467,9 @@ label{
 }
 
 .smartchaps-logo {
-  text-align: center;
+  /* text-align: center; */
+    display: flex;
+    justify-content: right;
   margin-top: 15px;
 }
 
@@ -492,11 +495,11 @@ label{
 }
 
 .student-details {
-  margin-top: 25%;
+  margin-top: 27%;
   /* text-align: center; */
   color: darkgreen;
   font-size: 23px;
-  margin-bottom: 50px;
+  margin-bottom: 115px;
 }
 
 .name,
@@ -545,6 +548,7 @@ label{
 .smartchaps-logo-for-page3 {
   display: flex;
   justify-content: space-between;
+
 }
 
 .skill-title {
@@ -555,11 +559,10 @@ label{
 
 }
 
-.communication-section,
-.result-oriented-section {
+.communication-section {
   display: flex;
   justify-content: center;
-  margin-bottom: 30px;
+  margin-bottom: 27px;
 }
 
 .presentation-section {
@@ -589,21 +592,42 @@ label{
 .general-knowledge-section {
   display: flex;
   justify-content: center;
-  margin-bottom: 25px;
+  margin-bottom: 40px;
+  }
+  
+  .creative-section {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 35px;
+  }
+  
+  .entreprenuerial-section {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 3px;
 }
 
 .time-mngmt-section {
   display: flex;
   justify-content: center;
-  margin-bottom: 73px;
+  margin-bottom: 65px;
 }
 
+.result-oriented-section {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
 .technical-section,
-.result-oriented-section,
-.interpersonnal-section {
+.result-oriented-section {
   display: flex;
   justify-content: center;
   margin-bottom: 5px;
+}
+.interpersonnal-section {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 15px;
 }
 
 .score-input-title {
@@ -620,7 +644,9 @@ label{
 .leadership-scoring-inputs,
 .general-knowledge-scoring-inputs,
 .aptitude-scoring-inputs,
-.time-mngmt-scoring-inputs {
+.time-mngmt-scoring-inputs,
+.creative-scoring-inputs,
+.entreprenuerial-scoring-inputs {
   border: 1px solid black;
   border-radius: 7px;
   background-color: #423FB9;
@@ -633,8 +659,8 @@ label{
 
 .communication-scoring-inputs li,
 .leadership-scoring-inputs li {
-  margin-top: 7px;
-  font-size: 15px;
+  margin-top: 6px;
+    font-size: 14px;
 
 }
 
@@ -646,16 +672,25 @@ label{
 .technical-scoring-inputs li,
 .general-knowledge-scoring-inputs li,
 .aptitude-scoring-inputs li,
-.time-mngmt-scoring-inputs li {
+.time-mngmt-scoring-inputs li,
+.result-oriented-scoring-inputs li,
+.creative-scoring-inputs li {
   margin-top: 2px;
   font-size: 15px;
 }
 
-.result-oriented-scoring-inputs li,
-.project-mngmt-scoring-inputs li,
-.interpersonnal-scoring-inputs li {
+.entreprenuerial-scoring-inputs li {
+  margin-top: 2px;
+  font-size: 14.5px;
+}
+
+.project-mngmt-scoring-inputs li {
   margin-top: 2px;
   font-size: 14px;
+}
+.interpersonnal-scoring-inputs li {
+  margin-top: 2px;
+  font-size: 13px;
 }
 
 .final-report-sentence {

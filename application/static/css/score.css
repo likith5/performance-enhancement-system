@@ -5,19 +5,19 @@ body {
 
 .heading{
     text-align: center;
-    color: blueviolet;
+    color: #423FB9;
 }
 
 .student-deatils{
     margin-top: 20px;
     display: flex;
     justify-content: space-evenly;
-    color: blueviolet;
+    color: #423FB9;
 }
 
 .hr-line{
     margin: 20px 20px 0px 20px;
-    border-bottom: 1px solid blueviolet;
+    border-bottom: 1px solid #423FB9;
     margin-bottom: 20px;
 }
 
@@ -46,7 +46,7 @@ input {
     border-radius: 5px;
     margin-right: 40px;
     margin-top: 5px;
-    background-color: blueviolet;
+    background-color: #423FB9;
     color: white;
     font-size: 20px;
     border: none;
@@ -70,7 +70,7 @@ input {
 #demo11,
 #demo12 {
     margin-top: 15px;
-    border: 1px solid blueviolet;
+    border: 1px solid #423FB9;
     border-radius: 7px;
     font-size: 20px;
     width: 400px;
@@ -85,7 +85,7 @@ input {
 
 .btn{
     color: #fff;
-    background-color: blueviolet;
+    background-color: #423FB9;
     border: none;
     border-radius: 7px;
     padding: 13px;
@@ -96,15 +96,15 @@ input {
 
 .btn:hover{
     cursor: pointer;
-    color: blueviolet;
+    color: #423FB9;
     background-color: #fff;
     border: none;
-    border: 1px solid blueviolet;
+    border: 1px solid #423FB9;
 }
 /* #e8eaf6 */
 .reset{
     color: #fff;
-    background-color: blueviolet;
+    background-color: #423FB9;
     border: none;
     border-radius: 7px;
     padding: 13px;
@@ -115,8 +115,8 @@ input {
 
 .reset:hover{
     cursor: pointer;
-    color: blueviolet;
+    color: #423FB9;
     background-color: #fff;
     border: none;
-    border: 1px solid blueviolet;
+    border: 1px solid #423FB9;
 }

@@ -61,63 +61,754 @@ def profile():
         
         title="dashboard"
 
-        communication = int(user['Assessment1'].get('communication'))
-        technical = int(user["Assessment1"].get('technical'))
-        creativity = int(user['Assessment1'].get('creativity'))
-        projectmm = int(user['Assessment1'].get('projectmmt'))
-        timemanagement = int(user['Assessment1'].get('timemanagement'))
-        generalknowledge = int(user['Assessment1'].get('generalknowledge'))
-        interpersonal = int(user['Assessment1'].get('interpersonal'))
-        resultoriented = int(user['Assessment1'].get('resultoriented'))
-        leardership = int(user['Assessment1'].get('leardership'))
-        presentation = int(user['Assessment1'].get('presentation'))
         
-        strongi = int(((technical+creativity+resultoriented)/15)*5)
-        leaderi = int(((projectmm+leardership+timemanagement+resultoriented+communication)/25)*5)
-        customeri = int(((presentation+generalknowledge+timemanagement+interpersonal+communication)/25)*5)
-        projecti = int(((projectmm+resultoriented+timemanagement+technical+communication)/25)*5)
-        designi = int(((leardership+resultoriented+creativity+technical)/20)*5)
-        marketi = int((( presentation+resultoriented+communication+interpersonal+generalknowledge)/25)*5)
-        def st(strongi):
-            if strongi >= 4:
-                return "Strong in Tech"
-            else:
-                return "Generic"
-        strong = st(strongi)
-        def lr(leaderi):
-            if leaderi >= 4:
-                return "Leadership Roles"
-            else:
-                return "Generic"
-        leader = lr(leaderi)
-        def cfr(customei):
-            if  customeri <=4:
-                return "Customer Facing Roles"
-            else:
-                return "None"
-        customer = cfr(customeri)
-        def pm(customer):
-            if  projecti <= 4 :
-                return "Project Management "
-            else:
-                return "None"
-        project = pm(projecti)
-        def df(designi):
-            if designi <= 3  :
-                return "Design Profile "
-            else:
-                return "None"
-        design = df(designi)
-        def mr(marketi):
-            if marketi <= 3 :
-                return "Marketing Role "
-            else:
-                return "None"
-        market = mr(projecti)
+
+
+        Assessment1 =user.get('Assessment1')
+        Assessment2 =user.get('Assessment2')
+        Assessment3 =user.get('Assessment3')
+        Assessment4 =user.get('Assessment4')
+        Assessment5 =user.get('Assessment5')
+        Assessment6 =user.get('Assessment6')
+        Assessment7 =user.get('Assessment7')
+        Assessment8 =user.get('Assessment8')
+    #    this is for test1.... 
+        
+        if   Assessment1 is not None and Assessment2 is  None  and Assessment3 is  None  and Assessment4 is  None  and Assessment5  is  None and Assessment6  is  None and Assessment7 is  None and Assessment8  is  None:
+        
+            usn = session.get('studentemail')
+            user = db.users.find_one({'usn':usn })
+            test1_skills = user["Assessment1"]
+            def summary(userr):
+                p=[]
+                for key, value in userr.items():
+                        p.append(int(value))
+                return p  
+
+
+            list_of_first_test_results=summary(test1_skills)
+
+
+            
+
+            communication=[list_of_first_test_results[0]]
+            technical=[list_of_first_test_results[1]]
+            creativity=[list_of_first_test_results[2]]
+            projectmmt=[list_of_first_test_results[3]]
+            timemmt=[list_of_first_test_results[4]]            
+            gk=[list_of_first_test_results[5]]     
+            interpersonal=[list_of_first_test_results[6]]
+            resultoriented=[list_of_first_test_results[7]]
+            leadership=[list_of_first_test_results[8]]
+            presentation=[list_of_first_test_results[9]]
+            entreprenuerial=[list_of_first_test_results[10]]
+            aptitude=[list_of_first_test_results[11]]
+            # communication1 = int(user['Assessment1'].get('communication'))
+            # technical1 = int(user["Assessment1"].get('technical'))
+            # creativity1 = int(user['Assessment1'].get('creativity'))
+            # projectmm1 = int(user['Assessment1'].get('projectmmt'))
+            # timemanagement1 = int(user['Assessment1'].get('timemanagement'))
+            # generalknowledge1 = int(user['Assessment1'].get('generalknowledge'))
+            # interpersonal1 = int(user['Assessment1'].get('interpersonal'))
+            # resultoriented1 = int(user['Assessment1'].get('resultoriented'))
+            # leardership1 = int(user['Assessment1'].get('leardership'))
+            # presentation1 = int(user['Assessment1'].get('presentation'))
+
+            strongi = int((((sum(technical)+sum(creativity)+sum(resultoriented)))/15)*5)
+            leaderi = int((((sum(projectmmt)+sum(leadership)+sum(timemmt)+sum(resultoriented)+sum(communication)))/25)*5)
+            customeri = int((((sum(presentation)+sum(gk)+sum(timemmt)+sum(interpersonal)+sum(communication)))/25)*5)
+            projecti = int((((sum(projectmmt)+sum(resultoriented)+sum(timemmt)+sum(technical)+sum(communication))/25)*5))
+            designi = int((((sum(leadership)+sum(resultoriented)+sum(creativity)+sum(technical))/25)*5))
+            marketi = int(((( sum(presentation)+sum(resultoriented)+sum(communication)+sum(interpersonal)+sum(gk))/25)*5))
+            def st(strongi):
+                if strongi >= 4:
+                    return "Strong in Tech"
+                else:
+                    return "Generic"
+            strong = st(strongi)
+            def lr(leaderi):
+                if leaderi >= 4:
+                    return "Leadership Roles"
+                else:
+                    return "Generic"
+            leader = lr(leaderi)
+            def cfr(customei):
+                if  customeri >3 :
+                    return "Customer Facing Roles"
+                else:
+                    return "Generic"
+            customer = cfr(customeri)
+            def pm(customer):
+                if  projecti >3 :
+                    return "Project Management "
+                else:
+                    return "None"
+            project = pm(projecti)
+            def df(designi):
+                if designi >=3  :
+                    return "Design Profile "
+                else:
+                    return "None"
+            design = df(designi)
+            def mr(marketi):
+                if marketi >= 3  :
+                    return "Marketing Role "
+                else:
+                    return "None"
+            market = mr(projecti)
+            
+            print(aptitude)
+            print(entreprenuerial)
+            print(gk)
+            print('++++')
+            return render_template('profile.html',title=title,usn=usn,user=user,design=design,market=market,strong=strong,leader=leader,customer=customer,project=project,username=username,email=email,college=college,phone=phone,linkdin=linkdin,github=github,userusn=userusn)
+        # this is for test2..  
+        elif  Assessment1 is not None and Assessment2 is not None and  Assessment3 is  None and Assessment4 is  None and Assessment5 is  None and Assessment6 is  None  and Assessment7 is  None and Assessment8 is  None:
+            
+            usn = session.get('studentemail')
+            user = db.users.find_one({'usn':usn })
+            test1_skills = user["Assessment1"]
+            test2_skills = user["Assessment2"]
+            def summary(userr):
+                p=[]
+                for key, value in userr.items():
+                    p.append(int(value))
+                return p  
+                        
+                                
+
+                        
+
+          
+            
+            list_of_second_test_results=summary(test2_skills)            
+            list_of_first_test_results=summary(test1_skills)
+           
+         
+            
+
+            communication=[list_of_first_test_results[0],list_of_second_test_results[0]]
+            technical=[list_of_first_test_results[1],list_of_second_test_results[1]]
+            creativity=[list_of_first_test_results[2],list_of_second_test_results[2]]
+            projectmmt=[list_of_first_test_results[3],list_of_second_test_results[3]]
+            timemmt=[list_of_first_test_results[4],list_of_second_test_results[4]]            
+            gk=[list_of_first_test_results[5],list_of_second_test_results[5]]     
+            interpersonal=[list_of_first_test_results[6],list_of_second_test_results[6]]
+            resultoriented=[list_of_first_test_results[7],list_of_second_test_results[7]]
+            leadership=[list_of_first_test_results[8],list_of_second_test_results[8]]
+            presentation=[list_of_first_test_results[9],list_of_second_test_results[9]]
+            entreprenuerial=[list_of_first_test_results[10],list_of_second_test_results[10]]
+            aptitude=[list_of_first_test_results[11],list_of_second_test_results[11]]
+
+            # communication1 = int(user['Assessment1'].get('communication'))
+            # technical1 = int(user["Assessment1"].get('technical'))
+            # creativity1 = int(user['Assessment1'].get('creativity'))
+            # projectmm1 = int(user['Assessment1'].get('projectmmt'))
+            # timemanagement1 = int(user['Assessment1'].get('timemanagement'))
+            # generalknowledge1 = int(user['Assessment1'].get('generalknowledge'))
+            # interpersonal1 = int(user['Assessment1'].get('interpersonal'))
+            # resultoriented1 = int(user['Assessment1'].get('resultoriented'))
+            # leardership1 = int(user['Assessment1'].get('leardership'))
+            # presentation1 = int(user['Assessment1'].get('presentation'))
+
+            
+
+            strongi = int((((sum(technical)+sum(creativity)+sum(resultoriented)))/30)*5)
+            leaderi = int((((sum(projectmmt)+sum(leadership)+sum(timemmt)+sum(resultoriented)+sum(communication)))/50)*5)
+            customeri = int((((sum(presentation)+sum(gk)+sum(timemmt)+sum(interpersonal)+sum(communication)))/50)*5)
+            projecti = int((((sum(projectmmt)+sum(resultoriented)+sum(timemmt)+sum(technical)+sum(communication))/50)*5))
+            designi = int((((sum(leadership)+sum(resultoriented)+sum(creativity)+sum(technical))/50)*5))
+            marketi = int(((( sum(presentation)+sum(resultoriented)+sum(communication)+sum(interpersonal)+sum(gk))/50)*5))
+
+            def st(strongi):
+                if strongi >= 4:
+                    return "Strong in Tech"
+                else:
+                    return "Generic"
+            strong = st(strongi)
+            def lr(leaderi):
+                if leaderi >= 4:
+                    return "Leadership Roles"
+                else:
+                    return "Generic"
+            leader = lr(leaderi)
+            def cfr(customei):
+                if  customeri >3 :
+                    return "Customer Facing Roles"
+                else:
+                    return "Generic"
+            customer = cfr(customeri)
+            def pm(customer):
+                if  projecti >3 :
+                    return "Project Management "
+                else:
+                    return "None"
+            project = pm(projecti)
+            def df(designi):
+                if designi >=3  :
+                    return "Design Profile "
+                else:
+                    return "None"
+            design = df(designi)
+            def mr(marketi):
+                if marketi >= 3  :
+                    return "Marketing Role "
+                else:
+                    return "None"
+            market = mr(projecti)
+           
+            print(aptitude)
+            print(entreprenuerial)
+            print(gk)
+            print('++++')
+            return render_template('profile.html',title=title,usn=usn,user=user,design=design,market=market,strong=strong,leader=leader,customer=customer,project=project,username=username,email=email,college=college,phone=phone,linkdin=linkdin,github=github,userusn=userusn)
+    #    this is for test3 ... 
+        elif    Assessment1 is not None and Assessment2 is not None and  Assessment3 is not None and Assessment4 is  None and Assessment5 is  None and Assessment6 is  None  and Assessment7 is  None and Assessment8 is  None:
+
+
+        
+            usn = session.get('studentemail')
+            user = db.users.find_one({'usn':usn })
+            
+            def summary(userr):
+                p=[]
+                for key, value in userr.items():
+                        p.append(int(value))
+                return p  
+            test1_skills = user["Assessment1"]
+            test2_skills = user["Assessment2"]
+            test3_skills = user["Assessment3"]
+          
+            
+            list_of_second_test_results=summary(test2_skills)            
+            list_of_first_test_results=summary(test1_skills)
+            list_of_third_test_results=summary(test3_skills)
+           
+         
+            
+
+            communication=[list_of_first_test_results[0],list_of_second_test_results[0],list_of_third_test_results[0]]
+            technical=[list_of_first_test_results[1],list_of_second_test_results[1],list_of_third_test_results[1]]
+            creativity=[list_of_first_test_results[2],list_of_second_test_results[2],list_of_third_test_results[2]]
+            projectmmt=[list_of_first_test_results[3],list_of_second_test_results[3],list_of_third_test_results[3]]
+            timemmt=[list_of_first_test_results[4],list_of_second_test_results[4],list_of_third_test_results[4]]            
+            gk=[list_of_first_test_results[5],list_of_second_test_results[5],list_of_third_test_results[5]]     
+            interpersonal=[list_of_first_test_results[6],list_of_second_test_results[6],list_of_third_test_results[6]]
+            resultoriented=[list_of_first_test_results[7],list_of_second_test_results[7],list_of_third_test_results[7]]
+            leadership=[list_of_first_test_results[8],list_of_second_test_results[8],list_of_third_test_results[8]]
+            presentation=[list_of_first_test_results[9],list_of_second_test_results[9],list_of_third_test_results[9]]
+            entreprenuerial=[list_of_first_test_results[10],list_of_second_test_results[10],list_of_third_test_results[10]]
+            aptitude=[list_of_first_test_results[11],list_of_second_test_results[11],list_of_third_test_results[11]]
+            print(aptitude)
+
+            strongi = int((((sum(technical)+sum(creativity)+sum(resultoriented)))/45)*5)
+            leaderi = int((((sum(projectmmt)+sum(leadership)+sum(timemmt)+sum(resultoriented)+sum(communication)))/75)*5)
+            customeri = int((((sum(presentation)+sum(gk)+sum(timemmt)+sum(interpersonal)+sum(communication)))/75)*5)
+            projecti = int((((sum(projectmmt)+sum(resultoriented)+sum(timemmt)+sum(technical)+sum(communication))/75)*5))
+            designi = int((((sum(leadership)+sum(resultoriented)+sum(creativity)+sum(technical))/60)*5))
+            marketi = int(((( sum(presentation)+sum(resultoriented)+sum(communication)+sum(interpersonal)+sum(gk))/75)*5))
+
+            def st(strongi):
+                if strongi >= 4:
+                    return "Strong in Tech"
+                else:
+                    return "Generic"
+            strong = st(strongi)
+            def lr(leaderi):
+                if leaderi >= 4:
+                    return "Leadership Roles"
+                else:
+                    return "Generic"
+            leader = lr(leaderi)
+            def cfr(customei):
+                if  customeri >3 :
+                    return "Customer Facing Roles"
+                else:
+                    return "Generic"
+            customer = cfr(customeri)
+            def pm(customer):
+                if  projecti >3 :
+                    return "Project Management "
+                else:
+                    return "None"
+            project = pm(projecti)
+            def df(designi):
+                if designi >=3  :
+                    return "Design Profile "
+                else:
+                    return "None"
+            design = df(designi)
+            def mr(marketi):
+                if marketi >= 3  :
+                    return "Marketing Role "
+                else:
+                    return "None"
+            market = mr(projecti)
+            
+            print(entreprenuerial)
+            print(gk)
+            print('++++')
+            return render_template('profile.html',title=title,usn=usn,user=user,design=design,market=market,strong=strong,leader=leader,customer=customer,project=project,username=username,email=email,college=college,phone=phone,linkdin=linkdin,github=github,userusn=userusn)
+    #    this is for assessmet4 ....
+
+        elif    Assessment1 is not None and Assessment2 is not None and  Assessment3 is not None and Assessment4 is not  None and Assessment5 is  None and Assessment6 is  None  and Assessment7 is  None and Assessment8 is  None:
+
+
+        
+            usn = session.get('studentemail')
+            user = db.users.find_one({'usn':usn })
+            test1_skills = user["Assessment1"]
+            test2_skills = user["Assessment2"]
+            test3_skills = user["Assessment3"]
+            test4_skills = user["Assessment4"]
+            def summary(userr):
+                        p=[]
+                        for key, value in userr.items():
+                                p.append(int(value))
+                        return p  
+            list_of_second_test_results=summary(test2_skills)            
+            list_of_first_test_results=summary(test1_skills)
+            list_of_third_test_results=summary(test3_skills)
+            list_of_fourth_test_results=summary(test4_skills)
+          
+          
+
+            communication=[list_of_first_test_results[0],list_of_second_test_results[0],list_of_third_test_results[0],list_of_fourth_test_results[0]]
+            technical=[list_of_first_test_results[1],list_of_second_test_results[1],list_of_third_test_results[1],list_of_fourth_test_results[1]]
+            creativity=[list_of_first_test_results[2],list_of_second_test_results[2],list_of_third_test_results[2],list_of_fourth_test_results[2]]
+            projectmmt=[list_of_first_test_results[3],list_of_second_test_results[3],list_of_third_test_results[3],list_of_fourth_test_results[3]]
+            timemmt=[list_of_first_test_results[4],list_of_second_test_results[4],list_of_third_test_results[4],list_of_fourth_test_results[4]]
+            gk=[list_of_first_test_results[5],list_of_second_test_results[5],list_of_third_test_results[5],list_of_fourth_test_results[5]]
+            interpersonal=[list_of_first_test_results[6],list_of_second_test_results[6],list_of_third_test_results[6],list_of_fourth_test_results[6]]
+            resultoriented=[list_of_first_test_results[7],list_of_second_test_results[7],list_of_third_test_results[7],list_of_fourth_test_results[7]]
+            leadership=[list_of_first_test_results[8],list_of_second_test_results[8],list_of_third_test_results[8],list_of_fourth_test_results[8]]
+            presentation=[list_of_first_test_results[9],list_of_second_test_results[9],list_of_third_test_results[9],list_of_fourth_test_results[9]]
+            entreprenuerial=[list_of_first_test_results[10],list_of_second_test_results[10],list_of_third_test_results[10],list_of_fourth_test_results[10]]
+            aptitude=[list_of_first_test_results[11],list_of_second_test_results[11],list_of_third_test_results[11],list_of_fourth_test_results[11]]
+            print(aptitude)
+            
+            strongi = int((((sum(technical)+sum(creativity)+sum(resultoriented)))/60)*5)
+            leaderi = int((((sum(projectmmt)+sum(leadership)+sum(timemmt)+sum(resultoriented)+sum(communication)))/100)*5)
+            customeri = int((((sum(presentation)+sum(gk)+sum(timemmt)+sum(interpersonal)+sum(communication)))/100)*5)
+            projecti = int((((sum(projectmmt)+sum(resultoriented)+sum(timemmt)+sum(technical)+sum(communication))/100)*5))
+            designi = int((((sum(leadership)+sum(resultoriented)+sum(creativity)+sum(technical))/80)*5))
+            marketi = int(((( sum(presentation)+sum(resultoriented)+sum(communication)+sum(interpersonal)+sum(gk))/100)*5))
+            def st(strongi):
+                if strongi >= 4:
+                    return "Strong in Tech"
+                else:
+                    return "Generic"
+            strong = st(strongi)
+            def lr(leaderi):
+                if leaderi >= 4:
+                    return "Leadership Roles"
+                else:
+                    return "Generic"
+            leader = lr(leaderi)
+            def cfr(customei):
+                if  customeri >3 :
+                    return "Customer Facing Roles"
+                else:
+                    return "Generic"
+            customer = cfr(customeri)
+            def pm(customer):
+                if  projecti >3 :
+                    return "Project Management "
+                else:
+                    return "None"
+            project = pm(projecti)
+            def df(designi):
+                if designi >=3  :
+                    return "Design Profile "
+                else:
+                    return "None"
+            design = df(designi)
+            def mr(marketi):
+                if marketi >= 3  :
+                    return "Marketing Role "
+                else:
+                    return "None"
+            market = mr(projecti)
+
+            
+            print(entreprenuerial)
+            print(gk)
+            print('++++')
+            return render_template('profile.html',title=title,usn=usn,user=user,design=design,market=market,strong=strong,leader=leader,customer=customer,project=project,username=username,email=email,college=college,phone=phone,linkdin=linkdin,github=github,userusn=userusn)
+        # this is for test5...
+        elif  Assessment1 is not None and Assessment2 is not None and  Assessment3 is not None and Assessment4 is not  None and Assessment5 is not  None and Assessment6 is  None  and Assessment7 is  None and Assessment8 is  None:
+
+
+        
+            usn = session.get('studentemail')
+            user = db.users.find_one({'usn':usn })
+            test1_skills = user["Assessment1"]
+            test2_skills = user["Assessment2"]
+            test3_skills = user["Assessment3"]
+            test4_skills = user["Assessment4"]
+            test5_skills = user["Assessment5"]
+            def summary(userr):
+                p=[]
+                for key, value in userr.items():
+                        p.append(int(value))
+                return p  
+            list_of_second_test_results=summary(test2_skills)            
+            list_of_first_test_results=summary(test1_skills)
+            list_of_third_test_results=summary(test3_skills)
+            list_of_fourth_test_results=summary(test4_skills)
+            list_of_fifth_test_results=summary(test5_skills)
+          
+          
+
+            communication=[list_of_first_test_results[0],list_of_second_test_results[0],list_of_third_test_results[0],list_of_fourth_test_results[0],list_of_fifth_test_results[0]]
+            technical=[list_of_first_test_results[1],list_of_second_test_results[1],list_of_third_test_results[1],list_of_fourth_test_results[1],list_of_fifth_test_results[1]]
+            creativity=[list_of_first_test_results[2],list_of_second_test_results[2],list_of_third_test_results[2],list_of_fourth_test_results[2],list_of_fifth_test_results[2]]
+            projectmmt=[list_of_first_test_results[3],list_of_second_test_results[3],list_of_third_test_results[3],list_of_fourth_test_results[3],list_of_fifth_test_results[3]]
+            timemmt=[list_of_first_test_results[4],list_of_second_test_results[4],list_of_third_test_results[4],list_of_fourth_test_results[4],list_of_fifth_test_results[4]]
+            gk=[list_of_first_test_results[5],list_of_second_test_results[5],list_of_third_test_results[5],list_of_fourth_test_results[5],list_of_fifth_test_results[5]]
+            interpersonal=[list_of_first_test_results[6],list_of_second_test_results[6],list_of_third_test_results[6],list_of_fourth_test_results[6],list_of_fifth_test_results[6]]
+            resultoriented=[list_of_first_test_results[7],list_of_second_test_results[7],list_of_third_test_results[7],list_of_fourth_test_results[7],list_of_fifth_test_results[7]]
+            leadership=[list_of_first_test_results[8],list_of_second_test_results[8],list_of_third_test_results[8],list_of_fourth_test_results[8],list_of_fifth_test_results[8]]
+            presentation=[list_of_first_test_results[9],list_of_second_test_results[9],list_of_third_test_results[9],list_of_fourth_test_results[9],list_of_fifth_test_results[9]]
+            entreprenuerial=[list_of_first_test_results[10],list_of_second_test_results[10],list_of_third_test_results[10],list_of_fourth_test_results[10],list_of_fifth_test_results[10]]
+            aptitude=[list_of_first_test_results[11],list_of_second_test_results[11],list_of_third_test_results[11],list_of_fourth_test_results[11],list_of_fifth_test_results[11]]
+            print(aptitude)
+            
+            strongi = int((((sum(technical)+sum(creativity)+sum(resultoriented)))/75)*5)
+            leaderi = int((((sum(projectmmt)+sum(leadership)+sum(timemmt)+sum(resultoriented)+sum(communication)))/125)*5)
+            customeri = int((((sum(presentation)+sum(gk)+sum(timemmt)+sum(interpersonal)+sum(communication)))/125)*5)
+            projecti = int((((sum(projectmmt)+sum(resultoriented)+sum(timemmt)+sum(technical)+sum(communication))/125)*5))
+            designi = int((((sum(leadership)+sum(resultoriented)+sum(creativity)+sum(technical))/100)*5))
+            marketi = int(((( sum(presentation)+sum(resultoriented)+sum(communication)+sum(interpersonal)+sum(gk))/125)*5))
+    
+            def st(strongi):
+                if strongi >= 4:
+                    return "Strong in Tech"
+                else:
+                    return "Generic"
+            strong = st(strongi)
+            def lr(leaderi):
+                if leaderi >= 4:
+                    return "Leadership Roles"
+                else:
+                    return "Generic"
+            leader = lr(leaderi)
+            def cfr(customei):
+                if  customeri >3 :
+                    return "Customer Facing Roles"
+                else:
+                    return "Generic"
+            customer = cfr(customeri)
+            def pm(customer):
+                if  projecti >3 :
+                    return "Project Management "
+                else:
+                    return "None"
+            project = pm(projecti)
+            def df(designi):
+                if designi >=3  :
+                    return "Design Profile "
+                else:
+                    return "None"
+            design = df(designi)
+            def mr(marketi):
+                if marketi >= 3  :
+                    return "Marketing Role "
+                else:
+                    return "None"
+            market = mr(projecti)
+
+            
+            print(entreprenuerial)
+            print(gk)
+            print('++++')
+            return render_template('profile.html',title=title,usn=usn,user=user,design=design,market=market,strong=strong,leader=leader,customer=customer,project=project,username=username,email=email,college=college,phone=phone,linkdin=linkdin,github=github,userusn=userusn)
+    #    this is for test6... 
+        elif  Assessment1 is not None and Assessment2 is not None and  Assessment3 is not None and Assessment4 is not  None and Assessment5 is not  None and Assessment6 is  not None  and Assessment7 is  None and Assessment8 is  None:
+
+
+        
+            usn = session.get('studentemail')
+            user = db.users.find_one({'usn':usn })
+            test1_skills = user["Assessment1"]
+            test2_skills = user["Assessment2"]
+            test3_skills = user["Assessment3"]
+            test4_skills = user["Assessment4"]
+            test5_skills = user["Assessment5"]
+            test6_skills = user["Assessment6"]
+            def summary(userr):
+                p=[]
+                for key, value in userr.items():
+                        p.append(int(value))
+                return p  
+            list_of_second_test_results=summary(test2_skills)            
+            list_of_first_test_results=summary(test1_skills)
+            list_of_third_test_results=summary(test3_skills)
+            list_of_fourth_test_results=summary(test4_skills)
+            list_of_fifth_test_results=summary(test5_skills)
+            list_of_sixth_test_results=summary(test6_skills)
+            # communication1 = int(user['Assessment1'].get('communication'))
+            # technical1 = int(user["Assessment1"].get('technical'))
+            # creativity1 = int(user['Assessment1'].get('creativity'))
+            # projectmm1 = int(user['Assessment1'].get('projectmmt'))
+            # timemanagement1 = int(user['Assessment1'].get('timemanagement'))
+            # generalknowledge1 = int(user['Assessment1'].get('generalknowledge'))
+            # interpersonal1 = int(user['Assessment1'].get('interpersonal'))
+            # resultoriented1 = int(user['Assessment1'].get('resultoriented'))
+            # leardership1 = int(user['Assessment1'].get('leardership'))
+            # presentation1 = int(user['Assessment1'].get('presentation'))
+            communication=[list_of_first_test_results[0],list_of_second_test_results[0],list_of_third_test_results[0],list_of_fourth_test_results[0],list_of_fifth_test_results[0],list_of_sixth_test_results[0]]
+            technical=[list_of_first_test_results[1],list_of_second_test_results[1],list_of_third_test_results[1],list_of_fourth_test_results[1],list_of_fifth_test_results[1],list_of_sixth_test_results[1]]
+            creativity=[list_of_first_test_results[2],list_of_second_test_results[2],list_of_third_test_results[2],list_of_fourth_test_results[2],list_of_fifth_test_results[2],list_of_sixth_test_results[2]]
+            projectmmt=[list_of_first_test_results[3],list_of_second_test_results[3],list_of_third_test_results[3],list_of_fourth_test_results[3],list_of_fifth_test_results[3],list_of_sixth_test_results[3]]
+            timemmt=[list_of_first_test_results[4],list_of_second_test_results[4],list_of_third_test_results[4],list_of_fourth_test_results[4],list_of_fifth_test_results[4],list_of_sixth_test_results[4]]
+            gk=[list_of_first_test_results[5],list_of_second_test_results[5],list_of_third_test_results[5],list_of_fourth_test_results[5],list_of_fifth_test_results[5],list_of_sixth_test_results[5]]
+            interpersonal=[list_of_first_test_results[6],list_of_second_test_results[6],list_of_third_test_results[6],list_of_fourth_test_results[6],list_of_fifth_test_results[6],list_of_sixth_test_results[6]]
+            resultoriented=[list_of_first_test_results[7],list_of_second_test_results[7],list_of_third_test_results[7],list_of_fourth_test_results[7],list_of_fifth_test_results[7],list_of_sixth_test_results[7]]
+            leadership=[list_of_first_test_results[8],list_of_second_test_results[8],list_of_third_test_results[8],list_of_fourth_test_results[8],list_of_fifth_test_results[8],list_of_sixth_test_results[8]]
+            presentation=[list_of_first_test_results[9],list_of_second_test_results[9],list_of_third_test_results[9],list_of_fourth_test_results[9],list_of_fifth_test_results[9],list_of_sixth_test_results[9]]
+            entreprenuerial=[list_of_first_test_results[10],list_of_second_test_results[10],list_of_third_test_results[10],list_of_fourth_test_results[10],list_of_fifth_test_results[10],list_of_sixth_test_results[10]]
+            aptitude=[list_of_first_test_results[11],list_of_second_test_results[11],list_of_third_test_results[11],list_of_fourth_test_results[11],list_of_fifth_test_results[11],list_of_sixth_test_results[11]]
+            print(sum(technical))
+            strongi = int((((sum(technical)+sum(creativity)+sum(resultoriented)))/90)*5)
+            leaderi = int((((sum(projectmmt)+sum(leadership)+sum(timemmt)+sum(resultoriented)+sum(communication)))/150)*5)
+            customeri = int((((sum(presentation)+sum(gk)+sum(timemmt)+sum(interpersonal)+sum(communication)))/150)*5)
+            projecti = int((((sum(projectmmt)+sum(resultoriented)+sum(timemmt)+sum(technical)+sum(communication))/150)*5))
+            designi = int((((sum(leadership)+sum(resultoriented)+sum(creativity)+sum(technical))/120)*5))
+            marketi = int(((( sum(presentation)+sum(resultoriented)+sum(communication)+sum(interpersonal)+sum(gk))/150)*5))
+            print(customeri)
+            print(projecti)
+            def st(strongi):
+                if strongi >= 4:
+                    return "Strong in Tech"
+                else:
+                    return "Generic"
+            strong = st(strongi)
+            def lr(leaderi):
+                if leaderi >= 4:
+                    return "Leadership Roles"
+                else:
+                    return "Generic"
+            leader = lr(leaderi)
+            def cfr(customei):
+                if  customeri >3 :
+                    return "Customer Facing Roles"
+                else:
+                    return "Generic"
+            customer = cfr(customeri)
+            def pm(customer):
+                if  projecti >3 :
+                    return "Project Management "
+                else:
+                    return "None"
+            project = pm(projecti)
+            def df(designi):
+                if designi >=3  :
+                    return "Design Profile "
+                else:
+                    return "None"
+            design = df(designi)
+            def mr(marketi):
+                if marketi >= 3  :
+                    return "Marketing Role "
+                else:
+                    return "None"
+            market = mr(projecti)
+
+            
+            
+
+            
+            print('++++')
+            return render_template('profile.html',title=title,usn=usn,user=user,design=design,market=market,strong=strong,leader=leader,customer=customer,project=project,username=username,email=email,college=college,phone=phone,linkdin=linkdin,github=github,userusn=userusn)
+        # this is for test7
+        elif  Assessment1 is not None and Assessment2 is not None and  Assessment3 is not None and Assessment4 is not  None and Assessment5 is not None and Assessment6 is not None  and Assessment7 is not None and Assessment8 is  None:
+
+
+        
+            usn = session.get('studentemail')
+            user = db.users.find_one({'usn':usn })
+            test1_skills = user["Assessment1"]
+            test2_skills = user["Assessment2"]
+            test3_skills = user["Assessment3"]
+            test4_skills = user["Assessment4"]
+            test5_skills = user["Assessment5"]
+            test6_skills = user["Assessment6"]
+            test7_skills = user["Assessment7"]
+            def summary(userr):
+                p=[]
+                for key, value in userr.items():
+                        p.append(int(value))
+                return p  
+            list_of_second_test_results=summary(test2_skills)            
+            list_of_first_test_results=summary(test1_skills)
+            list_of_third_test_results=summary(test3_skills)
+            list_of_fourth_test_results=summary(test4_skills)
+            list_of_fifth_test_results=summary(test5_skills)
+            list_of_sixth_test_results=summary(test6_skills)
+            list_of_seventh_test_results=summary(test7_skills)
+           
+           
+
+            communication=[list_of_first_test_results[0],list_of_second_test_results[0],list_of_third_test_results[0],list_of_fourth_test_results[0],list_of_fifth_test_results[0],list_of_sixth_test_results[0],list_of_seventh_test_results[0]]
+            technical=[list_of_first_test_results[1],list_of_second_test_results[1],list_of_third_test_results[1],list_of_fourth_test_results[1],list_of_fifth_test_results[1],list_of_sixth_test_results[1],list_of_seventh_test_results[1]]
+            creativity=[list_of_first_test_results[2],list_of_second_test_results[2],list_of_third_test_results[2],list_of_fourth_test_results[2],list_of_fifth_test_results[2],list_of_sixth_test_results[2],list_of_seventh_test_results[2]]
+            projectmmt=[list_of_first_test_results[3],list_of_second_test_results[3],list_of_third_test_results[3],list_of_fourth_test_results[3],list_of_fifth_test_results[3],list_of_sixth_test_results[3],list_of_seventh_test_results[3]]
+            timemmt=[list_of_first_test_results[4],list_of_second_test_results[4],list_of_third_test_results[4],list_of_fourth_test_results[4],list_of_fifth_test_results[4],list_of_sixth_test_results[4],list_of_seventh_test_results[4]]
+            gk=[list_of_first_test_results[5],list_of_second_test_results[5],list_of_third_test_results[5],list_of_fourth_test_results[5],list_of_fifth_test_results[5],list_of_sixth_test_results[5],list_of_seventh_test_results[5]]
+            interpersonal=[list_of_first_test_results[6],list_of_second_test_results[6],list_of_third_test_results[6],list_of_fourth_test_results[6],list_of_fifth_test_results[6],list_of_sixth_test_results[6],list_of_seventh_test_results[6]]
+            resultoriented=[list_of_first_test_results[7],list_of_second_test_results[7],list_of_third_test_results[7],list_of_fourth_test_results[7],list_of_fifth_test_results[7],list_of_sixth_test_results[7],list_of_seventh_test_results[7]]
+            leadership=[list_of_first_test_results[8],list_of_second_test_results[8],list_of_third_test_results[8],list_of_fourth_test_results[8],list_of_fifth_test_results[8],list_of_sixth_test_results[8],list_of_seventh_test_results[8]]
+            presentation=[list_of_first_test_results[9],list_of_second_test_results[9],list_of_third_test_results[9],list_of_fourth_test_results[9],list_of_fifth_test_results[9],list_of_sixth_test_results[9],list_of_seventh_test_results[9]]
+            entreprenuerial=[list_of_first_test_results[10],list_of_second_test_results[10],list_of_third_test_results[10],list_of_fourth_test_results[10],list_of_fifth_test_results[10],list_of_sixth_test_results[10],list_of_seventh_test_results[10]]
+            aptitude=[list_of_first_test_results[11],list_of_second_test_results[11],list_of_third_test_results[11],list_of_fourth_test_results[11],list_of_fifth_test_results[11],list_of_sixth_test_results[11],list_of_seventh_test_results[11]]
+            print(aptitude)
+            
+            strongi = int((((sum(technical)+sum(creativity)+sum(resultoriented)))/105)*5)
+            leaderi = int((((sum(projectmmt)+sum(leadership)+sum(timemmt)+sum(resultoriented)+sum(communication)))/175)*5)
+            customeri = int((((sum(presentation)+sum(gk)+sum(timemmt)+sum(interpersonal)+sum(communication)))/175)*5)
+            projecti = int((((sum(projectmmt)+sum(resultoriented)+sum(timemmt)+sum(technical)+sum(communication))/175)*5))
+            designi = int((((sum(leadership)+sum(resultoriented)+sum(creativity)+sum(technical))/140)*5))
+            marketi = int(((( sum(presentation)+sum(resultoriented)+sum(communication)+sum(interpersonal)+sum(gk))/175)*5))
+            def st(strongi):
+                if strongi >= 4:
+                    return "Strong in Tech"
+                else:
+                    return "Generic"
+            strong = st(strongi)
+            def lr(leaderi):
+                if leaderi >= 4:
+                    return "Leadership Roles"
+                else:
+                    return "Generic"
+            leader = lr(leaderi)
+            def cfr(customei):
+                if  customeri >3 :
+                    return "Customer Facing Roles"
+                else:
+                    return "Generic"
+            customer = cfr(customeri)
+            def pm(customer):
+                if  projecti >3 :
+                    return "Project Management "
+                else:
+                    return "None"
+            project = pm(projecti)
+            def df(designi):
+                if designi >=3  :
+                    return "Design Profile "
+                else:
+                    return "None"
+            design = df(designi)
+            def mr(marketi):
+                if marketi >= 3  :
+                    return "Marketing Role "
+                else:
+                    return "None"
+            market = mr(projecti)
+
+            
+            print(entreprenuerial)
+            print(gk)
+            print('++++')
+            return render_template('profile.html',title=title,usn=usn,user=user,design=design,market=market,strong=strong,leader=leader,customer=customer,project=project,username=username,email=email,college=college,phone=phone,linkdin=linkdin,github=github,userusn=userusn)
+        # this is for test8
+        elif Assessment8 is not None:
+        
+            usn = session.get('studentemail')
+            user = db.users.find_one({'usn':usn })
+            test1_skills = user["Assessment1"]
+            test2_skills = user["Assessment2"]
+            test3_skills = user["Assessment3"]
+            test4_skills = user["Assessment4"]
+            test5_skills = user["Assessment5"]
+            test6_skills = user["Assessment6"]
+            test7_skills = user["Assessment7"]
+            test8_skills = user["Assessment8"]
+            def summary(userr):
+                p=[]
+                for key, value in userr.items():
+                        p.append(int(value))
+                return p  
+            list_of_second_test_results=summary(test2_skills)            
+            list_of_first_test_results=summary(test1_skills)
+            list_of_third_test_results=summary(test3_skills)
+            list_of_fourth_test_results=summary(test4_skills)
+            list_of_fifth_test_results=summary(test5_skills)
+            list_of_sixth_test_results=summary(test6_skills)
+            list_of_seventh_test_results=summary(test7_skills)
+            print(list_of_sixth_test_results)
+            list_of_eight_test_results=summary(test8_skills)
+            print(list_of_eight_test_results)
+            list_of_assessments=["Assessment1","Assessment2","Assessment3","Assessment4","Assessment5","Assessment6","Assessment7","Assessment8"]
+            print(list_of_assessments)
+
+            communication=[list_of_first_test_results[0],list_of_second_test_results[0],list_of_third_test_results[0],list_of_fourth_test_results[0],list_of_fifth_test_results[0],list_of_sixth_test_results[0],list_of_seventh_test_results[0],list_of_eight_test_results[0]]
+            technical=[list_of_first_test_results[1],list_of_second_test_results[1],list_of_third_test_results[1],list_of_fourth_test_results[1],list_of_fifth_test_results[1],list_of_sixth_test_results[1],list_of_seventh_test_results[1],list_of_eight_test_results[1]]
+            creativity=[list_of_first_test_results[2],list_of_second_test_results[2],list_of_third_test_results[2],list_of_fourth_test_results[2],list_of_fifth_test_results[2],list_of_sixth_test_results[2],list_of_seventh_test_results[2],list_of_eight_test_results[2]]
+            projectmmt=[list_of_first_test_results[3],list_of_second_test_results[3],list_of_third_test_results[3],list_of_fourth_test_results[3],list_of_fifth_test_results[3],list_of_sixth_test_results[3],list_of_seventh_test_results[3],list_of_eight_test_results[3]]
+            timemmt=[list_of_first_test_results[4],list_of_second_test_results[4],list_of_third_test_results[4],list_of_fourth_test_results[4],list_of_fifth_test_results[4],list_of_sixth_test_results[4],list_of_seventh_test_results[4],list_of_eight_test_results[4]]
+            gk=[list_of_first_test_results[5],list_of_second_test_results[5],list_of_third_test_results[5],list_of_fourth_test_results[5],list_of_fifth_test_results[5],list_of_sixth_test_results[5],list_of_seventh_test_results[5],list_of_eight_test_results[5]]
+            interpersonal=[list_of_first_test_results[6],list_of_second_test_results[6],list_of_third_test_results[6],list_of_fourth_test_results[6],list_of_fifth_test_results[6],list_of_sixth_test_results[6],list_of_seventh_test_results[6],list_of_eight_test_results[6]]
+            resultoriented=[list_of_first_test_results[7],list_of_second_test_results[7],list_of_third_test_results[7],list_of_fourth_test_results[7],list_of_fifth_test_results[7],list_of_sixth_test_results[7],list_of_seventh_test_results[7],list_of_eight_test_results[7]]
+            leadership=[list_of_first_test_results[8],list_of_second_test_results[8],list_of_third_test_results[8],list_of_fourth_test_results[8],list_of_fifth_test_results[8],list_of_sixth_test_results[8],list_of_seventh_test_results[8],list_of_eight_test_results[8]]
+            presentation=[list_of_first_test_results[9],list_of_second_test_results[9],list_of_third_test_results[9],list_of_fourth_test_results[9],list_of_fifth_test_results[9],list_of_sixth_test_results[9],list_of_seventh_test_results[9],list_of_eight_test_results[9]]
+            entreprenuerial=[list_of_first_test_results[10],list_of_second_test_results[10],list_of_third_test_results[10],list_of_fourth_test_results[10],list_of_fifth_test_results[10],list_of_sixth_test_results[10],list_of_seventh_test_results[10],list_of_eight_test_results[10]]
+            aptitude=[list_of_first_test_results[11],list_of_second_test_results[11],list_of_third_test_results[11],list_of_fourth_test_results[11],list_of_fifth_test_results[11],list_of_sixth_test_results[11],list_of_seventh_test_results[11],list_of_eight_test_results[11]]
+            print(aptitude)
+            
+            strongi = int((((sum(technical)+sum(creativity)+sum(resultoriented)))/120)*5)
+            leaderi = int((((sum(projectmmt)+sum(leadership)+sum(timemmt)+sum(resultoriented)+sum(communication)))/200)*5)
+            customeri = int((((sum(presentation)+sum(gk)+sum(timemmt)+sum(interpersonal)+sum(communication)))/200)*5)
+            projecti = int((((sum(projectmmt)+sum(resultoriented)+sum(timemmt)+sum(technical)+sum(communication))/200)*5))
+            designi = int((((sum(leadership)+sum(resultoriented)+sum(creativity)+sum(technical))/160)*5))
+            marketi = int(((( sum(presentation)+sum(resultoriented)+sum(communication)+sum(interpersonal)+sum(gk))/200)*5))
+            def st(strongi):
+                if strongi >= 4:
+                    return "Strong in Tech"
+                else:
+                    return "Generic"
+            strong = st(strongi)
+            def lr(leaderi):
+                if leaderi >= 4:
+                    return "Leadership Roles"
+                else:
+                    return "Generic"
+            leader = lr(leaderi)
+            def cfr(customei):
+                if  customeri >3 :
+                    return "Customer Facing Roles"
+                else:
+                    return "Generic"
+            customer = cfr(customeri)
+            def pm(customer):
+                if  projecti >3 :
+                    return "Project Management "
+                else:
+                    return "None"
+            project = pm(projecti)
+            def df(designi):
+                if designi >=3  :
+                    return "Design Profile "
+                else:
+                    return "None"
+            design = df(designi)
+            def mr(marketi):
+                if marketi >= 3  :
+                    return "Marketing Role "
+                else:
+                    return "None"
+            market = mr(projecti)
+
+            
+            print(entreprenuerial)
+            print(gk)
+            print('++++')
+            return render_template('profile.html',title=title,usn=usn,user=user,design=design,market=market,strong=strong,leader=leader,customer=customer,project=project,username=username,email=email,college=college,phone=phone,linkdin=linkdin,github=github,userusn=userusn)
+
         
         
 
-        return render_template('profile.html',title=title,usn=usn,user=user,design=design,market=market,strong=strong,leader=leader,customer=customer,project=project,username=username,email=email,college=college,phone=phone,linkdin=linkdin,github=github,userusn=userusn)
  
 
 
@@ -125,157 +816,7 @@ def profile():
 
     return redirect(url_for('auth.login'))
 
-@views.route("/marksenter",methods=['GET','POST'])
-def marksenter():
-    
-    usn = session.get('studentname')
-    user = db.users.find_one({'usn':usn })
-    username = user["personal"].get('username')
 
-    title="marks enter"
-    if  'teacheremail' in session:
-
-        if request.method == 'POST':
-
-                test= request.form.get('assesment')
-                communication= request.form.get('communication')
-                technical= request.form.get('technical')
-                creativity= request.form.get('creativity')
-                projectmmt= request.form.get('projectmmt')
-                timemanagement= request.form.get('timemanagement')
-                generalknowledge= request.form.get('generalknowledge')
-                interpersonal= request.form.get('interpersonal')
-                resultoriented= request.form.get('resultoriented')
-                leardership= request.form.get('leardership')
-                presentation= request.form.get('presentation')
-                print(test)
-                print(leardership)
-                print(presentation)
-                print(studentname)
-                print(communication)
-
-                # user = db.users.find_one({'username':username })
-                # email = user['email']
-                # db.marks.insert_one({"communication": communication})
-                if test == "Test1":
-                    try:
-
-                        db.users.update_one(
-                        {"usn": usn},
-                        {
-                            "$set": {
-                                "test1": {
-                                    "communication": communication,
-                                    "technical": technical,
-                                    "creativity": creativity,
-                                    "projectmmt": projectmmt,
-                                    "timemanagement": timemanagement,
-                                    "generalknowledge": generalknowledge,
-                                    "interpersonal": interpersonal,
-                                    "resultoriented": resultoriented,
-                                    "leardership": leardership,
-                                    "presentation": presentation
-                                }
-                            }
-                        }
-                    )
-                        flash('Marks entered successfully', category='success')
-                        return redirect(url_for('views.dashboard'))
-                    except PyMongoError as e:
-                        flash(f'Error: {str(e)}', category='error')
-                    # Handle the error accordingly, such as logging it or displaying an error message to the user
-                        return redirect(url_for('views.marksenter'))
-                if test == "Test2":
-                    try:
-
-                        db.users.update_one(
-                        {"usn": usn},
-                        {
-                            "$set": {
-                                "test2": {
-                                    "communication": communication,
-                                    "technical": technical,
-                                    "creativity": creativity,
-                                    "projectmmt": projectmmt,
-                                    "timemanagement": timemanagement,
-                                    "generalknowledge": generalknowledge,
-                                    "interpersonal": interpersonal,
-                                    "resultoriented": resultoriented,
-                                    "leardership": leardership,
-                                    "presentation": presentation
-                                }
-                            }
-                        }
-                    )
-                        flash('Marks entered successfully', category='success')
-                        return redirect(url_for('views.dashboard'))
-                    except PyMongoError as e:
-                        flash(f'Error: {str(e)}', category='error')
-                    # Handle the error accordingly, such as logging it or displaying an error message to the user
-                        return redirect(url_for('views.marksenter'))
-                if test == "Test3":
-                    try:
-
-                        db.users.update_one(
-                        {"usn": usn},
-                        {
-                            "$set": {
-                                "test3": {
-                                    "communication": communication,
-                                    "technical": technical,
-                                    "creativity": creativity,
-                                    "projectmmt": projectmmt,
-                                    "timemanagement": timemanagement,
-                                    "generalknowledge": generalknowledge,
-                                    "interpersonal": interpersonal,
-                                    "resultoriented": resultoriented,
-                                    "leardership": leardership,
-                                    "presentation": presentation
-                                }
-                            }
-                        }
-                    )
-                        flash('Marks entered successfully', category='success')
-                        return redirect(url_for('views.dashboard'))
-                    except PyMongoError as e:
-                        flash(f'Error: {str(e)}', category='error')
-                    # Handle the error accordingly, such as logging it or displaying an error message to the user
-                        return redirect(url_for('views.marksenter'))
-                    
-                if test == "assesment4":
-                    try:
-
-                        db.users.update_one(
-                        {"usn": usn},
-                        {
-                            "$set": {
-                                "assesment4": {
-                                    "communication": communication,
-                                    "technical": technical,
-                                    "creativity": creativity,
-                                    "projectmmt": projectmmt,
-                                    "timemanagement": timemanagement,
-                                    "generalknowledge": generalknowledge,
-                                    "interpersonal": interpersonal,
-                                    "resultoriented": resultoriented,
-                                    "leardership": leardership,
-                                    "presentation": presentation
-                                }
-                            }
-                        }
-                    )
-                        flash('Marks entered successfully', category='success')
-                        return redirect(url_for('views.dashboard'))
-                    except PyMongoError as e:
-                        flash(f'Error: {str(e)}', category='error')
-                    # Handle the error accordingly, such as logging it or displaying an error message to the user
-                        return redirect(url_for('views.marksenter'))
-                    
-        
-        # print(studentname)
-        # return render_template("marksenter.html",title=title,studentname=studentname)
-        return render_template("marksenter.html",usn=usn,username=username)
-    return redirect(url_for('auth.login'))
 
 
 @views.route("/dashboard",methods=['GET','POST'])
@@ -2273,101 +2814,751 @@ def report():
     if 'studentemail' in session :
         usn = session.get('studentemail')
         user = db.users.find_one({'usn':usn })
-        test1_skills = user["Assessment1"]
-        test2_skills = user["Assessment2"]
-        test3_skills = user["Assessment3"]
-        test4_skills = user["Assessment4"]
-        test5_skills = user["Assessment5"]
-        test6_skills = user["Assessment6"]
-        test7_skills = user["Assessment7"]
-        test8_skills = user["Assessment8"]
-        communication1 = int(user['Assessment1'].get('communication'))
-        technical1 = int(user["Assessment1"].get('technical'))
-        creativity1 = int(user['Assessment1'].get('creativity'))
-        projectmm1 = int(user['Assessment1'].get('projectmmt'))
-        timemanagement1 = int(user['Assessment1'].get('timemanagement'))
-        generalknowledge1 = int(user['Assessment1'].get('generalknowledge'))
-        interpersonal1 = int(user['Assessment1'].get('interpersonal'))
-        resultoriented1 = int(user['Assessment1'].get('resultoriented'))
-        leardership1 = int(user['Assessment1'].get('leardership'))
-        presentation1 = int(user['Assessment1'].get('presentation'))
+
+
+
+        Assessment1 =user.get('Assessment1')
+        Assessment2 =user.get('Assessment2')
+        Assessment3 =user.get('Assessment3')
+        Assessment4 =user.get('Assessment4')
+        Assessment5 =user.get('Assessment5')
+        Assessment6 =user.get('Assessment6')
+        Assessment7 =user.get('Assessment7')
+        Assessment8 =user.get('Assessment8')
+    #    this is for test1.... 
         
-        strongi = int(((technical1+creativity1+resultoriented1)/15)*5)
-        leaderi = int(((projectmm1+leardership1+timemanagement1+resultoriented1+communication1)/25)*5)
-        customeri = int(((presentation1+generalknowledge1+timemanagement1+interpersonal1+communication1)/25)*5)
-        projecti = int(((projectmm1+resultoriented1+timemanagement1+technical1+communication1)/25)*5)
-        designi = int(((leardership1+resultoriented1+creativity1+technical1)/20)*5)
-        marketi = int((( presentation1+resultoriented1+communication1+interpersonal1+generalknowledge1)/25)*5)
-        def st(strongi):
-            if strongi >= 4:
-                return "Strong in Tech"
-            else:
-                return "Generic"
-        strong = st(strongi)
-        def lr(leaderi):
-            if leaderi >= 4:
-                return "Leadership Roles"
-            else:
-                return "Generic"
-        leader = lr(leaderi)
-        def cfr(customei):
-            if  customeri <=4:
-                return "Customer Facing Roles"
-            else:
-                return "None"
-        customer = cfr(customeri)
-        def pm(customer):
-            if  projecti <= 4 :
-                return "Project Management "
-            else:
-                return "None"
-        project = pm(projecti)
-        def df(designi):
-            if designi <= 3  :
-                return "Design Profile "
-            else:
-                return "None"
-        design = df(designi)
-        def mr(marketi):
-            if marketi <= 3 :
-                return "Marketing Role "
-            else:
-                return "None"
-        market = mr(projecti)
+        if   Assessment1 is not None and Assessment2 is  None  and Assessment3 is  None  and Assessment4 is  None  and Assessment5  is  None and Assessment6  is  None and Assessment7 is  None and Assessment8  is  None:
+        
+            usn = session.get('studentemail')
+            user = db.users.find_one({'usn':usn })
+            test1_skills = user["Assessment1"]
+            def summary(userr):
+                p=[]
+                for key, value in userr.items():
+                        p.append(int(value))
+                return p  
 
-        def summary(userr):
-                    p=[]
-                    for key, value in userr.items():
-                            p.append(int(value))
-                    return p  
-        list_of_second_test_results=summary(test2_skills)            
-        list_of_first_test_results=summary(test1_skills)
-        list_of_third_test_results=summary(test3_skills)
-        list_of_fourth_test_results=summary(test4_skills)
-        list_of_fifth_test_results=summary(test5_skills)
-        list_of_sixth_test_results=summary(test6_skills)
-        list_of_seventh_test_results=summary(test7_skills)
-        print(list_of_sixth_test_results)
-        list_of_eight_test_results=summary(test8_skills)
-        print(list_of_eight_test_results)
 
-        communication=[list_of_first_test_results[0],list_of_second_test_results[0],list_of_third_test_results[0],list_of_fourth_test_results[0],list_of_fifth_test_results[0],list_of_sixth_test_results[0],list_of_seventh_test_results[0],list_of_eight_test_results[0]]
-        technical=[list_of_first_test_results[1],list_of_second_test_results[1],list_of_third_test_results[1],list_of_fourth_test_results[1],list_of_fifth_test_results[1],list_of_sixth_test_results[1],list_of_seventh_test_results[1],list_of_eight_test_results[1]]
-        creativity=[list_of_first_test_results[2],list_of_second_test_results[2],list_of_third_test_results[2],list_of_fourth_test_results[2],list_of_fifth_test_results[2],list_of_sixth_test_results[2],list_of_seventh_test_results[2],list_of_eight_test_results[2]]
-        projectmmt=[list_of_first_test_results[3],list_of_second_test_results[3],list_of_third_test_results[3],list_of_fourth_test_results[3],list_of_fifth_test_results[3],list_of_sixth_test_results[3],list_of_seventh_test_results[3],list_of_eight_test_results[3]]
-        timemmt=[list_of_first_test_results[4],list_of_second_test_results[4],list_of_third_test_results[4],list_of_fourth_test_results[4],list_of_fifth_test_results[4],list_of_sixth_test_results[4],list_of_seventh_test_results[4],list_of_eight_test_results[4]]
-        gk=[list_of_first_test_results[5],list_of_second_test_results[5],list_of_third_test_results[5],list_of_fourth_test_results[5],list_of_fifth_test_results[5],list_of_sixth_test_results[5],list_of_seventh_test_results[5],list_of_eight_test_results[5]]
-        interpersonal=[list_of_first_test_results[6],list_of_second_test_results[6],list_of_third_test_results[6],list_of_fourth_test_results[6],list_of_fifth_test_results[6],list_of_sixth_test_results[6],list_of_seventh_test_results[6],list_of_eight_test_results[6]]
-        resultoriented=[list_of_first_test_results[7],list_of_second_test_results[7],list_of_third_test_results[7],list_of_fourth_test_results[7],list_of_fifth_test_results[7],list_of_sixth_test_results[7],list_of_seventh_test_results[7],list_of_eight_test_results[7]]
-        leadership=[list_of_first_test_results[8],list_of_second_test_results[8],list_of_third_test_results[8],list_of_fourth_test_results[8],list_of_fifth_test_results[8],list_of_sixth_test_results[8],list_of_seventh_test_results[8],list_of_eight_test_results[8]]
-        presentation=[list_of_first_test_results[9],list_of_second_test_results[9],list_of_third_test_results[9],list_of_fourth_test_results[9],list_of_fifth_test_results[9],list_of_sixth_test_results[9],list_of_seventh_test_results[9],list_of_eight_test_results[9]]
-        entreprenuerial=[list_of_first_test_results[10],list_of_second_test_results[10],list_of_third_test_results[10],list_of_fourth_test_results[10],list_of_fifth_test_results[10],list_of_sixth_test_results[10],list_of_seventh_test_results[10],list_of_eight_test_results[10]]
-        aptitude=[list_of_first_test_results[11],list_of_second_test_results[11],list_of_third_test_results[11],list_of_fourth_test_results[11],list_of_fifth_test_results[11],list_of_sixth_test_results[11],list_of_seventh_test_results[11],list_of_eight_test_results[11]]
-        print(aptitude)
-        print(entreprenuerial)
-        print(gk)
-        print('++++')
-    return render_template('report.html',user=user,design=design,market=market,strong=strong,leader=leader,customer=customer,project=project,presentation=json.dumps(presentation),resultoriented=json.dumps(resultoriented),leadership=json.dumps(leadership),ent1=json.dumps(entreprenuerial),apt=json.dumps(aptitude),interpersonal=json.dumps(interpersonal),communication=json.dumps(communication),technical=json.dumps(technical),creativity=json.dumps(creativity),projectmmt=json.dumps(projectmmt),timemmt=json.dumps(timemmt),gk=json.dumps(gk))
+            list_of_first_test_results=summary(test1_skills)
+
+
+            
+
+            communication=[list_of_first_test_results[0]]
+            technical=[list_of_first_test_results[1]]
+            creativity=[list_of_first_test_results[2]]
+            projectmmt=[list_of_first_test_results[3]]
+            timemmt=[list_of_first_test_results[4]]            
+            gk=[list_of_first_test_results[5]]     
+            interpersonal=[list_of_first_test_results[6]]
+            resultoriented=[list_of_first_test_results[7]]
+            leadership=[list_of_first_test_results[8]]
+            presentation=[list_of_first_test_results[9]]
+            entreprenuerial=[list_of_first_test_results[10]]
+            aptitude=[list_of_first_test_results[11]]
+            # communication1 = int(user['Assessment1'].get('communication'))
+            # technical1 = int(user["Assessment1"].get('technical'))
+            # creativity1 = int(user['Assessment1'].get('creativity'))
+            # projectmm1 = int(user['Assessment1'].get('projectmmt'))
+            # timemanagement1 = int(user['Assessment1'].get('timemanagement'))
+            # generalknowledge1 = int(user['Assessment1'].get('generalknowledge'))
+            # interpersonal1 = int(user['Assessment1'].get('interpersonal'))
+            # resultoriented1 = int(user['Assessment1'].get('resultoriented'))
+            # leardership1 = int(user['Assessment1'].get('leardership'))
+            # presentation1 = int(user['Assessment1'].get('presentation'))
+
+            strongi = int((((sum(technical)+sum(creativity)+sum(resultoriented)))/15)*5)
+            leaderi = int((((sum(projectmmt)+sum(leadership)+sum(timemmt)+sum(resultoriented)+sum(communication)))/25)*5)
+            customeri = int((((sum(presentation)+sum(gk)+sum(timemmt)+sum(interpersonal)+sum(communication)))/25)*5)
+            projecti = int((((sum(projectmmt)+sum(resultoriented)+sum(timemmt)+sum(technical)+sum(communication))/25)*5))
+            designi = int((((sum(leadership)+sum(resultoriented)+sum(creativity)+sum(technical))/25)*5))
+            marketi = int(((( sum(presentation)+sum(resultoriented)+sum(communication)+sum(interpersonal)+sum(gk))/25)*5))
+            def st(strongi):
+                if strongi >= 4:
+                    return "Strong in Tech"
+                else:
+                    return "Generic"
+            strong = st(strongi)
+            def lr(leaderi):
+                if leaderi >= 4:
+                    return "Leadership Roles"
+                else:
+                    return "Generic"
+            leader = lr(leaderi)
+            def cfr(customei):
+                if  customeri >3 :
+                    return "Customer Facing Roles"
+                else:
+                    return "Generic"
+            customer = cfr(customeri)
+            def pm(customer):
+                if  projecti >3 :
+                    return "Project Management "
+                else:
+                    return "None"
+            project = pm(projecti)
+            def df(designi):
+                if designi >=3  :
+                    return "Design Profile "
+                else:
+                    return "None"
+            design = df(designi)
+            def mr(marketi):
+                if marketi >= 3  :
+                    return "Marketing Role "
+                else:
+                    return "None"
+            market = mr(projecti)
+            
+            print(aptitude)
+            print(entreprenuerial)
+            print(gk)
+            print('++++')
+            return render_template('report.html',user=user,design=design,market=market,strong=strong,leader=leader,customer=customer,project=project,presentation=json.dumps(presentation),resultoriented=json.dumps(resultoriented),leadership=json.dumps(leadership),ent1=json.dumps(entreprenuerial),apt=json.dumps(aptitude),interpersonal=json.dumps(interpersonal),communication=json.dumps(communication),technical=json.dumps(technical),creativity=json.dumps(creativity),projectmmt=json.dumps(projectmmt),timemmt=json.dumps(timemmt),gk=json.dumps(gk))
+        # this is for test2..  
+        elif  Assessment1 is not None and Assessment2 is not None and  Assessment3 is  None and Assessment4 is  None and Assessment5 is  None and Assessment6 is  None  and Assessment7 is  None and Assessment8 is  None:
+            
+            usn = session.get('studentemail')
+            user = db.users.find_one({'usn':usn })
+            test1_skills = user["Assessment1"]
+            test2_skills = user["Assessment2"]
+            def summary(userr):
+                p=[]
+                for key, value in userr.items():
+                    p.append(int(value))
+                return p  
+                        
+                                
+
+                        
+
+          
+            
+            list_of_second_test_results=summary(test2_skills)            
+            list_of_first_test_results=summary(test1_skills)
+           
+         
+            
+
+            communication=[list_of_first_test_results[0],list_of_second_test_results[0]]
+            technical=[list_of_first_test_results[1],list_of_second_test_results[1]]
+            creativity=[list_of_first_test_results[2],list_of_second_test_results[2]]
+            projectmmt=[list_of_first_test_results[3],list_of_second_test_results[3]]
+            timemmt=[list_of_first_test_results[4],list_of_second_test_results[4]]            
+            gk=[list_of_first_test_results[5],list_of_second_test_results[5]]     
+            interpersonal=[list_of_first_test_results[6],list_of_second_test_results[6]]
+            resultoriented=[list_of_first_test_results[7],list_of_second_test_results[7]]
+            leadership=[list_of_first_test_results[8],list_of_second_test_results[8]]
+            presentation=[list_of_first_test_results[9],list_of_second_test_results[9]]
+            entreprenuerial=[list_of_first_test_results[10],list_of_second_test_results[10]]
+            aptitude=[list_of_first_test_results[11],list_of_second_test_results[11]]
+
+            # communication1 = int(user['Assessment1'].get('communication'))
+            # technical1 = int(user["Assessment1"].get('technical'))
+            # creativity1 = int(user['Assessment1'].get('creativity'))
+            # projectmm1 = int(user['Assessment1'].get('projectmmt'))
+            # timemanagement1 = int(user['Assessment1'].get('timemanagement'))
+            # generalknowledge1 = int(user['Assessment1'].get('generalknowledge'))
+            # interpersonal1 = int(user['Assessment1'].get('interpersonal'))
+            # resultoriented1 = int(user['Assessment1'].get('resultoriented'))
+            # leardership1 = int(user['Assessment1'].get('leardership'))
+            # presentation1 = int(user['Assessment1'].get('presentation'))
+
+            
+
+            strongi = int((((sum(technical)+sum(creativity)+sum(resultoriented)))/30)*5)
+            leaderi = int((((sum(projectmmt)+sum(leadership)+sum(timemmt)+sum(resultoriented)+sum(communication)))/50)*5)
+            customeri = int((((sum(presentation)+sum(gk)+sum(timemmt)+sum(interpersonal)+sum(communication)))/50)*5)
+            projecti = int((((sum(projectmmt)+sum(resultoriented)+sum(timemmt)+sum(technical)+sum(communication))/50)*5))
+            designi = int((((sum(leadership)+sum(resultoriented)+sum(creativity)+sum(technical))/50)*5))
+            marketi = int(((( sum(presentation)+sum(resultoriented)+sum(communication)+sum(interpersonal)+sum(gk))/50)*5))
+
+            def st(strongi):
+                if strongi >= 4:
+                    return "Strong in Tech"
+                else:
+                    return "Generic"
+            strong = st(strongi)
+            def lr(leaderi):
+                if leaderi >= 4:
+                    return "Leadership Roles"
+                else:
+                    return "Generic"
+            leader = lr(leaderi)
+            def cfr(customei):
+                if  customeri >3 :
+                    return "Customer Facing Roles"
+                else:
+                    return "Generic"
+            customer = cfr(customeri)
+            def pm(customer):
+                if  projecti >3 :
+                    return "Project Management "
+                else:
+                    return "None"
+            project = pm(projecti)
+            def df(designi):
+                if designi >=3  :
+                    return "Design Profile "
+                else:
+                    return "None"
+            design = df(designi)
+            def mr(marketi):
+                if marketi >= 3  :
+                    return "Marketing Role "
+                else:
+                    return "None"
+            market = mr(projecti)
+           
+            print(aptitude)
+            print(entreprenuerial)
+            print(gk)
+            print('++++')
+            return render_template('report.html',user=user,design=design,market=market,strong=strong,leader=leader,customer=customer,project=project,presentation=json.dumps(presentation),resultoriented=json.dumps(resultoriented),leadership=json.dumps(leadership),ent1=json.dumps(entreprenuerial),apt=json.dumps(aptitude),interpersonal=json.dumps(interpersonal),communication=json.dumps(communication),technical=json.dumps(technical),creativity=json.dumps(creativity),projectmmt=json.dumps(projectmmt),timemmt=json.dumps(timemmt),gk=json.dumps(gk))
+    #    this is for test3 ... 
+        elif    Assessment1 is not None and Assessment2 is not None and  Assessment3 is not None and Assessment4 is  None and Assessment5 is  None and Assessment6 is  None  and Assessment7 is  None and Assessment8 is  None:
+
+
+        
+            usn = session.get('studentemail')
+            user = db.users.find_one({'usn':usn })
+            
+            def summary(userr):
+                p=[]
+                for key, value in userr.items():
+                        p.append(int(value))
+                return p  
+            test1_skills = user["Assessment1"]
+            test2_skills = user["Assessment2"]
+            test3_skills = user["Assessment3"]
+          
+            
+            list_of_second_test_results=summary(test2_skills)            
+            list_of_first_test_results=summary(test1_skills)
+            list_of_third_test_results=summary(test3_skills)
+           
+         
+            
+
+            communication=[list_of_first_test_results[0],list_of_second_test_results[0],list_of_third_test_results[0]]
+            technical=[list_of_first_test_results[1],list_of_second_test_results[1],list_of_third_test_results[1]]
+            creativity=[list_of_first_test_results[2],list_of_second_test_results[2],list_of_third_test_results[2]]
+            projectmmt=[list_of_first_test_results[3],list_of_second_test_results[3],list_of_third_test_results[3]]
+            timemmt=[list_of_first_test_results[4],list_of_second_test_results[4],list_of_third_test_results[4]]            
+            gk=[list_of_first_test_results[5],list_of_second_test_results[5],list_of_third_test_results[5]]     
+            interpersonal=[list_of_first_test_results[6],list_of_second_test_results[6],list_of_third_test_results[6]]
+            resultoriented=[list_of_first_test_results[7],list_of_second_test_results[7],list_of_third_test_results[7]]
+            leadership=[list_of_first_test_results[8],list_of_second_test_results[8],list_of_third_test_results[8]]
+            presentation=[list_of_first_test_results[9],list_of_second_test_results[9],list_of_third_test_results[9]]
+            entreprenuerial=[list_of_first_test_results[10],list_of_second_test_results[10],list_of_third_test_results[10]]
+            aptitude=[list_of_first_test_results[11],list_of_second_test_results[11],list_of_third_test_results[11]]
+            print(aptitude)
+
+            strongi = int((((sum(technical)+sum(creativity)+sum(resultoriented)))/45)*5)
+            leaderi = int((((sum(projectmmt)+sum(leadership)+sum(timemmt)+sum(resultoriented)+sum(communication)))/75)*5)
+            customeri = int((((sum(presentation)+sum(gk)+sum(timemmt)+sum(interpersonal)+sum(communication)))/75)*5)
+            projecti = int((((sum(projectmmt)+sum(resultoriented)+sum(timemmt)+sum(technical)+sum(communication))/75)*5))
+            designi = int((((sum(leadership)+sum(resultoriented)+sum(creativity)+sum(technical))/60)*5))
+            marketi = int(((( sum(presentation)+sum(resultoriented)+sum(communication)+sum(interpersonal)+sum(gk))/75)*5))
+
+            def st(strongi):
+                if strongi >= 4:
+                    return "Strong in Tech"
+                else:
+                    return "Generic"
+            strong = st(strongi)
+            def lr(leaderi):
+                if leaderi >= 4:
+                    return "Leadership Roles"
+                else:
+                    return "Generic"
+            leader = lr(leaderi)
+            def cfr(customei):
+                if  customeri >3 :
+                    return "Customer Facing Roles"
+                else:
+                    return "Generic"
+            customer = cfr(customeri)
+            def pm(customer):
+                if  projecti >3 :
+                    return "Project Management "
+                else:
+                    return "None"
+            project = pm(projecti)
+            def df(designi):
+                if designi >=3  :
+                    return "Design Profile "
+                else:
+                    return "None"
+            design = df(designi)
+            def mr(marketi):
+                if marketi >= 3  :
+                    return "Marketing Role "
+                else:
+                    return "None"
+            market = mr(projecti)
+            
+            print(entreprenuerial)
+            print(gk)
+            print('++++')
+            return render_template('report.html',user=user,design=design,market=market,strong=strong,leader=leader,customer=customer,project=project,presentation=json.dumps(presentation),resultoriented=json.dumps(resultoriented),leadership=json.dumps(leadership),ent1=json.dumps(entreprenuerial),apt=json.dumps(aptitude),interpersonal=json.dumps(interpersonal),communication=json.dumps(communication),technical=json.dumps(technical),creativity=json.dumps(creativity),projectmmt=json.dumps(projectmmt),timemmt=json.dumps(timemmt),gk=json.dumps(gk))
+    #    this is for assessmet4 ....
+
+        elif    Assessment1 is not None and Assessment2 is not None and  Assessment3 is not None and Assessment4 is not  None and Assessment5 is  None and Assessment6 is  None  and Assessment7 is  None and Assessment8 is  None:
+
+
+        
+            usn = session.get('studentemail')
+            user = db.users.find_one({'usn':usn })
+            test1_skills = user["Assessment1"]
+            test2_skills = user["Assessment2"]
+            test3_skills = user["Assessment3"]
+            test4_skills = user["Assessment4"]
+            def summary(userr):
+                        p=[]
+                        for key, value in userr.items():
+                                p.append(int(value))
+                        return p  
+            list_of_second_test_results=summary(test2_skills)            
+            list_of_first_test_results=summary(test1_skills)
+            list_of_third_test_results=summary(test3_skills)
+            list_of_fourth_test_results=summary(test4_skills)
+          
+          
+
+            communication=[list_of_first_test_results[0],list_of_second_test_results[0],list_of_third_test_results[0],list_of_fourth_test_results[0]]
+            technical=[list_of_first_test_results[1],list_of_second_test_results[1],list_of_third_test_results[1],list_of_fourth_test_results[1]]
+            creativity=[list_of_first_test_results[2],list_of_second_test_results[2],list_of_third_test_results[2],list_of_fourth_test_results[2]]
+            projectmmt=[list_of_first_test_results[3],list_of_second_test_results[3],list_of_third_test_results[3],list_of_fourth_test_results[3]]
+            timemmt=[list_of_first_test_results[4],list_of_second_test_results[4],list_of_third_test_results[4],list_of_fourth_test_results[4]]
+            gk=[list_of_first_test_results[5],list_of_second_test_results[5],list_of_third_test_results[5],list_of_fourth_test_results[5]]
+            interpersonal=[list_of_first_test_results[6],list_of_second_test_results[6],list_of_third_test_results[6],list_of_fourth_test_results[6]]
+            resultoriented=[list_of_first_test_results[7],list_of_second_test_results[7],list_of_third_test_results[7],list_of_fourth_test_results[7]]
+            leadership=[list_of_first_test_results[8],list_of_second_test_results[8],list_of_third_test_results[8],list_of_fourth_test_results[8]]
+            presentation=[list_of_first_test_results[9],list_of_second_test_results[9],list_of_third_test_results[9],list_of_fourth_test_results[9]]
+            entreprenuerial=[list_of_first_test_results[10],list_of_second_test_results[10],list_of_third_test_results[10],list_of_fourth_test_results[10]]
+            aptitude=[list_of_first_test_results[11],list_of_second_test_results[11],list_of_third_test_results[11],list_of_fourth_test_results[11]]
+            print(aptitude)
+            
+            strongi = int((((sum(technical)+sum(creativity)+sum(resultoriented)))/60)*5)
+            leaderi = int((((sum(projectmmt)+sum(leadership)+sum(timemmt)+sum(resultoriented)+sum(communication)))/100)*5)
+            customeri = int((((sum(presentation)+sum(gk)+sum(timemmt)+sum(interpersonal)+sum(communication)))/100)*5)
+            projecti = int((((sum(projectmmt)+sum(resultoriented)+sum(timemmt)+sum(technical)+sum(communication))/100)*5))
+            designi = int((((sum(leadership)+sum(resultoriented)+sum(creativity)+sum(technical))/80)*5))
+            marketi = int(((( sum(presentation)+sum(resultoriented)+sum(communication)+sum(interpersonal)+sum(gk))/100)*5))
+            def st(strongi):
+                if strongi >= 4:
+                    return "Strong in Tech"
+                else:
+                    return "Generic"
+            strong = st(strongi)
+            def lr(leaderi):
+                if leaderi >= 4:
+                    return "Leadership Roles"
+                else:
+                    return "Generic"
+            leader = lr(leaderi)
+            def cfr(customei):
+                if  customeri >3 :
+                    return "Customer Facing Roles"
+                else:
+                    return "Generic"
+            customer = cfr(customeri)
+            def pm(customer):
+                if  projecti >3 :
+                    return "Project Management "
+                else:
+                    return "None"
+            project = pm(projecti)
+            def df(designi):
+                if designi >=3  :
+                    return "Design Profile "
+                else:
+                    return "None"
+            design = df(designi)
+            def mr(marketi):
+                if marketi >= 3  :
+                    return "Marketing Role "
+                else:
+                    return "None"
+            market = mr(projecti)
+
+            
+            print(entreprenuerial)
+            print(gk)
+            print('++++')
+            return render_template('report.html',user=user,design=design,market=market,strong=strong,leader=leader,customer=customer,project=project,presentation=json.dumps(presentation),resultoriented=json.dumps(resultoriented),leadership=json.dumps(leadership),ent1=json.dumps(entreprenuerial),apt=json.dumps(aptitude),interpersonal=json.dumps(interpersonal),communication=json.dumps(communication),technical=json.dumps(technical),creativity=json.dumps(creativity),projectmmt=json.dumps(projectmmt),timemmt=json.dumps(timemmt),gk=json.dumps(gk))
+        # this is for test5...
+        elif  Assessment1 is not None and Assessment2 is not None and  Assessment3 is not None and Assessment4 is not  None and Assessment5 is not  None and Assessment6 is  None  and Assessment7 is  None and Assessment8 is  None:
+
+
+        
+            usn = session.get('studentemail')
+            user = db.users.find_one({'usn':usn })
+            test1_skills = user["Assessment1"]
+            test2_skills = user["Assessment2"]
+            test3_skills = user["Assessment3"]
+            test4_skills = user["Assessment4"]
+            test5_skills = user["Assessment5"]
+            def summary(userr):
+                p=[]
+                for key, value in userr.items():
+                        p.append(int(value))
+                return p  
+            list_of_second_test_results=summary(test2_skills)            
+            list_of_first_test_results=summary(test1_skills)
+            list_of_third_test_results=summary(test3_skills)
+            list_of_fourth_test_results=summary(test4_skills)
+            list_of_fifth_test_results=summary(test5_skills)
+          
+          
+
+            communication=[list_of_first_test_results[0],list_of_second_test_results[0],list_of_third_test_results[0],list_of_fourth_test_results[0],list_of_fifth_test_results[0]]
+            technical=[list_of_first_test_results[1],list_of_second_test_results[1],list_of_third_test_results[1],list_of_fourth_test_results[1],list_of_fifth_test_results[1]]
+            creativity=[list_of_first_test_results[2],list_of_second_test_results[2],list_of_third_test_results[2],list_of_fourth_test_results[2],list_of_fifth_test_results[2]]
+            projectmmt=[list_of_first_test_results[3],list_of_second_test_results[3],list_of_third_test_results[3],list_of_fourth_test_results[3],list_of_fifth_test_results[3]]
+            timemmt=[list_of_first_test_results[4],list_of_second_test_results[4],list_of_third_test_results[4],list_of_fourth_test_results[4],list_of_fifth_test_results[4]]
+            gk=[list_of_first_test_results[5],list_of_second_test_results[5],list_of_third_test_results[5],list_of_fourth_test_results[5],list_of_fifth_test_results[5]]
+            interpersonal=[list_of_first_test_results[6],list_of_second_test_results[6],list_of_third_test_results[6],list_of_fourth_test_results[6],list_of_fifth_test_results[6]]
+            resultoriented=[list_of_first_test_results[7],list_of_second_test_results[7],list_of_third_test_results[7],list_of_fourth_test_results[7],list_of_fifth_test_results[7]]
+            leadership=[list_of_first_test_results[8],list_of_second_test_results[8],list_of_third_test_results[8],list_of_fourth_test_results[8],list_of_fifth_test_results[8]]
+            presentation=[list_of_first_test_results[9],list_of_second_test_results[9],list_of_third_test_results[9],list_of_fourth_test_results[9],list_of_fifth_test_results[9]]
+            entreprenuerial=[list_of_first_test_results[10],list_of_second_test_results[10],list_of_third_test_results[10],list_of_fourth_test_results[10],list_of_fifth_test_results[10]]
+            aptitude=[list_of_first_test_results[11],list_of_second_test_results[11],list_of_third_test_results[11],list_of_fourth_test_results[11],list_of_fifth_test_results[11]]
+            print(aptitude)
+            
+            strongi = int((((sum(technical)+sum(creativity)+sum(resultoriented)))/75)*5)
+            leaderi = int((((sum(projectmmt)+sum(leadership)+sum(timemmt)+sum(resultoriented)+sum(communication)))/125)*5)
+            customeri = int((((sum(presentation)+sum(gk)+sum(timemmt)+sum(interpersonal)+sum(communication)))/125)*5)
+            projecti = int((((sum(projectmmt)+sum(resultoriented)+sum(timemmt)+sum(technical)+sum(communication))/125)*5))
+            designi = int((((sum(leadership)+sum(resultoriented)+sum(creativity)+sum(technical))/100)*5))
+            marketi = int(((( sum(presentation)+sum(resultoriented)+sum(communication)+sum(interpersonal)+sum(gk))/125)*5))
+    
+            def st(strongi):
+                if strongi >= 4:
+                    return "Strong in Tech"
+                else:
+                    return "Generic"
+            strong = st(strongi)
+            def lr(leaderi):
+                if leaderi >= 4:
+                    return "Leadership Roles"
+                else:
+                    return "Generic"
+            leader = lr(leaderi)
+            def cfr(customei):
+                if  customeri >3 :
+                    return "Customer Facing Roles"
+                else:
+                    return "Generic"
+            customer = cfr(customeri)
+            def pm(customer):
+                if  projecti >3 :
+                    return "Project Management "
+                else:
+                    return "None"
+            project = pm(projecti)
+            def df(designi):
+                if designi >=3  :
+                    return "Design Profile "
+                else:
+                    return "None"
+            design = df(designi)
+            def mr(marketi):
+                if marketi >= 3  :
+                    return "Marketing Role "
+                else:
+                    return "None"
+            market = mr(projecti)
+
+            
+            print(entreprenuerial)
+            print(gk)
+            print('++++')
+            return render_template('report.html',user=user,design=design,market=market,strong=strong,leader=leader,customer=customer,project=project,presentation=json.dumps(presentation),resultoriented=json.dumps(resultoriented),leadership=json.dumps(leadership),ent1=json.dumps(entreprenuerial),apt=json.dumps(aptitude),interpersonal=json.dumps(interpersonal),communication=json.dumps(communication),technical=json.dumps(technical),creativity=json.dumps(creativity),projectmmt=json.dumps(projectmmt),timemmt=json.dumps(timemmt),gk=json.dumps(gk))
+    #    this is for test6... 
+        elif  Assessment1 is not None and Assessment2 is not None and  Assessment3 is not None and Assessment4 is not  None and Assessment5 is not  None and Assessment6 is  not None  and Assessment7 is  None and Assessment8 is  None:
+
+
+        
+            usn = session.get('studentemail')
+            user = db.users.find_one({'usn':usn })
+            test1_skills = user["Assessment1"]
+            test2_skills = user["Assessment2"]
+            test3_skills = user["Assessment3"]
+            test4_skills = user["Assessment4"]
+            test5_skills = user["Assessment5"]
+            test6_skills = user["Assessment6"]
+            def summary(userr):
+                p=[]
+                for key, value in userr.items():
+                        p.append(int(value))
+                return p  
+            list_of_second_test_results=summary(test2_skills)            
+            list_of_first_test_results=summary(test1_skills)
+            list_of_third_test_results=summary(test3_skills)
+            list_of_fourth_test_results=summary(test4_skills)
+            list_of_fifth_test_results=summary(test5_skills)
+            list_of_sixth_test_results=summary(test6_skills)
+            # communication1 = int(user['Assessment1'].get('communication'))
+            # technical1 = int(user["Assessment1"].get('technical'))
+            # creativity1 = int(user['Assessment1'].get('creativity'))
+            # projectmm1 = int(user['Assessment1'].get('projectmmt'))
+            # timemanagement1 = int(user['Assessment1'].get('timemanagement'))
+            # generalknowledge1 = int(user['Assessment1'].get('generalknowledge'))
+            # interpersonal1 = int(user['Assessment1'].get('interpersonal'))
+            # resultoriented1 = int(user['Assessment1'].get('resultoriented'))
+            # leardership1 = int(user['Assessment1'].get('leardership'))
+            # presentation1 = int(user['Assessment1'].get('presentation'))
+            communication=[list_of_first_test_results[0],list_of_second_test_results[0],list_of_third_test_results[0],list_of_fourth_test_results[0],list_of_fifth_test_results[0],list_of_sixth_test_results[0]]
+            technical=[list_of_first_test_results[1],list_of_second_test_results[1],list_of_third_test_results[1],list_of_fourth_test_results[1],list_of_fifth_test_results[1],list_of_sixth_test_results[1]]
+            creativity=[list_of_first_test_results[2],list_of_second_test_results[2],list_of_third_test_results[2],list_of_fourth_test_results[2],list_of_fifth_test_results[2],list_of_sixth_test_results[2]]
+            projectmmt=[list_of_first_test_results[3],list_of_second_test_results[3],list_of_third_test_results[3],list_of_fourth_test_results[3],list_of_fifth_test_results[3],list_of_sixth_test_results[3]]
+            timemmt=[list_of_first_test_results[4],list_of_second_test_results[4],list_of_third_test_results[4],list_of_fourth_test_results[4],list_of_fifth_test_results[4],list_of_sixth_test_results[4]]
+            gk=[list_of_first_test_results[5],list_of_second_test_results[5],list_of_third_test_results[5],list_of_fourth_test_results[5],list_of_fifth_test_results[5],list_of_sixth_test_results[5]]
+            interpersonal=[list_of_first_test_results[6],list_of_second_test_results[6],list_of_third_test_results[6],list_of_fourth_test_results[6],list_of_fifth_test_results[6],list_of_sixth_test_results[6]]
+            resultoriented=[list_of_first_test_results[7],list_of_second_test_results[7],list_of_third_test_results[7],list_of_fourth_test_results[7],list_of_fifth_test_results[7],list_of_sixth_test_results[7]]
+            leadership=[list_of_first_test_results[8],list_of_second_test_results[8],list_of_third_test_results[8],list_of_fourth_test_results[8],list_of_fifth_test_results[8],list_of_sixth_test_results[8]]
+            presentation=[list_of_first_test_results[9],list_of_second_test_results[9],list_of_third_test_results[9],list_of_fourth_test_results[9],list_of_fifth_test_results[9],list_of_sixth_test_results[9]]
+            entreprenuerial=[list_of_first_test_results[10],list_of_second_test_results[10],list_of_third_test_results[10],list_of_fourth_test_results[10],list_of_fifth_test_results[10],list_of_sixth_test_results[10]]
+            aptitude=[list_of_first_test_results[11],list_of_second_test_results[11],list_of_third_test_results[11],list_of_fourth_test_results[11],list_of_fifth_test_results[11],list_of_sixth_test_results[11]]
+            print(sum(technical))
+            strongi = int((((sum(technical)+sum(creativity)+sum(resultoriented)))/90)*5)
+            leaderi = int((((sum(projectmmt)+sum(leadership)+sum(timemmt)+sum(resultoriented)+sum(communication)))/150)*5)
+            customeri = int((((sum(presentation)+sum(gk)+sum(timemmt)+sum(interpersonal)+sum(communication)))/150)*5)
+            projecti = int((((sum(projectmmt)+sum(resultoriented)+sum(timemmt)+sum(technical)+sum(communication))/150)*5))
+            designi = int((((sum(leadership)+sum(resultoriented)+sum(creativity)+sum(technical))/120)*5))
+            marketi = int(((( sum(presentation)+sum(resultoriented)+sum(communication)+sum(interpersonal)+sum(gk))/150)*5))
+            print(customeri)
+            print(projecti)
+            def st(strongi):
+                if strongi >= 4:
+                    return "Strong in Tech"
+                else:
+                    return "Generic"
+            strong = st(strongi)
+            def lr(leaderi):
+                if leaderi >= 4:
+                    return "Leadership Roles"
+                else:
+                    return "Generic"
+            leader = lr(leaderi)
+            def cfr(customei):
+                if  customeri >3 :
+                    return "Customer Facing Roles"
+                else:
+                    return "Generic"
+            customer = cfr(customeri)
+            def pm(customer):
+                if  projecti >3 :
+                    return "Project Management "
+                else:
+                    return "None"
+            project = pm(projecti)
+            def df(designi):
+                if designi >=3  :
+                    return "Design Profile "
+                else:
+                    return "None"
+            design = df(designi)
+            def mr(marketi):
+                if marketi >= 3  :
+                    return "Marketing Role "
+                else:
+                    return "None"
+            market = mr(projecti)
+
+            
+            
+
+            
+            print('++++')
+            return render_template('report.html',user=user,design=design,market=market,strong=strong,leader=leader,customer=customer,project=project,presentation=json.dumps(presentation),resultoriented=json.dumps(resultoriented),leadership=json.dumps(leadership),ent1=json.dumps(entreprenuerial),apt=json.dumps(aptitude),interpersonal=json.dumps(interpersonal),communication=json.dumps(communication),technical=json.dumps(technical),creativity=json.dumps(creativity),projectmmt=json.dumps(projectmmt),timemmt=json.dumps(timemmt),gk=json.dumps(gk))
+        # this is for test7
+        elif  Assessment1 is not None and Assessment2 is not None and  Assessment3 is not None and Assessment4 is not  None and Assessment5 is not None and Assessment6 is not None  and Assessment7 is not None and Assessment8 is  None:
+
+
+        
+            usn = session.get('studentemail')
+            user = db.users.find_one({'usn':usn })
+            test1_skills = user["Assessment1"]
+            test2_skills = user["Assessment2"]
+            test3_skills = user["Assessment3"]
+            test4_skills = user["Assessment4"]
+            test5_skills = user["Assessment5"]
+            test6_skills = user["Assessment6"]
+            test7_skills = user["Assessment7"]
+            def summary(userr):
+                p=[]
+                for key, value in userr.items():
+                        p.append(int(value))
+                return p  
+            list_of_second_test_results=summary(test2_skills)            
+            list_of_first_test_results=summary(test1_skills)
+            list_of_third_test_results=summary(test3_skills)
+            list_of_fourth_test_results=summary(test4_skills)
+            list_of_fifth_test_results=summary(test5_skills)
+            list_of_sixth_test_results=summary(test6_skills)
+            list_of_seventh_test_results=summary(test7_skills)
+           
+
+            communication=[list_of_first_test_results[0],list_of_second_test_results[0],list_of_third_test_results[0],list_of_fourth_test_results[0],list_of_fifth_test_results[0],list_of_sixth_test_results[0],list_of_seventh_test_results[0]]
+            technical=[list_of_first_test_results[1],list_of_second_test_results[1],list_of_third_test_results[1],list_of_fourth_test_results[1],list_of_fifth_test_results[1],list_of_sixth_test_results[1],list_of_seventh_test_results[1]]
+            creativity=[list_of_first_test_results[2],list_of_second_test_results[2],list_of_third_test_results[2],list_of_fourth_test_results[2],list_of_fifth_test_results[2],list_of_sixth_test_results[2],list_of_seventh_test_results[2]]
+            projectmmt=[list_of_first_test_results[3],list_of_second_test_results[3],list_of_third_test_results[3],list_of_fourth_test_results[3],list_of_fifth_test_results[3],list_of_sixth_test_results[3],list_of_seventh_test_results[3]]
+            timemmt=[list_of_first_test_results[4],list_of_second_test_results[4],list_of_third_test_results[4],list_of_fourth_test_results[4],list_of_fifth_test_results[4],list_of_sixth_test_results[4],list_of_seventh_test_results[4]]
+            gk=[list_of_first_test_results[5],list_of_second_test_results[5],list_of_third_test_results[5],list_of_fourth_test_results[5],list_of_fifth_test_results[5],list_of_sixth_test_results[5],list_of_seventh_test_results[5]]
+            interpersonal=[list_of_first_test_results[6],list_of_second_test_results[6],list_of_third_test_results[6],list_of_fourth_test_results[6],list_of_fifth_test_results[6],list_of_sixth_test_results[6],list_of_seventh_test_results[6]]
+            resultoriented=[list_of_first_test_results[7],list_of_second_test_results[7],list_of_third_test_results[7],list_of_fourth_test_results[7],list_of_fifth_test_results[7],list_of_sixth_test_results[7],list_of_seventh_test_results[7]]
+            leadership=[list_of_first_test_results[8],list_of_second_test_results[8],list_of_third_test_results[8],list_of_fourth_test_results[8],list_of_fifth_test_results[8],list_of_sixth_test_results[8],list_of_seventh_test_results[8]]
+            presentation=[list_of_first_test_results[9],list_of_second_test_results[9],list_of_third_test_results[9],list_of_fourth_test_results[9],list_of_fifth_test_results[9],list_of_sixth_test_results[9],list_of_seventh_test_results[9]]
+            entreprenuerial=[list_of_first_test_results[10],list_of_second_test_results[10],list_of_third_test_results[10],list_of_fourth_test_results[10],list_of_fifth_test_results[10],list_of_sixth_test_results[10],list_of_seventh_test_results[10]]
+            aptitude=[list_of_first_test_results[11],list_of_second_test_results[11],list_of_third_test_results[11],list_of_fourth_test_results[11],list_of_fifth_test_results[11],list_of_sixth_test_results[11],list_of_seventh_test_results[11]]
+            print(aptitude)
+            
+            strongi = int((((sum(technical)+sum(creativity)+sum(resultoriented)))/105)*5)
+            leaderi = int((((sum(projectmmt)+sum(leadership)+sum(timemmt)+sum(resultoriented)+sum(communication)))/175)*5)
+            customeri = int((((sum(presentation)+sum(gk)+sum(timemmt)+sum(interpersonal)+sum(communication)))/175)*5)
+            projecti = int((((sum(projectmmt)+sum(resultoriented)+sum(timemmt)+sum(technical)+sum(communication))/175)*5))
+            designi = int((((sum(leadership)+sum(resultoriented)+sum(creativity)+sum(technical))/140)*5))
+            marketi = int(((( sum(presentation)+sum(resultoriented)+sum(communication)+sum(interpersonal)+sum(gk))/175)*5))
+            def st(strongi):
+                if strongi >= 4:
+                    return "Strong in Tech"
+                else:
+                    return "Generic"
+            strong = st(strongi)
+            def lr(leaderi):
+                if leaderi >= 4:
+                    return "Leadership Roles"
+                else:
+                    return "Generic"
+            leader = lr(leaderi)
+            def cfr(customei):
+                if  customeri >3 :
+                    return "Customer Facing Roles"
+                else:
+                    return "Generic"
+            customer = cfr(customeri)
+            def pm(customer):
+                if  projecti >3 :
+                    return "Project Management "
+                else:
+                    return "None"
+            project = pm(projecti)
+            def df(designi):
+                if designi >=3  :
+                    return "Design Profile "
+                else:
+                    return "None"
+            design = df(designi)
+            def mr(marketi):
+                if marketi >= 3  :
+                    return "Marketing Role "
+                else:
+                    return "None"
+            market = mr(projecti)
+
+            
+            print(entreprenuerial)
+            print(gk)
+            print('++++')
+            return render_template('report.html',user=user,design=design,market=market,strong=strong,leader=leader,customer=customer,project=project,presentation=json.dumps(presentation),resultoriented=json.dumps(resultoriented),leadership=json.dumps(leadership),ent1=json.dumps(entreprenuerial),apt=json.dumps(aptitude),interpersonal=json.dumps(interpersonal),communication=json.dumps(communication),technical=json.dumps(technical),creativity=json.dumps(creativity),projectmmt=json.dumps(projectmmt),timemmt=json.dumps(timemmt),gk=json.dumps(gk))
+        # this is for test8
+        elif Assessment8 is not None:
+        
+            usn = session.get('studentemail')
+            user = db.users.find_one({'usn':usn })
+            test1_skills = user["Assessment1"]
+            test2_skills = user["Assessment2"]
+            test3_skills = user["Assessment3"]
+            test4_skills = user["Assessment4"]
+            test5_skills = user["Assessment5"]
+            test6_skills = user["Assessment6"]
+            test7_skills = user["Assessment7"]
+            test8_skills = user["Assessment8"]
+            def summary(userr):
+                p=[]
+                for key, value in userr.items():
+                        p.append(int(value))
+                return p  
+            list_of_second_test_results=summary(test2_skills)            
+            list_of_first_test_results=summary(test1_skills)
+            list_of_third_test_results=summary(test3_skills)
+            list_of_fourth_test_results=summary(test4_skills)
+            list_of_fifth_test_results=summary(test5_skills)
+            list_of_sixth_test_results=summary(test6_skills)
+            list_of_seventh_test_results=summary(test7_skills)
+            print(list_of_sixth_test_results)
+            list_of_eight_test_results=summary(test8_skills)
+            print(list_of_eight_test_results)
+            list_of_assessments=["Assessment1","Assessment2","Assessment3","Assessment4","Assessment5","Assessment6","Assessment7","Assessment8"]
+            print(list_of_assessments)
+
+            communication=[list_of_first_test_results[0],list_of_second_test_results[0],list_of_third_test_results[0],list_of_fourth_test_results[0],list_of_fifth_test_results[0],list_of_sixth_test_results[0],list_of_seventh_test_results[0],list_of_eight_test_results[0]]
+            technical=[list_of_first_test_results[1],list_of_second_test_results[1],list_of_third_test_results[1],list_of_fourth_test_results[1],list_of_fifth_test_results[1],list_of_sixth_test_results[1],list_of_seventh_test_results[1],list_of_eight_test_results[1]]
+            creativity=[list_of_first_test_results[2],list_of_second_test_results[2],list_of_third_test_results[2],list_of_fourth_test_results[2],list_of_fifth_test_results[2],list_of_sixth_test_results[2],list_of_seventh_test_results[2],list_of_eight_test_results[2]]
+            projectmmt=[list_of_first_test_results[3],list_of_second_test_results[3],list_of_third_test_results[3],list_of_fourth_test_results[3],list_of_fifth_test_results[3],list_of_sixth_test_results[3],list_of_seventh_test_results[3],list_of_eight_test_results[3]]
+            timemmt=[list_of_first_test_results[4],list_of_second_test_results[4],list_of_third_test_results[4],list_of_fourth_test_results[4],list_of_fifth_test_results[4],list_of_sixth_test_results[4],list_of_seventh_test_results[4],list_of_eight_test_results[4]]
+            gk=[list_of_first_test_results[5],list_of_second_test_results[5],list_of_third_test_results[5],list_of_fourth_test_results[5],list_of_fifth_test_results[5],list_of_sixth_test_results[5],list_of_seventh_test_results[5],list_of_eight_test_results[5]]
+            interpersonal=[list_of_first_test_results[6],list_of_second_test_results[6],list_of_third_test_results[6],list_of_fourth_test_results[6],list_of_fifth_test_results[6],list_of_sixth_test_results[6],list_of_seventh_test_results[6],list_of_eight_test_results[6]]
+            resultoriented=[list_of_first_test_results[7],list_of_second_test_results[7],list_of_third_test_results[7],list_of_fourth_test_results[7],list_of_fifth_test_results[7],list_of_sixth_test_results[7],list_of_seventh_test_results[7],list_of_eight_test_results[7]]
+            leadership=[list_of_first_test_results[8],list_of_second_test_results[8],list_of_third_test_results[8],list_of_fourth_test_results[8],list_of_fifth_test_results[8],list_of_sixth_test_results[8],list_of_seventh_test_results[8],list_of_eight_test_results[8]]
+            presentation=[list_of_first_test_results[9],list_of_second_test_results[9],list_of_third_test_results[9],list_of_fourth_test_results[9],list_of_fifth_test_results[9],list_of_sixth_test_results[9],list_of_seventh_test_results[9],list_of_eight_test_results[9]]
+            entreprenuerial=[list_of_first_test_results[10],list_of_second_test_results[10],list_of_third_test_results[10],list_of_fourth_test_results[10],list_of_fifth_test_results[10],list_of_sixth_test_results[10],list_of_seventh_test_results[10],list_of_eight_test_results[10]]
+            aptitude=[list_of_first_test_results[11],list_of_second_test_results[11],list_of_third_test_results[11],list_of_fourth_test_results[11],list_of_fifth_test_results[11],list_of_sixth_test_results[11],list_of_seventh_test_results[11],list_of_eight_test_results[11]]
+            print(aptitude)
+            
+            strongi = int((((sum(technical)+sum(creativity)+sum(resultoriented)))/120)*5)
+            leaderi = int((((sum(projectmmt)+sum(leadership)+sum(timemmt)+sum(resultoriented)+sum(communication)))/200)*5)
+            customeri = int((((sum(presentation)+sum(gk)+sum(timemmt)+sum(interpersonal)+sum(communication)))/200)*5)
+            projecti = int((((sum(projectmmt)+sum(resultoriented)+sum(timemmt)+sum(technical)+sum(communication))/200)*5))
+            designi = int((((sum(leadership)+sum(resultoriented)+sum(creativity)+sum(technical))/160)*5))
+            marketi = int(((( sum(presentation)+sum(resultoriented)+sum(communication)+sum(interpersonal)+sum(gk))/200)*5))
+            def st(strongi):
+                if strongi >= 4:
+                    return "Strong in Tech"
+                else:
+                    return "Generic"
+            strong = st(strongi)
+            def lr(leaderi):
+                if leaderi >= 4:
+                    return "Leadership Roles"
+                else:
+                    return "Generic"
+            leader = lr(leaderi)
+            def cfr(customei):
+                if  customeri >3 :
+                    return "Customer Facing Roles"
+                else:
+                    return "Generic"
+            customer = cfr(customeri)
+            def pm(customer):
+                if  projecti >3 :
+                    return "Project Management "
+                else:
+                    return "None"
+            project = pm(projecti)
+            def df(designi):
+                if designi >=3  :
+                    return "Design Profile "
+                else:
+                    return "None"
+            design = df(designi)
+            def mr(marketi):
+                if marketi >= 3  :
+                    return "Marketing Role "
+                else:
+                    return "None"
+            market = mr(projecti)
+
+            
+            print(entreprenuerial)
+            print(gk)
+            print('++++')
+            return render_template('report.html',user=user,design=design,market=market,strong=strong,leader=leader,customer=customer,project=project,presentation=json.dumps(presentation),resultoriented=json.dumps(resultoriented),leadership=json.dumps(leadership),ent1=json.dumps(entreprenuerial),apt=json.dumps(aptitude),interpersonal=json.dumps(interpersonal),communication=json.dumps(communication),technical=json.dumps(technical),creativity=json.dumps(creativity),projectmmt=json.dumps(projectmmt),timemmt=json.dumps(timemmt),gk=json.dumps(gk))
+
+
 @views.route('/resume')
 def resume():
     if 'studentemail' in session :

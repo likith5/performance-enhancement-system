@@ -2499,11 +2499,21 @@ def userdata():
             skill3= request.form.get('skill3')
             skill4= request.form.get('skill4')
             skill5= request.form.get('skill5')
+            skill6= request.form.get('skill6')
+            skill7= request.form.get('skill7')
+            skill8= request.form.get('skill8')
+            skill9= request.form.get('skill9')
+            skill10= request.form.get('skill10')
             certification1= request.form.get('certification1')
             certification2= request.form.get('certification2')
             certification3= request.form.get('certification3')
             certification4= request.form.get('certification4')
             certification5= request.form.get('certification5')
+            certification6= request.form.get('certification6')
+            certification7= request.form.get('certification7')
+            certification8= request.form.get('certification8')
+            certification9= request.form.get('certification9')
+            certification10= request.form.get('certification10')
             internshipexperience= request.form.get('internshipexperience')
 
             hiredcontent= request.form.get('hiredcontent')
@@ -2536,11 +2546,22 @@ def userdata():
                                     "skill3":skill3,
                                     "skill4":skill4,
                                     "skill5":skill5,
+                                    "skill5":skill5,
+                                    "skill6":skill6,
+                                    "skill7":skill7,
+                                    "skill8":skill8,
+                                    "skill9":skill9,
+                                    "skill10":skill10,
                                     "certification1":certification1,
                                     "certification2":certification2,
                                     "certification3":certification3,
                                     "certification4":certification4,
                                     "certification5":certification5,
+                                    "certification6":certification6,
+                                    "certification7":certification7,
+                                    "certification8":certification8,
+                                    "certification9":certification9,
+                                    "certification10":certification10,
                                     "internshipexperience":internshipexperience,
                                     "hiredcontent":hiredcontent,
                                 }
@@ -2551,7 +2572,7 @@ def userdata():
                         {"usn": usn},
                         {
                             "$set": {
-                                "certificate": {
+                                "certificate1": {
                                     
                                     
                                     "certification1":certification1,
@@ -2568,7 +2589,24 @@ def userdata():
                         {"usn": usn},
                         {
                             "$set": {
-                                "skills": {
+                                "certificate2": {
+                                    
+                                    
+                                    "certification6":certification6,
+                                    "certification7":certification7,
+                                    "certification8":certification8,
+                                    "certification9":certification9,
+                                    "certification10":certification10,
+                                    
+                                }
+                            }
+                        }
+                    )
+                db.users.update_one(
+                        {"usn": usn},
+                        {
+                            "$set": {
+                                "skills1": {
                                     
                                     
                                      "skill1":skill1,
@@ -2576,6 +2614,23 @@ def userdata():
                                     "skill3":skill3,
                                     "skill4":skill4,
                                     "skill5":skill5,
+                                    
+                                }
+                            }
+                        }
+                    )
+                db.users.update_one(
+                        {"usn": usn},
+                        {
+                            "$set": {
+                                "skills2": {
+                                    
+                                    
+                                    "skill6":skill6,
+                                    "skill7":skill7,
+                                    "skill8":skill8,
+                                    "skill9":skill9,
+                                    "skill10":skill10,
                                     
                                 }
                             }
@@ -2767,7 +2822,7 @@ def downloadi_csv():
         sheet.append(['', usn, username, 'Assesment7', communicationss6, technicalss6, creativityss6, projectmanagementss6, timemangementss6, generalknowledgess6, interpersonalss6, resultorientedss6, leadershipss6, presentationss6,entrepreneurs6,aptitudes6])
         sheet.append(['', usn, username, 'Assesment6', communicationss7, technicalss7, creativityss7, projectmanagementss7, timemangementss7, generalknowledgess7, interpersonalss7, resultorientedss7, leadershipss7, presentationss7,entrepreneurs7,aptitudes7])
         sheet.append(['', usn, username, 'Assesment8', communicationss8, technicalss8, creativityss8, projectmanagementss8, timemangementss8, generalknowledgess8, interpersonalss8, resultorientedss8, leadershipss8, presentationss8,entrepreneurs8,aptitudes8])
-        sheet.append([''])
+        # sheet.append([''])
     
         serial_number += 1
        # Apply background color to cells with values 1, 2, 3, 4, 5 in columns E to N

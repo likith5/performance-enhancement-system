@@ -73,23 +73,40 @@
 <div class="border border-dark border-4 mt-4 fs-5" style="margin:400px 25px 25px 25px ;">
     <div class="inner" style="padding:35px">
 <div class="row">
-    <div class="col fw-bolder" style="display: flex;">skills:</div>
-    <div> <ol class="p-4">
-        {% for key,value in user.skills.items() %}
+    <div class=" fw-bolder" style="display: flex;">skills:</div>
+    <div class="col-lg-6"> <ul class="p-4">
+        {% for key,value in user.skills1.items() %}
 
         <li>{{value}}</li>
         {% endfor %}
        
-    </ol></div>
-</div>
-<div class="row">
-    <div class="col fw-bolder" style="display: flex;">Certifications: </div>
-    <div> <ol class="p-4">
-        {% for key,value in user.certificate.items() %}
+    </ul></div>
+    <div class="col-lg-6"> <ul class="p-4">
+        {% for key,value in user.skills2.items() %}
 
         <li>{{value}}</li>
         {% endfor %}
-    </ol></div>
+       
+    </ul></div>
+</div>
+<div class="row">
+    <div class=" fw-bolder" style="display: flex;">Certifications: </div>
+    <div class="col-lg-6"> <ul class="p-4">
+        {% for key,value in user.certificate1.items() %}
+        
+            
+
+                <li>{{value}}</li>
+        {% endfor %}
+    </ul></div>
+    <div class="col-lg-6"> <ul class="p-4">
+        {% for key,value in user.certificate2.items() %}
+        
+            
+
+                <li>{{value}}</li>
+        {% endfor %}
+    </ul></div>
 </div>
 <div class="row pt-2 pb-2">
     <div class="col fw-bolder" style="display: flex;">Why I Should be hired (in 100 words):</div>

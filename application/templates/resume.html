@@ -17,16 +17,16 @@
             <div class="col fw-bolder " style="display: flex; ">E-mail:<p class="fw-bold" style="padding:0 0 0 15px">{{user.personal.email}}</p></div>
         </div>
         <div class="row" style="margin:0 0 10px 0" >
-            <div class="col fw-bolder" style="display: flex;">UGCollege: <p class=" fw-bold" style="padding:0 0 0 15px">{{user.personal.college}}</p></div>
+            <div class="col fw-bolder" style="display: flex;">UG College: <p class=" fw-bold" style="padding:0 0 0 15px">{{user.personal.college}}</p></div>
 
             <div class="col fw-bolder" style="display: flex;">Phone:<p class=" fw-bold" style="padding:0 0 0 15px">{{user.personal.phone}}</p></div>
         </div>
         <div class="row" style="margin:0 0 10px 0" >
-            <div class="col fw-bolder" style="display: flex;">Number of technical Skills: <p class=" fw-bold" style="padding:0 0 0 15px">{{user.personal.technicalskills}}</p></div>
+            <div class="col fw-bolder" style="display: flex;">Number of Technical Skills: <p class=" fw-bold" style="padding:0 0 0 15px">{{user.personal.technicalskills}}</p></div>
             <div class="col fw-bolder" style="display: flex;">City:<p class=" fw-bold" style="padding:0 0 0 15px">{{user.personal.city}}</p></div>
         </div>
         <div class="row" style="margin:0 0 10px 0">
-            <div class="col fw-bolder" style="display: flex;">Number of soft Skills: <p class=" fw-bold" style="padding:0 0 0 15px">{{user.personal.softskills}}</p></div>
+            <div class="col fw-bolder" style="display: flex;">Number of Soft Skills: <p class=" fw-bold" style="padding:0 0 0 15px">{{user.personal.softskills}}</p></div>
         </div>
       
        
@@ -49,7 +49,7 @@
             
           </tr>
           <tr >
-            <th scope="row">percentage</th>
+            <th scope="row">Percentage</th>
             <td>{{user.personal.tenthmarks}}%</td>
             <td>{{user.personal.twelvethmarks}}%</td>
           </tr>
@@ -59,7 +59,7 @@
 </div>
 <div class="other" style="margin:20px 0 0 45px">
 <div class="row pt-1  pd-5" style="padding:0 0 10px 0">
-    <div class="col fw-bolder " style="display: flex; ">Degree percentage: <p class="pl-4 " style="padding:0 0 0 25px;font-weight: 450; ">{{user.personal.ugaverage}}</b>%</p></div>
+    <div class="col fw-bolder " style="display: flex; ">Degree Percentage: <p class="pl-4 " style="padding:0 0 0 25px;font-weight: 450; ">{{user.personal.ugaverage}}</b>%</p></div>
 </div>
 <div class="row ">
     <div class="col fw-bolder pl-4" style="display: flex; ">Internship Experience: </div>
@@ -73,7 +73,7 @@
 <div class="border border-dark border-4 mt-4 fs-5" style="margin:400px 25px 25px 25px ;">
     <div class="inner" style="padding:35px">
 <div class="row">
-    <div class=" fw-bolder" style="display: flex;">skills:</div>
+    <div class=" fw-bolder" style="display: flex;">Skills:</div>
     <div class="col-lg-6"> <ul class="p-4">
         {% for key,value in user.skills1.items() %}
 
@@ -109,7 +109,7 @@
     </ul></div>
 </div>
 <div class="row pt-2 pb-2">
-    <div class="col fw-bolder" style="display: flex;">Why I Should be hired (in 100 words):</div>
+    <div class="col fw-bolder" style="display: flex;">Why I should be hire you (in 100 words):</div>
     <p class="p-5" style=" height:150px;">{{user.personal.hiredcontent}}</p>
 </div>
 </div>

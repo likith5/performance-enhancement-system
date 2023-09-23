@@ -17,10 +17,11 @@ import xlsxwriter
 
 views = Blueprint('views',__name__)
 
-
+# routing has been divided into  two sub categories one is views.py and the other is auth.py views.py contains all the functionalites regarding the templates
+#  on how the renderingand routing of each page takes place which will be mentioned in the each comments below.....
 @views.route("/")
-
 def index():
+    # index acts as a base layout page where nav bar and other design templates or rendered commonly 
     if 'email' in session:
         return redirect(url_for('views.dashboard'))
     return redirect(url_for('auth.login'))
@@ -28,12 +29,15 @@ def index():
 
     
     return render_template('index.html')
+
+# profile page containes the deatils of all the individiual student
 @views.route("/profile")
 def profile():
     
-
+# it has been divided into two sub categories one is for teacher and the other is for student which willl be in session
     title="profile"
     if  'teacheremail' in session:
+        # session will be obtained and used to query out the data from the database and used to render it on the front end
         usn = session.get('studentname')
         user = db.users.find_one({'usn':usn })
         username = user["personal"].get('username')
@@ -72,13 +76,16 @@ def profile():
         Assessment6 =user.get('Assessment6')
         Assessment7 =user.get('Assessment7')
         Assessment8 =user.get('Assessment8')
-    #    this is for test1.... 
+    #    for each assessment there has been using individual profiling system which is based on the marks enterd by teachers so for each assessments availible there 
+    # will be seperate profiling based on the test
+    # this is for test1.... 
         
         if   Assessment1 is not None and Assessment2 is  None  and Assessment3 is  None  and Assessment4 is  None  and Assessment5  is  None and Assessment6  is  None and Assessment7 is  None and Assessment8  is  None:
         
             usn = session.get('studentemail')
             user = db.users.find_one({'usn':usn })
             test1_skills = user["Assessment1"]
+            
             def summary(userr):
                 p=[]
                 for key, value in userr.items():
@@ -2457,14 +2464,31 @@ def search():
             # studname = user['username']
 
             # print(email)
-            if user:
+            
+
+            
+
+            if user :
+            
                 session["studentname"] = usn
+                
+
+                user = db.users.find_one({'usn':usn })
+                print(usn)
+                personal = user["personal"]
+                print(personal)
+
+                if personal is None:
+                    flash(' notify students to login to application', category='error')
+                    return redirect(url_for('views.search'))
+
                 # bro = session.get['studentname']
-                flash('User found Kindly enter the marks ', category='success')
-                return redirect(url_for('views.score'))
+                else:
+                    flash('User found Kindly enter the marks  ', category='success')
+                    return redirect(url_for('views.score'))
                 # return render_template('score.html')
             else:
-                flash('User not found', category='error')
+                flash('User not found ', category='error')
                 return redirect(url_for('views.search'))
                 # return render_template('dashboard.html',title=title,name=name)   
         return render_template('search.html',usn=usn,username=username)

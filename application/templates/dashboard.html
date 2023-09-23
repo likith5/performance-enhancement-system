@@ -6,7 +6,9 @@
 {% block content %}
 
 <form action="" method="POST">
-<div class=" addpadding">                   
+<div class=" addpadding">
+    <!-- Dropdown to select the assessments -->
+
     <select class="form-control  rounded-pill inputcontrol " type="text" name="test" id="test"  placeholder="Click here" aria-label="default input example" required>
      <option >Select Test</option>
      <option >Assessment1</option>
@@ -18,7 +20,8 @@
      <option >Assessment7</option>
      <option >Assessment8</option>
    </select>
-   <button class="btn btn-primary pt-3 mt-3" type="submit">click</button>
+<!-- Submit button to submit the selected assessment from the dropdown -->
+<button class="btn btn-primary pt-3 mt-3" type="submit">Submit</button>
 
  </div>
 </form>
@@ -33,7 +36,8 @@
 
 
         <h2 class="top-grade-title  fadeIn first"><u>Your Top Scoring Skills</u> </h2>
-        
+
+        <!-- Top scored skills -->
         <div class="  wow fadeIn"  data-wow-duration="0.5s" data-wow-delay="0.5s">
             <li class="grade-explain">
                 <!-- <span class="grade-score"></span> -->
@@ -51,6 +55,8 @@
       </div></div>     
             <!-- <div class="me"> </div> -->
 
+            <!-- Overall performance designed using DOUGHNUT PIE CHART -->
+
       <div class="col  ">
         <div class=" contain21 text-center float-start" style="padding: 0 0 0 5%">
 
@@ -65,6 +71,8 @@
    
 <!-- end of top page..  -->
 
+<!-- Technical skill -->
+
 <div class="newentry">
 <div class="container  wow fadeIn group1" data-wow-duration="0.5s" data-wow-delay="0.5s">
 <div class="row">
@@ -77,7 +85,7 @@
             
                </div>
               
-
+              <!-- Recommendations for the particular skill -->
                <div class="content">
                 {% if technical == 1  %}
                 <span class="message">Start reading tech news.</span>
@@ -102,7 +110,7 @@
           </div>
     
 
- 
+          <!-- Result Oriented Skill -->
     <div class="col  bari wow fadeInRight" data-wow-duration="1s" data-wow-delay="0.5s">
       <div class=" contain3">
         <span class="top-grade-title" style="padding:10px 5px 0 15px">Result Oriented</span>
@@ -110,6 +118,7 @@
            <span class="progress-value">{{ resultoriented }}</span>
             
                </div>
+              <!-- Recommendations for the particular skill -->
                <div class="content">
                 {% if resultoriented == 1  %}
                 <span class="message">Take up on training session on result orientation.</span>
@@ -131,16 +140,19 @@
 </div>
 </div>
 
+  <!-- Creativity Skill -->
+
 <div class="container group2  wow fadeIn"  data-wow-duration="0.5s" data-wow-delay="0.5s">
 <div class="row">
     <div class="col col-md-12 col-lg-6 bari wow fadeInLeft  bari"  data-wow-duration="0.5s" data-wow-delay="0.5s">
         <div class=" contain3">
 
-            <span class="top-grade-title" style="padding:10px 5px 0 15px">Creativity Skill</span>
+            <span class="top-grade-title" style="padding:10px 5px 0 15px">Creativity</span>
             <div class="circular-progress">
                <span class="progress-value">{{ creativity }}</span>
                 
                    </div>
+                  <!-- Recommendations for the particular skill -->
                    <div class="content">
                     {% if creativity  == 1  %}
                     <span class="message">Try to think of different ways of doing any thing. Try implementing on small day to day tasks.</span>
@@ -156,6 +168,8 @@
                 </div>
                 
     </div>
+<!-- Interpersonnal Skill -->
+
     <div class=" col col-lg-6 col-md-12  bari  wow fadeInRight" data-wow-duration="1s" data-wow-delay="0.5s">
         <div class=" contain3">
 
@@ -164,6 +178,7 @@
                <span class="progress-value">{{ interpersonal }}</span>
                 
                    </div>
+                  <!-- Recommendations for the particular skill -->
                    <div class="content">
                     {% if interpersonal == 1  %}
                     <span class="message">Take up on training session on result orientation.</span>
@@ -180,6 +195,8 @@
                 </div>
                
     </div>
+<!-- Time Management -->
+
     <div class=" col col-md-12 col-lg-6 bari wow fadeInLeft  bari"  data-wow-duration="0.5s" data-wow-delay="0.5s">
         <div class=" contain3">
 
@@ -188,6 +205,7 @@
                <span class="progress-value">{{ timemanagement }}</span>
                 
                    </div>
+                  <!-- Recommendations for the particular skill -->
                    <div class="content">
                     {% if timemanagement == 1  %}
                     <span class="message">Complete online course on Time Management</span>
@@ -204,7 +222,7 @@
                
     </div>
 
-
+    <!-- Communication Skill -->
     <div class=" col col-md-12 col-lg-6 bari  wow fadeInRight" data-wow-duration="1s" data-wow-delay="0.5s">
         <div class=" contain3">
 
@@ -213,6 +231,7 @@
                <span class="progress-value">{{ communication }}</span>
                 
                    </div>
+                  <!-- Recommendations for the particular skill -->
                    <div class="content">
                     {% if communication == 1  %}
                     <span class="message">Find someone to speak only in English, Enroll for a communication class, read news paper</span>
@@ -231,7 +250,7 @@
 </div>
 </div>
 
-
+<!-- General Knowledge on Business Skill -->
 <div class="container group3  wow fadeIn"  data-wow-duration="0.5s" data-wow-delay="0.5s">
 <div class="row">
      <div class="col col-md-12 col-lg-6 bari wow fadeInLeft  bari"  data-wow-duration="0.5s" data-wow-delay="0.5s">
@@ -242,6 +261,7 @@
              <span class="progress-value">{{ generalknowledge }}</span>
               
                  </div>
+                <!-- Recommendations for the particular skill -->
                  <div class="content">
                   {% if generalknowledge == 1  %}
                   <span class="message">Start reading online news. </span>
@@ -257,6 +277,7 @@
         </div>
        
     </div>
+    <!-- Leadership Skill -->
     <div class=" col col-lg-6 col-md-12  bari wow fadeInRight" data-wow-duration="1s" data-wow-delay="0.5s">
         <div class=" contain3">
 
@@ -265,6 +286,7 @@
              <span class="progress-value">{{ leardership }}</span>
               
                  </div>
+                <!-- Recommendations for the particular skill -->
                  <div class="content">
                   {% if leardership == 1  %}
                   <span class="message">Take up online courses on Leadership, watch movies on leadership like GANDHI, wars movies etc</span>
@@ -280,6 +302,7 @@
                 </div>
                 
     </div>
+    <!-- Project Management Skill -->
     <div class=" col col-md-12 col-lg-6 bari wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.3s">
         <div class=" contain3">
           <span class="top-grade-title" style="padding:10px 5px 0 15px">Project Management</span>
@@ -287,6 +310,7 @@
              <span class="progress-value">{{ projectmm }}</span>
               
                  </div>
+                <!-- Recommendations for the particular skill -->
                  <div class="content">
                   {% if projectmm == 1  %}
                   <span class="message">Work closely with student leaders, understand the planning process for fests, events etc.</span>
@@ -302,7 +326,7 @@
                 </div>
                
     </div> 
-
+<!-- Presentation Skill -->
     <div class=" col col-md-6 col-lg-6 bari wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.3s">
         <div class=" contain3">
             
@@ -311,6 +335,7 @@
                <span class="progress-value">{{ presentation }}</span>
                 
                    </div>
+                  <!-- Recommendations for the particular skill -->
                    <div class="content">
                     {% if presentation  == 1  %}
                     <span class="message">Find someone to speak only in English, Enroll for a communication class, read news paper</span>
@@ -326,6 +351,7 @@
                 </div>
                 
     </div>
+    <!-- Aptitude Skill -->
     <div class=" col col-md-6 col-lg-6 bari wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.3s">
         <div class=" contain3">
             
@@ -334,6 +360,7 @@
                <span class="progress-value">{{ aptitude }}</span>
                 
                    </div>
+                  <!-- Recommendations for the particular skill -->
                    <div class="content">
                     {% if aptitude  == 1  %}
                     <span class="message">Find someone to speak only in English, Enroll for a communication class, read news paper</span>
@@ -350,6 +377,7 @@
                 
     </div>
    
+    <!-- Entrepreneurial Skill -->
     <div class=" col col-md-6 col-lg-6 bari wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.3s">
         <div class=" contain3">
             
@@ -358,6 +386,7 @@
                <span class="progress-value">{{ entrepreneur }}</span>
                 
                    </div>
+                  <!-- Recommendations for the particular skill -->
                    <div class="content">
                     {% if presentation  == 1  %}
                     <span class="message">Read about startups, founders, new innovations, start to develop interest in entrepreneurship.</span>
@@ -389,6 +418,8 @@
 
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<!-- Comparision graphs -->
 
 
 {% if  show_graph2 %}
@@ -463,6 +494,7 @@
         <canvas id="mycharttest3" class="aligngraph"></canvas>
       
        </div></div>
+      <!-- Comparision graphs -->
        <h2 class="top-grade-title text-center fadeIn first"><b>Overall Summary of Tests</b> </h2>
   
        <div class="col"> <div class="container addpadding pt-5"  style="width:100%;max-width:1100px; ">
@@ -1264,7 +1296,7 @@ options: {
 
   
   
- 
+<!-- Copyrights footer -->
 
 <div class="container-fluid footer">
     <div class="text-center footer-tag">

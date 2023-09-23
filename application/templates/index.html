@@ -61,25 +61,25 @@
               <a class="nav-link" href="{{ url_for('views.userdata')}}">Account</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link " href="{{ url_for('auth.logout') }}">logout</a>
+              <a class="nav-link " href="{{ url_for('auth.logout') }}">Logout</a>
             </li>
             {% elif 'teacheremail' in session  %}
             <li class="nav-item">
               <a class="nav-link" href="{{ url_for('views.search')}}">Search</a>
             </li>
              <li class="nav-item">
-              <a class="nav-link" href="{{ url_for('views.score')}}">Enter marks</a>
+              <a class="nav-link" href="{{ url_for('views.score')}}">Enter Marks</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link " href="{{ url_for('auth.logout') }}">logout</a>
+              <a class="nav-link " href="{{ url_for('auth.logout') }}">Logout</a>
             </li>
             {% else %}
             
             <li class="nav-item">
-              <a class="nav-link " href="{{ url_for('auth.login')}}">login</a>
+              <a class="nav-link " href="{{ url_for('auth.login')}}">Login</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link active" href="{{ url_for('auth.sign_up')}}">Signup</a>
+              <a class="nav-link active" href="{{ url_for('auth.sign_up')}}">SignUp</a>
             </li>
             
             {% endif %} 

@@ -51,7 +51,7 @@ def profile():
         interst1 = user["personal"].get('interst-1')
         title="dashboard"
         return render_template('profile.html',title=title,usn=usn,username=username,email=email,college=college,sem=sem,linkdin=linkdin,github=github,intership1=intership1,project1=project1,interst1=interst1)
-   
+#    this is for the teacher role..
     if 'studentemail' in session :
         usn = session.get('studentemail')
         user = db.users.find_one({'usn':usn })
@@ -824,8 +824,10 @@ def profile():
     return redirect(url_for('auth.login'))
 
 
-
-
+# dashboard contains marks for individual tests.. fetched from database to render in UI this is for both teacher login  and  student login
+# dashboard has been divided individual assessment
+# each assessments has been accessed from database 
+# each assessments has different functionality
 @views.route("/dashboard",methods=['GET','POST'])
 def dashboard():
     if 'studentemail' in session :
@@ -2446,6 +2448,7 @@ def dashboard():
         # return render_template('dashboard.html')
     return redirect(url_for('auth.login'))
 
+# seach option is for teachers in which teachers can search a particualr student to assign particular marks
 @views.route("/search",methods=['GET','POST'])
 def search():
     if 'teacheremail' in session:
@@ -2495,7 +2498,7 @@ def search():
     return redirect(url_for('auth.login'))
 
 
-     
+    #  this is for particular user to enter their details which will be reflected in resume...
 @views.route('/userdata',methods=['GET','POST'])    
 def userdata():
     if  "studentemail" in session:
@@ -2687,16 +2690,8 @@ def userdata():
 
      
 
-# @views.route('profileskills')
-# def profileskills():
-#     if request.method == "POST":
-#         num_inputs = int(request.form.get("num_inputs", 0))
-#     else:
-#         num_inputs = 0
-    
-#     return render_template("index.html", num_inputs=num_inputs)
 
-
+# this route is bascically to download all the results from the database and show it in excel form 
 
 @views.route('/downloadi_csv')
 def downloadi_csv():
@@ -2888,6 +2883,7 @@ def downloadi_csv():
 
 # @views.route('/downloadi_csv')
 # def downloadi_csv():
+# report page gives a complete summary for all the tests which has been used...  or given by teachers
 @views.route('/report')
 def report():
     if 'studentemail' in session :
@@ -3637,7 +3633,7 @@ def report():
             print('++++')
             return render_template('report.html',user=user,design=design,market=market,strong=strong,leader=leader,customer=customer,project=project,presentation=json.dumps(presentation),resultoriented=json.dumps(resultoriented),leadership=json.dumps(leadership),ent1=json.dumps(entreprenuerial),apt=json.dumps(aptitude),interpersonal=json.dumps(interpersonal),communication=json.dumps(communication),technical=json.dumps(technical),creativity=json.dumps(creativity),projectmmt=json.dumps(projectmmt),timemmt=json.dumps(timemmt),gk=json.dumps(gk))
 
-
+# resume page basically display out alll the deatils  which student has entered ...
 @views.route('/resume')
 def resume():
     if 'studentemail' in session :
@@ -3680,7 +3676,7 @@ def resume():
 
     return render_template('resume.html',user=user)
 
-
+# score page is template where teachers are able to give marks...
 @views.route('/score',methods=['GET','POST'])
 def score():
     usn = session.get('studentname')

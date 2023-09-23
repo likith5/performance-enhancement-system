@@ -6,7 +6,7 @@ from application import db
 # ,User  this has been excluded from above statement
 
 auth = Blueprint('auth',__name__)
-
+# login route ...
 @auth.route('/login',methods=['GET','POST'])
 def login():
     
@@ -61,7 +61,7 @@ def login():
     
 
 
-
+# signup route ...
 @auth.route('/signup',methods=['GET','POST'])
 def sign_up():
     if request.method == 'POST':
@@ -98,7 +98,8 @@ def sign_up():
             return redirect(url_for('auth.login'))
        
     return render_template("signup.html")
-    
+
+#  logout session from everything...   
 @auth.route('/logout')
 def logout():
     session.pop("studentname",None) 
